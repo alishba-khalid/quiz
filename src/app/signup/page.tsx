@@ -32,7 +32,7 @@ export default async function SignupPage() {
           </p>
         </div>
         <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-8">
-          <SignupForm />
+          <SignupForm googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)} />
         </div>
       </div>
     </div>
