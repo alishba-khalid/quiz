@@ -72,7 +72,7 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
         )}
 
         <div>
-          <label htmlFor="login-email" className="block text-sm font-medium text-zinc-700 mb-1.5">
+          <label htmlFor="login-email" className="block text-sm font-medium text-ink mb-1.5">
             Email address
           </label>
           <input
@@ -82,12 +82,12 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full px-4 py-3 border border-zinc-200 rounded-xl text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border border-hairline rounded-xl text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
           />
         </div>
 
         <div>
-          <label htmlFor="login-password" className="block text-sm font-medium text-zinc-700 mb-1.5">
+          <label htmlFor="login-password" className="block text-sm font-medium text-ink mb-1.5">
             Password
           </label>
           <div className="relative">
@@ -98,7 +98,7 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-4 py-3 pr-12 border border-zinc-200 rounded-xl text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 pr-12 border border-hairline rounded-xl text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
             />
             <button
               type="button"
@@ -113,7 +113,7 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
         >
           {loading ? (
             <span className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -126,7 +126,7 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
 
       <p className="mt-6 text-center text-sm text-zinc-500">
         Don&apos;t have an account?{" "}
-        <Link href="/signup" className="text-indigo-600 hover:text-indigo-700 font-medium">
+        <Link href="/signup" className="text-accent hover:text-accent-dark font-medium">
           Sign up for free
         </Link>
       </p>

@@ -5,181 +5,161 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
-// Best-effort in-memory rate limiting
 const rateLimitCache = new Map<string, number>();
 
 export async function POST(req: NextRequest) {
   try {
     const session = await auth();
-    if (!session || !session.user || !session.user.email) {
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const user = await db.user.findUnique({
-      where: { email: session.user.email },
-    });
-
+    const user = await db.user.findUnique({ where: { email: session.user.email } });
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // 1. Rate Limiting (10 seconds between generations)
-    const lastRequest = rateLimitCache.get(user.id);
-    const nowMs = Date.now();
-    if (lastRequest && (nowMs - lastRequest) < 10000) {
+    // Rate limit: 10s between generations
+    const last = rateLimitCache.get(user.id);
+    const now = Date.now();
+    if (last && now - last < 10000) {
       return NextResponse.json(
-        { error: "Please wait 10 seconds between worksheet generations." },
+        { error: "Please wait 10 seconds between generations." },
         { status: 429 }
       );
     }
-    rateLimitCache.set(user.id, nowMs);
-
-    // 2. Enforce Free Usage Limit (5 per month)
-    const now = new Date();
-    const lastReset = new Date(user.lastResetDate);
-    const diffTime = Math.abs(now.getTime() - lastReset.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    let currentUsage = user.usageCount;
-    if (diffDays >= 30) {
-      await db.user.update({
-        where: { id: user.id },
-        data: {
-          usageCount: 0,
-          lastResetDate: now,
-        },
-      });
-      currentUsage = 0;
-    }
+    rateLimitCache.set(user.id, now);
 
     const isPro = user.plan === "PRO";
-    if (!isPro && currentUsage >= 5) {
+    if (!isPro && user.usageCount >= 1) {
       return NextResponse.json(
-        { error: "Free limit reached. You have generated 5 worksheets this month. Upgrade to Pro for unlimited generation!" },
+        { error: "You've used your 1 free worksheet. Upgrade to Pro for unlimited generation." },
         { status: 403 }
       );
     }
 
-    // 3. Parse input
-    const { topic, gradeLevel, worksheetType, questionsCount } = await req.json();
+    const body = await req.json();
+    const {
+      subject,
+      grade,
+      topic,
+      questionTypes,
+      difficulty = "Medium",
+      questionsCount,
+      sourceMaterial,
+    } = body;
 
-    if (!topic || !gradeLevel || !worksheetType || !questionsCount) {
-      return NextResponse.json(
-        { error: "Missing required fields: topic, gradeLevel, worksheetType, questionsCount" },
-        { status: 400 }
-      );
+    if (!topic || !grade) {
+      return NextResponse.json({ error: "Topic and grade are required." }, { status: 400 });
     }
 
-    const qCount = parseInt(questionsCount, 10);
-    if (isNaN(qCount) || qCount < 1 || qCount > 30) {
-      return NextResponse.json(
-        { error: "Question count must be a number between 1 and 30" },
-        { status: 400 }
-      );
-    }
+    const qCount = Math.min(Math.max(parseInt(questionsCount, 10) || 5, 3), 15);
+    const types: string[] = Array.isArray(questionTypes) && questionTypes.length > 0
+      ? questionTypes
+      : ["multiple-choice"];
 
     if (!process.env.GEMINI_API_KEY) {
-      return NextResponse.json(
-        { error: "Gemini API key is not configured on the server." },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "AI service is not configured." }, { status: 500 });
     }
 
-    // 4. Call Gemini API
-    const promptText = `
-You are an expert teacher's assistant. Generate a high-quality educational worksheet/quiz.
-Subject/Topic: "${topic}"
-Grade Level: "${gradeLevel}"
-Worksheet Type: "${worksheetType}" (e.g., multiple-choice, fill-in-the-blank, short-answer, matching, true-false)
-Number of questions: ${qCount}
+    const sourceSection = sourceMaterial
+      ? `\nSource material to base questions on:\n"""\n${sourceMaterial.slice(0, 4000)}\n"""`
+      : "";
 
-Provide the response in raw JSON format matching this schema:
+    const prompt = `You are an expert teacher creating a high-quality educational assessment.
+
+Subject: ${subject || topic}
+Grade level: ${grade}
+Topic: ${topic}
+Question types to use (mix these): ${types.join(", ")}
+Difficulty: ${difficulty}
+Number of questions: ${qCount}${sourceSection}
+
+Return ONLY valid JSON matching this exact schema — no markdown, no code blocks:
 {
-  "title": "Title of the worksheet",
-  "instructions": "General instructions for students",
+  "title": "Descriptive worksheet title",
   "questions": [
     {
-      "id": 1,
-      "question": "Question text. For matching type, present a list of terms to match (e.g., 'Match the capital with the country.'). For fill-in-the-blank, use blank underscores (______).",
-      "options": ["Option A", "Option B", "Option C", "Option D"], // Only include this array for multiple-choice or true-false. Otherwise, leave it out or set it to null.
-      "answer": "The clear correct answer or matching pairs for this question"
+      "type": "multiple-choice",
+      "q": "Conceptual, thought-provoking question text",
+      "options": ["Option A", "Option B", "Option C", "Option D"],
+      "answer": "Option B",
+      "explanation": "One sentence explaining why this is correct."
     }
   ]
 }
-Ensure the content is age-appropriate for the grade level, grammatically correct, and covers the topic thoroughly. Do not wrap the JSON response in markdown code blocks. Return only valid JSON.
-`;
+
+Rules:
+- For "multiple-choice": include 4 options array, answer must match one option exactly
+- For "true-false": options must be ["True", "False"], answer is "True" or "False"
+- For "short-answer": omit options, answer is a concise phrase
+- For "fill-in-the-blank": question contains "______" blank(s), omit options, answer fills the blank
+- Write conceptual questions that test understanding, not just recall
+- Age-appropriate language for the grade level
+- All ${qCount} questions must be included`;
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
-      contents: promptText,
-      config: {
-        responseMimeType: "application/json",
-      },
+      contents: prompt,
+      config: { responseMimeType: "application/json" },
     });
 
-    const responseText = response.text;
-    if (!responseText) {
-      throw new Error("Empty response from Gemini API");
-    }
+    if (!response.text) throw new Error("Empty response from AI");
 
-    const generatedData = JSON.parse(responseText.trim());
+    const data = JSON.parse(response.text.trim());
+    const questions: any[] = data.questions || [];
 
-    // 5. Structure content and answer key
-    const contentQuestions = generatedData.questions.map((q: any) => ({
-      id: q.id,
-      question: q.question,
+    // content = questions without answers (for DB / display without paywall)
+    const content = questions.map((q: any, i: number) => ({
+      i,
+      type: q.type,
+      q: q.q,
       options: q.options || null,
     }));
 
-    const answerKeyData = generatedData.questions.map((q: any) => ({
-      id: q.id,
-      question: q.question,
+    // answerKey = full questions with answers + explanations
+    const answerKey = questions.map((q: any, i: number) => ({
+      i,
+      type: q.type,
+      q: q.q,
       answer: q.answer,
+      explanation: q.explanation,
     }));
 
-    // 6. Save to DB
     const worksheet = await db.worksheet.create({
       data: {
         userId: user.id,
-        title: generatedData.title || `${topic} Worksheet`,
+        title: data.title || `${topic} Worksheet`,
         topic,
-        gradeLevel,
-        worksheetType,
+        gradeLevel: grade,
+        worksheetType: types.join(","),
         questionsCount: qCount,
-        content: contentQuestions as any,
-        answerKey: answerKeyData as any,
+        content: content as any,
+        answerKey: answerKey as any,
       },
     });
 
-    // 7. Increment user usage count
-    await db.user.update({
-      where: { id: user.id },
-      data: {
-        usageCount: {
-          increment: 1,
-        },
-      },
-    });
+    await db.user.update({ where: { id: user.id }, data: { usageCount: { increment: 1 } } });
 
-    // 8. Return response
     return NextResponse.json({
       id: worksheet.id,
       title: worksheet.title,
-      topic: worksheet.topic,
-      gradeLevel: worksheet.gradeLevel,
-      worksheetType: worksheet.worksheetType,
-      questionsCount: worksheet.questionsCount,
-      content: contentQuestions,
-      answerKey: isPro ? answerKeyData : null, // Paywall: Free users don't get the answer key
+      subject: subject || topic,
+      grade,
+      topic,
+      difficulty,
+      questionsCount: qCount,
+      questions: content,
+      answerKey,
       isPro,
     });
-
   } catch (error: any) {
     console.error("Generate error:", error);
     return NextResponse.json(
-      { error: error.message || "Failed to generate worksheet. Please try again." },
+      { error: error.message || "Couldn't generate that one. Try a more specific topic and generate again." },
       { status: 500 }
     );
   }
 }
+
 export const dynamic = "force-dynamic";

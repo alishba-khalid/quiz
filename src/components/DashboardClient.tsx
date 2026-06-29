@@ -46,8 +46,8 @@ export default function DashboardClient({
           Generate your first worksheet and it will appear here.
         </p>
         <Link
-          href="/quiz-generator"
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white text-sm font-semibold rounded-xl hover:bg-indigo-700 transition-colors"
+          href="/generator"
+          className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-xl hover:bg-accent-dark transition-colors"
         >
           Generate a worksheet
         </Link>

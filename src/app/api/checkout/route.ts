@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { stripe } from "@/lib/stripe";
+import { polar } from "@/lib/polar";
 import { db } from "@/lib/db";
 
 export async function POST(req: NextRequest) {
   try {
     const session = await auth();
-    if (!session || !session.user || !session.user.email) {
+    if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -18,40 +18,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    let customerId = user.stripeCustomerId;
-    if (!customerId) {
-      const customer = await stripe.customers.create({
-        email: user.email!,
-        name: user.name || undefined,
-      });
-      customerId = customer.id;
-      await db.user.update({
-        where: { id: user.id },
-        data: { stripeCustomerId: customerId },
-      });
-    }
-
-    const priceId = process.env.STRIPE_PRICE_ID || "price_placeholder";
-
-    const checkoutSession = await stripe.checkout.sessions.create({
-      customer: customerId,
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-      mode: "subscription",
-      success_url: `${req.nextUrl.origin}/dashboard?success=true`,
-      cancel_url: `${req.nextUrl.origin}/pricing?canceled=true`,
-      metadata: {
-        userId: user.id,
-      },
+    const checkout = await polar.checkouts.create({
+      products: [process.env.POLAR_PRODUCT_ID || ""],
+      customerEmail: user.email!,
+      externalCustomerId: user.id,
+      successUrl: `${req.nextUrl.origin}/dashboard?success=true`,
+      metadata: { userId: user.id },
     });
 
-    return NextResponse.json({ url: checkoutSession.url });
+    return NextResponse.json({ url: checkout.url });
   } catch (error: any) {
-    console.error("Stripe checkout error:", error);
+    console.error("Polar checkout error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

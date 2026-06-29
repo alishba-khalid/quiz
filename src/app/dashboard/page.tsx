@@ -7,7 +7,7 @@ import DashboardClient from "@/components/DashboardClient";
 
 export const metadata: Metadata = {
   title: "Dashboard | QuizKraft",
-  description: "View and manage your generated worksheets and quizzes.",
+  description: "View and manage your generated worksheets.",
 };
 
 export default async function DashboardPage({
@@ -41,7 +41,7 @@ export default async function DashboardPage({
   if (!user) redirect("/login");
 
   const isPro = user.plan === "PRO";
-  const remaining = Math.max(0, 5 - user.usageCount);
+  const remaining = Math.max(0, 1 - user.usageCount);
   const showSuccess = params.success === "true";
 
   const worksheets = user.worksheets.map((w) => ({
@@ -50,74 +50,65 @@ export default async function DashboardPage({
   }));
 
   return (
-    <div className="flex flex-col flex-1 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col flex-1 bg-canvas py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto w-full">
-        {/* Header */}
         <div className="flex items-start justify-between mb-8 flex-wrap gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
-            <p className="text-zinc-500 mt-1 text-sm">
+            <h1 className="text-2xl font-semibold text-ink">Dashboard</h1>
+            <p className="text-muted text-sm mt-1">
               Welcome back, {session.user.name || session.user.email}
             </p>
           </div>
           <Link
-            href="/quiz-generator"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white text-sm font-semibold rounded-xl hover:bg-indigo-700 transition-colors"
+            href="/generator"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20"
           >
-            + New Worksheet
+            + New worksheet
           </Link>
         </div>
 
         {showSuccess && (
-          <div className="mb-6 px-4 py-3 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded-xl text-sm font-medium">
-            You&apos;re now on Pro! Enjoy unlimited worksheets and answer keys.
+          <div className="mb-6 px-4 py-3 bg-correct-soft border border-correct/20 text-correct rounded-xl text-sm font-medium">
+            You're now on Pro. Enjoy unlimited worksheets and PDF exports.
           </div>
         )}
 
-        {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="bg-white rounded-xl border border-zinc-100 p-4 text-center">
-            <div className="text-2xl font-bold text-indigo-600">
-              {user.worksheets.length}
-            </div>
-            <div className="text-xs text-zinc-500 mt-1">Total worksheets</div>
+          <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
+            <div className="text-2xl font-bold text-accent">{user.worksheets.length}</div>
+            <div className="text-xs text-muted mt-1">Total worksheets</div>
           </div>
-          <div className="bg-white rounded-xl border border-zinc-100 p-4 text-center">
-            <div className="text-2xl font-bold text-indigo-600">
+          <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
+            <div className="text-2xl font-bold text-accent">
               {isPro ? "∞" : `${user.usageCount}/5`}
             </div>
-            <div className="text-xs text-zinc-500 mt-1">This month</div>
+            <div className="text-xs text-muted mt-1">This month</div>
           </div>
-          <div className="bg-white rounded-xl border border-zinc-100 p-4 text-center">
-            <div
-              className={`text-sm font-bold px-2 py-1 rounded-full inline-block ${
-                isPro
-                  ? "bg-indigo-100 text-indigo-700"
-                  : "bg-zinc-100 text-zinc-600"
+          <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
+            <span
+              className={`text-sm font-bold px-2.5 py-1 rounded-full inline-block ${
+                isPro ? "bg-accent-soft text-accent" : "bg-canvas border border-hairline text-muted"
               }`}
             >
               {isPro ? "PRO" : "FREE"}
-            </div>
-            <div className="text-xs text-zinc-500 mt-1">Current plan</div>
+            </span>
+            <div className="text-xs text-muted mt-2">Current plan</div>
           </div>
         </div>
 
-        {/* Upgrade banner */}
         {!isPro && (
-          <div className="mb-6 bg-gradient-to-r from-indigo-50 to-violet-50 border border-indigo-100 rounded-xl p-4 flex items-center justify-between gap-4 flex-wrap">
+          <div className="mb-6 bg-accent-soft border border-accent/20 rounded-2xl p-4 flex items-center justify-between gap-4 flex-wrap">
             <div>
-              <p className="text-sm font-semibold text-zinc-900">
-                Unlock unlimited worksheets + answer keys
-              </p>
-              <p className="text-xs text-zinc-500 mt-0.5">
+              <p className="text-sm font-semibold text-ink">Unlock unlimited worksheets + PDF export</p>
+              <p className="text-xs text-muted mt-0.5">
                 {remaining > 0
                   ? `${remaining} free worksheet${remaining === 1 ? "" : "s"} remaining this month.`
-                  : "You've used all 5 free worksheets this month."}
+                  : "You've used your 1 free worksheet."}
               </p>
             </div>
             <Link
               href="/pricing"
-              className="px-5 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-xl hover:bg-indigo-700 transition-colors flex-shrink-0"
+              className="px-5 py-2 bg-accent text-white text-sm font-semibold rounded-xl hover:bg-accent-dark transition-colors flex-shrink-0"
             >
               Upgrade to Pro — $9/mo
             </Link>

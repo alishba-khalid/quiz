@@ -3,159 +3,163 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
-import { Menu, X, GraduationCap, LogOut, LogIn } from "lucide-react";
+import { Menu, X, LogOut, ChevronDown } from "lucide-react";
+
+function LogoMark() {
+  return (
+    <div className="flex items-center gap-2.5">
+      <div className="w-8 h-8 rounded-lg bg-ink flex items-center justify-center flex-shrink-0">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M2.5 8.5 L6.5 12.5 L13.5 4"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+      <span className="font-bold text-lg tracking-tight text-ink">
+        Quiz<span className="text-accent">Kraft</span>
+      </span>
+    </div>
+  );
+}
+
+const navLinks = [
+  { label: "Generator", href: "/generator" },
+  { label: "Features", href: "/#features" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Blog", href: "/blog" },
+];
 
 export default function Navbar() {
   const { data: session } = useSession();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-b border-zinc-100 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <Link href="/" className="flex-shrink-0 flex items-center gap-2 font-bold text-xl text-indigo-600">
-              <GraduationCap className="h-8 w-8 text-indigo-600 animate-pulse" />
-              <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                QuizKraft
-              </span>
-            </Link>
-            <div className="hidden sm:ml-8 sm:flex sm:space-x-8">
+    <nav className="sticky top-0 z-50 bg-canvas/80 backdrop-blur-md border-b border-hairline no-print">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0">
+            <LogoMark />
+          </Link>
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((l) => (
               <Link
-                href="/quiz-generator"
-                className="border-transparent text-zinc-500 hover:border-indigo-500 hover:text-zinc-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+                key={l.href}
+                href={l.href}
+                className="px-4 py-2 text-sm font-medium text-muted hover:text-ink rounded-lg hover:bg-hairline/60 transition-colors"
               >
-                Quiz Generator
+                {l.label}
               </Link>
-              <Link
-                href="/pricing"
-                className="border-transparent text-zinc-500 hover:border-indigo-500 hover:text-zinc-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
-              >
-                Pricing
-              </Link>
-              {session && (
+            ))}
+          </div>
+
+          {/* Desktop auth */}
+          <div className="hidden md:flex items-center gap-3">
+            {session ? (
+              <>
                 <Link
                   href="/dashboard"
-                  className="border-transparent text-zinc-500 hover:border-indigo-500 hover:text-zinc-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-muted hover:text-ink transition-colors"
                 >
-                  Dashboard
-                </Link>
-              )}
-            </div>
-          </div>
-          
-          <div className="hidden sm:ml-6 sm:flex sm:items-center sm:gap-4">
-            {session ? (
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-zinc-600 bg-zinc-50 border border-zinc-100 rounded-full px-3 py-1 flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  {session.user?.name || session.user?.email} 
-                  <span className="ml-1 text-xs font-bold uppercase text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">
-                    {(session.user as any).plan || "FREE"}
+                  <span className="w-6 h-6 rounded-full bg-accent-soft text-accent text-xs font-bold flex items-center justify-center uppercase">
+                    {(session.user?.name || session.user?.email || "U")[0]}
                   </span>
-                </span>
+                  Dashboard
+                  <ChevronDown className="h-3.5 w-3.5" />
+                </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 border border-transparent text-sm font-medium rounded-lg text-zinc-700 bg-zinc-100 hover:bg-zinc-200 focus:outline-none transition-colors cursor-pointer"
+                  className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-muted hover:text-ink hover:bg-hairline/60 rounded-lg transition-colors cursor-pointer"
                 >
                   <LogOut className="h-4 w-4" />
-                  Sign Out
+                  Sign out
                 </button>
-              </div>
+              </>
             ) : (
-              <div className="flex items-center gap-2">
+              <>
                 <Link
                   href="/login"
-                  className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg text-zinc-700 hover:bg-zinc-50 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-muted hover:text-ink transition-colors"
                 >
-                  <LogIn className="h-4 w-4" />
-                  Log In
+                  Log in
                 </Link>
                 <Link
                   href="/signup"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm"
+                  className="px-4 py-2 text-sm font-semibold text-white bg-accent hover:bg-accent-dark rounded-xl transition-colors shadow-sm shadow-accent/20"
                 >
-                  Sign Up
+                  Start free
                 </Link>
-              </div>
+              </>
             )}
           </div>
 
-          <div className="-mr-2 flex items-center sm:hidden">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-zinc-500 hover:bg-zinc-100 focus:outline-none cursor-pointer"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+          {/* Mobile menu toggle */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 rounded-lg text-muted hover:text-ink hover:bg-hairline/60 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 
-      {isOpen && (
-        <div className="sm:hidden border-t border-zinc-100 bg-white">
-          <div className="pt-2 pb-3 space-y-1">
-            <Link
-              href="/quiz-generator"
-              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:border-indigo-500"
-              onClick={toggleMenu}
-            >
-              Quiz Generator
-            </Link>
-            <Link
-              href="/pricing"
-              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:border-indigo-500"
-              onClick={toggleMenu}
-            >
-              Pricing
-            </Link>
-            {session && (
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden border-t border-hairline bg-canvas/95 backdrop-blur-md animate-fade-in">
+          <div className="px-4 py-3 space-y-1">
+            {navLinks.map((l) => (
               <Link
-                href="/dashboard"
-                className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:border-indigo-500"
-                onClick={toggleMenu}
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+                className="block px-4 py-2.5 text-sm font-medium text-ink rounded-lg hover:bg-hairline/60 transition-colors"
               >
-                Dashboard
+                {l.label}
               </Link>
-            )}
+            ))}
           </div>
-          <div className="pt-4 pb-4 border-t border-zinc-200">
+          <div className="px-4 py-3 border-t border-hairline space-y-2">
             {session ? (
-              <div className="px-4 space-y-3">
-                <div className="text-sm font-medium text-zinc-800">
-                  Logged in as: {session.user?.email} ({(session.user as any).plan || "FREE"})
-                </div>
-                <button
-                  onClick={() => {
-                    toggleMenu();
-                    signOut({ callbackUrl: "/" });
-                  }}
-                  className="w-full flex items-center justify-center gap-1.5 px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+              <>
+                <Link
+                  href="/dashboard"
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2.5 text-sm font-medium text-ink rounded-lg hover:bg-hairline/60 transition-colors"
                 >
-                  <LogOut className="h-5 w-5" />
-                  Sign Out
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => { setMenuOpen(false); signOut({ callbackUrl: "/" }); }}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-muted border border-hairline rounded-xl hover:bg-hairline/60 transition-colors cursor-pointer"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Sign out
                 </button>
-              </div>
+              </>
             ) : (
-              <div className="px-4 space-y-2">
+              <>
                 <Link
                   href="/login"
-                  className="w-full flex items-center justify-center gap-1.5 px-4 py-2 border border-zinc-300 text-base font-medium rounded-md text-zinc-700 bg-white hover:bg-zinc-50"
-                  onClick={toggleMenu}
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2.5 text-sm font-medium text-center text-ink border border-hairline rounded-xl hover:bg-hairline/60 transition-colors"
                 >
-                  <LogIn className="h-5 w-5" />
-                  Log In
+                  Log in
                 </Link>
                 <Link
                   href="/signup"
-                  className="w-full flex items-center justify-center gap-1.5 px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-                  onClick={toggleMenu}
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2.5 text-sm font-semibold text-center text-white bg-accent hover:bg-accent-dark rounded-xl transition-colors"
                 >
-                  Sign Up
+                  Start free
                 </Link>
-              </div>
+              </>
             )}
           </div>
         </div>

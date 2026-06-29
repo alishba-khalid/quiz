@@ -19,8 +19,8 @@ model User {
   image                 String?
   password              String?     // bcrypt hashed password for Credentials login
   plan                  String      @default("FREE") // "FREE" | "PRO"
-  stripeCustomerId      String?     @unique
-  stripeSubscriptionId  String?     @unique
+  polarCustomerId       String?     @unique
+  polarSubscriptionId   String?     @unique
   usageCount            Int         @default(0)
   lastResetDate         DateTime    @default(now())
   accounts              Account[]
