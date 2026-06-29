@@ -44,7 +44,7 @@ export default async function DashboardPage({
   const remaining = Math.max(0, 1 - user.usageCount);
   const showSuccess = params.success === "true";
 
-  const worksheets = user.worksheets.map((w) => ({
+  const worksheets = user.worksheets.map((w: (typeof user.worksheets)[number]) => ({
     ...w,
     createdAt: w.createdAt.toISOString(),
   }));
