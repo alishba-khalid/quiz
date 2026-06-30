@@ -9,6 +9,8 @@ import BillingPortalButton from "@/components/BillingPortalButton";
 export const metadata: Metadata = {
   title: "Dashboard | QuizKraft",
   description: "View and manage your generated worksheets.",
+  alternates: { canonical: "https://www.quizkraft.tech/dashboard" },
+  robots: { index: false, follow: false },
 };
 
 const FREE_LIMIT = 1;

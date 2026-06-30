@@ -3,11 +3,13 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { auth } from "@/auth";
 import CheckoutButton from "@/components/CheckoutButton";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Pricing | QuizKraft",
   description:
     "QuizKraft pricing. Try free with 1 worksheet, or upgrade to Pro for unlimited AI worksheet generation, PDF export, and source material upload.",
+  alternates: { canonical: "https://www.quizkraft.tech/pricing" },
   openGraph: {
     title: "Pricing | QuizKraft",
     description: "Start free or upgrade to Pro for unlimited worksheets.",
@@ -68,12 +70,24 @@ const faqs = [
   { q: "What payment methods do you accept?", a: "All major credit and debit cards via Polar. Your payment info is never stored on our servers." },
 ];
 
+const pricingFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "Can I cancel anytime?", acceptedAnswer: { "@type": "Answer", text: "Yes. Cancel from your billing portal at any time. You keep Pro access until the end of your billing period." } },
+    { "@type": "Question", name: "How many free worksheets do I get?", acceptedAnswer: { "@type": "Answer", text: "You get 1 free worksheet to try — no credit card required. Upgrade to Pro any time for unlimited generation." } },
+    { "@type": "Question", name: "Why is PDF export Pro-only?", acceptedAnswer: { "@type": "Answer", text: "Free users can print from their browser with a small QuizKraft watermark. Pro users get clean PDF export with no branding at all." } },
+    { "@type": "Question", name: "What payment methods do you accept?", acceptedAnswer: { "@type": "Answer", text: "All major credit and debit cards via Polar. Your payment info is never stored on our servers." } },
+  ],
+};
+
 export default async function PricingPage() {
   const session = await auth();
   const isPro = (session?.user as any)?.plan === "PRO";
 
   return (
     <div className="flex flex-col flex-1 bg-canvas">
+      <JsonLd data={pricingFaqSchema} />
       {/* Header */}
       <div className="border-b border-hairline bg-surface py-14 px-4 text-center">
         <h1

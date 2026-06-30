@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "AI Worksheet & Quiz Generator | QuizKraft",
   description:
     "Generate customized educational worksheets and quizzes for any subject, grade level, and question type using AI. Free — no credit card required.",
+  alternates: { canonical: "https://www.quizkraft.tech/generator" },
   openGraph: {
     title: "AI Worksheet & Quiz Generator | QuizKraft",
     description: "Worksheets and quizzes worth handing out — built by AI in seconds.",

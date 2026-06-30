@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
   description:
     "Generate clean, printable worksheets and quizzes for any subject and grade — then let students practice with a built-in retake loop. Free to start.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://quizkraft.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://www.quizkraft.tech"),
   openGraph: {
     title: "QuizKraft | AI Worksheet & Quiz Generator",
     description: "Worksheets and quizzes worth handing out — built by AI in seconds.",

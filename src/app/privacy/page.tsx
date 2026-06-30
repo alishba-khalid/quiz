@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | QuizKraft",
-  description: "QuizKraft privacy policy — how we collect, use, and protect your data.",
+  description: "QuizKraft privacy policy — how we collect, use, and protect your data. No ads, no third-party data selling.",
+  alternates: { canonical: "https://www.quizkraft.tech/privacy" },
 };
 
 export default function PrivacyPage() {

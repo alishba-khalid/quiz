@@ -7,6 +7,8 @@ import SignupForm from "@/components/SignupForm";
 export const metadata: Metadata = {
   title: "Sign Up | QuizKraft",
   description: "Create your free QuizKraft account — try 1 free worksheet, no credit card required.",
+  alternates: { canonical: "https://www.quizkraft.tech/signup" },
+  robots: { index: false, follow: false },
 };
 
 export default async function SignupPage() {

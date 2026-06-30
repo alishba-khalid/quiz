@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service | QuizKraft",
-  description: "QuizKraft terms of service.",
+  description: "QuizKraft terms of service for the AI worksheet and quiz generator. Free plan, Pro subscription, cancellation, and AI content policy.",
+  alternates: { canonical: "https://www.quizkraft.tech/terms" },
 };
 
 export default function TermsPage() {

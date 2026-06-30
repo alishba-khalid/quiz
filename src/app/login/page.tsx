@@ -7,6 +7,8 @@ import LoginForm from "@/components/LoginForm";
 export const metadata: Metadata = {
   title: "Log In | QuizKraft",
   description: "Sign in to your QuizKraft account.",
+  alternates: { canonical: "https://www.quizkraft.tech/login" },
+  robots: { index: false, follow: false },
 };
 
 export default async function LoginPage() {

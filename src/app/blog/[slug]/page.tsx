@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Clock } from "lucide-react";
+import { JsonLd } from "@/components/JsonLd";
 
 const posts: Record<string, {
   title: string;
@@ -148,6 +149,12 @@ export async function generateStaticParams() {
   return Object.keys(posts).map((slug) => ({ slug }));
 }
 
+const postDates: Record<string, string> = {
+  "how-to-write-quiz-questions": "2026-06-01T00:00:00Z",
+  "10-ways-teachers-saving-hours-ai": "2026-06-15T00:00:00Z",
+  "turn-any-pdf-into-practice-quiz": "2026-05-01T00:00:00Z",
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = posts[slug];
@@ -155,6 +162,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | QuizKraft Blog`,
     description: post.excerpt,
+    alternates: { canonical: `https://www.quizkraft.tech/blog/${slug}` },
     openGraph: { title: post.title, description: post.excerpt, type: "article" },
   };
 }
@@ -204,8 +212,31 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const post = posts[slug];
   if (!post) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post!.title,
+    description: post!.excerpt,
+    datePublished: postDates[slug] ?? "2026-01-01T00:00:00Z",
+    author: { "@type": "Organization", name: "QuizKraft", url: "https://www.quizkraft.tech" },
+    publisher: { "@type": "Organization", name: "QuizKraft", url: "https://www.quizkraft.tech" },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.quizkraft.tech/blog/${slug}` },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.quizkraft.tech" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.quizkraft.tech/blog" },
+      { "@type": "ListItem", position: 3, name: post!.title, item: `https://www.quizkraft.tech/blog/${slug}` },
+    ],
+  };
+
   return (
     <div className="flex flex-col flex-1 bg-canvas">
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-14 w-full">
         <Link
           href="/blog"

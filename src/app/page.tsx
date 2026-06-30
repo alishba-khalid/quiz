@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
   description:
     "Generate clean, printable worksheets and quizzes for any subject and grade — then let students practice with a built-in retake loop that brings wrong answers back. Free to start.",
+  alternates: { canonical: "https://www.quizkraft.tech" },
   openGraph: {
     title: "QuizKraft | AI Worksheet & Quiz Generator",
     description: "Worksheets and quizzes worth handing out — built by AI in seconds.",
@@ -166,9 +168,36 @@ const tiers = [
   },
 ];
 
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "QuizKraft",
+  applicationCategory: "EducationalApplication",
+  operatingSystem: "Web",
+  url: "https://www.quizkraft.tech",
+  description: "AI-powered worksheet and quiz generator for teachers, tutors, and students. Generate any subject, any grade in seconds.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Free Plan" },
+  featureList: ["AI quiz generation", "Worksheet creation", "Multiple question types", "Answer keys", "Quiz mode study loop", "PDF export"],
+};
+
+const homeFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "Yes. The free plan gives you 1 worksheet to try — no credit card required. All question types, answer keys, quiz mode, and the study loop are included. Upgrade to Pro for unlimited generation." } },
+    { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
+    { "@type": "Question", name: "Can I use my own material to generate questions?", acceptedAnswer: { "@type": "Answer", text: "Yes, on Pro. Paste in text from your notes, textbook, or any source, and QuizKraft generates questions directly from that material." } },
+    { "@type": "Question", name: "Can students take quizzes online?", acceptedAnswer: { "@type": "Answer", text: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right." } },
+    { "@type": "Question", name: "Can I print or export worksheets?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every worksheet has a clean print layout. Free users can print with a QuizKraft watermark. Pro users get clean PDF export with no watermark." } },
+    { "@type": "Question", name: "Do you offer school or team plans?", acceptedAnswer: { "@type": "Answer", text: "Yes — the School plan is $19/month per teacher and includes shared team libraries, class management, and centralized billing." } },
+  ],
+};
+
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={softwareAppSchema} />
+      <JsonLd data={homeFaqSchema} />
       {/* Hero */}
       <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div

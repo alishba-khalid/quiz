@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Blog | QuizKraft",
   description:
     "Teaching tips, AI education guides, and how-tos for teachers who want to save time and help students learn better.",
+  alternates: { canonical: "https://www.quizkraft.tech/blog" },
   openGraph: {
     title: "Blog | QuizKraft",
     description: "Teaching tips and AI education guides from the QuizKraft team.",
@@ -34,7 +35,7 @@ const posts = [
   },
   {
     slug: "turn-any-pdf-into-practice-quiz",
-    title: "Turn any PDF into a practice quiz in 60 seconds",
+    title: "Turn any source material into a practice quiz in 60 seconds",
     excerpt:
       "Your textbook chapters, lecture slides, and notes are all latent quiz material. Here's how to convert them into active recall practice in under a minute.",
     category: "How-To",
