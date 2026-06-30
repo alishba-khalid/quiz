@@ -56,8 +56,8 @@ export default async function WorksheetViewPage({
 
   if (!worksheet || worksheet.user.email !== session.user.email) notFound();
 
-  const content = worksheet.content as ContentItem[];
-  const answerKey = worksheet.answerKey as AnswerKeyItem[] | null;
+  const content = worksheet.content as unknown as ContentItem[];
+  const answerKey = worksheet.answerKey as unknown as AnswerKeyItem[] | null;
 
   return (
     <div className="flex flex-col flex-1 bg-canvas">
