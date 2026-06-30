@@ -4,11 +4,14 @@ import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import DashboardClient from "@/components/DashboardClient";
+import BillingPortalButton from "@/components/BillingPortalButton";
 
 export const metadata: Metadata = {
   title: "Dashboard | QuizKraft",
   description: "View and manage your generated worksheets.",
 };
+
+const FREE_LIMIT = 1;
 
 export default async function DashboardPage({
   searchParams,
@@ -41,7 +44,7 @@ export default async function DashboardPage({
   if (!user) redirect("/login");
 
   const isPro = user.plan === "PRO";
-  const remaining = Math.max(0, 1 - user.usageCount);
+  const remaining = Math.max(0, FREE_LIMIT - user.usageCount);
   const showSuccess = params.success === "true";
 
   const worksheets = user.worksheets.map((w: (typeof user.worksheets)[number]) => ({
@@ -69,7 +72,7 @@ export default async function DashboardPage({
 
         {showSuccess && (
           <div className="mb-6 px-4 py-3 bg-correct-soft border border-correct/20 text-correct rounded-xl text-sm font-medium">
-            You're now on Pro. Enjoy unlimited worksheets and PDF exports.
+            You&apos;re now on Pro. Enjoy unlimited worksheets and PDF exports.
           </div>
         )}
 
@@ -80,18 +83,21 @@ export default async function DashboardPage({
           </div>
           <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
             <div className="text-2xl font-bold text-accent">
-              {isPro ? "∞" : `${user.usageCount}/5`}
+              {isPro ? "∞" : `${user.usageCount}/${FREE_LIMIT}`}
             </div>
             <div className="text-xs text-muted mt-1">This month</div>
           </div>
           <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
-            <span
-              className={`text-sm font-bold px-2.5 py-1 rounded-full inline-block ${
-                isPro ? "bg-accent-soft text-accent" : "bg-canvas border border-hairline text-muted"
-              }`}
-            >
-              {isPro ? "PRO" : "FREE"}
-            </span>
+            <div className="flex flex-col items-center gap-1">
+              <span
+                className={`text-sm font-bold px-2.5 py-1 rounded-full inline-block ${
+                  isPro ? "bg-accent-soft text-accent" : "bg-canvas border border-hairline text-muted"
+                }`}
+              >
+                {isPro ? "PRO" : "FREE"}
+              </span>
+              {isPro && <BillingPortalButton />}
+            </div>
             <div className="text-xs text-muted mt-2">Current plan</div>
           </div>
         </div>
@@ -103,7 +109,7 @@ export default async function DashboardPage({
               <p className="text-xs text-muted mt-0.5">
                 {remaining > 0
                   ? `${remaining} free worksheet${remaining === 1 ? "" : "s"} remaining this month.`
-                  : "You've used your 1 free worksheet."}
+                  : "You've used your free worksheet for this month."}
               </p>
             </div>
             <Link

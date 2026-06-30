@@ -5,6 +5,7 @@ import { ArrowLeft, Clock } from "lucide-react";
 
 const posts: Record<string, {
   title: string;
+  excerpt: string;
   category: string;
   readTime: string;
   date: string;
@@ -12,12 +13,11 @@ const posts: Record<string, {
 }> = {
   "how-to-write-quiz-questions": {
     title: "How to write quiz questions that test understanding, not memory",
+    excerpt: "Most quiz questions test whether students memorized the textbook. Here's how to write questions that reveal whether they actually understand the material.",
     category: "Teaching",
     readTime: "6 min read",
     date: "June 2026",
-    body: `[Replace with real content]
-
-Most quiz questions are written in a hurry and test one thing: whether the student read the textbook. "What year did Columbus sail?" is a recall question. It has its place, but it doesn't tell you whether a student understands cause, consequence, or context.
+    body: `Most quiz questions are written in a hurry and test one thing: whether the student read the textbook. "What year did Columbus sail?" is a recall question. It has its place, but it doesn't tell you whether a student understands cause, consequence, or context.
 
 Good quiz questions reveal understanding. They ask students to apply, compare, explain, or predict — not just recite.
 
@@ -52,12 +52,11 @@ The best quiz isn't the hardest one. It's the one that tells you exactly what st
   },
   "10-ways-teachers-saving-hours-ai": {
     title: "10 ways teachers are saving hours with AI",
+    excerpt: "From lesson planning to worksheet generation, AI is quietly eliminating the Sunday-evening prep grind for thousands of teachers. Here's how.",
     category: "AI in Education",
     readTime: "8 min read",
     date: "June 2026",
-    body: `[Replace with real content]
-
-Sunday evening used to mean one thing for most teachers: prep. Worksheets to write, tests to format, rubrics to set up. AI tools are changing that — not by replacing teachers, but by handling the mechanical parts of the job so teachers can focus on the actual teaching.
+    body: `Sunday evening used to mean one thing for most teachers: prep. Worksheets to write, tests to format, rubrics to set up. AI tools are changing that — not by replacing teachers, but by handling the mechanical parts of the job so teachers can focus on the actual teaching.
 
 Here are the ten areas where AI is making the biggest dent:
 
@@ -104,25 +103,24 @@ AI can flag structural issues and surface common errors in student writing, givi
 The common thread: AI handles the first draft. Teachers bring the judgment, the relationship, and the expertise that no tool can replicate. Used well, AI gives teachers back time to do more of what they actually went into teaching to do.`,
   },
   "turn-any-pdf-into-practice-quiz": {
-    title: "Turn any PDF into a practice quiz in 60 seconds",
+    title: "Turn any source material into a practice quiz in 60 seconds",
+    excerpt: "Your textbook chapters, lecture slides, and notes are all latent quiz material. Here's how to convert them into active recall practice in under a minute.",
     category: "How-To",
     readTime: "4 min read",
     date: "May 2026",
-    body: `[Replace with real content]
+    body: `You have a textbook chapter, a set of lecture slides, or a dense article. Your students need to study it. What's the fastest way to turn passive reading into active practice?
 
-You have a textbook chapter, a set of lecture slides, or a dense article. Your students need to study it. What's the fastest way to turn passive reading into active practice?
-
-Paste it into QuizKraft and generate a quiz from the material itself.
+Paste the text into QuizKraft and generate a quiz from the material itself.
 
 Here's the exact process:
 
 **Step 1: Copy the text**
 
-Open your PDF, select the relevant section (a chapter, a few key pages, or a full article), and copy the text.
+Open your document, select the relevant section — a chapter, a few key pages, or a full article — and copy the text.
 
 **Step 2: Paste into QuizKraft**
 
-On the generator page, click "Paste text / source material" and paste what you copied. QuizKraft reads it and uses it as the basis for the questions.
+On the generator page, click "Paste text / source material" (available on Pro) and paste what you copied. QuizKraft reads it and uses it as the basis for the questions.
 
 **Step 3: Choose your settings**
 
@@ -142,7 +140,7 @@ This workflow works especially well for:
 - Turning lecture notes into a study tool
 - Creating practice material from any article or reading assignment
 
-The key insight: passive re-reading is one of the least effective study strategies. Active recall — trying to retrieve information before looking it up — is one of the most effective. Turning your PDF into a quiz forces active recall in about 60 seconds.`,
+The key insight: passive re-reading is one of the least effective study strategies. Active recall — trying to retrieve information before looking it up — is one of the most effective. Turning your material into a quiz forces active recall in about 60 seconds.`,
   },
 };
 
@@ -156,9 +154,49 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return { title: "Post not found | QuizKraft" };
   return {
     title: `${post.title} | QuizKraft Blog`,
-    description: post.title,
-    openGraph: { title: post.title, type: "article" },
+    description: post.excerpt,
+    openGraph: { title: post.title, description: post.excerpt, type: "article" },
   };
+}
+
+function renderBody(body: string) {
+  return body.split("\n\n").map((para, i) => {
+    // Standalone bold heading: entire paragraph is **...**
+    if (para.startsWith("**") && para.endsWith("**")) {
+      return (
+        <h3 key={i} className="font-semibold text-ink mt-8 mb-2">
+          {para.replace(/\*\*/g, "")}
+        </h3>
+      );
+    }
+
+    // Bullet list block: all lines start with "- "
+    const lines = para.split("\n");
+    if (lines.length > 1 && lines.every((l) => l.startsWith("- "))) {
+      return (
+        <ul key={i} className="list-disc pl-5 space-y-1.5 mb-5 text-base text-muted">
+          {lines.map((l, j) => (
+            <li key={j}>{l.slice(2)}</li>
+          ))}
+        </ul>
+      );
+    }
+
+    // Normal paragraph
+    return (
+      <p key={i} className="text-base text-muted leading-relaxed mb-5">
+        {para.split(/\*\*([^*]+)\*\*/g).map((part, j) =>
+          j % 2 === 1 ? (
+            <strong key={j} className="font-semibold text-ink">
+              {part}
+            </strong>
+          ) : (
+            part
+          )
+        )}
+      </p>
+    );
+  });
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -195,40 +233,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           {post.title}
         </h1>
 
-        <div
-          className="prose prose-zinc max-w-none text-ink"
-          style={{ maxWidth: "70ch" }}
-        >
-          {post.body.split("\n\n").map((para, i) => {
-            if (para.startsWith("**") && para.endsWith("**")) {
-              return (
-                <h3
-                  key={i}
-                  className="font-semibold text-ink mt-8 mb-2"
-                >
-                  {para.replace(/\*\*/g, "")}
-                </h3>
-              );
-            }
-            if (para.startsWith("[")) {
-              return (
-                <p key={i} className="text-xs text-muted italic border border-hairline bg-surface rounded-xl px-4 py-3 mb-6">
-                  {para}
-                </p>
-              );
-            }
-            return (
-              <p key={i} className="text-base text-muted leading-relaxed mb-5">
-                {para.replace(/\*\*([^*]+)\*\*/g, "$1")}
-              </p>
-            );
-          })}
-        </div>
+        <div className="max-w-[70ch]">{renderBody(post.body)}</div>
 
         <div className="mt-14 pt-8 border-t border-hairline">
-          <p className="text-sm text-muted mb-4">
-            Ready to save time on your next worksheet?
-          </p>
+          <p className="text-sm text-muted mb-4">Ready to save time on your next worksheet?</p>
           <Link
             href="/generator"
             className="inline-flex items-center gap-2 px-5 py-3 bg-accent text-white font-semibold text-sm rounded-xl hover:bg-accent-dark transition-colors"

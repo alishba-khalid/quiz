@@ -41,8 +41,8 @@ const proTier = {
     "All grade levels (K–12 to college)",
     "Answer keys + explanations",
     "Quiz mode + study loop",
-    "PDF + Google Docs export, no watermark",
-    "Upload PDF / paste source material",
+    "PDF export, no watermark",
+    "Paste source material to generate from your own notes",
     "Save unlimited worksheets to library",
     "Priority AI generation",
   ],
@@ -64,7 +64,7 @@ const schoolTier = {
 const faqs = [
   { q: "Can I cancel anytime?", a: "Yes. Cancel from your billing portal at any time. You keep Pro access until the end of your billing period." },
   { q: "How many free worksheets do I get?", a: "You get 1 free worksheet to try — no credit card required. Upgrade to Pro any time for unlimited generation." },
-  { q: "Why is PDF export Pro-only?", a: "Free users can print without a watermark from their browser. Pro users get clean PDF and Google Docs export with no branding." },
+  { q: "Why is PDF export Pro-only?", a: "Free users can print from their browser with a small QuizKraft watermark. Pro users get clean PDF export with no branding at all." },
   { q: "What payment methods do you accept?", a: "All major credit and debit cards via Polar. Your payment info is never stored on our servers." },
 ];
 
@@ -130,9 +130,6 @@ export default async function PricingPage() {
               <span className="text-4xl font-bold">{proTier.price}</span>
               <span className="text-white/60 text-sm">{proTier.per}</span>
             </div>
-            <p className="text-white/60 text-xs mb-4">
-              or {proTier.yearlyPrice}/mo billed yearly
-            </p>
             <ul className="space-y-3 mb-8">
               {proTier.features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-white/90">

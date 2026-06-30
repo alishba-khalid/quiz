@@ -49,23 +49,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (user) {
         token.id = user.id;
       }
-      
-      // Dynamic plan check
-      if (token.email) {
-        const dbUser = await db.user.findUnique({
-          where: { email: token.email },
-          select: { id: true, plan: true },
-        });
-        if (dbUser) {
-          token.id = dbUser.id;
-          token.plan = dbUser.plan;
+
+      // Only hit DB on initial sign-in (user present) or explicit session update
+      if (user || trigger === "update") {
+        const email = (user?.email ?? token.email) as string | undefined;
+        if (email) {
+          const dbUser = await db.user.findUnique({
+            where: { email },
+            select: { id: true, plan: true },
+          });
+          if (dbUser) {
+            token.id = dbUser.id;
+            token.plan = dbUser.plan;
+          }
         }
       }
-      
+
       if (trigger === "update" && session) {
         token.plan = session.plan || token.plan;
       }
-      
+
       return token;
     },
     async session({ session, token }) {
@@ -79,5 +82,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
     signIn: "/login",
   },
-  secret: process.env.NEXTAUTH_SECRET || "default_nextauth_secret_must_change_in_prod",
+  secret: process.env.NEXTAUTH_SECRET,
 });

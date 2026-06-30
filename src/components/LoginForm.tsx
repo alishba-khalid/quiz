@@ -43,7 +43,7 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
         <>
           <button
             onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-zinc-200 rounded-xl text-zinc-700 font-medium hover:bg-zinc-50 transition-colors mb-6"
+            className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-hairline rounded-xl text-ink font-medium hover:bg-canvas transition-colors mb-6 cursor-pointer"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -55,10 +55,10 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
           </button>
           <div className="relative mb-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-zinc-200" />
+              <div className="w-full border-t border-hairline" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-3 bg-white text-zinc-400">or continue with email</span>
+              <span className="px-3 bg-surface text-muted">or continue with email</span>
             </div>
           </div>
         </>
@@ -66,7 +66,7 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {error && (
-          <div className="px-4 py-3 bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl">
+          <div className="px-4 py-3 bg-wrong-soft border border-wrong/20 text-wrong text-sm rounded-xl">
             {error}
           </div>
         )}
@@ -103,7 +103,7 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink cursor-pointer"
             >
               {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
             </button>
@@ -124,10 +124,10 @@ export default function LoginForm({ googleEnabled }: { googleEnabled?: boolean }
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-zinc-500">
+      <p className="mt-6 text-center text-sm text-muted">
         Don&apos;t have an account?{" "}
         <Link href="/signup" className="text-accent hover:text-accent-dark font-medium">
-          Sign up for free
+          Sign up free
         </Link>
       </p>
     </div>

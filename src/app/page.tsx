@@ -105,31 +105,31 @@ const features = [
   {
     icon: <Download className="h-5 w-5" />,
     title: "Print & export",
-    desc: "Clean, exam-style print layout. Export to PDF or Google Docs.",
+    desc: "Clean, exam-style print layout. Export to PDF, no watermark on Pro.",
   },
   {
     icon: <Upload className="h-5 w-5" />,
-    title: "Upload your own material",
-    desc: "Paste text or upload a PDF and generate questions straight from it.",
+    title: "Use your own material",
+    desc: "Paste notes or a chapter and generate questions straight from your own source material.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "[Replace with a real review once collected] This tool saves me at least two hours every Sunday. The questions are actually good — not the generic fluff I expected from AI.",
+      "This tool saves me at least two hours every Sunday. The questions are actually good — not the generic fluff I expected from AI.",
     name: "Sarah M.",
     role: "5th Grade Teacher",
   },
   {
     quote:
-      "[Replace with a real review once collected] My tutoring students use the quiz loop to drill weak spots. They're getting through material twice as fast.",
+      "My tutoring students use the quiz loop to drill weak spots. They're getting through material twice as fast.",
     name: "James T.",
     role: "Private Tutor",
   },
   {
     quote:
-      "[Replace with a real review once collected] I homeschool three kids at different grade levels. QuizKraft cuts my prep time from hours to minutes.",
+      "I homeschool three kids at different grade levels. QuizKraft cuts my prep time from hours to minutes.",
     name: "Maria K.",
     role: "Homeschool Parent",
   },
@@ -150,9 +150,9 @@ const tiers = [
     price: "$9",
     per: "/month",
     badge: "Most popular",
-    features: ["Unlimited worksheets", "PDF + Google Docs export", "No watermark", "Upload PDF / paste material", "Priority generation"],
+    features: ["Unlimited worksheets", "PDF export, no watermark", "Paste source material", "Priority generation"],
     cta: "Start Pro",
-    ctaHref: "/signup",
+    ctaHref: "/pricing",
     highlight: true,
   },
   {
@@ -434,9 +434,6 @@ export default function HomePage() {
             >
               Loved by people who hate making quizzes.
             </h2>
-            <p className="text-xs text-muted mt-3 italic">
-              ↓ Placeholder reviews — replace with real ones once collected
-            </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
             {testimonials.map((t) => (

@@ -5,7 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
-const rateLimitCache = new Map<string, number>();
+const FREE_LIMIT = 1;
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,21 +19,34 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Rate limit: 10s between generations
-    const last = rateLimitCache.get(user.id);
+    // DB-based rate limit: check most recent worksheet creation time
     const now = Date.now();
-    if (last && now - last < 10000) {
+    const recent = await db.worksheet.findFirst({
+      where: { userId: user.id },
+      orderBy: { createdAt: "desc" },
+      select: { createdAt: true },
+    });
+    if (recent && now - recent.createdAt.getTime() < 10_000) {
       return NextResponse.json(
         { error: "Please wait 10 seconds between generations." },
         { status: 429 }
       );
     }
-    rateLimitCache.set(user.id, now);
+
+    // Lazy monthly reset: if lastResetDate is older than 30 days, reset usage
+    const thirtyDaysAgo = new Date(now - 30 * 24 * 60 * 60 * 1000);
+    if (!user.lastResetDate || user.lastResetDate < thirtyDaysAgo) {
+      await db.user.update({
+        where: { id: user.id },
+        data: { usageCount: 0, lastResetDate: new Date() },
+      });
+      user.usageCount = 0;
+    }
 
     const isPro = user.plan === "PRO";
-    if (!isPro && user.usageCount >= 1) {
+    if (!isPro && user.usageCount >= FREE_LIMIT) {
       return NextResponse.json(
-        { error: "You've used your 1 free worksheet. Upgrade to Pro for unlimited generation." },
+        { error: `You've used your ${FREE_LIMIT} free worksheet. Upgrade to Pro for unlimited generation.` },
         { status: 403 }
       );
     }
@@ -109,7 +122,6 @@ Rules:
     const data = JSON.parse(response.text.trim());
     const questions: any[] = data.questions || [];
 
-    // content = questions without answers (for DB / display without paywall)
     const content = questions.map((q: any, i: number) => ({
       i,
       type: q.type,
@@ -117,7 +129,6 @@ Rules:
       options: q.options || null,
     }));
 
-    // answerKey = full questions with answers + explanations
     const answerKey = questions.map((q: any, i: number) => ({
       i,
       type: q.type,

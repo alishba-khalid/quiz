@@ -33,12 +33,6 @@ export default async function LoginPage() {
         <div className="bg-surface rounded-2xl border border-hairline shadow-sm p-8">
           <LoginForm googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)} />
         </div>
-        <p className="text-center text-sm text-muted mt-6">
-          Don't have an account?{" "}
-          <Link href="/signup" className="text-accent hover:text-accent-dark font-medium transition-colors">
-            Sign up free
-          </Link>
-        </p>
       </div>
     </div>
   );

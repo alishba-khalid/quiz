@@ -17,16 +17,16 @@ const faqs = [
     a: "Not yet — editing is on the roadmap. For now, regenerate with a more specific topic if a question isn't right. The AI produces better questions the more specific you are.",
   },
   {
-    q: "Can I upload my own material?",
-    a: "Yes, on Pro. Paste text or upload a PDF and QuizKraft generates questions directly from your source material — great for turning textbook chapters or notes into a quiz.",
+    q: "Can I use my own material?",
+    a: "Yes, on Pro. Paste in text from your notes, textbook, or any source, and QuizKraft generates questions directly from that material — great for turning chapters or study notes into a quiz.",
   },
   {
     q: "Can students take quizzes online?",
-    a: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right. Share the link or let them use the app directly.",
+    a: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right. Generate a worksheet and enter quiz mode directly in the app.",
   },
   {
     q: "Can I print or export?",
-    a: "Yes. Every worksheet has a clean print layout. Free users can print with a QuizKraft watermark. Pro users get PDF export and Google Docs export with no watermark.",
+    a: "Yes. Every worksheet has a clean print layout. Free users can print with a QuizKraft watermark. Pro users get clean PDF export with no watermark.",
   },
   {
     q: "Do you offer school or team plans?",

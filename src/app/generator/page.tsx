@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { auth } from "@/auth";
+import { db } from "@/lib/db";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 
 export const metadata: Metadata = {
@@ -13,13 +14,26 @@ export const metadata: Metadata = {
   },
 };
 
+const FREE_LIMIT = 1;
+
 export default async function GeneratorPage() {
   const session = await auth();
   const isPro = (session?.user as any)?.plan === "PRO";
 
+  let usageCount = 0;
+  if (session?.user?.email && !isPro) {
+    const user = await db.user.findUnique({
+      where: { email: session.user.email },
+      select: { usageCount: true },
+    });
+    usageCount = user?.usageCount ?? 0;
+  }
+
+  const creditsLeft = isPro ? Infinity : Math.max(0, FREE_LIMIT - usageCount);
+
   return (
     <div className="flex flex-col flex-1 bg-canvas">
-      <QuizGeneratorForm isLoggedIn={!!session} isPro={isPro} />
+      <QuizGeneratorForm isLoggedIn={!!session} isPro={isPro} creditsLeft={creditsLeft} />
     </div>
   );
 }

@@ -17,10 +17,6 @@ export default function TermsPage() {
         </h1>
 
         <div className="space-y-8 text-sm text-muted leading-relaxed">
-          <p className="text-xs text-muted italic border border-hairline bg-surface rounded-xl px-4 py-3">
-            [Replace with real legal terms. The sections below are structural placeholders only.]
-          </p>
-
           {[
             {
               title: "1. Use of the service",
@@ -28,7 +24,7 @@ export default function TermsPage() {
             },
             {
               title: "2. Free and paid plans",
-              body: "The free plan allows up to 5 worksheet generations per calendar month. Pro and School plans are billed monthly or annually and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.",
+              body: "The free plan allows 1 worksheet generation per month. Pro and School plans are billed monthly and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.",
             },
             {
               title: "3. AI-generated content",

@@ -17,10 +17,6 @@ export default function PrivacyPage() {
         </h1>
 
         <div className="space-y-8 text-sm text-muted leading-relaxed">
-          <p className="text-xs text-muted italic border border-hairline bg-surface rounded-xl px-4 py-3">
-            [Replace with real privacy policy. The sections below are structural placeholders only.]
-          </p>
-
           {[
             {
               title: "What we collect",

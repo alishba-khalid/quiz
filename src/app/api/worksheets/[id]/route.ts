@@ -27,19 +27,7 @@ export async function GET(
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    const dbUser = await db.user.findUnique({
-      where: { email: session.user.email },
-      select: { plan: true },
-    });
-
-    const isPro = dbUser?.plan === "PRO";
-
-    const responseContent = {
-      ...worksheet,
-      answerKey: isPro ? worksheet.answerKey : null,
-    };
-
-    return NextResponse.json(responseContent);
+    return NextResponse.json(worksheet);
   } catch (error: any) {
     console.error("Fetch worksheet error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

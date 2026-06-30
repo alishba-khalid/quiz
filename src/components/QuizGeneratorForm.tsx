@@ -109,16 +109,20 @@ function gradeAnswer(userAnswer: string, correctAnswer: string, type: QuestionTy
   const c = correctAnswer.trim().toLowerCase();
   if (!u) return false;
   if (type === "multiple-choice" || type === "true-false") return u === c;
-  return c.includes(u) || u.includes(c);
+  // Require at least 4 chars to prevent single common words matching
+  if (u.length < 4) return false;
+  return c === u || c.includes(u) || u.includes(c);
 }
 
 /* ── Main component ─────────────────────────────────────────────── */
 export default function QuizGeneratorForm({
   isLoggedIn,
   isPro,
+  creditsLeft,
 }: {
   isLoggedIn: boolean;
   isPro: boolean;
+  creditsLeft: number;
 }) {
   /* Form state */
   const [subject, setSubject] = useState("");
@@ -331,7 +335,7 @@ export default function QuizGeneratorForm({
               <Lock className="h-8 w-8 text-hairline mx-auto mb-3" />
               <p className="font-semibold text-ink text-sm mb-1">Sign in to generate</p>
               <p className="text-xs text-muted mb-4">
-                Create a free account — 5 worksheets/month, no card required.
+                Create a free account — 1 free worksheet, no card required.
               </p>
               <div className="flex gap-2">
                 <Link href="/login" className="flex-1 text-center px-3 py-2 border border-hairline rounded-xl text-sm font-medium text-ink hover:bg-canvas transition-colors">
@@ -512,7 +516,11 @@ export default function QuizGeneratorForm({
                 )}
               </button>
               <p className="text-center text-xs text-muted">
-                {isPro ? "Unlimited · ~10 seconds" : `${5 - 0} credits left this month · ~10 seconds`}
+                {isPro
+                  ? "Unlimited · ~10 seconds"
+                  : creditsLeft > 0
+                  ? `${creditsLeft} free worksheet${creditsLeft === 1 ? "" : "s"} remaining · ~10 seconds`
+                  : "No credits remaining this month"}
               </p>
 
               {!isPro && (
