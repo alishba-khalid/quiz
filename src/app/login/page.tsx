@@ -33,7 +33,10 @@ export default async function LoginPage() {
           <p className="text-sm text-muted">Sign in to your account</p>
         </div>
         <div className="bg-surface rounded-2xl border border-hairline shadow-sm p-8">
-          <LoginForm googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)} />
+          <LoginForm
+            googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)}
+            githubEnabled={!!(process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET)}
+          />
         </div>
       </div>
     </div>

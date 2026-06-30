@@ -33,7 +33,10 @@ export default async function SignupPage() {
           <p className="text-sm text-muted">1 free worksheet. No credit card needed.</p>
         </div>
         <div className="bg-surface rounded-2xl border border-hairline shadow-sm p-8">
-          <SignupForm googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)} />
+          <SignupForm
+            googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)}
+            githubEnabled={!!(process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET)}
+          />
         </div>
         <p className="text-center text-sm text-muted mt-6">
           Already have an account?{" "}
