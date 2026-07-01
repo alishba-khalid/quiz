@@ -81,6 +81,15 @@ const pricingFaqSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.quizkraft.tech" },
+    { "@type": "ListItem", position: 2, name: "Pricing", item: "https://www.quizkraft.tech/pricing" },
+  ],
+};
+
 export default async function PricingPage() {
   const session = await auth();
   const isPro = (session?.user as any)?.plan === "PRO";
@@ -88,6 +97,7 @@ export default async function PricingPage() {
   return (
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={pricingFaqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Header */}
       <div className="border-b border-hairline bg-surface py-14 px-4 text-center">
         <h1

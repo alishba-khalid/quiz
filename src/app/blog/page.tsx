@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
+import { JsonLd } from "@/components/JsonLd";
+import { blogPosts as posts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
   title: "Blog | QuizKraft",
@@ -14,39 +16,19 @@ export const metadata: Metadata = {
   },
 };
 
-const posts = [
-  {
-    slug: "how-to-write-quiz-questions",
-    title: "How to write quiz questions that test understanding, not memory",
-    excerpt:
-      "Most quiz questions test whether students memorized the textbook. Here's how to write questions that reveal whether they actually understand the material.",
-    category: "Teaching",
-    readTime: "6 min read",
-    date: "June 2026",
-  },
-  {
-    slug: "10-ways-teachers-saving-hours-ai",
-    title: "10 ways teachers are saving hours with AI",
-    excerpt:
-      "From lesson planning to worksheet generation, AI is quietly eliminating the Sunday-evening prep grind for thousands of teachers. Here's how.",
-    category: "AI in Education",
-    readTime: "8 min read",
-    date: "June 2026",
-  },
-  {
-    slug: "turn-any-pdf-into-practice-quiz",
-    title: "Turn any source material into a practice quiz in 60 seconds",
-    excerpt:
-      "Your textbook chapters, lecture slides, and notes are all latent quiz material. Here's how to convert them into active recall practice in under a minute.",
-    category: "How-To",
-    readTime: "4 min read",
-    date: "May 2026",
-  },
-];
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.quizkraft.tech" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.quizkraft.tech/blog" },
+  ],
+};
 
 export default function BlogPage() {
   return (
     <div className="flex flex-col flex-1 bg-canvas">
+      <JsonLd data={breadcrumbSchema} />
       <div className="border-b border-hairline bg-surface">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h1

@@ -60,6 +60,15 @@ const howToSchema = {
   })),
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.quizkraft.tech" },
+    { "@type": "ListItem", position: 2, name: "PDF to Quiz", item: "https://www.quizkraft.tech/pdf-to-quiz" },
+  ],
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -78,6 +87,7 @@ export default async function PdfToQuizPage() {
       <JsonLd data={softwareSchema} />
       <JsonLd data={howToSchema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
 
       {/* Hero */}
       <section className="bg-surface border-b border-hairline py-14 px-4 sm:px-6 lg:px-8">

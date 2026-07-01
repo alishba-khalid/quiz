@@ -37,7 +37,10 @@ export async function generateMetadata({
     where: { id },
     select: { title: true },
   });
-  return { title: worksheet ? `${worksheet.title} | QuizKraft` : "Worksheet | QuizKraft" };
+  return {
+    title: worksheet ? `${worksheet.title} | QuizKraft` : "Worksheet | QuizKraft",
+    robots: { index: false, follow: false },
+  };
 }
 
 export default async function WorksheetViewPage({

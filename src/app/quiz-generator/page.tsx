@@ -54,6 +54,15 @@ const softwareSchema = {
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.quizkraft.tech" },
+    { "@type": "ListItem", position: 2, name: "Quiz Generator", item: "https://www.quizkraft.tech/quiz-generator" },
+  ],
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -80,6 +89,7 @@ export default async function QuizGeneratorPage() {
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={softwareSchema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
 
       {/* Hero */}
       <section className="bg-surface border-b border-hairline py-14 px-4 sm:px-6 lg:px-8">

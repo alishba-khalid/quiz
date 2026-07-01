@@ -180,6 +180,15 @@ const softwareAppSchema = {
   featureList: ["AI quiz generation", "Worksheet creation", "Multiple question types", "Answer keys", "Quiz mode study loop", "PDF export"],
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "QuizKraft",
+  url: "https://www.quizkraft.tech",
+  logo: "https://www.quizkraft.tech/apple-icon.png",
+  description: "AI-powered worksheet and quiz generator for teachers, tutors, and students.",
+};
+
 const homeFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -196,6 +205,7 @@ const homeFaqSchema = {
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={organizationSchema} />
       <JsonLd data={softwareAppSchema} />
       <JsonLd data={homeFaqSchema} />
       {/* Hero */}
@@ -242,6 +252,9 @@ export default function HomePage() {
                   </svg>
                 </span>
               </h1>
+              <h2 className="text-base font-semibold text-muted mb-5">
+                AI Worksheet &amp; Quiz Generator for Any Subject &amp; Grade
+              </h2>
               <p className="text-lg text-muted leading-relaxed mb-8 max-w-lg">
                 Generate clean, printable worksheets and quizzes for any subject and grade — then let
                 students practice with a built-in retake loop that brings wrong answers back.

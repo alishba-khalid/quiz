@@ -2,6 +2,16 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
+import { JsonLd } from "@/components/JsonLd";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.quizkraft.tech" },
+    { "@type": "ListItem", position: 2, name: "Generator", item: "https://www.quizkraft.tech/generator" },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "AI Worksheet & Quiz Generator | QuizKraft",
@@ -34,6 +44,7 @@ export default async function GeneratorPage() {
 
   return (
     <div className="flex flex-col flex-1 bg-canvas">
+      <JsonLd data={breadcrumbSchema} />
       <QuizGeneratorForm isLoggedIn={!!session} isPro={isPro} creditsLeft={creditsLeft} />
     </div>
   );
