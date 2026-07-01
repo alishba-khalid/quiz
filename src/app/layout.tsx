@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
   description:
     "Generate clean, printable worksheets and quizzes for any subject and grade — then let students practice with a built-in retake loop. Free to start.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://www.quizkraft.tech"),
+  metadataBase: new URL("https://www.quizkraft.tech"),
   verification: {
     google: "ovrOyhHF-Agd-qwiBVDA35SzjaHG1-AU2WqpA2QWLNI",
   },
