@@ -173,6 +173,42 @@ export default async function WorksheetSubjectPage({
         </div>
       </section>
 
+      {/* Topics covered */}
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-surface border-t border-hairline">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="text-2xl font-medium text-ink tracking-[-0.02em] mb-5"
+            style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+          >
+            {data.name} topics QuizKraft covers
+          </h2>
+          <ul className="grid sm:grid-cols-2 gap-3">
+            {data.topics.map((t) => (
+              <li
+                key={t}
+                className="flex items-start gap-2.5 text-sm text-ink bg-canvas border border-hairline rounded-xl px-4 py-3"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Guide */}
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-canvas border-t border-hairline">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="text-2xl font-medium text-ink tracking-[-0.02em] mb-4"
+            style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+          >
+            Building better {data.name.toLowerCase()} worksheets
+          </h2>
+          <p className="text-muted leading-relaxed">{data.guide}</p>
+        </div>
+      </section>
+
       {/* Grade guidance */}
       <section className="py-14 px-4 sm:px-6 lg:px-8 bg-surface border-t border-hairline">
         <div className="max-w-3xl mx-auto">
@@ -284,6 +320,7 @@ export default async function WorksheetSubjectPage({
         <div className="max-w-3xl mx-auto flex flex-wrap items-center gap-5">
           <p className="text-sm font-medium text-ink">Also on QuizKraft:</p>
           {[
+            { href: "/generator", label: "Try the full AI worksheet & quiz generator" },
             { href: "/quiz-generator", label: "Quiz Generator" },
             { href: "/quiz-maker-for-teachers", label: "Quiz Maker for Teachers" },
             { href: "/pdf-to-quiz", label: "Quiz From Notes" },
