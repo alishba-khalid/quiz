@@ -45,7 +45,7 @@ export default function TermsPage() {
             },
             {
               title: "7. Contact",
-              body: "Questions about these terms? Email us at hello@quizkraft.app.",
+              body: "Questions about these terms? Email us at alishbakhalid766@gmail.com.",
             },
           ].map((s) => (
             <div key={s.title}>

@@ -187,7 +187,7 @@ export default async function PricingPage() {
               ))}
             </ul>
             <a
-              href="mailto:hello@quizkraft.app"
+              href="mailto:alishbakhalid766@gmail.com"
               className="w-full flex items-center justify-center px-6 py-3 border border-hairline rounded-xl text-ink font-semibold hover:bg-canvas transition-colors text-sm"
             >
               Contact us

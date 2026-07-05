@@ -163,7 +163,7 @@ const tiers = [
     per: "/teacher/mo",
     features: ["Everything in Pro", "Shared team library", "Class management", "Multiple seats", "Priority support"],
     cta: "Contact us",
-    ctaHref: "mailto:hello@quizkraft.app",
+    ctaHref: "mailto:alishbakhalid766@gmail.com",
     highlight: false,
   },
 ];

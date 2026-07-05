@@ -93,7 +93,7 @@ export default function FAQPage() {
         </p>
         <div>
           <a
-            href="mailto:hello@quizkraft.app"
+            href="mailto:alishbakhalid766@gmail.com"
             className="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm text-sm"
           >
             Contact Support

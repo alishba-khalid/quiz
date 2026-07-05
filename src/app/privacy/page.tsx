@@ -37,7 +37,7 @@ export default function PrivacyPage() {
             },
             {
               title: "Data retention",
-              body: "Your account and worksheets are stored until you delete your account. You can request deletion at any time by emailing hello@quizkraft.app.",
+              body: "Your account and worksheets are stored until you delete your account. You can request deletion at any time by emailing alishbakhalid766@gmail.com.",
             },
             {
               title: "Security",
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             },
             {
               title: "Contact",
-              body: "For any privacy questions, email us at hello@quizkraft.app.",
+              body: "For any privacy questions, email us at alishbakhalid766@gmail.com.",
             },
           ].map((s) => (
             <div key={s.title}>

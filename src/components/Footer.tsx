@@ -35,7 +35,7 @@ const cols = [
   {
     title: "Company",
     links: [
-      { label: "Contact", href: "mailto:hello@quizkraft.app" },
+      { label: "Contact", href: "mailto:alishbakhalid766@gmail.com" },
     ],
   },
   {
