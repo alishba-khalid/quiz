@@ -35,7 +35,9 @@ const cols = [
   {
     title: "Company",
     links: [
-      { label: "Contact", href: "mailto:alishbakhalid766@gmail.com" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Support", href: "mailto:alishbakhalid766@gmail.com" },
     ],
   },
   {
