@@ -28,7 +28,7 @@ function LogoMark() {
 
 const navLinks = [
   { label: "Generator", href: "/generator" },
-  { label: "Features", href: "/#features" },
+  { label: "Features", href: "/features" },
   { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
 ];

@@ -49,28 +49,40 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group bg-surface rounded-2xl border border-hairline p-6 hover:border-accent/30 hover:shadow-sm transition-all flex flex-col"
+              className="group bg-surface rounded-2xl border border-hairline overflow-hidden hover:border-accent/30 hover:shadow-sm transition-all flex flex-col"
             >
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-xs font-semibold text-accent bg-accent-soft rounded-full px-2.5 py-1">
-                  {post.category}
-                </span>
-                <span className="flex items-center gap-1 text-xs text-muted">
-                  <Clock className="h-3 w-3" />
-                  {post.readTime}
-                </span>
-              </div>
-              <h2 className="font-semibold text-ink text-base leading-snug mb-3 group-hover:text-accent transition-colors flex-1">
-                {post.title}
-              </h2>
-              <p className="text-sm text-muted leading-relaxed mb-4 line-clamp-3">
-                {post.excerpt}
-              </p>
-              <div className="flex items-center justify-between text-xs text-muted mt-auto pt-4 border-t border-hairline">
-                <span>{post.date}</span>
-                <span className="flex items-center gap-1 text-accent font-medium">
-                  Read <ArrowRight className="h-3 w-3" />
-                </span>
+              {post.thumbnail && (
+                <div className="relative aspect-video w-full overflow-hidden bg-hairline/20 border-b border-hairline">
+                  <img
+                    src={post.thumbnail}
+                    alt={post.title}
+                    loading="lazy"
+                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              )}
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-xs font-semibold text-accent bg-accent-soft rounded-full px-2.5 py-1">
+                    {post.category}
+                  </span>
+                  <span className="flex items-center gap-1 text-xs text-muted">
+                    <Clock className="h-3 w-3" />
+                    {post.readTime}
+                  </span>
+                </div>
+                <h2 className="font-semibold text-ink text-base leading-snug mb-3 group-hover:text-accent transition-colors flex-1">
+                  {post.title}
+                </h2>
+                <p className="text-sm text-muted leading-relaxed mb-4 line-clamp-3">
+                  {post.excerpt}
+                </p>
+                <div className="flex items-center justify-between text-xs text-muted mt-auto pt-4 border-t border-hairline">
+                  <span>{post.date}</span>
+                  <span className="flex items-center gap-1 text-accent font-medium">
+                    Read <ArrowRight className="h-3 w-3" />
+                  </span>
+                </div>
               </div>
             </Link>
           ))}

@@ -13,20 +13,74 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) return { title: "Post not found | QuizKraft" };
+  const ogImage = post.thumbnail ? `https://www.quizkraft.tech${post.thumbnail}` : "https://www.quizkraft.tech/og-image.png";
   return {
     title: `${post.title} | QuizKraft Blog`,
     description: post.excerpt,
     alternates: { canonical: `https://www.quizkraft.tech/blog/${slug}` },
-    openGraph: { title: post.title, description: post.excerpt, type: "article" },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      url: `https://www.quizkraft.tech/blog/${slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage],
+    },
   };
+}
+
+function parseInline(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="font-semibold text-ink">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("[") && part.endsWith(")")) {
+      const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+      if (match) {
+        const [_, label, href] = match;
+        const isInternal = href.startsWith("/");
+        if (isInternal) {
+          return (
+            <Link key={i} href={href} className="text-accent hover:underline font-medium">
+              {label}
+            </Link>
+          );
+        } else {
+          return (
+            <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">
+              {label}
+            </a>
+          );
+        }
+      }
+    }
+    return part;
+  });
 }
 
 function renderBody(body: string) {
   return body.split("\n\n").map((para, i) => {
     // Standalone bold heading: entire paragraph is **...**
-    if (para.startsWith("**") && para.endsWith("**")) {
+    if (para.startsWith("**") && para.endsWith("**") && !para.includes("](")) {
       return (
-        <h3 key={i} className="font-semibold text-ink mt-8 mb-2">
+        <h3 key={i} className="font-semibold text-ink mt-8 mb-2 text-lg">
           {para.replace(/\*\*/g, "")}
         </h3>
       );
@@ -34,11 +88,11 @@ function renderBody(body: string) {
 
     // Bullet list block: all lines start with "- "
     const lines = para.split("\n");
-    if (lines.length > 1 && lines.every((l) => l.startsWith("- "))) {
+    if (lines.length > 0 && lines.every((l) => l.startsWith("- "))) {
       return (
         <ul key={i} className="list-disc pl-5 space-y-1.5 mb-5 text-base text-muted">
           {lines.map((l, j) => (
-            <li key={j}>{l.slice(2)}</li>
+            <li key={j}>{parseInline(l.slice(2))}</li>
           ))}
         </ul>
       );
@@ -47,15 +101,7 @@ function renderBody(body: string) {
     // Normal paragraph
     return (
       <p key={i} className="text-base text-muted leading-relaxed mb-5">
-        {para.split(/\*\*([^*]+)\*\*/g).map((part, j) =>
-          j % 2 === 1 ? (
-            <strong key={j} className="font-semibold text-ink">
-              {part}
-            </strong>
-          ) : (
-            part
-          )
-        )}
+        {parseInline(para)}
       </p>
     );
   });
@@ -71,10 +117,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     "@type": "Article",
     headline: post!.title,
     description: post!.excerpt,
+    image: post!.thumbnail ? `https://www.quizkraft.tech${post!.thumbnail}` : undefined,
     datePublished: post!.publishedAt,
     dateModified: post!.updatedAt ?? post!.publishedAt,
     author: { "@type": "Organization", name: "QuizKraft", url: "https://www.quizkraft.tech" },
-    publisher: { "@type": "Organization", name: "QuizKraft", url: "https://www.quizkraft.tech" },
+    publisher: {
+      "@type": "Organization",
+      name: "QuizKraft",
+      url: "https://www.quizkraft.tech",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.quizkraft.tech/apple-icon.png"
+      }
+    },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.quizkraft.tech/blog/${slug}` },
   };
 
@@ -113,11 +168,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
 
         <h1
-          className="text-4xl font-medium text-ink leading-tight tracking-[-0.02em] mb-10"
+          className="text-4xl font-medium text-ink leading-tight tracking-[-0.02em] mb-8"
           style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
         >
           {post.title}
         </h1>
+
+        {post.thumbnail && (
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-hairline bg-hairline/20 mb-10 shadow-sm">
+            <img
+              src={post.thumbnail}
+              alt={post.title}
+              loading="lazy"
+              className="object-cover w-full h-full"
+            />
+          </div>
+        )}
 
         <div className="max-w-[70ch]">{renderBody(post.body)}</div>
 

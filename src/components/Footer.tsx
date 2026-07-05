@@ -21,15 +21,15 @@ const cols = [
     links: [
       { label: "Generator", href: "/generator" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Features", href: "/#features" },
+      { label: "Features", href: "/features" },
     ],
   },
   {
     title: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
-      { label: "How it works", href: "/#how-it-works" },
-      { label: "FAQ", href: "/#faq" },
+      { label: "How it works", href: "/how-it-works" },
+      { label: "FAQ", href: "/faq" },
     ],
   },
   {
