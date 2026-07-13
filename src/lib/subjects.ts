@@ -837,6 +837,226 @@ export const quizSubjects: SubjectData[] = [
       }
     ],
     relatedSlugs: ["us-history", "world-history", "civics"]
+  },
+  {
+    slug: "pre-algebra",
+    name: "Pre-Algebra",
+    gradeRange: "Grades 6–8",
+    intro: "Pre-algebra assessments bridge basic arithmetic and algebraic reasoning, focusing on integers, variables, and simple equations.",
+    topics: [
+      "Integers & absolute value",
+      "Order of operations (PEMDAS)",
+      "Solving one-step equations",
+      "Ratios, rates & proportions",
+      "Coordinate plane basics",
+      "Simplifying algebraic expressions"
+    ],
+    guide: "Students frequently struggle with negative numbers and the order of operations. Pre-algebra worksheets should focus on building step-by-step logic, helping students visualize variables as placeholders before they move on to complex algebra.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "What is the value of -5 + 8? A) -13 B) -3 C) 3 D) 13",
+        answer: "C) 3"
+      },
+      {
+        type: "short-answer",
+        question: "Solve for x: x - 7 = -12. Show your work.",
+        answer: "x = -5 (add 7 to both sides)"
+      },
+      {
+        type: "true-false",
+        question: "The absolute value of a number is always positive or zero.",
+        answer: "True"
+      }
+    ],
+    gradeGuidance: "Grades 6–7: order of operations, decimals, and negative integers. Grade 8: solving one-step equations and introduction to variables.",
+    faq: [
+      {
+        q: "Does it cover negative numbers?",
+        a: "Yes, integers and operations with negative numbers are standard in Pre-Algebra prompts."
+      },
+      {
+        q: "Can I generate word problems?",
+        a: "Yes. Specify 'pre-algebra word problems' in your topic to generate contextual exercises."
+      }
+    ],
+    relatedSlugs: ["algebra", "math", "geometry"]
+  },
+  {
+    slug: "ancient-history",
+    name: "Ancient History",
+    gradeRange: "Grades 6–10",
+    intro: "Ancient History assessments cover early human civilizations, Mesopotamia, Ancient Egypt, Greece, Rome, and Mesoamerica. Revealing questions compare systems of governance, culture, and trade.",
+    topics: [
+      "Mesopotamia & early empires",
+      "Ancient Egyptian civilization & pyramids",
+      "Classical Greece & democracy",
+      "The Roman Empire & Republic",
+      "Early civilizations of Mesoamerica",
+      "Ancient silk road & trade networks"
+    ],
+    guide: "Focus on comparing ancient civilizations rather than memorizing individual dynasties or names. Strong questions analyze how geography shaped development, governance styles, and how early legal codes like Hammurabi's Code established social order.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "Which ancient civilization is credited with the development of direct democracy? A) Rome B) Egypt C) Athens D) Sparta",
+        answer: "C) Athens"
+      },
+      {
+        type: "short-answer",
+        question: "Explain the historical significance of the Code of Hammurabi.",
+        answer: "It was one of the earliest and most complete written legal codes, establishing the principle of written laws and lex talionis (an eye for an eye)."
+      },
+      {
+        type: "true-false",
+        question: "The Roman Republic was ruled by an absolute emperor from its very beginning.",
+        answer: "False (it was a republic ruled by a senate before becoming an empire)"
+      }
+    ],
+    gradeGuidance: "Middle school: major achievements, mythology, daily life. High school: comparative governance, trade networks, and primary source analysis.",
+    faq: [
+      {
+        q: "Can I generate quizzes on ancient myths?",
+        a: "Yes, include mythology in your topic: e.g., 'Greek and Roman mythology comparison'."
+      },
+      {
+        q: "Does it cover non-Western ancient history?",
+        a: "Yes. Specify 'Ancient China — Han Dynasty' or 'Ancient Indus Valley Civilization' for focused coverage."
+      }
+    ],
+    relatedSlugs: ["world-history", "us-history", "literature"]
+  },
+  {
+    slug: "calculus",
+    name: "Calculus",
+    gradeRange: "Grades 11–12 / AP",
+    intro: "Calculus assessments test limits, derivatives, integrals, and their applications. Advanced questions focus on rates of change and accumulation models.",
+    topics: [
+      "Limits & continuity",
+      "Differentiation & derivatives",
+      "Applications of derivatives (optimization, related rates)",
+      "Integration & antiderivatives",
+      "Fundamental Theorem of Calculus",
+      "AP Calculus AB/BC review"
+    ],
+    guide: "Limits and derivative definitions are the core focus of early calculus. Assessments should test conceptual understanding of rates of change alongside mechanical differentiation. Use short-answer questions to track multi-step limits and integration procedures.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "What is the derivative of f(x) = 3x² - 5x + 2? A) 6x B) 6x - 5 C) 3x - 5 D) 6x - 5x",
+        answer: "B) 6x - 5"
+      },
+      {
+        type: "short-answer",
+        question: "Evaluate the limit of (x² - 4)/(x - 2) as x approaches 2.",
+        answer: "Limit is 4 (factor the numerator to (x-2)(x+2), simplify to x+2, and substitute x=2)"
+      },
+      {
+        type: "true-false",
+        question: "If a function is continuous at a point, it must also be differentiable at that point.",
+        answer: "False (e.g., f(x) = |x| is continuous at x=0 but not differentiable)"
+      }
+    ],
+    gradeGuidance: "Grade 11: pre-calculus and limits introduction. Grade 12 / AP Calculus AB: derivatives and basic integration. AP Calculus BC: parametric, polar, and infinite series.",
+    faq: [
+      {
+        q: "Is this aligned with AP Calculus?",
+        a: "Yes. Specify 'AP Calculus AB' or 'AP Calculus BC' in your topic prompt for targeted review questions."
+      },
+      {
+        q: "Does it cover optimization word problems?",
+        a: "Yes. Include 'optimization problems' in your topic prompt to get applied word problems."
+      }
+    ],
+    relatedSlugs: ["physics", "algebra", "statistics"]
+  },
+  {
+    slug: "organic-chemistry",
+    name: "Organic Chemistry",
+    gradeRange: "Grades 11–12 / College",
+    intro: "Organic Chemistry assessments cover carbon compounds, functional groups, nomenclature, isomerism, and basic reaction mechanisms.",
+    topics: [
+      "Nomenclature of hydrocarbons (alkanes, alkenes)",
+      "Functional groups (alcohols, ketones, carboxylic acids)",
+      "Isomerism & stereochemistry",
+      "Nucleophilic substitution & elimination",
+      "Spectroscopy basics (IR, NMR)",
+      "Organic synthesis pathways"
+    ],
+    guide: "Nomenclature rules are procedural. Strong worksheets focus on drawing structures from names and classifying functional groups. Reaction prediction questions help students develop mechanical reasoning for organic synthesis.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "Which functional group is characterized by a carbon-oxygen double bond (C=O) bonded to at least one hydrogen atom? A) Alcohol B) Ketone C) Aldehyde D) Carboxylic acid",
+        answer: "C) Aldehyde"
+      },
+      {
+        type: "short-answer",
+        question: "Explain the difference between structural isomers and stereoisomers.",
+        answer: "Structural isomers have the same formula but different atom connectivities; stereoisomers have the same connectivities but different 3D spatial arrangements."
+      },
+      {
+        type: "true-false",
+        question: "Alkenes are unsaturated hydrocarbons containing at least one carbon-carbon triple bond.",
+        answer: "False (alkenes contain a double bond; alkynes contain a triple bond)"
+      }
+    ],
+    gradeGuidance: "High school chemistry: basic functional groups. AP Chemistry/Elective: IUPAC naming rules, structural isomers. College intro: full reaction mechanisms.",
+    faq: [
+      {
+        q: "Can it generate IUPAC naming questions?",
+        a: "Yes. Use topics like 'IUPAC nomenclature of branched alkanes' to get targeted naming problems."
+      },
+      {
+        q: "Does it cover reaction mechanisms?",
+        a: "Yes. Include 'reaction mechanisms — SN1 and SN2 pathways' for advanced chemistry worksheets."
+      }
+    ],
+    relatedSlugs: ["chemistry", "biology", "physics"]
+  },
+  {
+    slug: "physical-science",
+    name: "Physical Science",
+    gradeRange: "Grades 8–10",
+    intro: "Physical Science assessments bridge introductory chemistry and physics, exploring matter, energy, forces, and motion.",
+    topics: [
+      "Properties of matter & phase changes",
+      "Periodic table & chemical bonding",
+      "Newton's laws of motion",
+      "Work, energy & simple machines",
+      "Electricity & magnetism basics",
+      "Waves, light & sound properties"
+    ],
+    guide: "Physical Science serves as a foundational course. Keep questions balanced between conceptual explanations (e.g., how heat transfers) and basic calculation problems (e.g., calculating speed or density). Focus on removing complex calculus or advanced algebra barriers.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "Which type of heat transfer occurs through direct contact between two objects? A) Convection B) Radiation C) Conduction D) Induction",
+        answer: "C) Conduction"
+      },
+      {
+        type: "short-answer",
+        question: "A block has a mass of 50 grams and a volume of 10 cubic centimeters. Calculate its density.",
+        answer: "Density = Mass ÷ Volume = 50 g ÷ 10 cm³ = 5 g/cm³"
+      },
+      {
+        type: "true-false",
+        question: "Sound waves can travel through a vacuum, such as outer space.",
+        answer: "False (sound waves require a medium like air or water to propagate)"
+      }
+    ],
+    gradeGuidance: "Middle school: states of matter, basic forces, waves. High school intro: density, periodic trends, energy formulas.",
+    faq: [
+      {
+        q: "Does it cover basic density calculations?",
+        a: "Yes. Specify 'density calculation practice problems' to get math-based questions."
+      },
+      {
+        q: "What's the best question mix for Physical Science?",
+        a: "MCQ for conceptual matching, fill-in-blank for vocabulary, and short-answer for simple computations."
+      }
+    ],
+    relatedSlugs: ["earth-science", "physics", "chemistry"]
   }
 ];
 
@@ -1660,6 +1880,226 @@ export const worksheetSubjects: SubjectData[] = [
       }
     ],
     relatedSlugs: ["us-history", "world-history", "civics"]
+  },
+  {
+    slug: "pre-algebra",
+    name: "Pre-Algebra",
+    gradeRange: "Grades 6–8",
+    intro: "Pre-algebra assessments bridge basic arithmetic and algebraic reasoning, focusing on integers, variables, and simple equations.",
+    topics: [
+      "Integers & absolute value",
+      "Order of operations (PEMDAS)",
+      "Solving one-step equations",
+      "Ratios, rates & proportions",
+      "Coordinate plane basics",
+      "Simplifying algebraic expressions"
+    ],
+    guide: "Students frequently struggle with negative numbers and the order of operations. Pre-algebra worksheets should focus on building step-by-step logic, helping students visualize variables as placeholders before they move on to complex algebra.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "What is the value of -5 + 8? A) -13 B) -3 C) 3 D) 13",
+        answer: "C) 3"
+      },
+      {
+        type: "short-answer",
+        question: "Solve for x: x - 7 = -12. Show your work.",
+        answer: "x = -5 (add 7 to both sides)"
+      },
+      {
+        type: "true-false",
+        question: "The absolute value of a number is always positive or zero.",
+        answer: "True"
+      }
+    ],
+    gradeGuidance: "Grades 6–7: order of operations, decimals, and negative integers. Grade 8: solving one-step equations and introduction to variables.",
+    faq: [
+      {
+        q: "Does it cover negative numbers?",
+        a: "Yes, integers and operations with negative numbers are standard in Pre-Algebra prompts."
+      },
+      {
+        q: "Can I generate word problems?",
+        a: "Yes. Specify 'pre-algebra word problems' in your topic to generate contextual exercises."
+      }
+    ],
+    relatedSlugs: ["algebra", "math", "geometry"]
+  },
+  {
+    slug: "ancient-history",
+    name: "Ancient History",
+    gradeRange: "Grades 6–10",
+    intro: "Ancient History assessments cover early human civilizations, Mesopotamia, Ancient Egypt, Greece, Rome, and Mesoamerica. Revealing questions compare systems of governance, culture, and trade.",
+    topics: [
+      "Mesopotamia & early empires",
+      "Ancient Egyptian civilization & pyramids",
+      "Classical Greece & democracy",
+      "The Roman Empire & Republic",
+      "Early civilizations of Mesoamerica",
+      "Ancient silk road & trade networks"
+    ],
+    guide: "Focus on comparing ancient civilizations rather than memorizing individual dynasties or names. Strong questions analyze how geography shaped development, governance styles, and how early legal codes like Hammurabi's Code established social order.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "Which ancient civilization is credited with the development of direct democracy? A) Rome B) Egypt C) Athens D) Sparta",
+        answer: "C) Athens"
+      },
+      {
+        type: "short-answer",
+        question: "Explain the historical significance of the Code of Hammurabi.",
+        answer: "It was one of the earliest and most complete written legal codes, establishing the principle of written laws and lex talionis (an eye for an eye)."
+      },
+      {
+        type: "true-false",
+        question: "The Roman Republic was ruled by an absolute emperor from its very beginning.",
+        answer: "False (it was a republic ruled by a senate before becoming an empire)"
+      }
+    ],
+    gradeGuidance: "Middle school: major achievements, mythology, daily life. High school: comparative governance, trade networks, and primary source analysis.",
+    faq: [
+      {
+        q: "Can I generate quizzes on ancient myths?",
+        a: "Yes, include mythology in your topic: e.g., 'Greek and Roman mythology comparison'."
+      },
+      {
+        q: "Does it cover non-Western ancient history?",
+        a: "Yes. Specify 'Ancient China — Han Dynasty' or 'Ancient Indus Valley Civilization' for focused coverage."
+      }
+    ],
+    relatedSlugs: ["world-history", "us-history", "literature"]
+  },
+  {
+    slug: "calculus",
+    name: "Calculus",
+    gradeRange: "Grades 11–12 / AP",
+    intro: "Calculus assessments test limits, derivatives, integrals, and their applications. Advanced questions focus on rates of change and accumulation models.",
+    topics: [
+      "Limits & continuity",
+      "Differentiation & derivatives",
+      "Applications of derivatives (optimization, related rates)",
+      "Integration & antiderivatives",
+      "Fundamental Theorem of Calculus",
+      "AP Calculus AB/BC review"
+    ],
+    guide: "Limits and derivative definitions are the core focus of early calculus. Assessments should test conceptual understanding of rates of change alongside mechanical differentiation. Use short-answer questions to track multi-step limits and integration procedures.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "What is the derivative of f(x) = 3x² - 5x + 2? A) 6x B) 6x - 5 C) 3x - 5 D) 6x - 5x",
+        answer: "B) 6x - 5"
+      },
+      {
+        type: "short-answer",
+        question: "Evaluate the limit of (x² - 4)/(x - 2) as x approaches 2.",
+        answer: "Limit is 4 (factor the numerator to (x-2)(x+2), simplify to x+2, and substitute x=2)"
+      },
+      {
+        type: "true-false",
+        question: "If a function is continuous at a point, it must also be differentiable at that point.",
+        answer: "False (e.g., f(x) = |x| is continuous at x=0 but not differentiable)"
+      }
+    ],
+    gradeGuidance: "Grade 11: pre-calculus and limits introduction. Grade 12 / AP Calculus AB: derivatives and basic integration. AP Calculus BC: parametric, polar, and infinite series.",
+    faq: [
+      {
+        q: "Is this aligned with AP Calculus?",
+        a: "Yes. Specify 'AP Calculus AB' or 'AP Calculus BC' in your topic prompt for targeted review questions."
+      },
+      {
+        q: "Does it cover optimization word problems?",
+        a: "Yes. Include 'optimization problems' in your topic prompt to get applied word problems."
+      }
+    ],
+    relatedSlugs: ["physics", "algebra", "statistics"]
+  },
+  {
+    slug: "organic-chemistry",
+    name: "Organic Chemistry",
+    gradeRange: "Grades 11–12 / College",
+    intro: "Organic Chemistry assessments cover carbon compounds, functional groups, nomenclature, isomerism, and basic reaction mechanisms.",
+    topics: [
+      "Nomenclature of hydrocarbons (alkanes, alkenes)",
+      "Functional groups (alcohols, ketones, carboxylic acids)",
+      "Isomerism & stereochemistry",
+      "Nucleophilic substitution & elimination",
+      "Spectroscopy basics (IR, NMR)",
+      "Organic synthesis pathways"
+    ],
+    guide: "Nomenclature rules are procedural. Strong worksheets focus on drawing structures from names and classifying functional groups. Reaction prediction questions help students develop mechanical reasoning for organic synthesis.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "Which functional group is characterized by a carbon-oxygen double bond (C=O) bonded to at least one hydrogen atom? A) Alcohol B) Kidone C) Aldehyde D) Carboxylic acid",
+        answer: "C) Aldehyde"
+      },
+      {
+        type: "short-answer",
+        question: "Explain the difference between structural isomers and stereoisomers.",
+        answer: "Structural isomers have the same formula but different atom connectivities; stereoisomers have the same connectivities but different 3D spatial arrangements."
+      },
+      {
+        type: "true-false",
+        question: "Alkenes are unsaturated hydrocarbons containing at least one carbon-carbon triple bond.",
+        answer: "False (alkenes contain a double bond; alkynes contain a triple bond)"
+      }
+    ],
+    gradeGuidance: "High school chemistry: basic functional groups. AP Chemistry/Elective: IUPAC naming rules, structural isomers. College intro: full reaction mechanisms.",
+    faq: [
+      {
+        q: "Can it generate IUPAC naming questions?",
+        a: "Yes. Use topics like 'IUPAC nomenclature of branched alkanes' to get targeted naming problems."
+      },
+      {
+        q: "Does it cover reaction mechanisms?",
+        a: "Yes. Include 'reaction mechanisms — SN1 and SN2 pathways' for advanced chemistry worksheets."
+      }
+    ],
+    relatedSlugs: ["chemistry", "biology", "physics"]
+  },
+  {
+    slug: "physical-science",
+    name: "Physical Science",
+    gradeRange: "Grades 8–10",
+    intro: "Physical Science assessments bridge introductory chemistry and physics, exploring matter, energy, forces, and motion.",
+    topics: [
+      "Properties of matter & phase changes",
+      "Periodic table & chemical bonding",
+      "Newton's laws of motion",
+      "Work, energy & simple machines",
+      "Electricity & magnetism basics",
+      "Waves, light & sound properties"
+    ],
+    guide: "Physical Science serves as a foundational course. Keep questions balanced between conceptual explanations (e.g., how heat transfers) and basic calculation problems (e.g., calculating speed or density). Focus on removing complex calculus or advanced algebra barriers.",
+    exampleQuestions: [
+      {
+        type: "multiple-choice",
+        question: "Which type of heat transfer occurs through direct contact between two objects? A) Convection B) Radiation C) Conduction D) Induction",
+        answer: "C) Conduction"
+      },
+      {
+        type: "short-answer",
+        question: "A block has a mass of 50 grams and a volume of 10 cubic centimeters. Calculate its density.",
+        answer: "Density = Mass ÷ Volume = 50 g ÷ 10 cm³ = 5 g/cm³"
+      },
+      {
+        type: "true-false",
+        question: "Sound waves can travel through a vacuum, such as outer space.",
+        answer: "False (sound waves require a medium like air or water to propagate)"
+      }
+    ],
+    gradeGuidance: "Middle school: states of matter, basic forces, waves. High school intro: density, periodic trends, energy formulas.",
+    faq: [
+      {
+        q: "Does it cover basic density calculations?",
+        a: "Yes. Specify 'density calculation practice problems' to get math-based questions."
+      },
+      {
+        q: "What's the best question mix for Physical Science?",
+        a: "MCQ for conceptual matching, fill-in-blank for vocabulary, and short-answer for simple computations."
+      }
+    ],
+    relatedSlugs: ["earth-science", "physics", "chemistry"]
   }
 ];
 
