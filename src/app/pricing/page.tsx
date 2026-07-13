@@ -90,6 +90,44 @@ const breadcrumbSchema = {
   ],
 };
 
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "QuizKraft Pro",
+  "description": "Unlimited AI-powered worksheet and quiz generation for teachers, tutors, and homeschooling parents.",
+  "image": "https://www.quizkraft.tech/apple-icon.png",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "0.00",
+    "highPrice": "19.00",
+    "offerCount": "3",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Plan",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "category": "Subscription"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro Plan",
+        "price": "9.00",
+        "priceCurrency": "USD",
+        "category": "Subscription"
+      },
+      {
+        "@type": "Offer",
+        "name": "School / Team Plan",
+        "price": "19.00",
+        "priceCurrency": "USD",
+        "category": "Subscription"
+      }
+    ]
+  }
+};
+
 export default async function PricingPage() {
   const session = await auth();
   const isPro = (session?.user as any)?.plan === "PRO";
@@ -98,6 +136,7 @@ export default async function PricingPage() {
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={pricingFaqSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={productSchema} />
       {/* Header */}
       <div className="border-b border-hairline bg-surface py-14 px-4 text-center">
         <h1

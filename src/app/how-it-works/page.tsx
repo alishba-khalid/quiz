@@ -42,10 +42,38 @@ const breadcrumbSchema = {
   ],
 };
 
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Create Worksheets & Quizzes with QuizKraft",
+  "description": "Learn the 3 simple steps to generate high-quality worksheets and online practice quizzes with AI.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Configure Your Settings",
+      "text": "Specify your topic, target grade level (from early elementary up to university), and choose from over 5 different question types. You can adjust the difficulty level to perfectly match your students' current capabilities."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Generate with AI",
+      "text": "Our educational AI reads your configuration—or your uploaded notes, readings, and textbooks—and constructs high-quality, concept-focused questions and explanations in about 10 seconds."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Deliver & Practice",
+      "text": "Print out the clean, watermark-free PDF worksheet for physical handouts, or send a link to let students practice online. Our built-in retake loop guides students to review wrong answers until they've mastered the concepts."
+    }
+  ]
+};
+
 export default function HowItWorksPage() {
   return (
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={howToSchema} />
       
       {/* Header */}
       <section className="border-b border-hairline bg-surface py-16 px-4 text-center">

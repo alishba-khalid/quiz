@@ -23,6 +23,18 @@ export const metadata: Metadata = {
   description:
     "Generate clean, printable worksheets and quizzes for any subject and grade — then let students practice with a built-in retake loop. Free to start.",
   metadataBase: new URL("https://www.quizkraft.tech"),
+  keywords: [
+    "AI worksheet generator",
+    "quiz maker for teachers",
+    "worksheet maker",
+    "classroom quiz generator",
+    "educational AI tools",
+    "printable worksheets",
+    "study loop quiz"
+  ],
+  authors: [{ name: "QuizKraft Team", url: "https://www.quizkraft.tech/about" }],
+  creator: "QuizKraft",
+  publisher: "QuizKraft",
   verification: {
     google: "ovrOyhHF-Agd-qwiBVDA35SzjaHG1-AU2WqpA2QWLNI",
   },
@@ -30,11 +42,22 @@ export const metadata: Metadata = {
     title: "QuizKraft | AI Worksheet & Quiz Generator",
     description: "Worksheets and quizzes worth handing out — built by AI in seconds.",
     type: "website",
+    locale: "en_US",
+    siteName: "QuizKraft",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "QuizKraft | AI Worksheet & Quiz Generator",
     description: "Worksheets and quizzes worth handing out — built by AI in seconds.",
+    images: ["/opengraph-image"],
   },
 };
 

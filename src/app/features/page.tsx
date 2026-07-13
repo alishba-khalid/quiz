@@ -58,10 +58,34 @@ const breadcrumbSchema = {
   ],
 };
 
+const featuresAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QuizKraft",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "url": "https://www.quizkraft.tech/features",
+  "description": "Generate high-quality quizzes and worksheets for any subject, paste source material, customize difficulty, and use the smart retake study loop.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "AI quiz generation",
+    "Worksheet creation",
+    "Smart retake study loop",
+    "Grade-level differentiation",
+    "Source material input option",
+    "Print and PDF export support"
+  ]
+};
+
 export default function FeaturesPage() {
   return (
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={featuresAppSchema} />
       
       {/* Header */}
       <section className="border-b border-hairline bg-surface py-16 px-4 text-center">

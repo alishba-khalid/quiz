@@ -42,10 +42,24 @@ const breadcrumbSchema = {
   ],
 };
 
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "QuizKraft",
+    "url": "https://www.quizkraft.tech",
+    "logo": "https://www.quizkraft.tech/apple-icon.png",
+    "description": "QuizKraft is dedicated to simplifying how educators build classroom materials, worksheets, quizzes, and study guides.",
+    "knowsAbout": ["AI worksheet generator", "quiz maker for teachers", "educational assessments"]
+  }
+};
+
 export default function AboutPage() {
   return (
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={aboutPageSchema} />
       
       {/* Hero Section */}
       <section className="border-b border-hairline bg-surface py-16 px-4 text-center">
