@@ -47,13 +47,23 @@ const cols = [
       { label: "Privacy", href: "/privacy" },
     ],
   },
+  {
+    title: "Popular",
+    links: [
+      { label: "Biology Quiz", href: "/quiz-generator/biology" },
+      { label: "Algebra Sheet", href: "/worksheet-generator/algebra" },
+      { label: "Chemistry Quiz", href: "/quiz-generator/chemistry" },
+      { label: "Geometry Sheet", href: "/worksheet-generator/geometry" },
+      { label: "Pre-Algebra Quiz", href: "/quiz-generator/pre-algebra" },
+    ],
+  },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-surface border-t border-hairline no-print">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/">
