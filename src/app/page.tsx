@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight, Youtube, FileText, Sparkles, CheckCircle2 } from "lucide-react";
+import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight, FileText, Sparkles, CheckCircle2 } from "lucide-react";
+import { YoutubeIcon } from "@/components/Icons";
 import FAQAccordion from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
 import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
@@ -111,7 +112,7 @@ const features = [
     desc: "Math to history, kindergarten to college. Just type the topic or prompt.",
   },
   {
-    icon: <Youtube className="h-5 w-5 text-red-500" />,
+    icon: <YoutubeIcon className="h-5 w-5 text-red-500" />,
     title: "YouTube video to quiz",
     desc: "Paste any educational YouTube URL to extract the transcript and generate questions in seconds.",
     highlight: true,
@@ -294,11 +295,11 @@ export default function HomePage() {
                   href="/youtube-to-quiz"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-hairline text-ink font-semibold rounded-xl hover:bg-hairline/60 transition-colors text-sm"
                 >
-                  <Youtube className="h-4 w-4 text-red-500" />
+                  <YoutubeIcon className="h-4 w-4 text-red-500" />
                   YouTube to Quiz
                 </Link>
               </div>
-              <p className="text-xs text-muted">5 free generations every month. No credit card required.</p>
+              <p className="text-xs text-muted">{FREE_TOPIC_LIMIT} free generations every month. No credit card required.</p>
             </div>
             <div className="animate-fade-up delay-200">
               <WorksheetPreview />
@@ -476,7 +477,7 @@ export default function HomePage() {
 
             <div className="bg-canvas rounded-2xl border border-hairline p-6">
               <div className="w-10 h-10 rounded-xl bg-correct-soft text-correct flex items-center justify-center mb-4">
-                <Youtube className="h-5 w-5" />
+                <YoutubeIcon className="h-5 w-5" />
               </div>
               <h3 className="font-semibold text-ink text-base mb-2">Multimodal Source Inputs</h3>
               <p className="text-sm text-muted leading-relaxed">

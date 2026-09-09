@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Zap, ArrowRight, Youtube, BookOpen, Clock, Brain, Sparkles, FileText, Printer } from "lucide-react";
+import { Check, Zap, ArrowRight, BookOpen, Clock, Brain, Sparkles, FileText, Printer } from "lucide-react";
+import { YoutubeIcon } from "@/components/Icons";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
+import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT } from "@/lib/constants";
 
 const faqs = [
   {
@@ -16,7 +18,7 @@ const faqs = [
   },
   {
     q: "Is QuizKraft's YouTube to Quiz tool free?",
-    a: "Yes! You can try the tool immediately without signing up. Free accounts receive 5 free generations each month, including 2 free YouTube/source material generations. Pro subscribers get unlimited generations and watermark-free PDF exports.",
+    a: `Yes! You can try the tool immediately without signing up. Free accounts receive ${FREE_TOPIC_LIMIT} free generations each month, including ${FREE_SOURCE_LIMIT} free YouTube/source material generations. Pro subscribers get unlimited generations and watermark-free PDF exports.`,
   },
   {
     q: "Can I edit and customize the generated questions?",
@@ -126,7 +128,7 @@ export default async function YouTubeToQuizPage() {
       <section className="bg-surface border-b border-hairline py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5 text-sm font-semibold text-red-600 mb-5">
-            <Youtube className="h-4 w-4" />
+            <YoutubeIcon className="h-4 w-4" />
             YouTube Video to Quiz Converter
           </div>
           <h1
@@ -363,7 +365,7 @@ export default async function YouTubeToQuizPage() {
           Start turning video lectures into mastery.
         </h2>
         <p className="text-muted mb-6 text-sm max-w-md mx-auto">
-          5 free generations every month. No credit card required.
+          {FREE_TOPIC_LIMIT} free generations every month. No credit card required.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link

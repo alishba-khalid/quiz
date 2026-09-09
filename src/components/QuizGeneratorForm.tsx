@@ -14,13 +14,13 @@ import {
   X,
   RotateCcw,
   BookOpen,
-  Youtube,
   FileText,
   Sparkles,
   ExternalLink,
   AlertCircle,
   Video,
 } from "lucide-react";
+import { YoutubeIcon } from "@/components/Icons";
 import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT, MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
 
 /* -- Types -------------------------------------------------------- */
@@ -540,7 +540,7 @@ export default function QuizGeneratorForm({
                   : "text-muted hover:text-ink"
               }`}
             >
-              <Youtube className="h-3.5 w-3.5 text-red-500" />
+              <YoutubeIcon className="h-3.5 w-3.5 text-red-500" />
               YouTube
             </button>
             <button
@@ -823,7 +823,7 @@ export default function QuizGeneratorForm({
               ) : (
                 <>
                   {mode === "youtube" ? (
-                    <Youtube className="h-4 w-4" />
+                    <YoutubeIcon className="h-4 w-4" />
                   ) : (
                     <Zap className="h-4 w-4" />
                   )}
@@ -873,7 +873,7 @@ export default function QuizGeneratorForm({
             <div className="text-center max-w-sm">
               <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-hairline flex items-center justify-center mx-auto mb-4">
                 {mode === "youtube" ? (
-                  <Youtube className="h-7 w-7 text-hairline" />
+                  <YoutubeIcon className="h-7 w-7 text-hairline" />
                 ) : (
                   <BookOpen className="h-7 w-7 text-hairline" />
                 )}
@@ -1019,7 +1019,7 @@ export default function QuizGeneratorForm({
             {/* Guest Banner Prompt */}
             {result.isGuest && (
               <div className="bg-accent-soft/40 border-b border-accent/20 px-6 py-2.5 text-center text-xs text-ink no-print">
-                <span>Want to save this quiz and get 5 free generations each month? </span>
+                <span>Want to save this quiz and get {FREE_TOPIC_LIMIT} free generations each month? </span>
                 <Link href="/signup" className="text-accent font-semibold hover:underline">
                   Create a free account →
                 </Link>

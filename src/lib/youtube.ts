@@ -144,6 +144,48 @@ function parseXmlTranscript(xml: string): string {
 }
 
 /**
+ * Primary transcript source: Supadata's YouTube transcript API.
+ * Fetches through Supadata's own infrastructure rather than YouTube's timedtext
+ * endpoint directly, which sidesteps YouTube blocking Vercel's datacenter IPs.
+ */
+async function fetchCaptionsViaSupadata(videoId: string): Promise<string | null> {
+  const apiKey = process.env.SUPADATA_API_KEY;
+  if (!apiKey) return null;
+
+  try {
+    const res = await fetch(
+      `https://api.supadata.ai/v1/transcript?url=${encodeURIComponent(
+        `https://www.youtube.com/watch?v=${videoId}`
+      )}&text=true&lang=en`,
+      {
+        headers: { "x-api-key": apiKey },
+        signal: AbortSignal.timeout(15000),
+      }
+    );
+
+    if (!res.ok) return null;
+    const data = await res.json();
+
+    if (typeof data.content === "string" && data.content.trim().length > 20) {
+      return data.content.replace(/\s+/g, " ").trim();
+    }
+
+    if (Array.isArray(data.content) && data.content.length > 0) {
+      const joined = data.content
+        .map((seg: any) => seg.text || "")
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .trim();
+      return joined.length > 20 ? joined : null;
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Attempts to fetch captions using the YouTube Innertube ANDROID player context,
  * which avoids datacenter IP blocks on timedtext endpoints.
  */
@@ -288,8 +330,14 @@ export async function getYouTubeVideoTranscript(urlOrId: string): Promise<YouTub
   // 1. Fetch metadata
   const videoInfo = await fetchYouTubeMetadata(videoId);
 
-  // 2. Fetch transcript via multi-strategy pipeline
-  let transcript = await fetchCaptionsViaInnertube(videoId);
+  // 2. Fetch transcript via multi-strategy pipeline (Supadata first — avoids
+  // YouTube's datacenter IP blocks on the timedtext endpoint; the rest are
+  // best-effort fallbacks if Supadata is unavailable or unconfigured)
+  let transcript = await fetchCaptionsViaSupadata(videoId);
+
+  if (!transcript) {
+    transcript = await fetchCaptionsViaInnertube(videoId);
+  }
 
   if (!transcript) {
     transcript = await fetchCaptionsViaWatchPage(videoId);

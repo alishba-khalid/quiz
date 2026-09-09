@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QuizKraft Pricing & Plans",
-    description: "5 free generations monthly to start. Upgrade to Pro for unlimited worksheets & quizzes.",
+    description: `${FREE_TOPIC_LIMIT} free generations monthly to start. Upgrade to Pro for unlimited worksheets & quizzes.`,
     images: ["/pricing/opengraph-image"],
   },
 };
@@ -39,8 +39,8 @@ const freeTier = {
   price: "$0",
   per: "/month",
   features: [
-    `5 free generations every month`,
-    `2 free YouTube & notes/PDF generations`,
+    `${FREE_TOPIC_LIMIT} free generations every month`,
+    `${FREE_SOURCE_LIMIT} free YouTube & notes/PDF generations`,
     "All question types (MCQ, True/False, Short Answer, Fill-in)",
     "All grade levels (K–12 to college)",
     "Answer keys + explanations",

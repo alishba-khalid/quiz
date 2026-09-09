@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Zap, ArrowRight, Clock, Youtube } from "lucide-react";
+import { Check, Zap, ArrowRight, Clock } from "lucide-react";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
@@ -11,7 +11,7 @@ const faqs = [
   { q: "Can I make quizzes at different difficulty levels?", a: "Yes. Set difficulty to Easy, Medium, or Hard. For differentiated instruction, generate two versions of the same quiz at different difficulty levels in under two minutes." },
   { q: "Can I use my textbook, notes, or YouTube videos as the source?", a: `Yes! Free accounts include ${FREE_SOURCE_LIMIT} free YouTube/source generations per month (${FREE_TOPIC_LIMIT} total generations). Paste text or a YouTube link and QuizKraft creates questions directly from that content.` },
   { q: "Can students take the quiz online?", a: "Yes. Share the link or have students use Quiz Mode directly in the app. They click through questions, get scored instantly, and wrong answers come back for review until mastered." },
-  { q: "Do I need to create an account?", a: "You can try your first quiz immediately without signing up. Create a free account in 30 seconds to get 5 free generations each month — no credit card needed." },
+  { q: "Do I need to create an account?", a: `You can try your first quiz immediately without signing up. Create a free account in 30 seconds to get ${FREE_TOPIC_LIMIT} free generations each month — no credit card needed.` },
   { q: "Is there a school or district plan?", a: "Yes. The School plan is $19 per teacher per month and includes shared team libraries, class management, and centralized billing. Contact us for custom quotes for larger teams." },
   { q: "What question types are supported?", a: "Multiple choice, true/false, short answer, and fill-in-the-blank. You can specify a mix or let QuizKraft decide based on the topic." },
 ];
@@ -114,7 +114,7 @@ export default async function QuizMakerForTeachersPage() {
             unit tests, and sub plans in about ten seconds — complete with instant answer keys.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
-            {["Answer keys included", "Multiple question types", "Print or quiz online", "5 free generations / month"].map((s) => (
+            {["Answer keys included", "Multiple question types", "Print or quiz online", `${FREE_TOPIC_LIMIT} free generations / month`].map((s) => (
               <span key={s} className="flex items-center gap-1.5">
                 <Check className="h-4 w-4 text-correct" />
                 {s}

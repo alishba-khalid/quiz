@@ -110,7 +110,7 @@ export default async function DashboardPage({
               <p className="text-xs text-muted mt-0.5">
                 {remaining > 0
                   ? `${remaining} free generation${remaining === 1 ? "" : "s"} remaining this month.`
-                  : "You've used your 5 free generations for this month."}
+                  : `You've used your ${FREE_TOPIC_LIMIT} free generations for this month.`}
               </p>
             </div>
             <Link

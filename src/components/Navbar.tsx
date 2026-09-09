@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, LogOut, ChevronDown, Youtube, FileText, Sparkles, LayoutGrid } from "lucide-react";
+import { Menu, X, LogOut, ChevronDown, FileText, Sparkles, LayoutGrid } from "lucide-react";
+import { YoutubeIcon } from "@/components/Icons";
+import { FREE_TOPIC_LIMIT } from "@/lib/constants";
 
 function LogoMark() {
   return (
@@ -37,7 +39,7 @@ const toolsLinks = [
     label: "YouTube to Quiz",
     href: "/youtube-to-quiz",
     desc: "Turn video lecture transcripts into quizzes",
-    icon: Youtube,
+    icon: YoutubeIcon,
     badge: "New",
   },
   {
@@ -138,7 +140,7 @@ export default function Navbar() {
               href="/youtube-to-quiz"
               className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-muted hover:text-ink rounded-lg hover:bg-hairline/40 transition-colors"
             >
-              <Youtube className="h-3.5 w-3.5 text-red-500" />
+              <YoutubeIcon className="h-3.5 w-3.5 text-red-500" />
               YouTube to Quiz
             </Link>
 
@@ -227,7 +229,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-ink rounded-lg hover:bg-hairline/60 transition-colors"
             >
-              <Youtube className="h-4 w-4 text-red-500" />
+              <YoutubeIcon className="h-4 w-4 text-red-500" />
               YouTube to Quiz
             </Link>
             <Link
@@ -270,7 +272,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="block px-3 py-2 text-sm font-medium text-ink rounded-lg hover:bg-hairline/60 transition-colors"
             >
-              Pricing (5 free/mo)
+              Pricing ({FREE_TOPIC_LIMIT} free/mo)
             </Link>
             <Link
               href="/blog"
@@ -316,7 +318,7 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="block px-4 py-2.5 text-sm font-semibold text-center text-white bg-accent hover:bg-accent-dark rounded-xl transition-colors"
                 >
-                  Start free (5 free generations)
+                  Start free ({FREE_TOPIC_LIMIT} free generations)
                 </Link>
               </>
             )}

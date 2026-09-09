@@ -1,11 +1,18 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { getYouTubeVideoTranscript, YouTubeError } from "@/lib/youtube";
+import { checkTranscriptFetchLimit, recordTranscriptFetch, getClientIp } from "@/lib/rate-limiter";
 
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
+    const clientIp = getClientIp(req);
+    const limit = checkTranscriptFetchLimit(clientIp);
+    if (!limit.allowed) {
+      return NextResponse.json({ error: limit.reason }, { status: 429 });
+    }
+
     const body = await req.json();
     const { url } = body;
 
@@ -16,6 +23,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    recordTranscriptFetch(clientIp);
     const result = await getYouTubeVideoTranscript(url);
     return NextResponse.json(result);
   } catch (error: any) {

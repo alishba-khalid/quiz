@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SUPPORT_EMAIL, FREE_TOPIC_LIMIT } from "@/lib/constants";
+import { SUPPORT_EMAIL, FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service | QuizKraft",
@@ -26,7 +26,7 @@ export default function TermsPage() {
             },
             {
               title: "2. Free and paid plans",
-              body: `The free plan allows ${FREE_TOPIC_LIMIT} generations per month (including 2 free YouTube/source material generations). Pro and School plans are billed monthly and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.`,
+              body: `The free plan allows ${FREE_TOPIC_LIMIT} generations per month (including ${FREE_SOURCE_LIMIT} free YouTube/source material generations). Pro and School plans are billed monthly and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.`,
             },
             {
               title: "3. AI-generated content",

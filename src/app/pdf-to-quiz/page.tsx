@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Zap, ArrowRight, BookOpen, Youtube } from "lucide-react";
+import { Check, Zap, ArrowRight, BookOpen } from "lucide-react";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
+import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT } from "@/lib/constants";
 
 const faqs = [
   { q: "Does it work directly with PDF files?", a: "Currently the tool works with pasted text. Open your PDF, select the relevant section, and paste the text into the source material field. Most PDF readers support copy-paste, and the resulting questions are built from your exact content." },
   { q: "How much text can I paste in?", a: "Up to 30,000 characters — enough for a full textbook chapter, study guide, or long article. For very long documents, paste the most important sections for the most focused quiz." },
   { q: "Will the questions actually match my specific content?", a: "Yes. Questions reference the specific concepts, terms, and ideas in the text you pasted — not generic topic questions. This is the core difference from standard quiz generation." },
-  { q: "Is source material input available on the free plan?", a: "Yes! Free accounts receive 5 total generations per month, including 2 free generations from custom source material, PDFs, or YouTube videos. Pro users get unlimited generations and watermark-free PDF exports." },
+  { q: "Is source material input available on the free plan?", a: `Yes! Free accounts receive ${FREE_TOPIC_LIMIT} total generations per month, including ${FREE_SOURCE_LIMIT} free generations from custom source material, PDFs, or YouTube videos. Pro users get unlimited generations and watermark-free PDF exports.` },
   { q: "What question types can I get from my notes?", a: "All four types: multiple choice, true/false, short answer, and fill-in-the-blank. Set the mix you want or let QuizKraft decide based on the content." },
   { q: "Can students take the quiz online after I generate it?", a: "Yes. Switch to Quiz Mode after generating. Students click through questions, get scored, and wrong answers come back for review until they've mastered them." },
   { q: "Does this work with lecture slides, articles, or study guides?", a: "Yes — any text content works. Lecture slide text, articles, study guides, textbook excerpts, your own typed notes. If you can paste it, QuizKraft can quiz it." },
@@ -127,7 +128,7 @@ export default async function PdfToQuizPage() {
             about the topic. Questions from <em>your</em> content.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
-            {["Questions from your exact text", "10-second generation", "Active recall practice", "5 free generations / month"].map((s) => (
+            {["Questions from your exact text", "10-second generation", "Active recall practice", `${FREE_TOPIC_LIMIT} free generations / month`].map((s) => (
               <span key={s} className="flex items-center gap-1.5">
                 <Check className="h-4 w-4 text-correct" />
                 {s}
@@ -234,7 +235,7 @@ export default async function PdfToQuizPage() {
           className="text-3xl font-medium text-ink tracking-[-0.02em] mb-4"
           style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
         >
-          Start with 5 free quiz generations.
+          Start with {FREE_TOPIC_LIMIT} free quiz generations.
         </h2>
         <p className="text-muted mb-6 text-sm max-w-md mx-auto">
           Paste notes, textbook chapters, or YouTube links. Upgrade to Pro for unlimited generations and watermark-free PDF exports.
