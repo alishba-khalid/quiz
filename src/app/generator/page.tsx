@@ -63,6 +63,7 @@ export default async function GeneratorPage() {
   return (
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={breadcrumbSchema} />
+      <h1 className="sr-only">AI Worksheet & Quiz Generator</h1>
       <QuizGeneratorForm isLoggedIn={!!session} isPro={isPro} creditsLeft={creditsLeft} />
 
       {/* Related tools */}

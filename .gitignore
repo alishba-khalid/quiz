@@ -48,3 +48,6 @@ next-env.d.ts
 firebase.json
 *.png
 !public/blog/*.png
+
+.vercel
+.env*

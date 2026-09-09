@@ -20,10 +20,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
-    template: "%s | QuizKraft",
-  },
+  title: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
   description:
     "Generate clean, printable worksheets and quizzes for any subject and grade in seconds. Free AI quiz maker for teachers with instant answer keys and adaptive retake study loops.",
   metadataBase: new URL("https://www.quizkraft.tech"),

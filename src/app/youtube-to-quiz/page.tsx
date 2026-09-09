@@ -207,9 +207,8 @@ export default async function YouTubeToQuizPage() {
               Watching video lectures creates a powerful cognitive trap known as the{" "}
               <strong className="text-ink font-semibold">illusion of competence</strong>. When an engaging
               speaker explains a difficult topic step-by-step, the fluent presentation feels intuitive.
-              However, cognitive psychology research consistently demonstrates that passive video watching
-              yields rapid decay: students lose over 70% of new lecture content within 48 hours unless forced
-              retrieval occurs.
+              However, cognitive psychology research consistently shows that passive video watching leads
+              to rapid forgetting unless the viewer is forced to actively retrieve what they just learned.
             </p>
 
             <p>

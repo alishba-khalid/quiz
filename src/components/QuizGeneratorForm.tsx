@@ -505,7 +505,7 @@ export default function QuizGeneratorForm({
         <div className="lg:sticky lg:top-16 p-6 space-y-5">
           {/* Header */}
           <div>
-            <h1 className="font-semibold text-ink text-lg">AI Quiz Generator</h1>
+            <h2 className="font-semibold text-ink text-lg">AI Quiz Generator</h2>
             <p className="text-xs text-muted mt-0.5">
               Choose an input method, configure options, and generate.
             </p>
