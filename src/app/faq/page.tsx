@@ -4,14 +4,29 @@ import FAQAccordion from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "FAQ | QuizKraft",
+  title: "Frequently Asked Questions (FAQ) | QuizKraft",
   description:
-    "Frequently asked questions about QuizKraft. Learn about features, pricing, classroom use, custom material uploads, and printing worksheets.",
+    "Frequently asked questions about QuizKraft AI worksheet and quiz generator. Learn about features, pricing, classroom use, PDF exports, and printing.",
   alternates: { canonical: "https://www.quizkraft.tech/faq" },
+  keywords: [
+    "QuizKraft FAQ",
+    "AI worksheet generator questions",
+    "printable worksheet questions",
+    "quiz maker help"
+  ],
   openGraph: {
-    title: "FAQ | QuizKraft",
+    title: "Frequently Asked Questions (FAQ) | QuizKraft",
     description: "Got questions? We have answers. Learn about worksheet generation, plans, and student practice features.",
     type: "website",
+    url: "https://www.quizkraft.tech/faq",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "QuizKraft FAQ",
+    description: "Everything you need to know about creating AI worksheets & quizzes.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -89,11 +104,11 @@ export default function FAQPage() {
           Still have questions?
         </h2>
         <p className="text-muted text-sm max-w-md mx-auto mb-8">
-          If you didn't find the answers you were looking for, feel free to email us directly. We usually respond within 24 hours.
+          If you didn&apos;t find the answers you were looking for, feel free to email us directly. We usually respond within 24 hours.
         </p>
         <div>
           <a
-            href="mailto:alishbakhalid766@gmail.com"
+            href="mailto:support@quizkraft.tech"
             className="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm text-sm"
           >
             Contact Support

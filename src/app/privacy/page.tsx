@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SUPPORT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | QuizKraft",
@@ -37,7 +38,7 @@ export default function PrivacyPage() {
             },
             {
               title: "Data retention",
-              body: "Your account and worksheets are stored until you delete your account. You can request deletion at any time by emailing alishbakhalid766@gmail.com.",
+              body: `Your account and worksheets are stored until you delete your account. You can request deletion at any time by emailing ${SUPPORT_EMAIL}.`,
             },
             {
               title: "Security",
@@ -45,7 +46,7 @@ export default function PrivacyPage() {
             },
             {
               title: "Contact",
-              body: "For any privacy questions, email us at alishbakhalid766@gmail.com.",
+              body: `For any privacy questions, email us at ${SUPPORT_EMAIL}.`,
             },
           ].map((s) => (
             <div key={s.title}>

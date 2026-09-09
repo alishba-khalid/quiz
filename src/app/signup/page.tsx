@@ -3,10 +3,11 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import SignupForm from "@/components/SignupForm";
+import { FREE_TOPIC_LIMIT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Sign Up | QuizKraft",
-  description: "Create your free QuizKraft account — try 1 free worksheet, no credit card required.",
+  description: `Create your free QuizKraft account — get ${FREE_TOPIC_LIMIT} free generations every month, no credit card required.`,
   alternates: { canonical: "https://www.quizkraft.tech/signup" },
   robots: { index: false, follow: false },
 };
@@ -30,7 +31,7 @@ export default async function SignupPage() {
             </span>
           </Link>
           <h1 className="text-2xl font-semibold text-ink mb-1">Create your account</h1>
-          <p className="text-sm text-muted">1 free worksheet. No credit card needed.</p>
+          <p className="text-sm text-muted">{FREE_TOPIC_LIMIT} free generations every month. No credit card needed.</p>
         </div>
         <div className="bg-surface rounded-2xl border border-hairline shadow-sm p-8">
           <SignupForm

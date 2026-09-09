@@ -46,7 +46,7 @@ export default function ContactForm() {
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-ink">Contact Information</h2>
           <p className="text-muted text-sm leading-relaxed">
-            Whether you're a teacher needing classroom features or a principal looking to purchase seats for your entire school, we're here to help.
+            Whether you&apos;re a teacher needing classroom features or a principal looking to purchase seats for your entire school, we&apos;re here to help.
           </p>
         </div>
 
@@ -58,10 +58,10 @@ export default function ContactForm() {
             <div>
               <h3 className="font-semibold text-ink text-sm">Direct Support</h3>
               <a
-                href="mailto:alishbakhalid766@gmail.com"
-                className="text-muted hover:text-accent transition-colors text-sm"
+                href="mailto:support@quizkraft.tech"
+                className="text-sm font-semibold text-ink hover:text-accent transition-colors block"
               >
-                alishbakhalid766@gmail.com
+                support@quizkraft.tech
               </a>
             </div>
           </div>

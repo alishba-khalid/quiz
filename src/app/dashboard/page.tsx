@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import DashboardClient from "@/components/DashboardClient";
 import BillingPortalButton from "@/components/BillingPortalButton";
+import { FREE_TOPIC_LIMIT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Dashboard | QuizKraft",
@@ -12,8 +13,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.quizkraft.tech/dashboard" },
   robots: { index: false, follow: false },
 };
-
-const FREE_LIMIT = 1;
 
 export default async function DashboardPage({
   searchParams,
@@ -46,7 +45,7 @@ export default async function DashboardPage({
   if (!user) redirect("/login");
 
   const isPro = user.plan === "PRO";
-  const remaining = Math.max(0, FREE_LIMIT - user.usageCount);
+  const remaining = Math.max(0, FREE_TOPIC_LIMIT - user.usageCount);
   const showSuccess = params.success === "true";
 
   const worksheets = user.worksheets.map((w: (typeof user.worksheets)[number]) => ({
@@ -74,18 +73,18 @@ export default async function DashboardPage({
 
         {showSuccess && (
           <div className="mb-6 px-4 py-3 bg-correct-soft border border-correct/20 text-correct rounded-xl text-sm font-medium">
-            You&apos;re now on Pro. Enjoy unlimited worksheets and PDF exports.
+            You&apos;re now on Pro. Enjoy unlimited worksheets and clean PDF exports.
           </div>
         )}
 
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
             <div className="text-2xl font-bold text-accent">{user.worksheets.length}</div>
-            <div className="text-xs text-muted mt-1">Total worksheets</div>
+            <div className="text-xs text-muted mt-1">Saved worksheets</div>
           </div>
           <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
             <div className="text-2xl font-bold text-accent">
-              {isPro ? "∞" : `${user.usageCount}/${FREE_LIMIT}`}
+              {isPro ? "∞" : `${user.usageCount}/${FREE_TOPIC_LIMIT}`}
             </div>
             <div className="text-xs text-muted mt-1">This month</div>
           </div>
@@ -107,11 +106,11 @@ export default async function DashboardPage({
         {!isPro && (
           <div className="mb-6 bg-accent-soft border border-accent/20 rounded-2xl p-4 flex items-center justify-between gap-4 flex-wrap">
             <div>
-              <p className="text-sm font-semibold text-ink">Unlock unlimited worksheets + PDF export</p>
+              <p className="text-sm font-semibold text-ink">Unlock unlimited worksheets + watermark-free PDF export</p>
               <p className="text-xs text-muted mt-0.5">
                 {remaining > 0
-                  ? `${remaining} free worksheet${remaining === 1 ? "" : "s"} remaining this month.`
-                  : "You've used your free worksheet for this month."}
+                  ? `${remaining} free generation${remaining === 1 ? "" : "s"} remaining this month.`
+                  : "You've used your 5 free generations for this month."}
               </p>
             </div>
             <Link

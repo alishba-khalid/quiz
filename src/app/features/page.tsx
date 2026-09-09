@@ -4,14 +4,30 @@ import { Zap, BookOpen, Star, RefreshCw, Check, Download, Upload, ArrowRight } f
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Features | QuizKraft",
+  title: "AI Worksheet & Quiz Maker Features | QuizKraft",
   description:
-    "Explore QuizKraft's key features: generate high-quality quizzes and worksheets for any subject, paste source material, customize difficulty, and use the smart retake loop.",
+    "Explore QuizKraft's powerful features: AI quiz creation, printable worksheet formatting, custom text upload, answer key generation, and the adaptive retake study loop.",
   alternates: { canonical: "https://www.quizkraft.tech/features" },
+  keywords: [
+    "AI worksheet features",
+    "quiz maker capabilities",
+    "printable worksheet formatting",
+    "adaptive study loop",
+    "pdf assessment generator"
+  ],
   openGraph: {
-    title: "Features | QuizKraft",
+    title: "AI Worksheet & Quiz Maker Features | QuizKraft",
     description: "AI-built worksheets and quizzes with smart learning loops. Explore all features.",
     type: "website",
+    url: "https://www.quizkraft.tech/features",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "QuizKraft Features — AI Worksheets & Quizzes",
+    description: "Discover all the features built to save teachers time and boost student learning.",
+    images: ["/opengraph-image"],
   },
 };
 

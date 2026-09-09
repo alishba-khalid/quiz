@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SUPPORT_EMAIL, FREE_TOPIC_LIMIT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service | QuizKraft",
@@ -25,7 +26,7 @@ export default function TermsPage() {
             },
             {
               title: "2. Free and paid plans",
-              body: "The free plan allows 1 worksheet generation per month. Pro and School plans are billed monthly and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.",
+              body: `The free plan allows ${FREE_TOPIC_LIMIT} generations per month (including 2 free YouTube/source material generations). Pro and School plans are billed monthly and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.`,
             },
             {
               title: "3. AI-generated content",
@@ -33,7 +34,7 @@ export default function TermsPage() {
             },
             {
               title: "4. Intellectual property",
-              body: "You retain ownership of any content you upload (source material, notes, PDFs). AI-generated worksheets produced using QuizKraft may be used freely for personal and classroom purposes.",
+              body: "You retain ownership of any content you upload (source material, notes, PDFs, YouTube URLs). AI-generated worksheets produced using QuizKraft may be used freely for personal and classroom purposes.",
             },
             {
               title: "5. Limitations of liability",
@@ -45,7 +46,7 @@ export default function TermsPage() {
             },
             {
               title: "7. Contact",
-              body: "Questions about these terms? Email us at alishbakhalid766@gmail.com.",
+              body: `Questions about these terms? Email us at ${SUPPORT_EMAIL}.`,
             },
           ].map((s) => (
             <div key={s.title}>

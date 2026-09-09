@@ -47,7 +47,7 @@ Good distractors target common misconceptions. If students often confuse mitosis
 
 **4. Vary question types**
 
-A mix of MCQ, true/false, fill-in-the-blank, and short answer keeps students engaged and tests different cognitive levels. Creating a balanced assessment is easier when you use our [free quiz generator](/quiz-generator) to mix question types automatically.
+A mix of MCQ, true/false, fill-in-the-blank, and short answer keeps students engaged and tests different cognitive levels. Creating a balanced assessment is easier when you use our [free quiz generator](/quiz-generator) to mix question types automatically, or [turn YouTube video lectures into quizzes](/youtube-to-quiz) to test concepts directly from class videos.
 
 **5. Test at the right difficulty level**
 
@@ -155,6 +155,7 @@ This workflow works especially well for:
 
 - Textbook chapter reviews before a test
 - Turning lecture notes into a study tool
+- Converting online video lectures with our [YouTube to quiz converter](/youtube-to-quiz)
 - Creating practice material from any article or reading assignment
 
 The key insight: passive re-reading is one of the least effective study strategies. Active recall — trying to retrieve information before looking it up — is one of the most effective. Turning your material into a quiz forces active recall in about 60 seconds.
@@ -235,7 +236,7 @@ Matching questions are ideal for testing associations, such as linking historica
 
 **Developing a Balanced Assessment**
 
-The most effective assessments combine these formats. A mixed quiz containing a few multiple-choice questions, a matching section, and a final short-answer prompt keeps students engaged and accommodates different learning strengths. You can build these balanced formats easily using our [worksheet generator](/worksheet-generator), which organizes multiple question types into a clean, printable layout.
+The most effective assessments combine these formats. A mixed quiz containing a few multiple-choice questions, a matching section, and a final short-answer prompt keeps students engaged and accommodates different learning strengths. You can build these balanced formats easily using our [worksheet generator](/worksheet-generator) or turn video lectures into practice sheets with our [YouTube to quiz tool](/youtube-to-quiz), which organizes multiple question types into a clean, printable layout.
 
 Ultimately, the best question types are the ones that force students to retrieve, apply, and explain what they've learned, rather than simply guessing from a list.
 

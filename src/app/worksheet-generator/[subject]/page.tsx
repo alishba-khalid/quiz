@@ -18,8 +18,8 @@ export async function generateMetadata({
   const data = getWorksheetSubject(subject);
   if (!data) return { title: "Not Found" };
 
-  const title = `AI ${data.name} Worksheet Generator — ${data.gradeRange} | QuizKraft`;
-  const description = `Generate printable ${data.name.toLowerCase()} worksheets in seconds — multiple question types, answer keys included. ${data.gradeRange}. Free to try.`;
+  const title = `Free AI ${data.name} Worksheet Generator — ${data.gradeRange} | QuizKraft`;
+  const description = `Generate clean, printable ${data.name.toLowerCase()} worksheets and practice sheets in seconds — multiple question types with instant answer keys. ${data.gradeRange}. Free to try.`;
 
   return {
     title,
@@ -27,10 +27,27 @@ export async function generateMetadata({
     alternates: {
       canonical: `https://www.quizkraft.tech/worksheet-generator/${subject}`,
     },
+    keywords: [
+      `AI ${data.name.toLowerCase()} worksheet generator`,
+      `free printable ${data.name.toLowerCase()} worksheets`,
+      `${data.name.toLowerCase()} worksheet maker for teachers`,
+      `printable ${data.name.toLowerCase()} test with answer key`,
+      `${data.name.toLowerCase()} practice sheet creator`,
+      `worksheets for ${data.gradeRange.toLowerCase()}`
+    ],
     openGraph: {
       title,
       description,
       type: "website",
+      url: `https://www.quizkraft.tech/worksheet-generator/${subject}`,
+      siteName: "QuizKraft",
+      images: ["/opengraph-image"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/opengraph-image"],
     },
   };
 }
@@ -124,7 +141,7 @@ export default async function WorksheetSubjectPage({
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
             >
               <Printer className="h-4 w-4" />
-              Generate a {data.name} worksheet free
+              Generate {/^[aeiou]/i.test(data.name) ? "an" : "a"} {data.name.toLowerCase()} worksheet free
             </Link>
             <Link
               href="/quiz-generator"

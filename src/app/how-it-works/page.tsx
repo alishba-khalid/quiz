@@ -4,14 +4,29 @@ import { Zap, BookOpen, Star, Sparkles, Check, ArrowRight } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "How It Works | QuizKraft",
+  title: "How It Works — AI Worksheet & Quiz Generation | QuizKraft",
   description:
-    "Learn how QuizKraft uses AI to generate classroom assessments, worksheets, and online practice quizzes in 3 simple steps.",
+    "Learn how QuizKraft uses AI to generate classroom assessments, printable worksheets, and online practice quizzes in 3 simple steps.",
   alternates: { canonical: "https://www.quizkraft.tech/how-it-works" },
+  keywords: [
+    "how to make AI worksheets",
+    "how AI quiz generator works",
+    "worksheet creation process",
+    "teacher AI workflow"
+  ],
   openGraph: {
-    title: "How It Works | QuizKraft",
+    title: "How It Works — AI Worksheet & Quiz Generation | QuizKraft",
     description: "Generate conceptual quizzes and worksheets from your curriculum in seconds. Learn the process.",
     type: "website",
+    url: "https://www.quizkraft.tech/how-it-works",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How QuizKraft Works | AI Quiz & Worksheet Creator",
+    description: "Create printable worksheets and interactive quizzes in 3 simple steps.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -126,7 +141,7 @@ export default function HowItWorksPage() {
             Why our questions are different.
           </h2>
           <p className="text-muted leading-relaxed text-base max-w-2xl mx-auto">
-            Unlike general-purpose writing assistants, QuizKraft's generator is explicitly trained on structured educational design principles. It creates highly plausible distractors for multiple-choice questions that target common student misconceptions, rather than offering obviously incorrect choices.
+            Unlike general-purpose writing assistants, QuizKraft&apos;s generator is explicitly trained on structured educational design principles. It creates highly plausible distractors for multiple-choice questions that target common student misconceptions, rather than offering obviously incorrect choices.
           </p>
           <div className="grid sm:grid-cols-2 gap-6 text-left max-w-2xl mx-auto pt-6">
             <div className="bg-canvas border border-hairline rounded-2xl p-6">

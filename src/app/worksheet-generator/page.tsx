@@ -31,14 +31,33 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "AI Worksheet Generator — Printable | QuizKraft",
+  title: "Free AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
   description:
-    "Generate a complete, printable worksheet in 10 seconds. Any subject, any grade. Multiple question types, answer keys included. Free to try.",
+    "Generate custom, printable worksheets for any subject and grade in 10 seconds with AI. Includes multiple question formats, instant answer keys, and PDF download. Free to try.",
   alternates: { canonical: "https://www.quizkraft.tech/worksheet-generator" },
+  keywords: [
+    "AI worksheet generator",
+    "free printable worksheet maker",
+    "worksheet maker for teachers",
+    "printable worksheets with answer key",
+    "custom math worksheet generator",
+    "reading comprehension worksheet maker",
+    "educational worksheet creator",
+    "printable test generator"
+  ],
   openGraph: {
-    title: "AI Worksheet Generator — Printable | QuizKraft",
-    description: "Generate printable worksheets in 10 seconds. Any subject, any grade, answer keys included.",
+    title: "Free AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
+    description: "Generate clean, printable worksheets in 10 seconds. Any subject, any grade level. Instant answer keys included.",
     type: "website",
+    url: "https://www.quizkraft.tech/worksheet-generator",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free AI Worksheet Generator | QuizKraft",
+    description: "Create print-ready educational worksheets with answer keys in seconds.",
+    images: ["/opengraph-image"],
   },
 };
 

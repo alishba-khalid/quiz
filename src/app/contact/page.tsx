@@ -3,20 +3,29 @@ import ContactForm from "@/components/ContactForm";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Contact Us | QuizKraft",
+  title: "Contact Us — Support & School Licensing | QuizKraft",
   description:
-    "Get in touch with QuizKraft. Send us questions, feedback, feature requests, or inquire about school licensing.",
+    "Get in touch with QuizKraft. Send us questions, feedback, feature requests, or inquire about school licensing and bulk teacher subscriptions.",
   alternates: { canonical: "https://www.quizkraft.tech/contact" },
+  keywords: [
+    "Contact QuizKraft",
+    "QuizKraft support",
+    "school plan inquiry",
+    "teacher bulk licensing"
+  ],
   openGraph: {
-    title: "Contact Us | QuizKraft",
+    title: "Contact Us — Support & School Licensing | QuizKraft",
     description: "Got questions, feedback, or custom requests? Contact the QuizKraft team today.",
     type: "website",
     url: "https://www.quizkraft.tech/contact",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us | QuizKraft",
-    description: "Got questions, feedback, or custom requests? Contact the QuizKraft team today.",
+    title: "Contact QuizKraft",
+    description: "Reach out for support, feedback, or school license inquiries.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -37,7 +46,7 @@ const organizationContactSchema = {
   logo: "https://www.quizkraft.tech/apple-icon.png",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "alishbakhalid766@gmail.com",
+    email: "support@quizkraft.tech",
     contactType: "customer support",
     availableLanguage: "English",
   },
@@ -59,7 +68,7 @@ export default function ContactPage() {
             Get in touch.
           </h1>
           <p className="text-muted text-lg max-w-xl mx-auto leading-relaxed">
-            Have questions about pricing, feature requests, or need custom worksheets? Drop us a line and we'll reply right away.
+            Have questions about pricing, feature requests, or need custom worksheets? Drop us a line and we&apos;ll reply right away.
           </p>
         </div>
       </section>

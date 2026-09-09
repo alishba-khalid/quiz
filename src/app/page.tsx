@@ -1,18 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight } from "lucide-react";
+import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight, Youtube, FileText, Sparkles, CheckCircle2 } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
+import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
+  title: "QuizKraft | Free AI Worksheet Generator & Quiz Maker for Teachers",
   description:
-    "Generate clean, printable worksheets and quizzes for any subject and grade — then let students practice with a built-in retake loop that brings wrong answers back. Free to start.",
-  alternates: { canonical: "https://www.quizkraft.tech" },
+    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds — complete with instant answer keys, PDF exports, and adaptive retake study loops. Free to try.",
+  alternates: { canonical: "https://www.quizkraft.tech/" },
+  keywords: [
+    "AI worksheet generator",
+    "free printable worksheet maker",
+    "quiz maker for teachers",
+    "AI quiz generator",
+    "YouTube to quiz generator",
+    "PDF to quiz generator",
+    "multiple choice quiz maker",
+    "printable quiz generator with answer key",
+    "classroom assessment tool",
+    "adaptive study loop quiz"
+  ],
   openGraph: {
-    title: "QuizKraft | AI Worksheet & Quiz Generator",
-    description: "Worksheets and quizzes worth handing out — built by AI in seconds.",
+    title: "QuizKraft | Free AI Worksheet Generator & Quiz Maker for Teachers",
+    description: "Generate clean, printable worksheets & quizzes in seconds with AI. Complete with answer keys.",
     type: "website",
+    url: "https://www.quizkraft.tech/",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "QuizKraft | Free AI Worksheet Generator & Quiz Maker",
+    description: "Printable worksheets and online quizzes built by AI in seconds. Free for teachers.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -86,54 +108,34 @@ const features = [
   {
     icon: <BookOpen className="h-5 w-5" />,
     title: "Any subject, any grade",
-    desc: "Math to history, kindergarten to college. Just type the topic.",
+    desc: "Math to history, kindergarten to college. Just type the topic or prompt.",
   },
   {
-    icon: <Star className="h-5 w-5" />,
-    title: "5+ question types",
-    desc: "Multiple choice, true/false, short answer, fill-in-the-blank, and more — mixed in one sheet.",
+    icon: <Youtube className="h-5 w-5 text-red-500" />,
+    title: "YouTube video to quiz",
+    desc: "Paste any educational YouTube URL to extract the transcript and generate questions in seconds.",
+    highlight: true,
+  },
+  {
+    icon: <Upload className="h-5 w-5 text-blue-500" />,
+    title: "Pasted notes & PDF support",
+    desc: "Upload textbook chapters, articles, or lecture notes to quiz specific classroom content.",
   },
   {
     icon: <RefreshCw className="h-5 w-5" />,
-    title: "The study loop",
-    desc: "In quiz mode, wrong answers come back for review until they're learned.",
+    title: "The active recall study loop",
+    desc: "In quiz mode, wrong answers come back for review until students master every question.",
     highlight: true,
   },
   {
     icon: <Check className="h-5 w-5" />,
     title: "Answer keys & explanations",
-    desc: "Every worksheet comes with answers and short explanations, one click away.",
+    desc: "Every worksheet includes verified answers and concise pedagogical explanations.",
   },
   {
     icon: <Download className="h-5 w-5" />,
-    title: "Print & export",
-    desc: "Clean, exam-style print layout. Export to PDF, no watermark on Pro.",
-  },
-  {
-    icon: <Upload className="h-5 w-5" />,
-    title: "Use your own material",
-    desc: "Paste notes or a chapter and generate questions straight from your own source material.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "This tool saves me at least two hours every Sunday. The questions are actually good — not the generic fluff I expected from AI.",
-    name: "Sarah M.",
-    role: "5th Grade Teacher",
-  },
-  {
-    quote:
-      "My tutoring students use the quiz loop to drill weak spots. They're getting through material twice as fast.",
-    name: "James T.",
-    role: "Private Tutor",
-  },
-  {
-    quote:
-      "I homeschool three kids at different grade levels. QuizKraft cuts my prep time from hours to minutes.",
-    name: "Maria K.",
-    role: "Homeschool Parent",
+    title: "Print & PDF export",
+    desc: "Clean, print-ready exam layout with student header lines and optional answer key sheets.",
   },
 ];
 
@@ -142,8 +144,15 @@ const tiers = [
     name: "Free",
     price: "$0",
     per: "/month",
-    features: ["1 free worksheet", "All question types", "Answer keys", "Quiz mode + study loop", "Print"],
-    cta: "Get started",
+    features: [
+      `${FREE_TOPIC_LIMIT} free generations every month`,
+      `${FREE_SOURCE_LIMIT} free YouTube & notes/PDF generations`,
+      "All question types & grade levels",
+      "Answer keys with explanations",
+      "Quiz mode + active recall loop",
+      "Print layout with watermark",
+    ],
+    cta: "Get started free",
     ctaHref: "/signup",
     highlight: false,
   },
@@ -152,7 +161,14 @@ const tiers = [
     price: "$9",
     per: "/month",
     badge: "Most popular",
-    features: ["Unlimited worksheets", "PDF export, no watermark", "Paste source material", "Priority generation"],
+    features: [
+      "Unlimited worksheet & quiz generations",
+      "Unlimited YouTube & PDF uploads",
+      "Clean PDF exports with NO watermark",
+      "Save quizzes to library & dashboard",
+      "All question types & grade levels",
+      "Priority AI processing speed",
+    ],
     cta: "Start Pro",
     ctaHref: "/pricing",
     highlight: true,
@@ -161,9 +177,15 @@ const tiers = [
     name: "School",
     price: "$19",
     per: "/teacher/mo",
-    features: ["Everything in Pro", "Shared team library", "Class management", "Multiple seats", "Priority support"],
+    features: [
+      "Everything in Pro",
+      "Shared department team library",
+      "Class & student management",
+      "Multiple seats with centralized billing",
+      "Priority dedicated support",
+    ],
     cta: "Contact us",
-    ctaHref: "mailto:alishbakhalid766@gmail.com",
+    ctaHref: `mailto:${SUPPORT_EMAIL}`,
     highlight: false,
   },
 ];
@@ -177,7 +199,7 @@ const softwareAppSchema = {
   url: "https://www.quizkraft.tech",
   description: "AI-powered worksheet and quiz generator for teachers, tutors, and students. Generate any subject, any grade in seconds.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Free Plan" },
-  featureList: ["AI quiz generation", "Worksheet creation", "Multiple question types", "Answer keys", "Quiz mode study loop", "PDF export"],
+  featureList: ["AI quiz generation", "YouTube video to quiz", "PDF to quiz", "Worksheet creation", "Multiple question types", "Answer keys", "Quiz mode study loop", "PDF export"],
 };
 
 const organizationSchema = {
@@ -193,12 +215,12 @@ const homeFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "Yes. The free plan gives you 1 worksheet to try — no credit card required. All question types, answer keys, quiz mode, and the study loop are included. Upgrade to Pro for unlimited generation." } },
+    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: `Yes! The free plan gives you ${FREE_TOPIC_LIMIT} free generations every month (including ${FREE_SOURCE_LIMIT} YouTube/source material generations) — no credit card required. Usage resets every 30 days.` } },
+    { "@type": "Question", name: "Can I generate quizzes from YouTube videos?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste any YouTube video link into the generator. QuizKraft extracts the transcript and creates targeted questions directly from the video content." } },
     { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
-    { "@type": "Question", name: "Can I use my own material to generate questions?", acceptedAnswer: { "@type": "Answer", text: "Yes, on Pro. Paste in text from your notes, textbook, or any source, and QuizKraft generates questions directly from that material." } },
+    { "@type": "Question", name: "Can I use my own notes or PDF documents?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste text from your notes, textbook, or study guide into the generator to produce quizzes based on your specific curriculum." } },
     { "@type": "Question", name: "Can students take quizzes online?", acceptedAnswer: { "@type": "Answer", text: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right." } },
     { "@type": "Question", name: "Can I print or export worksheets?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every worksheet has a clean print layout. Free users can print with a QuizKraft watermark. Pro users get clean PDF export with no watermark." } },
-    { "@type": "Question", name: "Do you offer school or team plans?", acceptedAnswer: { "@type": "Answer", text: "Yes — the School plan is $19/month per teacher and includes shared team libraries, class management, and centralized billing." } },
   ],
 };
 
@@ -208,6 +230,7 @@ export default function HomePage() {
       <JsonLd data={organizationSchema} />
       <JsonLd data={softwareAppSchema} />
       <JsonLd data={homeFaqSchema} />
+
       {/* Hero */}
       <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div
@@ -256,8 +279,8 @@ export default function HomePage() {
                 AI Worksheet &amp; Quiz Generator for Any Subject &amp; Grade
               </h2>
               <p className="text-lg text-muted leading-relaxed mb-8 max-w-lg">
-                Generate clean, printable worksheets and quizzes for any subject and grade — then let
-                students practice with a built-in retake loop that brings wrong answers back.
+                Generate clean, printable worksheets and interactive quizzes from topics, YouTube videos,
+                or your own notes — complete with an adaptive retake study loop.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mb-4">
                 <Link
@@ -267,14 +290,15 @@ export default function HomePage() {
                   <Zap className="h-4 w-4" />
                   Generate free worksheet
                 </Link>
-                <a
-                  href="#how-it-works"
+                <Link
+                  href="/youtube-to-quiz"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-hairline text-ink font-semibold rounded-xl hover:bg-hairline/60 transition-colors text-sm"
                 >
-                  See how it works
-                </a>
+                  <Youtube className="h-4 w-4 text-red-500" />
+                  YouTube to Quiz
+                </Link>
               </div>
-              <p className="text-xs text-muted">1 free worksheet. No card required.</p>
+              <p className="text-xs text-muted">5 free generations every month. No credit card required.</p>
             </div>
             <div className="animate-fade-up delay-200">
               <WorksheetPreview />
@@ -286,8 +310,8 @@ export default function HomePage() {
       {/* Trust bar */}
       <section className="border-y border-hairline bg-surface py-5 px-4">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted">
-          <span className="font-medium text-ink">Trusted by teachers and tutors</span>
-          {["10-second generation", "5+ question formats", "Every grade, K–12 to college", "Print-ready"].map((s) => (
+          <span className="font-medium text-ink">Built for educators and independent learners:</span>
+          {["10-second generation", "YouTube video to quiz", "Notes & PDF input", "Active recall loop", "Print-ready"].map((s) => (
             <span key={s} className="inline-flex items-center gap-1.5 bg-canvas border border-hairline rounded-full px-3 py-1 text-xs font-medium text-ink">
               <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
               {s}
@@ -304,7 +328,7 @@ export default function HomePage() {
               className="text-4xl font-medium text-ink tracking-[-0.02em]"
               style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
             >
-              Everything you need to assess —<br className="hidden sm:block" /> nothing you don't.
+              Everything you need to assess —<br className="hidden sm:block" /> nothing you don&apos;t.
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -319,7 +343,7 @@ export default function HomePage() {
               >
                 {f.highlight && (
                   <span className="inline-block text-xs font-semibold text-accent bg-accent/10 rounded-full px-2.5 py-0.5 mb-3">
-                    Differentiator
+                    Featured Tool
                   </span>
                 )}
                 <div
@@ -345,14 +369,14 @@ export default function HomePage() {
               className="text-4xl font-medium text-ink tracking-[-0.02em]"
               style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
             >
-              Three steps to a finished worksheet.
+              Three steps to a finished assessment.
             </h2>
           </div>
           <div className="grid sm:grid-cols-3 gap-10">
             {[
-              { n: "01", title: "Set it up", desc: "Choose subject, grade, topic, question types, and difficulty." },
-              { n: "02", title: "Generate", desc: "QuizKraft writes thoughtful, conceptual questions in about ten seconds." },
-              { n: "03", title: "Use it", desc: "Print it, share it, or send students into quiz mode to practice." },
+              { n: "01", title: "Choose input", desc: "Select a topic, paste lecture notes, or enter a YouTube video URL." },
+              { n: "02", title: "Generate with AI", desc: "QuizKraft writes rigorous, conceptual questions and answers in 10 seconds." },
+              { n: "03", title: "Practice & master", desc: "Print clean handouts or use the interactive study loop until all questions are mastered." },
             ].map((step) => (
               <div key={step.n}>
                 <div
@@ -380,7 +404,7 @@ export default function HomePage() {
               Most tools stop at the worksheet. QuizKraft keeps going.
             </h2>
             <p className="text-white/60 leading-relaxed text-sm">
-              A one-off quiz doesn't help anyone learn. In quiz mode, QuizKraft scores each attempt,
+              A one-off quiz doesn&apos;t help anyone learn. In quiz mode, QuizKraft scores each attempt,
               flags every wrong answer, and brings just those questions back — so students practice
               what they actually got wrong, not what they already know.
             </p>
@@ -425,71 +449,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Use cases */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-canvas">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2
-              className="text-4xl font-medium text-ink tracking-[-0.02em]"
-              style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
-            >
-              Built for the way you teach.
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {[
-              {
-                who: "For teachers",
-                desc: "Fast exit tickets, homework sheets, chapter tests, and sub plans — without spending Sunday evening on them.",
-                cls: "bg-accent-soft border-accent/20",
-                title: "text-accent",
-              },
-              {
-                who: "For tutors & parents",
-                desc: "Targeted practice for one student's weak spots. Upload their notes and generate a quiz from exactly what they're studying.",
-                cls: "bg-correct-soft border-correct/20",
-                title: "text-correct",
-              },
-              {
-                who: "For students",
-                desc: "Turn notes or a PDF into a self-quiz and let the study loop drill you on what you don't know yet.",
-                cls: "bg-warm/10 border-warm/20",
-                title: "text-warm",
-              },
-            ].map((c) => (
-              <div key={c.who} className={`rounded-2xl border p-6 ${c.cls}`}>
-                <h3 className={`font-semibold mb-2 ${c.title}`}>{c.who}</h3>
-                <p className="text-sm text-muted leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
+      {/* Factual Value Proposition Section (Replaced fabricated testimonials) */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-surface">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <h2
-              className="text-4xl font-medium text-ink tracking-[-0.02em]"
+              className="text-4xl font-medium text-ink tracking-[-0.02em] mb-4"
               style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
             >
-              Loved by people who hate making quizzes.
+              Why educators and students choose QuizKraft.
             </h2>
+            <p className="text-muted text-base max-w-2xl mx-auto">
+              Built specifically to eliminate assessment prep time while enhancing active recall.
+            </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-canvas rounded-2xl border border-hairline p-6">
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-warm text-warm" />
-                  ))}
-                </div>
-                <p className="text-sm text-muted leading-relaxed mb-4 italic">"{t.quote}"</p>
-                <p className="font-semibold text-ink text-sm">{t.name}</p>
-                <p className="text-xs text-muted">{t.role}</p>
+            <div className="bg-canvas rounded-2xl border border-hairline p-6">
+              <div className="w-10 h-10 rounded-xl bg-accent-soft text-accent flex items-center justify-center mb-4">
+                <Sparkles className="h-5 w-5" />
               </div>
-            ))}
+              <h3 className="font-semibold text-ink text-base mb-2">Conceptual Question Quality</h3>
+              <p className="text-sm text-muted leading-relaxed">
+                Rather than simple rote-memorization trivia, QuizKraft generates questions that challenge students to apply principles, explain mechanisms, and avoid common misconceptions.
+              </p>
+            </div>
+
+            <div className="bg-canvas rounded-2xl border border-hairline p-6">
+              <div className="w-10 h-10 rounded-xl bg-correct-soft text-correct flex items-center justify-center mb-4">
+                <Youtube className="h-5 w-5" />
+              </div>
+              <h3 className="font-semibold text-ink text-base mb-2">Multimodal Source Inputs</h3>
+              <p className="text-sm text-muted leading-relaxed">
+                Generate tailored assessments from general subject topics, pasted textbook chapters, raw study guides, or direct YouTube video lecture links in seconds.
+              </p>
+            </div>
+
+            <div className="bg-canvas rounded-2xl border border-hairline p-6">
+              <div className="w-10 h-10 rounded-xl bg-warm/20 text-warm flex items-center justify-center mb-4">
+                <RefreshCw className="h-5 w-5" />
+              </div>
+              <h3 className="font-semibold text-ink text-base mb-2">Durable Active Recall</h3>
+              <p className="text-sm text-muted leading-relaxed">
+                The interactive study loop automatically isolates missed questions, providing instant grading and rationale explanations until every concept is mastered.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -509,30 +512,32 @@ export default function HomePage() {
             {tiers.map((t) => (
               <div
                 key={t.name}
-                className={`rounded-2xl border p-6 ${
-                  t.highlight ? "bg-accent border-accent" : "bg-surface border-hairline"
+                className={`rounded-2xl border p-6 flex flex-col justify-between ${
+                  t.highlight ? "bg-accent border-accent text-white" : "bg-surface border-hairline"
                 }`}
               >
-                {t.badge && (
-                  <span className="inline-block text-xs font-semibold bg-white/20 text-white rounded-full px-2.5 py-0.5 mb-3">
-                    {t.badge}
-                  </span>
-                )}
-                <h3 className={`text-lg font-semibold mb-1 ${t.highlight ? "text-white" : "text-ink"}`}>
-                  {t.name}
-                </h3>
-                <div className="flex items-baseline gap-1 mb-5">
-                  <span className={`text-3xl font-bold ${t.highlight ? "text-white" : "text-ink"}`}>{t.price}</span>
-                  <span className={`text-sm ${t.highlight ? "text-white/60" : "text-muted"}`}>{t.per}</span>
+                <div>
+                  {t.badge && (
+                    <span className="inline-block text-xs font-semibold bg-white/20 text-white rounded-full px-2.5 py-0.5 mb-3">
+                      {t.badge}
+                    </span>
+                  )}
+                  <h3 className={`text-lg font-semibold mb-1 ${t.highlight ? "text-white" : "text-ink"}`}>
+                    {t.name}
+                  </h3>
+                  <div className="flex items-baseline gap-1 mb-5">
+                    <span className={`text-3xl font-bold ${t.highlight ? "text-white" : "text-ink"}`}>{t.price}</span>
+                    <span className={`text-sm ${t.highlight ? "text-white/60" : "text-muted"}`}>{t.per}</span>
+                  </div>
+                  <ul className="space-y-2 mb-6">
+                    {t.features.map((f) => (
+                      <li key={f} className={`flex items-start gap-2 text-sm ${t.highlight ? "text-white/90" : "text-muted"}`}>
+                        <Check className={`h-4 w-4 flex-shrink-0 mt-0.5 ${t.highlight ? "text-white" : "text-correct"}`} />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2 mb-6">
-                  {t.features.map((f) => (
-                    <li key={f} className={`flex items-start gap-2 text-sm ${t.highlight ? "text-white/90" : "text-muted"}`}>
-                      <Check className={`h-4 w-4 flex-shrink-0 mt-0.5 ${t.highlight ? "text-white" : "text-correct"}`} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
                 <Link
                   href={t.ctaHref}
                   className={`block text-center text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors ${
@@ -587,7 +592,7 @@ export default function HomePage() {
           >
             Start free
           </Link>
-          <p className="mt-4 text-sm text-muted">1 free worksheet, no card required.</p>
+          <p className="mt-4 text-sm text-muted">{FREE_TOPIC_LIMIT} free generations every month, no card required.</p>
         </div>
       </section>
     </div>

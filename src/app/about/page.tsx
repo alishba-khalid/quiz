@@ -4,14 +4,29 @@ import { BookOpen, ShieldCheck, Heart, Sparkles } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "About Us | QuizKraft",
+  title: "About Us — Built for Educators | QuizKraft",
   description:
-    "Learn about QuizKraft's mission to save teachers time and help them create rigorous, high-quality classroom worksheets and quizzes.",
+    "Learn about QuizKraft's mission to save teachers hours every week and help them create rigorous, high-quality AI worksheets and quizzes.",
   alternates: { canonical: "https://www.quizkraft.tech/about" },
+  keywords: [
+    "About QuizKraft",
+    "AI teacher tools mission",
+    "classroom assessment company",
+    "educational tech for teachers"
+  ],
   openGraph: {
-    title: "About Us | QuizKraft",
+    title: "About Us — Built for Educators | QuizKraft",
     description: "Our mission is simple: help teachers save time with concept-driven classroom resources.",
     type: "website",
+    url: "https://www.quizkraft.tech/about",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About QuizKraft",
+    description: "Built for teachers to eliminate repetitive prep work and generate print-ready assessments.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -88,10 +103,10 @@ export default function AboutPage() {
             Every teacher knows the struggle of Sunday evening: searching the web for worksheets, formatting layouts, and crafting multiple-choice questions that actually test student comprehension.
           </p>
           <p>
-            Generic AI text generators don't solve this. They produce plain, unformatted blocks of text, write questions that are too easy, and often fabricate incorrect answers. 
+            Generic AI text generators don&apos;t solve this. They produce plain, unformatted blocks of text, write questions that are too easy, and often fabricate incorrect answers. 
           </p>
           <p>
-            QuizKraft was created to change that. By tailoring AI generations directly to educational standards (like Bloom's Taxonomy) and combining them with professional, printable formatting, QuizKraft enables teachers to build materials worth handing out in seconds.
+            QuizKraft was created to change that. By tailoring AI generations directly to educational standards (like Bloom&apos;s Taxonomy) and combining them with professional, printable formatting, QuizKraft enables teachers to build materials worth handing out in seconds.
           </p>
         </div>
       </section>

@@ -18,11 +18,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${post.title} | QuizKraft Blog`,
     description: post.excerpt,
     alternates: { canonical: `https://www.quizkraft.tech/blog/${slug}` },
+    keywords: [
+      post.category,
+      "AI worksheet generator",
+      "teacher guides",
+      "classroom tools",
+      "educational assessment"
+    ],
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
       url: `https://www.quizkraft.tech/blog/${slug}`,
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
       images: [
         {
           url: ogImage,

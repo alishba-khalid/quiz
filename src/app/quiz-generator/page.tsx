@@ -31,14 +31,33 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "AI Quiz Generator — Free | QuizKraft",
+  title: "Free AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
   description:
-    "Generate a complete quiz in 10 seconds — multiple choice, short answer, true/false, fill-in-the-blank, mixed automatically. Answer keys included. Free to try.",
+    "Generate a complete custom quiz in 10 seconds with AI — multiple choice, short answer, true/false, fill-in-the-blank, mixed automatically. Answer keys included. Free to try.",
   alternates: { canonical: "https://www.quizkraft.tech/quiz-generator" },
+  keywords: [
+    "AI quiz generator",
+    "free quiz maker online",
+    "multiple choice quiz generator",
+    "AI test generator for teachers",
+    "quiz generator with answer key",
+    "classroom quiz creator",
+    "online quiz maker",
+    "adaptive study quiz generator"
+  ],
   openGraph: {
-    title: "AI Quiz Generator — Free | QuizKraft",
-    description: "Generate a complete quiz in 10 seconds. Any subject, any grade. Answer keys included.",
+    title: "Free AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
+    description: "Generate a complete quiz in 10 seconds. Any subject, any grade level. Instant answer keys included.",
     type: "website",
+    url: "https://www.quizkraft.tech/quiz-generator",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free AI Quiz Generator | QuizKraft",
+    description: "Create mixed-format quizzes with answer keys in 10 seconds using AI.",
+    images: ["/opengraph-image"],
   },
 };
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SUPPORT_EMAIL } from "@/lib/constants";
 
 function LogoMark() {
   return (
@@ -19,7 +20,9 @@ const cols = [
   {
     title: "Product",
     links: [
-      { label: "Generator", href: "/generator" },
+      { label: "YouTube to Quiz", href: "/youtube-to-quiz" },
+      { label: "PDF to Quiz", href: "/pdf-to-quiz" },
+      { label: "Generator Studio", href: "/generator" },
       { label: "Pricing", href: "/pricing" },
       { label: "Features", href: "/features" },
     ],
@@ -37,7 +40,7 @@ const cols = [
     links: [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Support", href: "mailto:alishbakhalid766@gmail.com" },
+      { label: "Support", href: `mailto:${SUPPORT_EMAIL}` },
     ],
   },
   {

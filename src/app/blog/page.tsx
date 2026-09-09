@@ -5,14 +5,31 @@ import { JsonLd } from "@/components/JsonLd";
 import { blogPosts as posts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
-  title: "Blog | QuizKraft",
+  title: "AI Education Blog — Teaching Guides & Worksheet Tips | QuizKraft",
   description:
-    "Teaching tips, AI education guides, and how-tos for teachers who want to save time and help students learn better.",
+    "Explore teaching guides, classroom AI tools, worksheet creation tips, and active recall strategies for educators. Save time and boost student engagement.",
   alternates: { canonical: "https://www.quizkraft.tech/blog" },
+  keywords: [
+    "AI education blog",
+    "teaching tools guide",
+    "teacher time saving tips",
+    "AI in classroom",
+    "worksheet creation guide",
+    "active recall study tips"
+  ],
   openGraph: {
-    title: "Blog | QuizKraft",
+    title: "AI Education Blog — Teaching Guides & Worksheet Tips | QuizKraft",
     description: "Teaching tips and AI education guides from the QuizKraft team.",
     type: "website",
+    url: "https://www.quizkraft.tech/blog",
+    siteName: "QuizKraft",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Education Blog | QuizKraft",
+    description: "Guides and strategies for teachers using AI to generate worksheets and tests.",
+    images: ["/opengraph-image"],
   },
 };
 

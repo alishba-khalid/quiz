@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Zap, ArrowRight, BookOpen } from "lucide-react";
+import { Check, Zap, ArrowRight, BookOpen, Youtube } from "lucide-react";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
 
 const faqs = [
   { q: "Does it work directly with PDF files?", a: "Currently the tool works with pasted text. Open your PDF, select the relevant section, and paste the text into the source material field. Most PDF readers support copy-paste, and the resulting questions are built from your exact content." },
-  { q: "How much text can I paste in?", a: "Several pages worth — enough for a full textbook chapter or a long article. For very long documents, paste the most important sections for the most focused quiz." },
+  { q: "How much text can I paste in?", a: "Up to 30,000 characters — enough for a full textbook chapter, study guide, or long article. For very long documents, paste the most important sections for the most focused quiz." },
   { q: "Will the questions actually match my specific content?", a: "Yes. Questions reference the specific concepts, terms, and ideas in the text you pasted — not generic topic questions. This is the core difference from standard quiz generation." },
-  { q: "Is source material input a Pro feature?", a: "Yes. Pasting your own source material requires a Pro plan ($9/month). Standard quiz generation from a topic description is free." },
+  { q: "Is source material input available on the free plan?", a: "Yes! Free accounts receive 5 total generations per month, including 2 free generations from custom source material, PDFs, or YouTube videos. Pro users get unlimited generations and watermark-free PDF exports." },
   { q: "What question types can I get from my notes?", a: "All four types: multiple choice, true/false, short answer, and fill-in-the-blank. Set the mix you want or let QuizKraft decide based on the content." },
   { q: "Can students take the quiz online after I generate it?", a: "Yes. Switch to Quiz Mode after generating. Students click through questions, get scored, and wrong answers come back for review until they've mastered them." },
   { q: "Does this work with lecture slides, articles, or study guides?", a: "Yes — any text content works. Lecture slide text, articles, study guides, textbook excerpts, your own typed notes. If you can paste it, QuizKraft can quiz it." },
@@ -17,20 +17,39 @@ const faqs = [
 
 const steps = [
   { n: "01", title: "Copy your text", desc: "Open your PDF, notes, or article. Select the relevant section — a chapter, key pages, or full article — and copy." },
-  { n: "02", title: "Paste into QuizKraft", desc: "On the generator, choose 'Source material' and paste what you copied. Set the grade level, question types, and count." },
+  { n: "02", title: "Paste into QuizKraft", desc: "On the generator, choose 'Notes / PDF' and paste what you copied. Set the grade level, question types, and count." },
   { n: "03", title: "Generate", desc: "Hit generate. In about 10 seconds you have quiz questions built from the exact material you pasted — not generic topic questions." },
   { n: "04", title: "Study with the loop", desc: "Switch to Quiz Mode. Wrong answers come back for review until they're mastered. One session = genuine active recall practice." },
 ];
 
 export const metadata: Metadata = {
-  title: "Turn Notes & Source Material into a Quiz | QuizKraft",
+  title: "PDF to Quiz Converter — Turn Notes & Text into Quizzes | QuizKraft",
   description:
-    "Paste your notes, textbook chapter, or any text and get a quiz built from your exact content in 10 seconds. Active recall from your own material. Pro feature.",
+    "Convert PDFs, study notes, textbook chapters, and articles into interactive quizzes with AI in 10 seconds. Automated question creation from custom source text.",
   alternates: { canonical: "https://www.quizkraft.tech/pdf-to-quiz" },
+  keywords: [
+    "pdf to quiz converter",
+    "turn notes into quiz",
+    "convert text to test",
+    "AI quiz maker from pdf",
+    "textbook chapter quiz generator",
+    "pdf test creator online",
+    "active recall quiz generator",
+    "study notes quiz maker"
+  ],
   openGraph: {
-    title: "Turn Notes into a Quiz | QuizKraft",
-    description: "Paste text from any source and get a quiz built from your exact content in 10 seconds.",
+    title: "PDF to Quiz Converter — Turn Notes into Quizzes | QuizKraft",
+    description: "Paste text from any PDF or study guide and generate a quiz built directly from your material in 10 seconds.",
     type: "website",
+    url: "https://www.quizkraft.tech/pdf-to-quiz",
+    siteName: "QuizKraft",
+    images: ["/pdf-to-quiz/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PDF to Quiz Converter | QuizKraft",
+    description: "Turn study guides, textbook chapters, and PDF notes into quizzes instantly with AI.",
+    images: ["/pdf-to-quiz/opengraph-image"],
   },
 };
 
@@ -43,7 +62,7 @@ const softwareSchema = {
   url: "https://www.quizkraft.tech/pdf-to-quiz",
   description:
     "AI quiz generator that creates quizzes from pasted source material — notes, textbook chapters, articles — in about 10 seconds.",
-  offers: { "@type": "Offer", price: "9", priceCurrency: "USD" },
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 };
 
 const howToSchema = {
@@ -108,7 +127,7 @@ export default async function PdfToQuizPage() {
             about the topic. Questions from <em>your</em> content.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
-            {["Questions from your exact text", "10-second generation", "Active recall practice"].map((s) => (
+            {["Questions from your exact text", "10-second generation", "Active recall practice", "5 free generations / month"].map((s) => (
               <span key={s} className="flex items-center gap-1.5">
                 <Check className="h-4 w-4 text-correct" />
                 {s}
@@ -119,7 +138,7 @@ export default async function PdfToQuizPage() {
       </section>
 
       {/* Tool embed */}
-      <QuizGeneratorForm {...props} />
+      <QuizGeneratorForm {...props} initialMode="source" />
 
       {/* How it works */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface border-t border-hairline">
@@ -157,7 +176,7 @@ export default async function PdfToQuizPage() {
             Why quizzing yourself is better than re-reading
           </h2>
           <p className="text-muted leading-relaxed mb-4">
-            Passive re-reading is one of the least effective study strategies. You recognize words you've
+            Passive re-reading is one of the least effective study strategies. You recognize words you&apos;ve
             seen before and mistake that recognition for understanding. Active recall — trying to retrieve
             information before looking it up — forces your brain to actually reconstruct the knowledge.
           </p>
@@ -173,6 +192,7 @@ export default async function PdfToQuizPage() {
         <div className="max-w-4xl mx-auto flex flex-wrap items-center gap-6">
           <p className="text-sm font-medium text-ink">Also on QuizKraft:</p>
           {[
+            { href: "/youtube-to-quiz", label: "YouTube to Quiz" },
             { href: "/quiz-generator", label: "AI Quiz Generator" },
             { href: "/worksheet-generator", label: "Worksheet Generator" },
             { href: "/quiz-maker-for-teachers", label: "Quiz Maker for Teachers" },
@@ -214,10 +234,11 @@ export default async function PdfToQuizPage() {
           className="text-3xl font-medium text-ink tracking-[-0.02em] mb-4"
           style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
         >
-          Start with one free quiz.
+          Start with 5 free quiz generations.
         </h2>
-        <p className="text-muted mb-2 text-sm">Source material input is a Pro feature.</p>
-        <p className="text-muted mb-6 text-sm">Try standard topic generation free — upgrade to Pro for your own content.</p>
+        <p className="text-muted mb-6 text-sm max-w-md mx-auto">
+          Paste notes, textbook chapters, or YouTube links. Upgrade to Pro for unlimited generations and watermark-free PDF exports.
+        </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/signup"

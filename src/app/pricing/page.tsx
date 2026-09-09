@@ -4,16 +4,33 @@ import { Check } from "lucide-react";
 import { auth } from "@/auth";
 import CheckoutButton from "@/components/CheckoutButton";
 import { JsonLd } from "@/components/JsonLd";
+import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Pricing | QuizKraft",
+  title: "Simple & Affordable Pricing for Teachers | QuizKraft",
   description:
-    "QuizKraft pricing. Try free with 1 worksheet, or upgrade to Pro for unlimited AI worksheet generation, PDF export, and source material upload.",
+    "Try QuizKraft free with 5 generations every month, or upgrade to Pro ($9/mo) for unlimited generations, watermark-free PDF exports, and saved quiz history.",
   alternates: { canonical: "https://www.quizkraft.tech/pricing" },
+  keywords: [
+    "QuizKraft pricing",
+    "free teacher worksheet plan",
+    "affordable AI quiz generator",
+    "unlimited worksheet generator subscription",
+    "school plan AI tools"
+  ],
   openGraph: {
-    title: "Pricing | QuizKraft",
-    description: "Start free or upgrade to Pro for unlimited worksheets.",
+    title: "Simple & Affordable Pricing for Teachers | QuizKraft",
+    description: "Start free with 5 generations monthly or upgrade to Pro for unlimited AI worksheets, quizzes, and clean PDF exports.",
     type: "website",
+    url: "https://www.quizkraft.tech/pricing",
+    siteName: "QuizKraft",
+    images: ["/pricing/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "QuizKraft Pricing & Plans",
+    description: "5 free generations monthly to start. Upgrade to Pro for unlimited worksheets & quizzes.",
+    images: ["/pricing/opengraph-image"],
   },
 };
 
@@ -22,13 +39,14 @@ const freeTier = {
   price: "$0",
   per: "/month",
   features: [
-    "1 free worksheet",
-    "All worksheet types",
+    `5 free generations every month`,
+    `2 free YouTube & notes/PDF generations`,
+    "All question types (MCQ, True/False, Short Answer, Fill-in)",
     "All grade levels (K–12 to college)",
     "Answer keys + explanations",
-    "Quiz mode + study loop",
-    "Print",
-    "QuizKraft watermark on exports",
+    "Interactive quiz mode + adaptive study loop",
+    "Browser printing",
+    "QuizKraft watermark on PDF exports",
   ],
 };
 
@@ -38,15 +56,14 @@ const proTier = {
   per: "/month",
   yearlyPrice: "$7",
   features: [
-    "Unlimited worksheet generation",
-    "All worksheet types",
-    "All grade levels (K–12 to college)",
-    "Answer keys + explanations",
-    "Quiz mode + study loop",
-    "PDF export, no watermark",
-    "Paste source material to generate from your own notes",
-    "Save unlimited worksheets to library",
-    "Priority AI generation",
+    "Unlimited worksheet & quiz generations",
+    "Unlimited YouTube & PDF uploads",
+    "Clean PDF exports with NO watermark",
+    "Save unlimited quizzes to library & dashboard",
+    "All question types & grade levels",
+    "Answer keys + in-depth explanations",
+    "Interactive study loop & retake modes",
+    "Priority AI processing speed",
   ],
 };
 
@@ -56,29 +73,40 @@ const schoolTier = {
   per: "/teacher/month",
   features: [
     "Everything in Pro",
-    "Shared team library",
+    "Shared department & school library",
     "Class & student management",
-    "Multiple seats, centralized billing",
-    "Priority support",
+    "Multiple teacher seats with centralized billing",
+    "Priority dedicated support",
   ],
 };
 
 const faqs = [
-  { q: "Can I cancel anytime?", a: "Yes. Cancel from your billing portal at any time. You keep Pro access until the end of your billing period." },
-  { q: "How many free worksheets do I get?", a: "You get 1 free worksheet to try — no credit card required. Upgrade to Pro any time for unlimited generation." },
-  { q: "Why is PDF export Pro-only?", a: "Free users can print from their browser with a small QuizKraft watermark. Pro users get clean PDF export with no branding at all." },
-  { q: "What payment methods do you accept?", a: "All major credit and debit cards via Polar. Your payment info is never stored on our servers." },
+  {
+    q: "How many free generations do I get?",
+    a: `You get ${FREE_TOPIC_LIMIT} free generations every month (including ${FREE_SOURCE_LIMIT} YouTube/source material generations) — completely free with no credit card required. Usage resets every 30 days.`,
+  },
+  {
+    q: "Can I cancel my Pro subscription anytime?",
+    a: "Yes. You can cancel your subscription from your billing portal with one click at any time. You will retain full Pro access until the end of your current billing period.",
+  },
+  {
+    q: "Why is watermark-free PDF export Pro-only?",
+    a: "Free users can generate quizzes and print them from their browser or download a PDF containing a discrete QuizKraft watermark. Pro users get clean, fully unbranded PDF worksheets formatted for professional classroom distribution.",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "We accept all major credit and debit cards (Visa, Mastercard, American Express) securely processed via Polar. Your payment credentials are encrypted and never touch our servers.",
+  },
 ];
 
 const pricingFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "Can I cancel anytime?", acceptedAnswer: { "@type": "Answer", text: "Yes. Cancel from your billing portal at any time. You keep Pro access until the end of your billing period." } },
-    { "@type": "Question", name: "How many free worksheets do I get?", acceptedAnswer: { "@type": "Answer", text: "You get 1 free worksheet to try — no credit card required. Upgrade to Pro any time for unlimited generation." } },
-    { "@type": "Question", name: "Why is PDF export Pro-only?", acceptedAnswer: { "@type": "Answer", text: "Free users can print from their browser with a small QuizKraft watermark. Pro users get clean PDF export with no branding at all." } },
-    { "@type": "Question", name: "What payment methods do you accept?", acceptedAnswer: { "@type": "Answer", text: "All major credit and debit cards via Polar. Your payment info is never stored on our servers." } },
-  ],
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 const breadcrumbSchema = {
@@ -137,6 +165,7 @@ export default async function PricingPage() {
       <JsonLd data={pricingFaqSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={productSchema} />
+
       {/* Header */}
       <div className="border-b border-hairline bg-surface py-14 px-4 text-center">
         <h1
@@ -145,27 +174,29 @@ export default async function PricingPage() {
         >
           Simple, honest pricing.
         </h1>
-        <p className="text-muted">Start free. Upgrade when you need more.</p>
+        <p className="text-muted">Start free with 5 monthly generations. Upgrade when you need unlimited power.</p>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Tiers */}
         <div className="grid md:grid-cols-3 gap-5 mb-16">
           {/* Free */}
-          <div className="bg-surface rounded-2xl border border-hairline p-8">
-            <h2 className="text-xl font-semibold text-ink mb-1">{freeTier.name}</h2>
-            <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-4xl font-bold text-ink">{freeTier.price}</span>
-              <span className="text-muted text-sm">{freeTier.per}</span>
+          <div className="bg-surface rounded-2xl border border-hairline p-8 flex flex-col justify-between">
+            <div>
+              <h2 className="text-xl font-semibold text-ink mb-1">{freeTier.name}</h2>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold text-ink">{freeTier.price}</span>
+                <span className="text-muted text-sm">{freeTier.per}</span>
+              </div>
+              <ul className="space-y-3 mb-8">
+                {freeTier.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-muted">
+                    <Check className="h-4 w-4 text-correct flex-shrink-0 mt-0.5" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-3 mb-8">
-              {freeTier.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-muted">
-                  <Check className="h-4 w-4 text-correct flex-shrink-0 mt-0.5" />
-                  {f}
-                </li>
-              ))}
-            </ul>
             {session ? (
               <Link
                 href="/dashboard"
@@ -184,23 +215,25 @@ export default async function PricingPage() {
           </div>
 
           {/* Pro */}
-          <div className="relative bg-accent rounded-2xl p-8 text-white overflow-hidden">
+          <div className="relative bg-accent rounded-2xl p-8 text-white overflow-hidden flex flex-col justify-between shadow-md shadow-accent/20">
             <div className="absolute top-4 right-4 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">
               POPULAR
             </div>
-            <h2 className="text-xl font-semibold mb-1">{proTier.name}</h2>
-            <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-4xl font-bold">{proTier.price}</span>
-              <span className="text-white/60 text-sm">{proTier.per}</span>
+            <div>
+              <h2 className="text-xl font-semibold mb-1">{proTier.name}</h2>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold">{proTier.price}</span>
+                <span className="text-white/60 text-sm">{proTier.per}</span>
+              </div>
+              <ul className="space-y-3 mb-8">
+                {proTier.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/90">
+                    <Check className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-3 mb-8">
-              {proTier.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-white/90">
-                  <Check className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
-                  {f}
-                </li>
-              ))}
-            </ul>
             {isPro ? (
               <div className="w-full flex items-center justify-center px-6 py-3 bg-white/20 rounded-xl font-semibold text-white text-sm cursor-default">
                 Current plan
@@ -211,31 +244,33 @@ export default async function PricingPage() {
           </div>
 
           {/* School */}
-          <div className="bg-surface rounded-2xl border border-hairline p-8">
-            <h2 className="text-xl font-semibold text-ink mb-1">{schoolTier.name}</h2>
-            <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-4xl font-bold text-ink">{schoolTier.price}</span>
-              <span className="text-muted text-sm">{schoolTier.per}</span>
+          <div className="bg-surface rounded-2xl border border-hairline p-8 flex flex-col justify-between">
+            <div>
+              <h2 className="text-xl font-semibold text-ink mb-1">{schoolTier.name}</h2>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold text-ink">{schoolTier.price}</span>
+                <span className="text-muted text-sm">{schoolTier.per}</span>
+              </div>
+              <ul className="space-y-3 mb-8">
+                {schoolTier.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-muted">
+                    <Check className="h-4 w-4 text-correct flex-shrink-0 mt-0.5" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-3 mb-8">
-              {schoolTier.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-muted">
-                  <Check className="h-4 w-4 text-correct flex-shrink-0 mt-0.5" />
-                  {f}
-                </li>
-              ))}
-            </ul>
             <a
-              href="mailto:alishbakhalid766@gmail.com"
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="w-full flex items-center justify-center px-6 py-3 border border-hairline rounded-xl text-ink font-semibold hover:bg-canvas transition-colors text-sm"
             >
-              Contact us
+              Contact school team
             </a>
           </div>
         </div>
 
         <p className="text-center text-sm text-muted mb-16">
-          Cancel anytime. No lock-in. 30-day money-back guarantee on Pro.
+          Cancel anytime. No lock-in contracts. 30-day money-back guarantee on Pro.
         </p>
 
         {/* FAQ */}
