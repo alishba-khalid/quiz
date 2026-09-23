@@ -2,12 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { GoogleGenAI } from "@google/genai";
-import {
-  FREE_TOPIC_LIMIT,
-  FREE_SOURCE_LIMIT,
-  MAX_TRANSCRIPT_CHARS,
-} from "@/lib/constants";
-import { checkGuestRateLimit, recordGuestUsage, getClientIp } from "@/lib/rate-limiter";
+import { FREE_LIMIT, MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
 
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
@@ -17,6 +12,13 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 export async function POST(req: NextRequest) {
   try {
     const session = await auth();
+    if (!session?.user?.email) {
+      return NextResponse.json(
+        { error: "Please log in to generate quizzes.", code: "AUTH_REQUIRED" },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
     const {
       subject,
@@ -33,7 +35,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Topic and grade are required." }, { status: 400 });
     }
 
-    const isSourceGeneration = Boolean(sourceMaterial && sourceMaterial.trim().length > 0);
     const qCount = Math.min(Math.max(parseInt(questionsCount, 10) || 5, 3), 15);
     const types: string[] =
       Array.isArray(questionTypes) && questionTypes.length > 0
@@ -44,87 +45,45 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "AI service is not configured." }, { status: 500 });
     }
 
-    let user: any = null;
-    let isPro = false;
-    const clientIp = getClientIp(req);
+    const user = await db.user.findUnique({ where: { email: session.user.email } });
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
 
-    if (session?.user?.email) {
-      user = await db.user.findUnique({ where: { email: session.user.email } });
-      if (!user) {
-        return NextResponse.json({ error: "User not found" }, { status: 404 });
-      }
+    const isPro = user.plan === "PRO";
 
-      isPro = user.plan === "PRO";
+    // DB-based rate limit: check most recent worksheet creation time
+    const now = Date.now();
+    const recent = await db.worksheet.findFirst({
+      where: { userId: user.id },
+      orderBy: { createdAt: "desc" },
+      select: { createdAt: true },
+    });
+    if (recent && now - recent.createdAt.getTime() < 10_000) {
+      return NextResponse.json(
+        { error: "Please wait 10 seconds between generations." },
+        { status: 429 }
+      );
+    }
 
-      // DB-based rate limit: check most recent worksheet creation time
-      const now = Date.now();
-      const recent = await db.worksheet.findFirst({
-        where: { userId: user.id },
-        orderBy: { createdAt: "desc" },
-        select: { createdAt: true },
+    // Lazy monthly reset: if lastResetDate is older than 30 days, reset usage
+    const thirtyDaysAgo = new Date(now - 30 * 24 * 60 * 60 * 1000);
+    if (!user.lastResetDate || user.lastResetDate < thirtyDaysAgo) {
+      await db.user.update({
+        where: { id: user.id },
+        data: { usageCount: 0, lastResetDate: new Date() },
       });
-      if (recent && now - recent.createdAt.getTime() < 10_000) {
-        return NextResponse.json(
-          { error: "Please wait 10 seconds between generations." },
-          { status: 429 }
-        );
-      }
+      user.usageCount = 0;
+    }
 
-      // Lazy monthly reset: if lastResetDate is older than 30 days, reset usage
-      const thirtyDaysAgo = new Date(now - 30 * 24 * 60 * 60 * 1000);
-      if (!user.lastResetDate || user.lastResetDate < thirtyDaysAgo) {
-        await db.user.update({
-          where: { id: user.id },
-          data: { usageCount: 0, lastResetDate: new Date() },
-        });
-        user.usageCount = 0;
-      }
-
-      if (!isPro) {
-        // Check source generation limit (2 per month for YouTube / PDF / custom notes)
-        if (isSourceGeneration) {
-          // Count source generations since last reset
-          const resetThreshold = user.lastResetDate > thirtyDaysAgo ? user.lastResetDate : thirtyDaysAgo;
-          const sourceCount = await db.worksheet.count({
-            where: {
-              userId: user.id,
-              createdAt: { gte: resetThreshold },
-              // worksheets created from source material or youtube
-              OR: [
-                { topic: { contains: "YouTube", mode: "insensitive" } },
-                { topic: { contains: "Source", mode: "insensitive" } },
-                { topic: { contains: "Notes", mode: "insensitive" } },
-                { title: { contains: "YouTube", mode: "insensitive" } },
-              ],
-            },
-          });
-
-          if (sourceCount >= FREE_SOURCE_LIMIT) {
-            return NextResponse.json(
-              {
-                error: `You've used your ${FREE_SOURCE_LIMIT} free YouTube/source generations this month. Upgrade to Pro for unlimited generations!`,
-              },
-              { status: 403 }
-            );
-          }
-        }
-
-        // Check total topic generation limit (5 per month)
-        if (user.usageCount >= FREE_TOPIC_LIMIT) {
-          return NextResponse.json(
-            {
-              error: `You've used your ${FREE_TOPIC_LIMIT} free generations this month. Upgrade to Pro for unlimited generation.`,
-            },
-            { status: 403 }
-          );
-        }
-      }
-    } else {
-      // Guest generation rate limiting: 2/day per IP + sitewide cap
-      const check = checkGuestRateLimit(clientIp);
-      if (!check.allowed) {
-        return NextResponse.json({ error: check.reason }, { status: 429 });
-      }
+    if (!isPro && user.usageCount >= FREE_LIMIT) {
+      return NextResponse.json(
+        {
+          error: "You've used your free preview generation for this month. Upgrade to Pro for unlimited generation.",
+          code: "LIMIT_REACHED",
+        },
+        { status: 403 }
+      );
     }
 
     // Prepare source text (capped at MAX_TRANSCRIPT_CHARS)
@@ -195,29 +154,22 @@ Rules:
       explanation: q.explanation,
     }));
 
-    let worksheetId = `guest_${Date.now()}`;
-
-    if (user) {
-      const worksheet = await db.worksheet.create({
-        data: {
-          userId: user.id,
-          title: data.title || (videoInfo?.title ? `${videoInfo.title} Quiz` : `${topic} Worksheet`),
-          topic: videoInfo?.title ? `YouTube: ${videoInfo.title}` : topic,
-          gradeLevel: grade,
-          worksheetType: types.join(","),
-          questionsCount: qCount,
-          content: content as any,
-          answerKey: answerKey as any,
-        },
-      });
-      worksheetId = worksheet.id;
-      await db.user.update({ where: { id: user.id }, data: { usageCount: { increment: 1 } } });
-    } else {
-      recordGuestUsage(clientIp);
-    }
+    const worksheet = await db.worksheet.create({
+      data: {
+        userId: user.id,
+        title: data.title || (videoInfo?.title ? `${videoInfo.title} Quiz` : `${topic} Worksheet`),
+        topic: videoInfo?.title ? `YouTube: ${videoInfo.title}` : topic,
+        gradeLevel: grade,
+        worksheetType: types.join(","),
+        questionsCount: qCount,
+        content: content as any,
+        answerKey: answerKey as any,
+      },
+    });
+    await db.user.update({ where: { id: user.id }, data: { usageCount: { increment: 1 } } });
 
     return NextResponse.json({
-      id: worksheetId,
+      id: worksheet.id,
       title: data.title || (videoInfo?.title ? `${videoInfo.title} Quiz` : `${topic} Worksheet`),
       subject: subject || topic,
       grade,
@@ -227,7 +179,6 @@ Rules:
       questions: content,
       answerKey,
       isPro,
-      isGuest: !user,
       videoInfo: videoInfo || null,
     });
   } catch (error: any) {

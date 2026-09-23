@@ -37,6 +37,7 @@ export default function CheckoutButton({ isLoggedIn }: { isLoggedIn: boolean }) 
   return (
     <div className="space-y-2">
       <button
+        type="button"
         onClick={handleCheckout}
         disabled={loading}
         className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white text-accent font-semibold rounded-xl hover:bg-accent-soft disabled:opacity-60 disabled:cursor-not-allowed transition-colors shadow-sm cursor-pointer"

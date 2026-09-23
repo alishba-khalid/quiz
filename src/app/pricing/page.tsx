@@ -4,23 +4,23 @@ import { Check } from "lucide-react";
 import { auth } from "@/auth";
 import CheckoutButton from "@/components/CheckoutButton";
 import { JsonLd } from "@/components/JsonLd";
-import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
+import { FREE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
+import { PLANS } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Simple & Affordable Pricing for Teachers | QuizKraft",
   description:
-    "Try QuizKraft free with 5 generations every month, or upgrade to Pro ($9/mo) for unlimited generations, watermark-free PDF exports, and saved quiz history.",
+    `Try QuizKraft with ${FREE_LIMIT} preview generation per month on the Free plan, or upgrade to Pro ($9/mo) for unlimited generations, watermark-free PDF exports, and saved quiz history.`,
   alternates: { canonical: "https://www.quizkraft.tech/pricing" },
   keywords: [
     "QuizKraft pricing",
-    "free teacher worksheet plan",
     "affordable AI quiz generator",
     "unlimited worksheet generator subscription",
     "school plan AI tools"
   ],
   openGraph: {
     title: "Simple & Affordable Pricing for Teachers | QuizKraft",
-    description: "Start free with 5 generations monthly or upgrade to Pro for unlimited AI worksheets, quizzes, and clean PDF exports.",
+    description: `Free plan: ${FREE_LIMIT} preview generation per month. Pro: unlimited AI worksheets, quizzes, and clean PDF exports.`,
     type: "website",
     url: "https://www.quizkraft.tech/pricing",
     siteName: "QuizKraft",
@@ -29,18 +29,16 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QuizKraft Pricing & Plans",
-    description: `${FREE_TOPIC_LIMIT} free generations monthly to start. Upgrade to Pro for unlimited worksheets & quizzes.`,
+    description: `${FREE_LIMIT} preview generation per month on Free. Upgrade to Pro for unlimited worksheets & quizzes.`,
     images: ["/pricing/opengraph-image"],
   },
 };
 
 const freeTier = {
-  name: "Free",
-  price: "$0",
-  per: "/month",
+  ...PLANS.free,
   features: [
-    `${FREE_TOPIC_LIMIT} free generations every month`,
-    `${FREE_SOURCE_LIMIT} free YouTube & notes/PDF generations`,
+    `${FREE_LIMIT} preview generation per month (topic, YouTube or notes)`,
+    "Account required",
     "All question types (MCQ, True/False, Short Answer, Fill-in)",
     "All grade levels (K–12 to college)",
     "Answer keys + explanations",
@@ -51,9 +49,7 @@ const freeTier = {
 };
 
 const proTier = {
-  name: "Pro",
-  price: "$9",
-  per: "/month",
+  ...PLANS.pro,
   yearlyPrice: "$7",
   features: [
     "Unlimited worksheet & quiz generations",
@@ -68,9 +64,7 @@ const proTier = {
 };
 
 const schoolTier = {
-  name: "School / Team",
-  price: "$19",
-  per: "/teacher/month",
+  ...PLANS.school,
   features: [
     "Everything in Pro",
     "Shared department & school library",
@@ -82,8 +76,8 @@ const schoolTier = {
 
 const faqs = [
   {
-    q: "How many free generations do I get?",
-    a: `You get ${FREE_TOPIC_LIMIT} free generations every month (including ${FREE_SOURCE_LIMIT} YouTube/source material generations) — completely free with no credit card required. Usage resets every 30 days.`,
+    q: "What does the Free plan include?",
+    a: `The Free plan is a preview: with an account you get ${FREE_LIMIT} generation per month (topic, YouTube or notes) so you can try QuizKraft before paying. No credit card is needed for it. For regular use you need Pro or School. Usage resets every 30 days.`,
   },
   {
     q: "Can I cancel my Pro subscription anytime?",
@@ -174,7 +168,7 @@ export default async function PricingPage() {
         >
           Simple, honest pricing.
         </h1>
-        <p className="text-muted">Start free with 5 monthly generations. Upgrade when you need unlimited power.</p>
+        <p className="text-muted">Try {FREE_LIMIT} preview generation a month on Free. Upgrade to Pro for unlimited quizzes.</p>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -209,7 +203,7 @@ export default async function PricingPage() {
                 href="/signup"
                 className="w-full flex items-center justify-center px-6 py-3 border border-hairline rounded-xl text-ink font-semibold hover:bg-canvas transition-colors text-sm"
               >
-                Get started free
+                Create account
               </Link>
             )}
           </div>

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Free AI Worksheet Generator | QuizKraft";
+export const alt = "AI Worksheet Generator | QuizKraft";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -48,7 +48,7 @@ export default function Image() {
             maxWidth: "950px",
           }}
         >
-          Free AI Worksheet Generator
+          AI Worksheet Generator
         </div>
 
         <div style={{ fontSize: "26px", color: "#5F6C7B", marginBottom: "48px" }}>
@@ -65,7 +65,7 @@ export default function Image() {
             fontWeight: 600,
           }}
         >
-          5 Free Generations Monthly · quizkraft.tech
+          Unlimited with Pro · quizkraft.tech
         </div>
       </div>
     ),

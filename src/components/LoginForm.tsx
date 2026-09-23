@@ -142,7 +142,7 @@ export default function LoginForm({ googleEnabled, githubEnabled }: { googleEnab
       <p className="mt-6 text-center text-sm text-muted">
         Don&apos;t have an account?{" "}
         <Link href="/signup" className="text-accent hover:text-accent-dark font-medium">
-          Sign up free
+          Create an account
         </Link>
       </p>
     </div>

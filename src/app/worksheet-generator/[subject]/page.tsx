@@ -18,8 +18,8 @@ export async function generateMetadata({
   const data = getWorksheetSubject(subject);
   if (!data) return { title: "Not Found" };
 
-  const title = `Free AI ${data.name} Worksheet Generator — ${data.gradeRange} | QuizKraft`;
-  const description = `Generate clean, printable ${data.name.toLowerCase()} worksheets and practice sheets in seconds — multiple question types with instant answer keys. ${data.gradeRange}. Free to try.`;
+  const title = `AI ${data.name} Worksheet Generator — ${data.gradeRange} | QuizKraft`;
+  const description = `Generate clean, printable ${data.name.toLowerCase()} worksheets and practice sheets in seconds — multiple question types with instant answer keys. ${data.gradeRange}.`;
 
   return {
     title,
@@ -29,7 +29,7 @@ export async function generateMetadata({
     },
     keywords: [
       `AI ${data.name.toLowerCase()} worksheet generator`,
-      `free printable ${data.name.toLowerCase()} worksheets`,
+      `printable ${data.name.toLowerCase()} worksheets`,
       `${data.name.toLowerCase()} worksheet maker for teachers`,
       `printable ${data.name.toLowerCase()} test with answer key`,
       `${data.name.toLowerCase()} practice sheet creator`,
@@ -141,7 +141,7 @@ export default async function WorksheetSubjectPage({
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
             >
               <Printer className="h-4 w-4" />
-              Generate {/^[aeiou]/i.test(data.name) ? "an" : "a"} {data.name.toLowerCase()} worksheet free
+              Generate {/^[aeiou]/i.test(data.name) ? "an" : "a"} {data.name.toLowerCase()} worksheet
             </Link>
             <Link
               href="/quiz-generator"
@@ -270,7 +270,7 @@ export default async function WorksheetSubjectPage({
             Generate your {data.name.toLowerCase()} worksheet in 10 seconds.
           </h2>
           <p className="text-sm text-muted mb-6">
-            Free to try. Answer key included. Ready to print.
+            Answer key included. Ready to print. Unlimited with Pro.
           </p>
           <Link
             href="/worksheet-generator"

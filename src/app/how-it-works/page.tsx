@@ -178,7 +178,7 @@ export default function HowItWorksPage() {
             className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm text-sm"
           >
             <Zap className="h-4 w-4" />
-            Create assessment free
+            Create an assessment
           </Link>
           <Link
             href="/features"

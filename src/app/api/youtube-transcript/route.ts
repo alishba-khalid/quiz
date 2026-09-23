@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { auth } from "@/auth";
 import { getYouTubeVideoTranscript, YouTubeError } from "@/lib/youtube";
 import { checkTranscriptFetchLimit, recordTranscriptFetch, getClientIp } from "@/lib/rate-limiter";
 
@@ -7,6 +8,14 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
+    const session = await auth();
+    if (!session?.user?.email) {
+      return NextResponse.json(
+        { error: "Please log in to generate quizzes from YouTube videos.", code: "AUTH_REQUIRED" },
+        { status: 401 }
+      );
+    }
+
     const clientIp = getClientIp(req);
     const limit = checkTranscriptFetchLimit(clientIp);
     if (!limit.allowed) {

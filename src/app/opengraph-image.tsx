@@ -65,7 +65,7 @@ export default function Image() {
             fontWeight: 600,
           }}
         >
-          Free to start · quizkraft.tech
+          Pro from $9/mo · quizkraft.tech
         </div>
       </div>
     ),

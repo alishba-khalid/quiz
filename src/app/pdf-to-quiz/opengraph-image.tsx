@@ -65,7 +65,7 @@ export default function Image() {
             fontWeight: 600,
           }}
         >
-          5 Free Generations · quizkraft.tech
+          Unlimited with Pro · quizkraft.tech
         </div>
       </div>
     ),

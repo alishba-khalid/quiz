@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import DashboardClient from "@/components/DashboardClient";
 import BillingPortalButton from "@/components/BillingPortalButton";
-import { FREE_TOPIC_LIMIT } from "@/lib/constants";
+import { FREE_LIMIT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Dashboard | QuizKraft",
@@ -45,7 +45,7 @@ export default async function DashboardPage({
   if (!user) redirect("/login");
 
   const isPro = user.plan === "PRO";
-  const remaining = Math.max(0, FREE_TOPIC_LIMIT - user.usageCount);
+  const remaining = Math.max(0, FREE_LIMIT - user.usageCount);
   const showSuccess = params.success === "true";
 
   const worksheets = user.worksheets.map((w: (typeof user.worksheets)[number]) => ({
@@ -84,7 +84,7 @@ export default async function DashboardPage({
           </div>
           <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
             <div className="text-2xl font-bold text-accent">
-              {isPro ? "∞" : `${user.usageCount}/${FREE_TOPIC_LIMIT}`}
+              {isPro ? "∞" : `${user.usageCount}/${FREE_LIMIT}`}
             </div>
             <div className="text-xs text-muted mt-1">This month</div>
           </div>
@@ -109,8 +109,8 @@ export default async function DashboardPage({
               <p className="text-sm font-semibold text-ink">Unlock unlimited worksheets + watermark-free PDF export</p>
               <p className="text-xs text-muted mt-0.5">
                 {remaining > 0
-                  ? `${remaining} free generation${remaining === 1 ? "" : "s"} remaining this month.`
-                  : `You've used your ${FREE_TOPIC_LIMIT} free generations for this month.`}
+                  ? `${remaining} preview generation${remaining === 1 ? "" : "s"} remaining this month.`
+                  : "You've used your free preview generation for this month."}
               </p>
             </div>
             <Link

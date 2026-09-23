@@ -22,18 +22,18 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "QuizKraft | AI Worksheet & Quiz Generator for Teachers",
   description:
-    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds. Free AI quiz maker for teachers with instant answer keys and adaptive retake study loops.",
+    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds. AI quiz maker for teachers with instant answer keys and adaptive retake study loops.",
   metadataBase: new URL("https://www.quizkraft.tech"),
   alternates: {
     canonical: "https://www.quizkraft.tech",
   },
   keywords: [
     "AI worksheet generator",
-    "free printable worksheet maker",
+    "printable worksheet maker",
     "quiz maker for teachers",
     "AI quiz generator",
     "pdf to quiz converter",
-    "free test maker for teachers",
+    "test maker for teachers",
     "multiple choice quiz generator",
     "classroom assessment tool",
     "printable quiz with answer key",

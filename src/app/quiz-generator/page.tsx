@@ -31,13 +31,13 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Free AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
+  title: "AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
   description:
-    "Generate a complete custom quiz in 10 seconds with AI — multiple choice, short answer, true/false, fill-in-the-blank, mixed automatically. Answer keys included. Free to try.",
+    "Generate a complete custom quiz in 10 seconds with AI — multiple choice, short answer, true/false, fill-in-the-blank, mixed automatically. Answer keys included. Try 1 preview quiz on the Free plan.",
   alternates: { canonical: "https://www.quizkraft.tech/quiz-generator" },
   keywords: [
     "AI quiz generator",
-    "free quiz maker online",
+    "quiz maker online",
     "multiple choice quiz generator",
     "AI test generator for teachers",
     "quiz generator with answer key",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     "adaptive study quiz generator"
   ],
   openGraph: {
-    title: "Free AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
+    title: "AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
     description: "Generate a complete quiz in 10 seconds. Any subject, any grade level. Instant answer keys included.",
     type: "website",
     url: "https://www.quizkraft.tech/quiz-generator",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Quiz Generator | QuizKraft",
+    title: "AI Quiz Generator | QuizKraft",
     description: "Create mixed-format quizzes with answer keys in 10 seconds using AI.",
     images: ["/opengraph-image"],
   },
@@ -94,7 +94,7 @@ const faqSchema = {
 
 const features = [
   { title: "4 question types", desc: "Multiple choice, true/false, short answer, and fill-in-the-blank — mix them all in one quiz." },
-  { title: "Answer keys included", desc: "Every quiz comes with a complete answer key and explanations for every question, free on all plans." },
+  { title: "Answer keys included", desc: "Every quiz comes with a complete answer key and explanations for every question, on every plan." },
   { title: "Quiz mode study loop", desc: "Students answer online, get scored instantly, and wrong answers cycle back until mastered." },
   { title: "Any subject, any grade", desc: "K-12 to college. Math, science, history, languages, ELA — just type the topic." },
   { title: "Generate from your material", desc: "Paste notes or a chapter and get questions built from your exact content. Available on Pro." },
@@ -128,7 +128,7 @@ export default async function QuizGeneratorPage() {
             Multiple choice, short answer, true/false, and fill-in-the-blank — mixed automatically.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
-            {["Free to try", "Answer keys included", "No card required"].map((s) => (
+            {["Answer keys included", "Quiz mode study loop", "Unlimited with Pro"].map((s) => (
               <span key={s} className="flex items-center gap-1.5">
                 <Check className="h-4 w-4 text-correct" />
                 {s}
@@ -234,15 +234,15 @@ export default async function QuizGeneratorPage() {
           className="text-3xl font-medium text-ink tracking-[-0.02em] mb-4"
           style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
         >
-          Start with one free quiz.
+          Try one preview quiz, then go unlimited.
         </h2>
-        <p className="text-muted mb-6 text-sm">No card required. Takes 30 seconds to sign up.</p>
+        <p className="text-muted mb-6 text-sm">Create an account for 1 free preview generation a month. Pro is $9/month for unlimited.</p>
         <Link
           href="/signup"
           className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
         >
           <Zap className="h-4 w-4" />
-          Get started free
+          Create account
         </Link>
       </section>
     </div>

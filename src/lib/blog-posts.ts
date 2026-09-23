@@ -47,7 +47,7 @@ Good distractors target common misconceptions. If students often confuse mitosis
 
 **4. Vary question types**
 
-A mix of MCQ, true/false, fill-in-the-blank, and short answer keeps students engaged and tests different cognitive levels. Creating a balanced assessment is easier when you use our [free quiz generator](/quiz-generator) to mix question types automatically, or [turn YouTube video lectures into quizzes](/youtube-to-quiz) to test concepts directly from class videos.
+A mix of MCQ, true/false, fill-in-the-blank, and short answer keeps students engaged and tests different cognitive levels. Creating a balanced assessment is easier when you use our [AI quiz generator](/quiz-generator) to mix question types automatically, or [turn YouTube video lectures into quizzes](/youtube-to-quiz) to test concepts directly from class videos.
 
 **5. Test at the right difficulty level**
 
@@ -55,7 +55,7 @@ A grade-5 question on fractions should test concepts they've been taught — not
 
 The best quiz isn't the hardest one. It's the one that tells you exactly what students know and don't know — and gives them a chance to fill the gaps.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "10-ways-teachers-saving-hours-ai",
@@ -113,7 +113,7 @@ AI can flag structural issues and surface common errors in student writing, givi
 
 The common thread: AI handles the first draft. Teachers bring the judgment, the relationship, and the expertise that no tool can replicate. Used well, AI gives teachers back time to do more of what they actually went into teaching to do.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "turn-any-pdf-into-practice-quiz",
@@ -160,7 +160,7 @@ This workflow works especially well for:
 
 The key insight: passive re-reading is one of the least effective study strategies. Active recall — trying to retrieve information before looking it up — is one of the most effective. Turning your material into a quiz forces active recall in about 60 seconds.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "create-quiz-in-minutes",
@@ -200,7 +200,7 @@ Decide whether to print the quiz as a physical handout or send a digital link fo
 
 By shifting your role from creator to editor, you maintain rigorous standards while recovering hours of prep time.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "best-question-types-assessing-understanding",
@@ -240,7 +240,7 @@ The most effective assessments combine these formats. A mixed quiz containing a 
 
 Ultimately, the best question types are the ones that force students to retrieve, apply, and explain what they've learned, rather than simply guessing from a list.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "how-to-write-good-multiple-choice-questions",
@@ -283,7 +283,7 @@ The goal is to test content knowledge, not reading speed or decoding skills. Avo
 
 By applying these guidelines, you can ensure your multiple-choice questions serve as highly diagnostic, reliable checkpoints for learning.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "how-to-assess-reading-comprehension",
@@ -323,7 +323,7 @@ A strong reading assessment scaffolds these levels. Start with a short literal q
 
 By varying the depth of your questions, you encourage students to read actively, critically, and analytically.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "formative-vs-summative-assessment-explained",
@@ -373,7 +373,7 @@ To build a balanced strategy, try using a [classroom quiz maker](/quiz-generator
 
 By using formative check-ins to guide instruction and summative evaluations to measure final progress, you create a supportive environment where assessment is a tool for growth, not just grading.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "make-worksheet-that-helps-learning",
@@ -409,7 +409,7 @@ Instead of simply having students copy definitions directly from a textbook, con
 
 By focusing on scaffolding, clear design, and active retrieval, you can transform worksheets from simple busywork into powerful, structured learning guides.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "time-saving-tips-for-grading",
@@ -457,7 +457,7 @@ For formative activities, let students grade their own work or swap papers with 
 
 By focusing on these efficiency strategies, you can keep your focus where it belongs: on instructional design and student relationships.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "how-to-differentiate-quizzes",
@@ -498,7 +498,7 @@ Allow students options in how they demonstrate knowledge. For a history quiz, yo
 
 By matching the structure of your quizzes to the diverse needs of your classroom, you create a fair, accessible, and supportive environment where every student has the opportunity to show progress.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "using-ai-to-reduce-teacher-burnout",
@@ -529,11 +529,11 @@ Stuck trying to brainstorm an engaging introduction for a difficult science topi
 
 **4. Create Emergency Sub Plans**
 
-Sickness is stressful enough without worrying about what your class will do while you are away. Generate structured sub plans with worksheets and quizzes in under five minutes using our [free quiz maker](/generator).
+Sickness is stressful enough without worrying about what your class will do while you are away. Generate structured sub plans with worksheets and quizzes in under five minutes using our [AI quiz maker](/generator).
 
 By implementing these automated workflows, you can reclaim your personal time, reduce mental fatigue, and focus on what truly matters: teaching your students.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "active-recall-vs-passive-rereading",
@@ -564,7 +564,7 @@ The key to long-term memory is spacing out retrieval sessions over time. A quick
 
 By shifting from passive review to active recall, students can study less while retaining significantly more.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "how-to-design-math-worksheets",
@@ -596,7 +596,7 @@ A crowded page with small fonts increases cognitive load and can overwhelm stude
 
 By designing worksheets that prioritize conceptual scaffolding over rote repetition, you can help students transition from mechanical calculators to critical math thinkers.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "emergency-sub-plans-guide",
@@ -627,7 +627,7 @@ Conclude the sub lesson with a quick, low-stakes exit ticket. A digital quiz lin
 
 Having a set of pre-arranged templates or using an [online quiz maker](/quiz-generator) means you can stay home, rest, and recover without worrying about classroom chaos.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "retrieval-practice-classroom-strategies",
@@ -658,7 +658,7 @@ Guide students on how to use flashcards effectively, emphasizing the need to spe
 
 Integrating retrieval practice into your daily classroom routine helps students build stronger study habits and reduces test anxiety.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "designing-diagnostic-science-quizzes",
@@ -693,7 +693,7 @@ Use short-answer prompts that ask students to explain the underlying mechanism:
 
 Using a specialized [quiz generator](/quiz-generator) helps you draft balanced question banks featuring these diagnostic layouts. By using quizzes as checkpoints to identify broken mental models, you can adapt your teaching to clear up confusion before final unit tests.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "vocabulary-acquisition-techniques",
@@ -724,7 +724,7 @@ Instead of definition-matching worksheets, use sentence-completion prompts and s
 
 Moving beyond rote memorization ensures that students build a robust vocabulary that supports their reading comprehension and writing skills.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "using-exit-tickets-for-formative-assessment",
@@ -755,7 +755,7 @@ You can use paper slips or digital forms. By using an [online quiz maker](/quiz-
 
 Using exit tickets daily ensures that you never move on to new content while leaving struggling students behind.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "differentiating-assessments-ell-students",
@@ -786,7 +786,7 @@ If assessing reading comprehension, use a [worksheet creator](/worksheet-generat
 
 By adapting the language of your quizzes, you can ensure that ELL and ESL students have a fair opportunity to demonstrate their content knowledge.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "turn-lecture-slides-into-study-materials",
@@ -819,7 +819,7 @@ Work through the practice questions, check your answers, and review the slides f
 
 By transforming passive slides into active practice, you can study more efficiently and perform better on exams.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "scaffolding-reading-comprehension-sheets",
@@ -847,7 +847,7 @@ End the worksheet with an open-ended short-answer prompt. Challenge students to 
 
 To save time, use a [worksheet maker](/worksheet-generator) to generate scaffolded reading guides that contain a balanced mix of literal, inferential, and analytical questions.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "why-rote-memorization-tests-fail",
@@ -876,7 +876,7 @@ To build future-ready skills, assessments should focus on conceptual application
 
 By designing assessments that challenge students to apply their knowledge, you can build the critical thinking skills they need to navigate a complex world.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "streamlining-parent-teacher-communication",
@@ -896,11 +896,11 @@ Here are ways you can use AI to manage communication:
 - **Drafting Weekly Newsletters**: Outline the main classroom activities of the week, and let an assistant generate a structured, parent-friendly email newsletter.
 - **Polishing Progress Updates**: When sharing academic concerns, use AI to draft emails that focus on positive action steps and collaboration, keeping the tone supportive.
 - **Translating Messages**: Easily translate updates into multiple languages to support ESL families, ensuring every parent stays informed.
-- **Answering Common Questions**: Keep a set of templates for common questions about homework policies or test schedules. You can adapt these templates instantly using our [free quiz maker templates](/generator).
+- **Answering Common Questions**: Keep a set of templates for common questions about homework policies or test schedules. You can adapt these templates instantly using our [quiz maker](/generator).
 
 By letting AI write the first draft, you can keep parents engaged in their child's education without sacrificing your weekends.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "grading-systems-to-recover-weekends",
@@ -926,7 +926,7 @@ Shift your formative quizzes to digital formats. Using self-grading quizzes allo
 
 By implementing these grading systems, you can keep feedback loops tight and reclaim your weekends.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   },
   {
     slug: "connecting-algebra-and-geometry-concepts",
@@ -951,7 +951,7 @@ Designing worksheets that merge these concepts is easy when using a customized [
 
 By connecting algebra and geometry visually, you can help students build a cohesive understanding of mathematics.
 
-[Generate your quiz free →](/generator)`
+[Generate your quiz →](/generator)`
   }
 ];
 

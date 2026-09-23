@@ -65,7 +65,7 @@ export default function Image() {
             fontWeight: 600,
           }}
         >
-          Free for Teachers · quizkraft.tech
+          Built for Teachers · quizkraft.tech
         </div>
       </div>
     ),

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { auth } from "@/auth";
-import { db } from "@/lib/db";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
-import { FREE_TOPIC_LIMIT } from "@/lib/constants";
+import { getGeneratorProps } from "@/lib/generator-props";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -17,20 +15,20 @@ const breadcrumbSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "AI Worksheet & Quiz Generator — Free Studio | QuizKraft",
+  title: "AI Worksheet & Quiz Generator Studio | QuizKraft",
   description:
-    "Generate customized educational worksheets and quizzes for any subject, grade level, and question type using AI. Instant answer key generation. Free — no credit card required.",
+    "Generate customized educational worksheets and quizzes for any subject, grade level, and question type using AI. Instant answer key generation. Try 1 preview generation free with an account.",
   alternates: { canonical: "https://www.quizkraft.tech/generator" },
   keywords: [
     "AI worksheet generator",
     "AI quiz generator",
-    "free test generator studio",
+    "test generator studio",
     "online worksheet creator",
     "printable assessment maker",
     "classroom quiz builder"
   ],
   openGraph: {
-    title: "AI Worksheet & Quiz Generator — Free Studio | QuizKraft",
+    title: "AI Worksheet & Quiz Generator Studio | QuizKraft",
     description: "Generate clean, printable worksheets and quizzes for any subject and grade in seconds with AI.",
     type: "website",
     url: "https://www.quizkraft.tech/generator",
@@ -46,25 +44,13 @@ export const metadata: Metadata = {
 };
 
 export default async function GeneratorPage() {
-  const session = await auth();
-  const isPro = (session?.user as any)?.plan === "PRO";
-
-  let usageCount = 0;
-  if (session?.user?.email && !isPro) {
-    const user = await db.user.findUnique({
-      where: { email: session.user.email },
-      select: { usageCount: true },
-    });
-    usageCount = user?.usageCount ?? 0;
-  }
-
-  const creditsLeft = isPro ? Infinity : Math.max(0, FREE_TOPIC_LIMIT - usageCount);
+  const props = await getGeneratorProps();
 
   return (
     <div className="flex flex-col flex-1 bg-canvas">
       <JsonLd data={breadcrumbSchema} />
       <h1 className="sr-only">AI Worksheet & Quiz Generator</h1>
-      <QuizGeneratorForm isLoggedIn={!!session} isPro={isPro} creditsLeft={creditsLeft} />
+      <QuizGeneratorForm {...props} />
 
       {/* Related tools */}
       <section className="py-8 px-4 sm:px-6 lg:px-8 bg-surface border-t border-hairline no-print">

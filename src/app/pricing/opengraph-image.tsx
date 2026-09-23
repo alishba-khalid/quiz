@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { FREE_TOPIC_LIMIT } from "@/lib/constants";
+import { FREE_LIMIT } from "@/lib/constants";
 
 export const alt = "Simple & Affordable Pricing for Teachers | QuizKraft";
 export const size = { width: 1200, height: 630 };
@@ -53,7 +53,7 @@ export default function Image() {
         </div>
 
         <div style={{ fontSize: "26px", color: "#5F6C7B", marginBottom: "48px" }}>
-          {`${FREE_TOPIC_LIMIT} free generations monthly. Pro for unlimited quizzes & clean PDF exports.`}
+          {`Free: ${FREE_LIMIT} preview generation a month. Pro: unlimited quizzes & clean PDF exports.`}
         </div>
 
         <div
@@ -66,7 +66,7 @@ export default function Image() {
             fontWeight: 600,
           }}
         >
-          Free to start · quizkraft.tech/pricing
+          Pro from $9/mo · quizkraft.tech/pricing
         </div>
       </div>
     ),

@@ -203,7 +203,7 @@ export default function FeaturesPage() {
             className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm text-sm"
           >
             <Zap className="h-4 w-4" />
-            Generate free worksheet
+            Generate a worksheet
           </Link>
           <Link
             href="/pricing"

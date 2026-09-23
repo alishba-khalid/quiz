@@ -6,7 +6,7 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     q: "Is there a free plan?",
-    a: "Yes. The free plan gives you 1 worksheet to try — no credit card required. All question types, answer keys, quiz mode, and the study loop are included. Upgrade to Pro for unlimited generation.",
+    a: "Yes, as a preview. With an account, the free plan gives you 1 generation per month to try QuizKraft — no credit card required. All question types, answer keys, quiz mode, and the study loop are included. Upgrade to Pro for unlimited generation.",
   },
   {
     q: "What subjects and grades does it cover?",

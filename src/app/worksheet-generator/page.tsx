@@ -31,13 +31,13 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Free AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
+  title: "AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
   description:
-    "Generate custom, printable worksheets for any subject and grade in 10 seconds with AI. Includes multiple question formats, instant answer keys, and PDF download. Free to try.",
+    "Generate custom, printable worksheets for any subject and grade in 10 seconds with AI. Includes multiple question formats, instant answer keys, and PDF download. Try 1 preview worksheet on the Free plan.",
   alternates: { canonical: "https://www.quizkraft.tech/worksheet-generator" },
   keywords: [
     "AI worksheet generator",
-    "free printable worksheet maker",
+    "printable worksheet maker",
     "worksheet maker for teachers",
     "printable worksheets with answer key",
     "custom math worksheet generator",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     "printable test generator"
   ],
   openGraph: {
-    title: "Free AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
+    title: "AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
     description: "Generate clean, printable worksheets in 10 seconds. Any subject, any grade level. Instant answer keys included.",
     type: "website",
     url: "https://www.quizkraft.tech/worksheet-generator",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free AI Worksheet Generator | QuizKraft",
+    title: "AI Worksheet Generator | QuizKraft",
     description: "Create print-ready educational worksheets with answer keys in seconds.",
     images: ["/opengraph-image"],
   },
@@ -96,7 +96,7 @@ const features = [
   { title: "Any subject, any grade", desc: "K-12 to college. Math, science, ELA, history, languages — describe the topic and QuizKraft handles the rest." },
   { title: "Mixed question types", desc: "Multiple choice, true/false, short answer, and fill-in-the-blank — set the mix or let QuizKraft decide." },
   { title: "Clean print layout", desc: "Worksheets are formatted for paper from the start: numbered questions, answer lines, and bubble-style MCQ options." },
-  { title: "Answer keys with explanations", desc: "Every worksheet includes an answer key with explanations for each question. Free on all plans." },
+  { title: "Answer keys with explanations", desc: "Every worksheet includes an answer key with explanations for each question, on every plan." },
   { title: "Digital quiz mode", desc: "The same worksheet works as an online quiz. Students get scored and wrong answers come back for review." },
   { title: "Generate from your notes", desc: "Paste in source material — a textbook chapter, article, or study guide — and get questions built from it. (Pro)" },
 ];
@@ -128,7 +128,7 @@ export default async function WorksheetGeneratorPage() {
             set difficulty, and get a print-ready sheet with an answer key in about 10 seconds.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted">
-            {["Free to try", "Answer keys included", "Print-ready layout"].map((s) => (
+            {["Answer keys included", "Print-ready layout", "Unlimited with Pro"].map((s) => (
               <span key={s} className="flex items-center gap-1.5">
                 <Check className="h-4 w-4 text-correct" />
                 {s}
@@ -234,15 +234,15 @@ export default async function WorksheetGeneratorPage() {
           className="text-3xl font-medium text-ink tracking-[-0.02em] mb-4"
           style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
         >
-          Your first worksheet is free.
+          Try one preview worksheet, then go unlimited.
         </h2>
-        <p className="text-muted mb-6 text-sm">No card required. Ready to hand out in under a minute.</p>
+        <p className="text-muted mb-6 text-sm">Create an account for 1 free preview generation a month. Pro is $9/month for unlimited.</p>
         <Link
           href="/signup"
           className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
         >
           <Zap className="h-4 w-4" />
-          Get started free
+          Create account
         </Link>
       </section>
     </div>

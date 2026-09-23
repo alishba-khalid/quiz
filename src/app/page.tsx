@@ -4,16 +4,16 @@ import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight, Fi
 import { YoutubeIcon } from "@/components/Icons";
 import FAQAccordion from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
-import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
+import { FREE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "QuizKraft | Free AI Worksheet Generator & Quiz Maker for Teachers",
+  title: "QuizKraft | AI Worksheet Generator & Quiz Maker for Teachers",
   description:
-    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds — complete with instant answer keys, PDF exports, and adaptive retake study loops. Free to try.",
+    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds — complete with instant answer keys, PDF exports, and adaptive retake study loops. Try 1 preview quiz on the Free plan.",
   alternates: { canonical: "https://www.quizkraft.tech/" },
   keywords: [
     "AI worksheet generator",
-    "free printable worksheet maker",
+    "printable worksheet maker",
     "quiz maker for teachers",
     "AI quiz generator",
     "YouTube to quiz generator",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "adaptive study loop quiz"
   ],
   openGraph: {
-    title: "QuizKraft | Free AI Worksheet Generator & Quiz Maker for Teachers",
+    title: "QuizKraft | AI Worksheet Generator & Quiz Maker for Teachers",
     description: "Generate clean, printable worksheets & quizzes in seconds with AI. Complete with answer keys.",
     type: "website",
     url: "https://www.quizkraft.tech/",
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "QuizKraft | Free AI Worksheet Generator & Quiz Maker",
-    description: "Printable worksheets and online quizzes built by AI in seconds. Free for teachers.",
+    title: "QuizKraft | AI Worksheet Generator & Quiz Maker",
+    description: "Printable worksheets and online quizzes built by AI in seconds. Pro from $9/month.",
     images: ["/opengraph-image"],
   },
 };
@@ -146,14 +146,14 @@ const tiers = [
     price: "$0",
     per: "/month",
     features: [
-      `${FREE_TOPIC_LIMIT} free generations every month`,
-      `${FREE_SOURCE_LIMIT} free YouTube & notes/PDF generations`,
+      `${FREE_LIMIT} preview generation per month`,
+      "Account required",
       "All question types & grade levels",
       "Answer keys with explanations",
       "Quiz mode + active recall loop",
       "Print layout with watermark",
     ],
-    cta: "Get started free",
+    cta: "Create account",
     ctaHref: "/signup",
     highlight: false,
   },
@@ -199,7 +199,7 @@ const softwareAppSchema = {
   operatingSystem: "Web",
   url: "https://www.quizkraft.tech",
   description: "AI-powered worksheet and quiz generator for teachers, tutors, and students. Generate any subject, any grade in seconds.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Free Plan" },
+  offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "19", priceCurrency: "USD", offerCount: 3 },
   featureList: ["AI quiz generation", "YouTube video to quiz", "PDF to quiz", "Worksheet creation", "Multiple question types", "Answer keys", "Quiz mode study loop", "PDF export"],
 };
 
@@ -216,7 +216,7 @@ const homeFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: `Yes! The free plan gives you ${FREE_TOPIC_LIMIT} free generations every month (including ${FREE_SOURCE_LIMIT} YouTube/source material generations) — no credit card required. Usage resets every 30 days.` } },
+    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: `There is a Free plan, but it is a preview: after creating an account you get ${FREE_LIMIT} generation per month (topic, YouTube or notes) so you can try QuizKraft. No credit card is needed for it. For regular use, Pro is $9/month with unlimited generations. Usage resets every 30 days.` } },
     { "@type": "Question", name: "Can I generate quizzes from YouTube videos?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste any YouTube video link into the generator. QuizKraft extracts the transcript and creates targeted questions directly from the video content." } },
     { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
     { "@type": "Question", name: "Can I use my own notes or PDF documents?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste text from your notes, textbook, or study guide into the generator to produce quizzes based on your specific curriculum." } },
@@ -289,7 +289,7 @@ export default function HomePage() {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
                 >
                   <Zap className="h-4 w-4" />
-                  Generate free worksheet
+                  Generate a worksheet
                 </Link>
                 <Link
                   href="/youtube-to-quiz"
@@ -299,7 +299,7 @@ export default function HomePage() {
                   YouTube to Quiz
                 </Link>
               </div>
-              <p className="text-xs text-muted">{FREE_TOPIC_LIMIT} free generations every month. No credit card required.</p>
+              <p className="text-xs text-muted">Free plan: {FREE_LIMIT} preview generation per month with an account. Pro: unlimited for $9/month.</p>
             </div>
             <div className="animate-fade-up delay-200">
               <WorksheetPreview />
@@ -413,7 +413,7 @@ export default function HomePage() {
               href="/generator"
               className="inline-flex items-center gap-2 mt-8 px-5 py-3 bg-accent text-white font-semibold text-sm rounded-xl hover:bg-accent-dark transition-colors"
             >
-              Try quiz mode free <ArrowRight className="h-4 w-4" />
+              Try quiz mode <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="space-y-3">
@@ -591,9 +591,9 @@ export default function HomePage() {
             href="/signup"
             className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
           >
-            Start free
+            Create your account
           </Link>
-          <p className="mt-4 text-sm text-muted">{FREE_TOPIC_LIMIT} free generations every month, no card required.</p>
+          <p className="mt-4 text-sm text-muted">Try {FREE_LIMIT} preview generation on the Free plan, then upgrade to Pro for unlimited.</p>
         </div>
       </section>
     </div>

@@ -5,7 +5,9 @@ import { YoutubeIcon } from "@/components/Icons";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
-import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT } from "@/lib/constants";
+import { PricingSection } from "@/components/PlanCards";
+import { FREE_LIMIT } from "@/lib/constants";
+import { PLANS } from "@/lib/plans";
 
 const faqs = [
   {
@@ -18,7 +20,7 @@ const faqs = [
   },
   {
     q: "Is QuizKraft's YouTube to Quiz tool free?",
-    a: `Yes! You can try the tool immediately without signing up. Free accounts receive ${FREE_TOPIC_LIMIT} free generations each month, including ${FREE_SOURCE_LIMIT} free YouTube/source material generations. Pro subscribers get unlimited generations and watermark-free PDF exports.`,
+    a: `Not fully. You need an account to use it. The Free plan includes ${FREE_LIMIT} preview generation per month, which you can use on a YouTube video, so you can see how it works before paying. For regular use you need Pro (${PLANS.pro.price}/month, unlimited generations and watermark-free PDF exports) or the School / Team plan (${PLANS.school.price} per teacher per month).`,
   },
   {
     q: "Can I edit and customize the generated questions?",
@@ -53,9 +55,9 @@ const steps = [
 ];
 
 export const metadata: Metadata = {
-  title: "YouTube Video to Quiz — Free AI Quiz Generator | QuizKraft",
+  title: "YouTube Video to Quiz — AI Quiz Generator | QuizKraft",
   description:
-    "Turn any YouTube video into an interactive quiz in seconds. Generate practice questions with answer keys from video transcripts. Free — no signup required.",
+    "Turn any YouTube video into an interactive quiz in seconds. Generate practice questions with answer keys from video transcripts. Try 1 preview quiz on the Free plan.",
   alternates: { canonical: "https://www.quizkraft.tech/youtube-to-quiz" },
   keywords: [
     "youtube video to quiz",
@@ -68,7 +70,7 @@ export const metadata: Metadata = {
     "active recall youtube study tool",
   ],
   openGraph: {
-    title: "YouTube Video to Quiz — Free AI Quiz Generator | QuizKraft",
+    title: "YouTube Video to Quiz — AI Quiz Generator | QuizKraft",
     description:
       "Turn any YouTube video or lecture into an interactive quiz in seconds. Instant answer keys and active recall study loop.",
     type: "website",
@@ -78,7 +80,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "YouTube Video to Quiz — Free AI Generator | QuizKraft",
+    title: "YouTube Video to Quiz — AI Generator | QuizKraft",
     description: "Convert YouTube video lectures into interactive quizzes and printable worksheets with AI.",
     images: ["/youtube-to-quiz/opengraph-image"],
   },
@@ -92,8 +94,8 @@ const softwareSchema = {
   operatingSystem: "Web",
   url: "https://www.quizkraft.tech/youtube-to-quiz",
   description:
-    "Free AI-powered tool that converts YouTube video transcripts into interactive practice quizzes and printable worksheets in seconds.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    "AI-powered tool that converts YouTube video transcripts into interactive practice quizzes and printable worksheets in seconds.",
+  offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "19", priceCurrency: "USD", offerCount: 3 },
 };
 
 const breadcrumbSchema = {
@@ -143,7 +145,7 @@ export default async function YouTubeToQuizPage() {
             answer keys, and retake loops.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-5 text-xs sm:text-sm text-muted">
-            {["Works without signup", "Extracts video transcript", "Active recall study loop", "Printable worksheet + key"].map((item) => (
+            {["Extracts video transcript", "Active recall study loop", "Printable worksheet + key"].map((item) => (
               <span key={item} className="flex items-center gap-1.5 font-medium">
                 <Check className="h-4 w-4 text-correct" />
                 {item}
@@ -187,6 +189,8 @@ export default async function YouTubeToQuizPage() {
           </div>
         </div>
       </section>
+
+      <PricingSection isLoggedIn={props.isLoggedIn} />
 
       {/* Deep Active Recall Pedagogical Guide (~300 words of real advice) */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-canvas border-t border-hairline">
@@ -364,7 +368,7 @@ export default async function YouTubeToQuizPage() {
           Start turning video lectures into mastery.
         </h2>
         <p className="text-muted mb-6 text-sm max-w-md mx-auto">
-          {FREE_TOPIC_LIMIT} free generations every month. No credit card required.
+          Start with {FREE_LIMIT} preview generation on the Free plan, then upgrade to Pro for unlimited quizzes.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
@@ -372,7 +376,7 @@ export default async function YouTubeToQuizPage() {
             className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
           >
             <Zap className="h-4 w-4" />
-            Start free
+            Create account
           </Link>
           <Link
             href="/pricing"

@@ -21,7 +21,8 @@ import {
   Video,
 } from "lucide-react";
 import { YoutubeIcon } from "@/components/Icons";
-import { FREE_TOPIC_LIMIT, FREE_SOURCE_LIMIT, MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
+import PlanCards from "@/components/PlanCards";
+import { FREE_LIMIT, MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
 
 /* -- Types -------------------------------------------------------- */
 type QuestionType = "multiple-choice" | "true-false" | "short-answer" | "fill-in-the-blank";
@@ -64,7 +65,6 @@ interface WorksheetResult {
   questions: Question[];
   answerKey: AnswerKeyItem[];
   isPro: boolean;
-  isGuest?: boolean;
   videoInfo?: VideoInfo | null;
 }
 
@@ -156,7 +156,7 @@ function gradeAnswer(userAnswer: string, correctAnswer: string, type: QuestionTy
 export default function QuizGeneratorForm({
   isLoggedIn = false,
   isPro = false,
-  creditsLeft = FREE_TOPIC_LIMIT,
+  creditsLeft = FREE_LIMIT,
   initialMode = "topic",
   prefillTopic = "",
 }: {
@@ -198,6 +198,8 @@ export default function QuizGeneratorForm({
 
   const outputRef = useRef<HTMLDivElement>(null);
 
+  const canGenerate = isLoggedIn && (isPro || creditsLeft > 0);
+
   /* Sync initialMode when prop changes */
   useEffect(() => {
     if (initialMode) setMode(initialMode);
@@ -217,7 +219,7 @@ export default function QuizGeneratorForm({
   /* -- Fetch YouTube Transcript & Info -- */
   async function handleFetchYoutube(urlToFetch?: string) {
     const url = (urlToFetch || youtubeUrl).trim();
-    if (!url) return;
+    if (!url || !isLoggedIn) return;
 
     setFetchingYoutube(true);
     setYoutubeError("");
@@ -255,6 +257,7 @@ export default function QuizGeneratorForm({
   async function handleGenerate(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    if (!canGenerate) return;
 
     let effectiveTopic = topic.trim();
     let effectiveSource = "";
@@ -648,7 +651,7 @@ export default function QuizGeneratorForm({
                 <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5 flex items-center justify-between">
                   <span>Paste Notes / Study Text</span>
                   <span className="text-[10px] text-muted normal-case font-normal">
-                    Free up to {MAX_TRANSCRIPT_CHARS.toLocaleString()} chars
+                    Up to {MAX_TRANSCRIPT_CHARS.toLocaleString()} chars
                   </span>
                 </label>
                 <textarea
@@ -803,7 +806,24 @@ export default function QuizGeneratorForm({
               </div>
             )}
 
-            {/* Submit button */}
+            {/* Submit button (guests must log in first) */}
+            {!isLoggedIn ? (
+              <div className="space-y-2">
+                <Link
+                  href="/signup"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors text-sm shadow-sm shadow-accent/20"
+                >
+                  <Lock className="h-4 w-4" />
+                  Create an account to generate
+                </Link>
+                <p className="text-center text-xs text-muted">
+                  Already have one?{" "}
+                  <Link href="/login" className="text-accent font-medium hover:underline">
+                    Log in
+                  </Link>
+                </p>
+              </div>
+            ) : (
             <button
               type="submit"
               disabled={
@@ -811,7 +831,8 @@ export default function QuizGeneratorForm({
                 fetchingYoutube ||
                 (mode === "topic" && !topic.trim()) ||
                 (mode === "youtube" && !youtubeUrl.trim()) ||
-                (mode === "source" && !sourceMaterial.trim())
+                (mode === "source" && !sourceMaterial.trim()) ||
+                !canGenerate
               }
               className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm shadow-sm shadow-accent/20 cursor-pointer"
             >
@@ -835,32 +856,25 @@ export default function QuizGeneratorForm({
                 </>
               )}
             </button>
+            )}
 
-            {/* Credits and plan summary */}
-            <div className="text-center text-xs text-muted pt-1 space-y-1">
-              {isLoggedIn ? (
-                <p>
-                  {isPro
-                    ? "Unlimited generations (Pro) · ~10 seconds"
-                    : creditsLeft > 0
-                    ? `${creditsLeft} free generation${creditsLeft === 1 ? "" : "s"} left this month`
-                    : "No credits remaining this month"}
-                </p>
-              ) : (
-                <p>
-                  Free to try · No signup required for first use
-                </p>
-              )}
+            {/* Credits and plan options */}
+            {isLoggedIn && (
+              <p className="text-center text-xs text-muted pt-1">
+                {isPro
+                  ? "Unlimited generations (Pro) · ~10 seconds"
+                  : creditsLeft > 0
+                  ? `${creditsLeft} preview generation${creditsLeft === 1 ? "" : "s"} left this month`
+                  : "You've used your free preview this month. Pick a plan to keep generating."}
+              </p>
+            )}
 
-              {!isPro && (
-                <p className="text-[11px]">
-                  <Link href="/pricing" className="text-accent font-medium hover:underline">
-                    Upgrade to Pro
-                  </Link>{" "}
-                  for watermark-free PDF exports & unlimited use
-                </p>
-              )}
-            </div>
+            {!isPro && (
+              <div className="pt-2 border-t border-hairline">
+                <p className="text-xs font-semibold text-ink uppercase tracking-wide mb-2">Plans</p>
+                <PlanCards isLoggedIn={isLoggedIn} compact />
+              </div>
+            )}
           </form>
         </div>
       </aside>
@@ -1013,16 +1027,6 @@ export default function QuizGeneratorForm({
                     Watch video <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </div>
-              </div>
-            )}
-
-            {/* Guest Banner Prompt */}
-            {result.isGuest && (
-              <div className="bg-accent-soft/40 border-b border-accent/20 px-6 py-2.5 text-center text-xs text-ink no-print">
-                <span>Want to save this quiz and get {FREE_TOPIC_LIMIT} free generations each month? </span>
-                <Link href="/signup" className="text-accent font-semibold hover:underline">
-                  Create a free account →
-                </Link>
               </div>
             )}
 

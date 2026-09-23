@@ -154,7 +154,7 @@ export default function AboutPage() {
               href="/generator"
               className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-semibold text-sm rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20"
             >
-              Start Generating Free
+              Start Generating
             </Link>
           </div>
         </div>

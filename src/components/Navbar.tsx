@@ -5,7 +5,6 @@ import { useSession, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, LogOut, ChevronDown, FileText, Sparkles, LayoutGrid } from "lucide-react";
 import { YoutubeIcon } from "@/components/Icons";
-import { FREE_TOPIC_LIMIT } from "@/lib/constants";
 
 function LogoMark() {
   return (
@@ -200,7 +199,7 @@ export default function Navbar() {
                   href="/signup"
                   className="px-4 py-2 text-sm font-semibold text-white bg-accent hover:bg-accent-dark rounded-xl transition-colors shadow-sm shadow-accent/20"
                 >
-                  Start free
+                  Create account
                 </Link>
               </>
             )}
@@ -272,7 +271,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="block px-3 py-2 text-sm font-medium text-ink rounded-lg hover:bg-hairline/60 transition-colors"
             >
-              Pricing ({FREE_TOPIC_LIMIT} free/mo)
+              Pricing
             </Link>
             <Link
               href="/blog"
@@ -318,7 +317,7 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="block px-4 py-2.5 text-sm font-semibold text-center text-white bg-accent hover:bg-accent-dark rounded-xl transition-colors"
                 >
-                  Start free ({FREE_TOPIC_LIMIT} free generations)
+                  Create account
                 </Link>
               </>
             )}

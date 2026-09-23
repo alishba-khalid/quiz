@@ -202,7 +202,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             href="/generator"
             className="inline-flex items-center gap-2 px-5 py-3 bg-accent text-white font-semibold text-sm rounded-xl hover:bg-accent-dark transition-colors"
           >
-            Generate free worksheet
+            Generate a worksheet
           </Link>
         </div>
       </div>

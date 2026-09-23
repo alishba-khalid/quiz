@@ -18,8 +18,8 @@ export async function generateMetadata({
   const data = getQuizSubject(subject);
   if (!data) return { title: "Not Found" };
 
-  const title = `Free AI ${data.name} Quiz Generator — ${data.gradeRange} | QuizKraft`;
-  const description = `Generate clean ${data.name.toLowerCase()} quiz questions and tests in seconds — multiple choice, short answer, true/false, and fill-in-the-blank. ${data.gradeRange}. Instant answer keys included. Free to try.`;
+  const title = `AI ${data.name} Quiz Generator — ${data.gradeRange} | QuizKraft`;
+  const description = `Generate clean ${data.name.toLowerCase()} quiz questions and tests in seconds — multiple choice, short answer, true/false, and fill-in-the-blank. ${data.gradeRange}. Instant answer keys included.`;
 
   return {
     title,
@@ -30,7 +30,7 @@ export async function generateMetadata({
     keywords: [
       `AI ${data.name.toLowerCase()} quiz generator`,
       `${data.name.toLowerCase()} test maker`,
-      `free ${data.name.toLowerCase()} quiz creator`,
+      `${data.name.toLowerCase()} quiz creator`,
       `printable ${data.name.toLowerCase()} quiz with answer key`,
       `${data.name.toLowerCase()} questions generator`,
       `quiz generator for ${data.gradeRange.toLowerCase()}`
@@ -140,7 +140,7 @@ export default async function QuizSubjectPage({
             className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"
           >
             <Zap className="h-4 w-4" />
-            Generate {/^[aeiou]/i.test(data.name) ? "an" : "a"} {data.name.toLowerCase()} quiz free
+            Generate {/^[aeiou]/i.test(data.name) ? "an" : "a"} {data.name.toLowerCase()} quiz
           </Link>
         </div>
       </section>
@@ -241,7 +241,7 @@ export default async function QuizSubjectPage({
             Generate your {data.name.toLowerCase()} quiz in 10 seconds.
           </h2>
           <p className="text-sm text-muted mb-6">
-            Free to try. No credit card required.
+            Try 1 preview quiz on the Free plan. Unlimited with Pro.
           </p>
           <Link
             href="/quiz-generator"

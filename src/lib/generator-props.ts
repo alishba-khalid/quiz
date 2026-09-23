@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
-import { FREE_TOPIC_LIMIT } from "@/lib/constants";
+import { FREE_LIMIT } from "@/lib/constants";
 
 export async function getGeneratorProps() {
   const session = await auth();
@@ -18,6 +18,6 @@ export async function getGeneratorProps() {
   return {
     isLoggedIn: !!session,
     isPro,
-    creditsLeft: isPro ? Infinity : Math.max(0, FREE_TOPIC_LIMIT - usageCount),
+    creditsLeft: isPro ? Infinity : Math.max(0, FREE_LIMIT - usageCount),
   };
 }

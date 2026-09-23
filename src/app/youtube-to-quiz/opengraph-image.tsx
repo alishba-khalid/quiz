@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "YouTube Video to Quiz — Free AI Quiz Generator | QuizKraft";
+export const alt = "YouTube Video to Quiz — AI Quiz Generator | QuizKraft";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -65,7 +65,7 @@ export default function Image() {
             fontWeight: 600,
           }}
         >
-          Free · No signup required · quizkraft.tech
+          Unlimited with Pro · quizkraft.tech
         </div>
       </div>
     ),
