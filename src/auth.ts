@@ -11,7 +11,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
   providers: [
     ...(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
-      ? [Google({ clientId: process.env.GOOGLE_CLIENT_ID, clientSecret: process.env.GOOGLE_CLIENT_SECRET })]
+      ? [
+          Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            // Link to an existing account with the same email. Only safe because the
+            // signIn callback rejects unverified Google emails and linkAccount below
+            // clears any password that was set without proving email ownership.
+            allowDangerousEmailAccountLinking: true,
+          }),
+        ]
       : []),
     ...(process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET
       ? [GitHub({ clientId: process.env.GITHUB_CLIENT_ID, clientSecret: process.env.GITHUB_CLIENT_SECRET })]
@@ -49,6 +58,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ account, profile }) {
+      if (account?.provider === "google") {
+        return profile?.email_verified === true;
+      }
+      return true;
+    },
     async jwt({ token, user, trigger, session }) {
       if (user) {
         token.id = user.id;
@@ -83,8 +98,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
   },
+  events: {
+    async linkAccount({ user, account }) {
+      if (account.provider !== "google" || !user.id) return;
+      const dbUser = await db.user.findUnique({
+        where: { id: user.id },
+        select: { password: true, emailVerified: true },
+      });
+      if (!dbUser) return;
+      // Signup never verifies email, so a password on an unverified account may
+      // have been set by someone else who registered this address first.
+      await db.user.update({
+        where: { id: user.id },
+        data: {
+          emailVerified: dbUser.emailVerified ?? new Date(),
+          ...(dbUser.password && !dbUser.emailVerified ? { password: null } : {}),
+        },
+      });
+    },
+  },
   pages: {
     signIn: "/login",
+    error: "/login",
   },
   secret: process.env.NEXTAUTH_SECRET,
 });

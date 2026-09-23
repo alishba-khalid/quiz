@@ -11,9 +11,32 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function LoginPage() {
+const AUTH_ERRORS: Record<string, string> = {
+  OAuthAccountNotLinked:
+    "This email already has a password account. Sign in with your email and password below.",
+  AccessDenied:
+    "Sign-in was denied. Google sign-in needs a verified email address on your Google account.",
+  OAuthSignInError: "We couldn't start sign-in with that provider. Please try again.",
+  OAuthCallbackError: "The sign-in provider returned an error. Please try again.",
+  CredentialsSignin: "Invalid email or password.",
+  MissingCSRF: "Your sign-in session expired. Please try again.",
+  Verification: "This sign-in link has expired or was already used.",
+  Configuration: "Sign-in is temporarily unavailable. Please try again in a few minutes.",
+};
+
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   const session = await auth();
   if (session) redirect("/dashboard");
+
+  const { error } = await searchParams;
+  const errorCode = typeof error === "string" ? error : undefined;
+  const errorMessage = errorCode
+    ? AUTH_ERRORS[errorCode] ?? "Something went wrong while signing in. Please try again."
+    : undefined;
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center py-14 px-4 bg-canvas">
@@ -32,6 +55,20 @@ export default async function LoginPage() {
           <h1 className="text-2xl font-semibold text-ink mb-1">Welcome back</h1>
           <p className="text-sm text-muted">Sign in to your account</p>
         </div>
+        {errorMessage && (
+          <div role="alert" className="mb-4 px-4 py-3 bg-wrong-soft border border-wrong/20 text-wrong text-sm rounded-xl">
+            <p>{errorMessage}</p>
+            {errorCode === "OAuthAccountNotLinked" && (
+              <p className="mt-1">
+                Forgot your password?{" "}
+                <Link href="/contact" className="font-medium underline">
+                  Contact us to reset it
+                </Link>
+                .
+              </p>
+            )}
+          </div>
+        )}
         <div className="bg-surface rounded-2xl border border-hairline shadow-sm p-8">
           <LoginForm
             googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)}
