@@ -4,7 +4,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Zap } from "lucide-react";
 
-export default function CheckoutButton({ isLoggedIn }: { isLoggedIn: boolean }) {
+export default function CheckoutButton({
+  isLoggedIn,
+  compact = false,
+}: {
+  isLoggedIn: boolean;
+  compact?: boolean;
+}) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -40,12 +46,12 @@ export default function CheckoutButton({ isLoggedIn }: { isLoggedIn: boolean }) 
         type="button"
         onClick={handleCheckout}
         disabled={loading}
-        className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white text-accent font-semibold rounded-xl hover:bg-accent-soft disabled:opacity-60 disabled:cursor-not-allowed transition-colors shadow-sm cursor-pointer"
+        className={`w-full flex items-center justify-center gap-2 ${compact ? "px-3 py-2 text-xs rounded-lg" : "px-6 py-3 rounded-xl"} bg-white text-accent font-semibold hover:bg-accent-soft disabled:opacity-60 disabled:cursor-not-allowed transition-colors shadow-sm cursor-pointer`}
       >
         {loading ? (
-          <span className="h-5 w-5 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+          <span className={`${compact ? "h-4 w-4" : "h-5 w-5"} border-2 border-accent border-t-transparent rounded-full animate-spin`} />
         ) : (
-          <Zap className="h-5 w-5" />
+          <Zap className={compact ? "h-4 w-4" : "h-5 w-5"} />
         )}
         {loading ? "Loading..." : isLoggedIn ? "Upgrade to Pro" : "Get Started"}
       </button>

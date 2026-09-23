@@ -48,7 +48,7 @@ export default function PlanCards({
             </p>
           </div>
           <p className="text-xs text-white/90 mt-1.5 mb-3 flex-1">{PLANS.pro.summary}</p>
-          <CheckoutButton isLoggedIn={isLoggedIn} />
+          <CheckoutButton isLoggedIn={isLoggedIn} compact />
         </div>
 
         <div className={`bg-surface rounded-xl border border-hairline ${pad} flex flex-col`}>
