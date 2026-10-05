@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Zap, ArrowRight, BookOpen, Clock, Brain, Sparkles, FileText, Printer } from "lucide-react";
+import { Check, Zap, ArrowRight, Brain } from "lucide-react";
 import { YoutubeIcon } from "@/components/Icons";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";

@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Clock, MessageSquare, CheckCircle, ArrowRight, Loader2 } from "lucide-react";
+import { Mail, Clock, MessageSquare, CheckCircle, ArrowRight } from "lucide-react";
+import { SUPPORT_EMAIL } from "@/lib/constants";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("Teacher");
   const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -27,16 +27,17 @@ export default function ContactForm() {
       return;
     }
 
-    setIsSubmitting(true);
+    // There's no mail backend, so hand the message to the visitor's email app,
+    // pre-filled and addressed to support. Never claim it was "sent" ourselves.
+    const subject = `QuizKraft enquiry from ${name.trim()} (${role})`;
+    const body = `${message.trim()}
 
-    // Simulate submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setName("");
-      setEmail("");
-      setMessage("");
-    }, 1200);
+—
+${name.trim()}
+${email.trim()}
+Role: ${role}`;
+    window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setIsSubmitted(true);
   };
 
   return (
@@ -46,7 +47,7 @@ export default function ContactForm() {
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-ink">Contact Information</h2>
           <p className="text-muted text-sm leading-relaxed">
-            Whether you&apos;re a teacher needing classroom features or a principal looking to purchase seats for your entire school, we&apos;re here to help.
+            Whether you&apos;re a teacher needing classroom features or a principal looking to set up QuizKraft for your whole school, we&apos;re here to help.
           </p>
         </div>
 
@@ -58,7 +59,7 @@ export default function ContactForm() {
             <div>
               <h3 className="font-semibold text-ink text-sm">Direct Support</h3>
               <a
-                href="mailto:support@quizkraft.tech"
+                href={`mailto:${SUPPORT_EMAIL}`}
                 className="text-sm font-semibold text-ink hover:text-accent transition-colors block"
               >
                 support@quizkraft.tech
@@ -72,7 +73,7 @@ export default function ContactForm() {
             </div>
             <div>
               <h3 className="font-semibold text-ink text-sm">Response Time</h3>
-              <p className="text-muted text-sm">Usually within 24 hours (including weekends).</p>
+              <p className="text-muted text-sm">We aim to reply within one or two working days.</p>
             </div>
           </div>
 
@@ -102,10 +103,14 @@ export default function ContactForm() {
                 className="text-2xl font-medium text-ink"
                 style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
               >
-                Message sent successfully!
+                Finish sending in your email app
               </h2>
               <p className="text-muted text-sm max-w-sm mx-auto leading-relaxed">
-                Thank you for reaching out. We have received your message and will get back to you at your email address shortly.
+                Your email app should have opened with your message ready to send. If it didn&apos;t, email us directly at{" "}
+                <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent font-medium hover:underline">
+                  {SUPPORT_EMAIL}
+                </a>
+                .
               </p>
             </div>
             <div className="pt-4">
@@ -113,7 +118,7 @@ export default function ContactForm() {
                 onClick={() => setIsSubmitted(false)}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline cursor-pointer"
               >
-                Send another message <ArrowRight className="h-3 w-3" />
+                Back to the form <ArrowRight className="h-3 w-3" />
               </button>
             </div>
           </div>
@@ -138,7 +143,6 @@ export default function ContactForm() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                disabled={isSubmitting}
                 className="w-full px-4 py-2.5 bg-canvas border border-hairline rounded-xl text-ink placeholder:text-muted/60 text-sm focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
               />
             </div>
@@ -153,7 +157,6 @@ export default function ContactForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="jane@school.edu"
-                disabled={isSubmitting}
                 className="w-full px-4 py-2.5 bg-canvas border border-hairline rounded-xl text-ink placeholder:text-muted/60 text-sm focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
               />
             </div>
@@ -166,7 +169,6 @@ export default function ContactForm() {
                 id="role"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                disabled={isSubmitting}
                 className="w-full px-4 py-2.5 bg-canvas border border-hairline rounded-xl text-ink text-sm focus:outline-none focus:border-accent transition-colors disabled:opacity-50 cursor-pointer"
               >
                 <option value="Teacher">Teacher / Instructor</option>
@@ -187,24 +189,15 @@ export default function ContactForm() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="How can we help you save time in your classroom?"
-                disabled={isSubmitting}
                 className="w-full px-4 py-2.5 bg-canvas border border-hairline rounded-xl text-ink placeholder:text-muted/60 text-sm focus:outline-none focus:border-accent transition-colors disabled:opacity-50 resize-none"
               />
             </div>
 
             <button
               type="submit"
-              disabled={isSubmitting}
               className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors disabled:opacity-50 shadow-sm text-sm cursor-pointer"
             >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                "Send Message"
-              )}
+              Open in my email app
             </button>
           </form>
         )}

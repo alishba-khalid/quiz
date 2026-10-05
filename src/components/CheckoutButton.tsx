@@ -29,7 +29,7 @@ export default function CheckoutButton({
       });
       const data = await res.json();
       if (!res.ok || !data.url) {
-        setError("Failed to start checkout. Please try again.");
+        setError(data.error || "Failed to start checkout. Please try again.");
         return;
       }
       window.location.href = data.url;

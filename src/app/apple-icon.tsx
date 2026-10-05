@@ -20,7 +20,7 @@ export default function AppleIcon() {
           fontWeight: 700,
         }}
       >
-        ✓
+        <svg width="110" height="110" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
       </div>
     ),
     { width: 180, height: 180 }

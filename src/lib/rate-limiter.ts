@@ -36,6 +36,30 @@ export function checkTranscriptFetchLimit(ip: string): { allowed: boolean; reaso
   return { allowed: true };
 }
 
+// Per-IP limiter for account creation, so one connection can't mass-create accounts.
+// In-memory and per-instance: a speed bump, not a hard guarantee.
+const SIGNUPS_PER_IP_PER_HOUR = 5;
+const signupStore = new Map<string, RateLimitRecord>();
+
+export function checkSignupLimit(ip: string): boolean {
+  const now = Date.now();
+  for (const [key, record] of signupStore.entries()) {
+    if (record.resetAt <= now) signupStore.delete(key);
+  }
+  const record = signupStore.get(ip);
+  return !(record && record.count >= SIGNUPS_PER_IP_PER_HOUR);
+}
+
+export function recordSignup(ip: string) {
+  const now = Date.now();
+  const record = signupStore.get(ip);
+  if (record && record.resetAt > now) {
+    record.count += 1;
+  } else {
+    signupStore.set(ip, { count: 1, resetAt: now + 60 * 60 * 1000 });
+  }
+}
+
 export function recordTranscriptFetch(ip: string) {
   const now = Date.now();
   const record = transcriptStore.get(ip);

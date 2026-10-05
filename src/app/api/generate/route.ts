@@ -19,27 +19,39 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = await req.json();
-    const {
-      subject,
-      grade,
-      topic,
-      questionTypes,
-      difficulty = "Medium",
-      questionsCount,
-      sourceMaterial,
-      videoInfo, // Optional { videoId, title, author, thumbnail, url }
-    } = body;
+    const body = await req.json().catch(() => null);
+    if (!body || typeof body !== "object") {
+      return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+    }
+
+    // Everything below ends up in the AI prompt, so cap lengths and whitelist enums.
+    const str = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
+    const subject = str(body.subject, 100);
+    const grade = str(body.grade, 50);
+    const topic = str(body.topic, 300);
+    const sourceMaterial = str(body.sourceMaterial, MAX_TRANSCRIPT_CHARS);
+    const difficulty = ["Easy", "Medium", "Hard"].includes(body.difficulty) ? body.difficulty : "Medium";
+    const rawVideo = body.videoInfo && typeof body.videoInfo === "object" ? body.videoInfo : null;
+    const videoInfo = rawVideo
+      ? {
+          videoId: str(rawVideo.videoId, 20),
+          title: str(rawVideo.title, 200),
+          author: str(rawVideo.author, 100),
+          thumbnail: str(rawVideo.thumbnail, 300),
+          url: str(rawVideo.url, 300),
+        }
+      : null;
 
     if (!topic || !grade) {
       return NextResponse.json({ error: "Topic and grade are required." }, { status: 400 });
     }
 
-    const qCount = Math.min(Math.max(parseInt(questionsCount, 10) || 5, 3), 15);
-    const types: string[] =
-      Array.isArray(questionTypes) && questionTypes.length > 0
-        ? questionTypes
-        : ["multiple-choice"];
+    const qCount = Math.min(Math.max(parseInt(body.questionsCount, 10) || 5, 3), 15);
+    const ALLOWED_TYPES = ["multiple-choice", "true-false", "short-answer", "fill-in-the-blank"];
+    const requestedTypes: string[] = Array.isArray(body.questionTypes)
+      ? body.questionTypes.filter((t: unknown) => typeof t === "string" && ALLOWED_TYPES.includes(t))
+      : [];
+    const types = requestedTypes.length > 0 ? [...new Set(requestedTypes)] : ["multiple-choice"];
 
     if (!process.env.GEMINI_API_KEY) {
       return NextResponse.json({ error: "AI service is not configured." }, { status: 500 });
@@ -132,21 +144,32 @@ Rules:
     if (!response.text) throw new Error("Empty response from AI");
 
     const data = JSON.parse(response.text.trim());
-    const questions: any[] = data.questions || [];
+    // Drop malformed items so a bad AI response can't break the worksheet view.
+    type AIQuestion = { type: string; q: string; options?: unknown; answer: unknown; explanation?: unknown };
+    const questions = (Array.isArray(data.questions) ? data.questions : []).filter(
+      (q: AIQuestion | null): q is AIQuestion =>
+        !!q &&
+        typeof q.q === "string" &&
+        q.q.trim() !== "" &&
+        ALLOWED_TYPES.includes(q.type) &&
+        q.answer != null &&
+        (q.type !== "multiple-choice" || (Array.isArray(q.options) && q.options.length >= 2))
+    );
+    if (questions.length === 0) throw new Error("AI returned no usable questions");
 
-    const content = questions.map((q: any, i: number) => ({
+    const content = questions.map((q: AIQuestion, i: number) => ({
       i,
       type: q.type,
       q: q.q,
-      options: q.options || null,
+      options: Array.isArray(q.options) ? q.options.map(String) : null,
     }));
 
-    const answerKey = questions.map((q: any, i: number) => ({
+    const answerKey = questions.map((q: AIQuestion, i: number) => ({
       i,
       type: q.type,
       q: q.q,
-      answer: q.answer,
-      explanation: q.explanation,
+      answer: String(q.answer),
+      explanation: typeof q.explanation === "string" ? q.explanation : "",
     }));
 
     const worksheet = await db.worksheet.create({
@@ -156,9 +179,9 @@ Rules:
         topic: videoInfo?.title ? `YouTube: ${videoInfo.title}` : topic,
         gradeLevel: grade,
         worksheetType: types.join(","),
-        questionsCount: qCount,
-        content: content as any,
-        answerKey: answerKey as any,
+        questionsCount: content.length,
+        content,
+        answerKey,
       },
     });
     await db.user.update({ where: { id: user.id }, data: { usageCount: { increment: 1 } } });
@@ -170,19 +193,18 @@ Rules:
       grade,
       topic,
       difficulty,
-      questionsCount: qCount,
+      questionsCount: content.length,
       questions: content,
       answerKey,
       isPro: true,
       videoInfo: videoInfo || null,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Generate error:", error);
     return NextResponse.json(
       {
-        error:
-          error.message ||
-          "Couldn't generate that one. Try a more specific topic or check the transcript and try again.",
+        // Don't surface internal error text (JSON parse errors, SDK messages) to users.
+        error: "Couldn't generate that one. Try a more specific topic or check the transcript and try again.",
       },
       { status: 500 }
     );

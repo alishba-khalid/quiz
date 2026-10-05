@@ -33,10 +33,14 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const worksheet = await db.worksheet.findUnique({
-    where: { id },
-    select: { title: true },
-  });
+  // Only reveal the title to the worksheet's owner.
+  const session = await auth();
+  const worksheet = session?.user?.email
+    ? await db.worksheet.findFirst({
+        where: { id, user: { email: session.user.email } },
+        select: { title: true },
+      })
+    : null;
   return {
     title: worksheet ? `${worksheet.title} | QuizKraft` : "Worksheet | QuizKraft",
     robots: { index: false, follow: false },

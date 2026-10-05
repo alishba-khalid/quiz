@@ -35,9 +35,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
-        const user = await db.user.findUnique({
-          where: { email: credentials.email as string },
-        });
+        // New accounts are stored lowercased; older ones may not be, so fall back
+        // to a case-insensitive match.
+        const email = (credentials.email as string).trim().toLowerCase();
+        const user =
+          (await db.user.findUnique({ where: { email } })) ??
+          (await db.user.findFirst({ where: { email: { equals: email, mode: "insensitive" } } }));
         if (!user || !user.password) {
           return null;
         }
@@ -92,8 +95,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     async session({ session, token }) {
       if (token && session.user) {
-        (session.user as any).id = token.id as string;
-        (session.user as any).plan = (token.plan as string) || "FREE";
+        session.user.id = token.id as string;
+        session.user.plan = (token.plan as string) || "FREE";
       }
       return session;
     },

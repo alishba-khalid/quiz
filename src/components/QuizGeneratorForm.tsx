@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import {
   Zap,
@@ -17,7 +17,6 @@ import {
   Sparkles,
   ExternalLink,
   AlertCircle,
-  Video,
 } from "lucide-react";
 import { YoutubeIcon } from "@/components/Icons";
 import PlanCards from "@/components/PlanCards";
@@ -210,10 +209,12 @@ export default function QuizGeneratorForm({
     openPricing();
   }
 
-  /* Sync initialMode when prop changes */
-  useEffect(() => {
+  /* Sync initialMode when the prop changes (adjust state during render, not in an effect) */
+  const [prevInitialMode, setPrevInitialMode] = useState(initialMode);
+  if (initialMode !== prevInitialMode) {
+    setPrevInitialMode(initialMode);
     if (initialMode) setMode(initialMode);
-  }, [initialMode]);
+  }
 
   /* -- Type chip toggle -- */
   function toggleType(type: QuestionType) {

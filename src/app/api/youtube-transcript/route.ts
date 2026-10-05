@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     recordTranscriptFetch(clientIp);
     const result = await getYouTubeVideoTranscript(url);
     return NextResponse.json(result);
-  } catch (error: any) {
+  } catch (error) {
     if (error instanceof YouTubeError) {
       const statusMap: Record<string, number> = {
         INVALID_URL: 400,

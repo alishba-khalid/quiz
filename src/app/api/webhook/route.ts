@@ -2,19 +2,30 @@ import { NextRequest, NextResponse } from "next/server";
 import { polar } from "@/lib/polar";
 import { db } from "@/lib/db";
 
+// The subset of Polar's order/subscription payload this handler reads.
+type WebhookData = {
+  id?: string;
+  subscriptionId?: string;
+  customerId?: string;
+  metadata?: { userId?: string };
+  customer?: { id?: string; externalId?: string; email?: string };
+};
+
 export async function POST(req: NextRequest) {
   let event: Awaited<ReturnType<typeof polar.validateWebhook>>;
   try {
     event = await polar.validateWebhook({ request: req });
-  } catch (error: any) {
-    console.error("Polar webhook validation failed:", error.message);
-    return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Polar webhook validation failed:", message);
+    return new NextResponse(`Webhook Error: ${message}`, { status: 400 });
   }
 
-  const data = (event as any).data ?? event;
+  const payload = event as unknown as { type?: string; data?: WebhookData };
+  const data: WebhookData = payload.data ?? (event as unknown as WebhookData);
 
   try {
-    const eventType = (event as any).type as string | undefined;
+    const eventType = payload.type;
 
     if (eventType === "subscription.active" || eventType === "order.paid") {
       const userId = data.metadata?.userId || data.customer?.externalId;
@@ -49,7 +60,7 @@ export async function POST(req: NextRequest) {
     }
 
     return new NextResponse("OK", { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Webhook processing error:", error);
     return new NextResponse("Webhook processing error", { status: 500 });
   }

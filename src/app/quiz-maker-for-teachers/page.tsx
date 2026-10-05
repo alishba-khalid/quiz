@@ -9,9 +9,9 @@ const faqs = [
   { q: "How long does it take to make a quiz?", a: "About 10 seconds from hitting Generate. Setting up your topic, grade, and question types takes another 30 seconds — so most teachers have a quiz ready in under a minute." },
   { q: "Can I make quizzes at different difficulty levels?", a: "Yes. Set difficulty to Easy, Medium, or Hard. For differentiated instruction, generate two versions of the same quiz at different difficulty levels in under two minutes." },
   { q: "Can I use my textbook, notes, or YouTube videos as the source?", a: `Yes. Paste text or a YouTube link and QuizKraft creates questions directly from that content.` },
-  { q: "Can students take the quiz online?", a: "Yes. Share the link or have students use Quiz Mode directly in the app. They click through questions, get scored instantly, and wrong answers come back for review until mastered." },
+  { q: "Can students take the quiz online?", a: "Yes. Open the quiz in Quiz Mode on a student's device or project it for the class. Students click through questions, get scored instantly, and wrong answers come back for review until mastered." },
   { q: "Do I need to create an account?", a: "Yes. An account and a Pro plan ($9/month, unlimited generations) are required to generate." },
-  { q: "Is there a school or district plan?", a: "Yes. The School plan is $19 per teacher per month and includes shared team libraries, class management, and centralized billing. Contact us for custom quotes for larger teams." },
+  { q: "Is there a school or district plan?", a: "Yes. The School plan is $19 per teacher per month and gives every teacher on your team full Pro access. We set it up with you directly, so email us with how many teachers you have." },
   { q: "What question types are supported?", a: "Multiple choice, true/false, short answer, and fill-in-the-blank. You can specify a mix or let QuizKraft decide based on the topic." },
 ];
 

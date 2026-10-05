@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "Do you offer school or team plans?",
-    a: "Yes — the School plan is $19/month per teacher and includes shared team libraries, class management, and centralized billing. Contact us for custom quotes for larger teams.",
+    a: "Yes. The School plan is $19 per teacher per month and gives every teacher on your team full Pro access. We set it up with you directly, so email us with how many teachers you have.",
   },
 ];
 

@@ -11,6 +11,6 @@ export const PLANS = {
     name: "School / Team",
     price: "$19",
     per: "/teacher/month",
-    summary: "Everything in Pro, plus shared libraries and multiple teacher seats.",
+    summary: "Pro for every teacher on your team, set up for your school by email.",
   },
 } as const;

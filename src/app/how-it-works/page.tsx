@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Zap, BookOpen, Star, Sparkles, Check, ArrowRight } from "lucide-react";
+import { Zap, Sparkles } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ const steps = [
   {
     num: "02",
     title: "Generate with AI",
-    desc: "Our educational AI reads your configuration—or your uploaded notes, readings, and textbooks—and constructs high-quality, concept-focused questions and explanations in about 10 seconds. No random questions, just solid learning checkpoints.",
+    desc: "Our educational AI reads your configuration—or your pasted notes, readings, and textbook passages—and constructs high-quality, concept-focused questions and explanations in about 10 seconds. No random questions, just solid learning checkpoints.",
   },
   {
     num: "03",
@@ -73,7 +73,7 @@ const howToSchema = {
       "@type": "HowToStep",
       "position": 2,
       "name": "Generate with AI",
-      "text": "Our educational AI reads your configuration—or your uploaded notes, readings, and textbooks—and constructs high-quality, concept-focused questions and explanations in about 10 seconds."
+      "text": "Our educational AI reads your configuration—or your pasted notes, readings, and textbook passages—and constructs high-quality, concept-focused questions and explanations in about 10 seconds."
     },
     {
       "@type": "HowToStep",

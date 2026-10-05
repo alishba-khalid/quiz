@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Zap, BookOpen, Star, RefreshCw, Check, Download, Upload, ArrowRight } from "lucide-react";
+import { Zap, BookOpen, Star, RefreshCw, Check, Download, Upload } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -163,7 +163,7 @@ export default function FeaturesPage() {
               Teaching a classroom with diverse learning needs? Differentiating worksheets used to mean spending hours rewriting questions. With QuizKraft, you can generate standard, simplified, and advanced versions of the same topic in seconds.
             </p>
             <p className="text-muted leading-relaxed text-sm">
-              Adjust difficulty levels, scaffold steps for complex math problems, or upload a specific reading passage and let the AI generate reading comprehension worksheets optimized for your target grade.
+              Adjust difficulty levels, scaffold steps for complex math problems, or paste a specific reading passage and let the AI generate reading comprehension worksheets optimized for your target grade.
             </p>
           </div>
           <div className="bg-canvas border border-hairline rounded-2xl p-6 space-y-4">

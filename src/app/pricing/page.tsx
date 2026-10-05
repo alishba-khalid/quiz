@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { auth } from "@/auth";
+import { db } from "@/lib/db";
 import CheckoutButton from "@/components/CheckoutButton";
 import { JsonLd } from "@/components/JsonLd";
 import { SUPPORT_EMAIL } from "@/lib/constants";
@@ -38,13 +39,12 @@ const proTier = {
   yearlyPrice: "$7",
   features: [
     "Unlimited worksheet & quiz generations",
-    "Unlimited YouTube & PDF uploads",
+    "Unlimited YouTube & notes-based quizzes",
     "Clean PDF exports with NO watermark",
     "Save unlimited quizzes to library & dashboard",
     "All question types & grade levels",
     "Answer keys + in-depth explanations",
     "Interactive study loop & retake modes",
-    "Priority AI processing speed",
   ],
 };
 
@@ -52,10 +52,10 @@ const schoolTier = {
   ...PLANS.school,
   features: [
     "Everything in Pro",
-    "Shared department & school library",
-    "Class & student management",
-    "Multiple teacher seats with centralized billing",
-    "Priority dedicated support",
+    "Pro access for every teacher on your team",
+    "Set up for your school by email",
+    "One contact for billing questions",
+    "Direct email support",
   ],
 };
 
@@ -126,7 +126,12 @@ const productSchema = {
 
 export default async function PricingPage() {
   const session = await auth();
-  const isPro = (session?.user as any)?.plan === "PRO";
+  // Read the plan from the DB: the session only refreshes it at sign-in, so a user
+  // who just paid would otherwise still see "Upgrade" here.
+  const user = session?.user?.email
+    ? await db.user.findUnique({ where: { email: session.user.email }, select: { plan: true } })
+    : null;
+  const isPro = user?.plan === "PRO";
 
   return (
     <div className="flex flex-col flex-1 bg-canvas">

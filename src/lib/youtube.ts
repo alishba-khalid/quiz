@@ -1,5 +1,7 @@
 import { MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
 
+type CaptionTrack = { languageCode?: string; kind?: string; baseUrl?: string };
+
 export interface YouTubeVideoInfo {
   videoId: string;
   title: string;
@@ -99,7 +101,7 @@ export async function fetchYouTubeMetadata(videoId: string): Promise<YouTubeVide
       thumbnail: data.thumbnail_url || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
       url: videoUrl,
     };
-  } catch (err: any) {
+  } catch (err) {
     if (err instanceof YouTubeError) throw err;
     return {
       videoId,
@@ -172,7 +174,7 @@ async function fetchCaptionsViaSupadata(videoId: string): Promise<string | null>
 
     if (Array.isArray(data.content) && data.content.length > 0) {
       const joined = data.content
-        .map((seg: any) => seg.text || "")
+        .map((seg: { text?: string }) => seg.text || "")
         .join(" ")
         .replace(/\s+/g, " ")
         .trim();
@@ -228,8 +230,8 @@ async function fetchCaptionsViaInnertube(videoId: string): Promise<string | null
 
     // Prioritize English or first available track
     const selectedTrack =
-      captionTracks.find((t: any) => t.languageCode?.startsWith("en")) ||
-      captionTracks.find((t: any) => t.kind !== "asr") ||
+      captionTracks.find((t: CaptionTrack) => t.languageCode?.startsWith("en")) ||
+      captionTracks.find((t: CaptionTrack) => t.kind !== "asr") ||
       captionTracks[0];
 
     if (!selectedTrack?.baseUrl) return null;
@@ -276,7 +278,7 @@ async function fetchCaptionsViaWatchPage(videoId: string): Promise<string | null
     }
 
     const selectedTrack =
-      captionTracks.find((t: any) => t.languageCode?.startsWith("en")) ||
+      captionTracks.find((t: CaptionTrack) => t.languageCode?.startsWith("en")) ||
       captionTracks[0];
 
     if (!selectedTrack?.baseUrl) return null;
@@ -303,7 +305,7 @@ async function fetchCaptionsViaProxy(videoId: string): Promise<string | null> {
     if (!res.ok) return null;
     const data = await res.json();
     if (Array.isArray(data) && data.length > 0) {
-      return data.map((item: any) => item.text || "").join(" ").replace(/\s+/g, " ").trim();
+      return data.map((item: { text?: string }) => item.text || "").join(" ").replace(/\s+/g, " ").trim();
     }
     if (typeof data.transcript === "string" && data.transcript.length > 20) {
       return data.transcript.trim();

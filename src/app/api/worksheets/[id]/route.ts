@@ -28,7 +28,7 @@ export async function GET(
     }
 
     return NextResponse.json(worksheet);
-  } catch (error: any) {
+  } catch (error) {
     console.error("Fetch worksheet error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
@@ -64,7 +64,7 @@ export async function DELETE(
     });
 
     return NextResponse.json({ message: "Worksheet deleted successfully" });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Delete worksheet error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Clock } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { blogPosts, getBlogPost } from "@/lib/blog-posts";
@@ -63,7 +64,7 @@ function parseInline(text: string) {
     if (part.startsWith("[") && part.endsWith(")")) {
       const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
       if (match) {
-        const [_, label, href] = match;
+        const [, label, href] = match;
         const isInternal = href.startsWith("/");
         if (isInternal) {
           return (
@@ -194,11 +195,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
         {post.thumbnail && (
           <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-hairline bg-hairline/20 mb-10 shadow-sm">
-            <img
+            <Image
               src={post.thumbnail}
               alt={post.title}
-              loading="lazy"
-              className="object-cover w-full h-full"
+              fill
+              priority
+              sizes="(min-width: 768px) 672px, 100vw"
+              className="object-cover"
             />
           </div>
         )}

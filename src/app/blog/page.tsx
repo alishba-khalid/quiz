@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { blogPosts as posts } from "@/lib/blog-posts";
@@ -70,11 +71,12 @@ export default function BlogPage() {
             >
               {post.thumbnail && (
                 <div className="relative aspect-video w-full overflow-hidden bg-hairline/20 border-b border-hairline">
-                  <img
+                  <Image
                     src={post.thumbnail}
                     alt={post.title}
-                    loading="lazy"
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               )}

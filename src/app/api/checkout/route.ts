@@ -18,6 +18,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
+    // Don't let an existing subscriber start a second, duplicate subscription.
+    if (user.plan === "PRO") {
+      return NextResponse.json({ error: "You're already on Pro." }, { status: 400 });
+    }
+
     const checkout = await polar.checkouts.create({
       products: [process.env.POLAR_PRODUCT_ID || ""],
       customerEmail: user.email!,
@@ -27,7 +32,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ url: checkout.url });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Polar checkout error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }

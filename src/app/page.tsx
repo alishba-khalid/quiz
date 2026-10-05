@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight, FileText, Sparkles, CheckCircle2 } from "lucide-react";
+import { Zap, BookOpen, Download, RefreshCw, Upload, Check, ArrowRight, Sparkles } from "lucide-react";
 import { YoutubeIcon } from "@/components/Icons";
 import FAQAccordion from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
@@ -120,7 +120,7 @@ const features = [
   {
     icon: <Upload className="h-5 w-5 text-blue-500" />,
     title: "Pasted notes & PDF support",
-    desc: "Upload textbook chapters, articles, or lecture notes to quiz specific classroom content.",
+    desc: "Paste textbook chapters, articles, or lecture notes to quiz specific classroom content.",
   },
   {
     icon: <RefreshCw className="h-5 w-5" />,
@@ -148,11 +148,10 @@ const tiers = [
     badge: "Most popular",
     features: [
       "Unlimited worksheet & quiz generations",
-      "Unlimited YouTube & PDF uploads",
+      "Unlimited YouTube & notes-based quizzes",
       "Clean PDF exports with NO watermark",
       "Save quizzes to library & dashboard",
       "All question types & grade levels",
-      "Priority AI processing speed",
     ],
     cta: "Start Pro",
     ctaHref: "/pricing",
@@ -163,11 +162,10 @@ const tiers = [
     price: "$19",
     per: "/teacher/mo",
     features: [
-      "Everything in Pro",
-      "Shared department team library",
-      "Class & student management",
-      "Multiple seats with centralized billing",
-      "Priority dedicated support",
+      "Everything in Pro, for every teacher",
+      "Set up for your school by email",
+      "One contact for billing questions",
+      "Direct email support",
     ],
     cta: "Contact us",
     ctaHref: `mailto:${SUPPORT_EMAIL}`,

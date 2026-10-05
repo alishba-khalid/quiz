@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { polar } from "@/lib/polar";
 import { db } from "@/lib/db";
 
-export async function POST(req: NextRequest) {
+export async function POST() {
   try {
     const session = await auth();
     if (!session?.user?.email) {
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ url: customerSession.customerPortalUrl });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Billing portal error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
