@@ -212,7 +212,7 @@ export default function FeaturesPage() {
             View pricing
           </Link>
         </div>
-        <p className="text-xs text-muted">No credit card required. Free plan includes 1 worksheet generation.</p>
+        <p className="text-xs text-muted">Pro is $9/month for unlimited generations. Cancel any time.</p>
       </section>
     </div>
   );

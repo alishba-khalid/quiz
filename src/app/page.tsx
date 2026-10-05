@@ -4,12 +4,12 @@ import { Zap, BookOpen, Download, RefreshCw, Star, Upload, Check, ArrowRight, Fi
 import { YoutubeIcon } from "@/components/Icons";
 import FAQAccordion from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
-import { FREE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
+import { SUPPORT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "QuizKraft | AI Worksheet Generator & Quiz Maker for Teachers",
   description:
-    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds — complete with instant answer keys, PDF exports, and adaptive retake study loops. Try 1 preview quiz on the Free plan.",
+    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds — complete with instant answer keys, PDF exports, and adaptive retake study loops. Pro is $9/month for unlimited generations.",
   alternates: { canonical: "https://www.quizkraft.tech/" },
   keywords: [
     "AI worksheet generator",
@@ -142,22 +142,6 @@ const features = [
 
 const tiers = [
   {
-    name: "Free",
-    price: "$0",
-    per: "/month",
-    features: [
-      `${FREE_LIMIT} preview generation per month`,
-      "Account required",
-      "All question types & grade levels",
-      "Answer keys with explanations",
-      "Quiz mode + active recall loop",
-      "Print layout with watermark",
-    ],
-    cta: "Create account",
-    ctaHref: "/signup",
-    highlight: false,
-  },
-  {
     name: "Pro",
     price: "$9",
     per: "/month",
@@ -216,12 +200,12 @@ const homeFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: `There is a Free plan, but it is a preview: after creating an account you get ${FREE_LIMIT} generation per month (topic, YouTube or notes) so you can try QuizKraft. No credit card is needed for it. For regular use, Pro is $9/month with unlimited generations. Usage resets every 30 days.` } },
+    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan. Pro has a 30-day money-back guarantee." } },
     { "@type": "Question", name: "Can I generate quizzes from YouTube videos?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste any YouTube video link into the generator. QuizKraft extracts the transcript and creates targeted questions directly from the video content." } },
     { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
     { "@type": "Question", name: "Can I use my own notes or PDF documents?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste text from your notes, textbook, or study guide into the generator to produce quizzes based on your specific curriculum." } },
     { "@type": "Question", name: "Can students take quizzes online?", acceptedAnswer: { "@type": "Answer", text: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right." } },
-    { "@type": "Question", name: "Can I print or export worksheets?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every worksheet has a clean print layout. Free users can print with a QuizKraft watermark. Pro users get clean PDF export with no watermark." } },
+    { "@type": "Question", name: "Can I print or export worksheets?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every worksheet has a clean print layout. Pro includes clean PDF export with no watermark." } },
   ],
 };
 
@@ -299,7 +283,7 @@ export default function HomePage() {
                   YouTube to Quiz
                 </Link>
               </div>
-              <p className="text-xs text-muted">Free plan: {FREE_LIMIT} preview generation per month with an account. Pro: unlimited for $9/month.</p>
+              <p className="text-xs text-muted">Pro: unlimited quizzes and worksheets for $9/month.</p>
             </div>
             <div className="animate-fade-up delay-200">
               <WorksheetPreview />
@@ -509,7 +493,7 @@ export default function HomePage() {
               Simple, honest pricing.
             </h2>
           </div>
-          <div className="grid sm:grid-cols-3 gap-5 mb-8">
+          <div className="grid sm:grid-cols-2 gap-5 mb-8 max-w-3xl mx-auto">
             {tiers.map((t) => (
               <div
                 key={t.name}
@@ -593,7 +577,7 @@ export default function HomePage() {
           >
             Create your account
           </Link>
-          <p className="mt-4 text-sm text-muted">Try {FREE_LIMIT} preview generation on the Free plan, then upgrade to Pro for unlimited.</p>
+          <p className="mt-4 text-sm text-muted">Unlimited quizzes with Pro. Cancel any time.</p>
         </div>
       </section>
     </div>

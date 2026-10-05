@@ -22,18 +22,18 @@ const WORKSHEET_SUBJECTS = [
 
 const faqs = [
   { q: "What subjects can I make worksheets for?", a: "Any subject — math, reading comprehension, science, history, spelling, grammar, foreign languages, and more. If you can type the topic, QuizKraft can build the worksheet." },
-  { q: "Can I print the worksheets?", a: "Yes. Every worksheet has a clean, exam-style print layout designed to look professional on paper. Free users print directly from the browser. Pro users can also export to PDF with no watermark." },
+  { q: "Can I print the worksheets?", a: "Yes. Every worksheet has a clean, exam-style print layout designed to look professional on paper. Pro also includes PDF export with no watermark." },
   { q: "Do worksheets include answer keys?", a: "Yes. Every worksheet comes with a full answer key and short explanations for each question — available on all plans, no extra steps required." },
   { q: "What grade levels are supported?", a: "Kindergarten through college. Just select the grade when setting up your worksheet and QuizKraft calibrates difficulty accordingly." },
   { q: "Can I generate a worksheet from my own notes?", a: "Yes, on the Pro plan. Paste in text from your notes, textbook, or any source and QuizKraft generates worksheet questions directly from that material." },
   { q: "How is this different from the quiz generator?", a: "Same underlying tool — the difference is how you use the output. Worksheets are formatted for print with answer lines and bubble choices. Use the same generator output in Quiz Mode for digital practice." },
-  { q: "How many free worksheets can I generate?", a: "The free plan includes 1 worksheet generation, no credit card required. Upgrade to Pro for unlimited generation at $9/month." },
+  { q: "Is there a free plan?", a: "No. Pro is $9/month for unlimited worksheet generation, with a 30-day money-back guarantee." },
 ];
 
 export const metadata: Metadata = {
   title: "AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
   description:
-    "Generate custom, printable worksheets for any subject and grade in 10 seconds with AI. Includes multiple question formats, instant answer keys, and PDF download. Try 1 preview worksheet on the Free plan.",
+    "Generate custom, printable worksheets for any subject and grade in 10 seconds with AI. Includes multiple question formats, instant answer keys, and PDF download. Unlimited with Pro for $9/month.",
   alternates: { canonical: "https://www.quizkraft.tech/worksheet-generator" },
   keywords: [
     "AI worksheet generator",
@@ -234,9 +234,9 @@ export default async function WorksheetGeneratorPage() {
           className="text-3xl font-medium text-ink tracking-[-0.02em] mb-4"
           style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
         >
-          Try one preview worksheet, then go unlimited.
+          Go unlimited with Pro.
         </h2>
-        <p className="text-muted mb-6 text-sm">Create an account for 1 free preview generation a month. Pro is $9/month for unlimited.</p>
+        <p className="text-muted mb-6 text-sm">Pro is $9/month for unlimited worksheets. Cancel any time.</p>
         <Link
           href="/signup"
           className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"

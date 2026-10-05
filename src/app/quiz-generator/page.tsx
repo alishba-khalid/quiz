@@ -27,13 +27,13 @@ const faqs = [
   { q: "Does the quiz generator include answer keys?", a: "Yes. Every quiz includes a full answer key with explanations for each question, available on all plans." },
   { q: "Can students take the quiz online?", a: "Yes. After generating, switch to Quiz Mode and students can click through questions, get instant scores, and wrong answers cycle back for review until mastered." },
   { q: "What grade levels does the quiz generator support?", a: "All grade levels from kindergarten through college. Just select the grade when setting up your quiz." },
-  { q: "How many free quizzes can I generate?", a: "The free plan includes 1 quiz generation — no credit card required. Upgrade to Pro for unlimited generation at $9/month." },
+  { q: "Is there a free plan?", a: "No. Pro is $9/month for unlimited quiz generation, with a 30-day money-back guarantee." },
 ];
 
 export const metadata: Metadata = {
   title: "AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
   description:
-    "Generate a complete custom quiz in 10 seconds with AI — multiple choice, short answer, true/false, fill-in-the-blank, mixed automatically. Answer keys included. Try 1 preview quiz on the Free plan.",
+    "Generate a complete custom quiz in 10 seconds with AI — multiple choice, short answer, true/false, fill-in-the-blank, mixed automatically. Answer keys included. Unlimited with Pro for $9/month.",
   alternates: { canonical: "https://www.quizkraft.tech/quiz-generator" },
   keywords: [
     "AI quiz generator",
@@ -234,9 +234,9 @@ export default async function QuizGeneratorPage() {
           className="text-3xl font-medium text-ink tracking-[-0.02em] mb-4"
           style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
         >
-          Try one preview quiz, then go unlimited.
+          Go unlimited with Pro.
         </h2>
-        <p className="text-muted mb-6 text-sm">Create an account for 1 free preview generation a month. Pro is $9/month for unlimited.</p>
+        <p className="text-muted mb-6 text-sm">Pro is $9/month for unlimited quizzes. Cancel any time.</p>
         <Link
           href="/signup"
           className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors shadow-sm shadow-accent/20 text-sm"

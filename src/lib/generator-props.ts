@@ -1,23 +1,22 @@
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
-import { FREE_LIMIT } from "@/lib/constants";
 
 export async function getGeneratorProps() {
   const session = await auth();
-  const isPro = (session?.user as any)?.plan === "PRO";
 
-  let usageCount = 0;
-  if (session?.user?.email && !isPro) {
+  // Read the plan from the DB, not the session: the JWT only refreshes the plan
+  // at sign-in, so a user who just upgraded would otherwise still look FREE.
+  let isPro = false;
+  if (session?.user?.email) {
     const user = await db.user.findUnique({
       where: { email: session.user.email },
-      select: { usageCount: true },
+      select: { plan: true },
     });
-    usageCount = user?.usageCount ?? 0;
+    isPro = user?.plan === "PRO";
   }
 
   return {
     isLoggedIn: !!session,
     isPro,
-    creditsLeft: isPro ? Infinity : Math.max(0, FREE_LIMIT - usageCount),
   };
 }

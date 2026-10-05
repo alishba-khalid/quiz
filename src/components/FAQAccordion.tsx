@@ -6,7 +6,7 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     q: "Is there a free plan?",
-    a: "Yes, as a preview. With an account, the free plan gives you 1 generation per month to try QuizKraft — no credit card required. All question types, answer keys, quiz mode, and the study loop are included. Upgrade to Pro for unlimited generation.",
+    a: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan. Pro has a 30-day money-back guarantee.",
   },
   {
     q: "What subjects and grades does it cover?",
@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "Can I print or export?",
-    a: "Yes. Every worksheet has a clean print layout. Free users can print with a QuizKraft watermark. Pro users get clean PDF export with no watermark.",
+    a: "Yes. Every worksheet has a clean print layout. Pro includes clean PDF export with no watermark.",
   },
   {
     q: "Do you offer school or team plans?",

@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Check } from "lucide-react";
 import { auth } from "@/auth";
 import CheckoutButton from "@/components/CheckoutButton";
 import { JsonLd } from "@/components/JsonLd";
-import { FREE_LIMIT, SUPPORT_EMAIL } from "@/lib/constants";
+import { SUPPORT_EMAIL } from "@/lib/constants";
 import { PLANS } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Simple & Affordable Pricing for Teachers | QuizKraft",
   description:
-    `Try QuizKraft with ${FREE_LIMIT} preview generation per month on the Free plan, or upgrade to Pro ($9/mo) for unlimited generations, watermark-free PDF exports, and saved quiz history.`,
+    "QuizKraft Pro is $9/month: unlimited AI worksheet and quiz generations, watermark-free PDF exports, and saved quiz history. School plans from $19/teacher.",
   alternates: { canonical: "https://www.quizkraft.tech/pricing" },
   keywords: [
     "QuizKraft pricing",
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Simple & Affordable Pricing for Teachers | QuizKraft",
-    description: `Free plan: ${FREE_LIMIT} preview generation per month. Pro: unlimited AI worksheets, quizzes, and clean PDF exports.`,
+    description: "Pro: $9/month for unlimited AI worksheets, quizzes, and clean PDF exports.",
     type: "website",
     url: "https://www.quizkraft.tech/pricing",
     siteName: "QuizKraft",
@@ -29,23 +28,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QuizKraft Pricing & Plans",
-    description: `${FREE_LIMIT} preview generation per month on Free. Upgrade to Pro for unlimited worksheets & quizzes.`,
+    description: "Unlimited worksheets & quizzes with Pro for $9/month.",
     images: ["/pricing/opengraph-image"],
   },
-};
-
-const freeTier = {
-  ...PLANS.free,
-  features: [
-    `${FREE_LIMIT} preview generation per month (topic, YouTube or notes)`,
-    "Account required",
-    "All question types (MCQ, True/False, Short Answer, Fill-in)",
-    "All grade levels (K–12 to college)",
-    "Answer keys + explanations",
-    "Interactive quiz mode + adaptive study loop",
-    "Browser printing",
-    "QuizKraft watermark on PDF exports",
-  ],
 };
 
 const proTier = {
@@ -76,16 +61,12 @@ const schoolTier = {
 
 const faqs = [
   {
-    q: "What does the Free plan include?",
-    a: `The Free plan is a preview: with an account you get ${FREE_LIMIT} generation per month (topic, YouTube or notes) so you can try QuizKraft before paying. No credit card is needed for it. For regular use you need Pro or School. Usage resets every 30 days.`,
-  },
-  {
     q: "Can I cancel my Pro subscription anytime?",
     a: "Yes. You can cancel your subscription from your billing portal with one click at any time. You will retain full Pro access until the end of your current billing period.",
   },
   {
-    q: "Why is watermark-free PDF export Pro-only?",
-    a: "Free users can generate quizzes and print them from their browser or download a PDF containing a discrete QuizKraft watermark. Pro users get clean, fully unbranded PDF worksheets formatted for professional classroom distribution.",
+    q: "Is there a free plan?",
+    a: "No. Generating quizzes and worksheets requires Pro ($9/month) or a School plan. Pro is covered by a 30-day money-back guarantee, so you can try it risk-free.",
   },
   {
     q: "What payment methods do you accept?",
@@ -121,17 +102,10 @@ const productSchema = {
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "USD",
-    "lowPrice": "0.00",
+    "lowPrice": "9.00",
     "highPrice": "19.00",
-    "offerCount": "3",
+    "offerCount": "2",
     "offers": [
-      {
-        "@type": "Offer",
-        "name": "Free Plan",
-        "price": "0.00",
-        "priceCurrency": "USD",
-        "category": "Subscription"
-      },
       {
         "@type": "Offer",
         "name": "Pro Plan",
@@ -168,46 +142,12 @@ export default async function PricingPage() {
         >
           Simple, honest pricing.
         </h1>
-        <p className="text-muted">Try {FREE_LIMIT} preview generation a month on Free. Upgrade to Pro for unlimited quizzes.</p>
+        <p className="text-muted">Unlimited quizzes and worksheets with Pro. Cancel any time.</p>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Tiers */}
-        <div className="grid md:grid-cols-3 gap-5 mb-16">
-          {/* Free */}
-          <div className="bg-surface rounded-2xl border border-hairline p-8 flex flex-col justify-between">
-            <div>
-              <h2 className="text-xl font-semibold text-ink mb-1">{freeTier.name}</h2>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-bold text-ink">{freeTier.price}</span>
-                <span className="text-muted text-sm">{freeTier.per}</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {freeTier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-muted">
-                    <Check className="h-4 w-4 text-correct flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {session ? (
-              <Link
-                href="/dashboard"
-                className="w-full flex items-center justify-center px-6 py-3 border border-hairline rounded-xl text-ink font-semibold hover:bg-canvas transition-colors text-sm"
-              >
-                Go to dashboard
-              </Link>
-            ) : (
-              <Link
-                href="/signup"
-                className="w-full flex items-center justify-center px-6 py-3 border border-hairline rounded-xl text-ink font-semibold hover:bg-canvas transition-colors text-sm"
-              >
-                Create account
-              </Link>
-            )}
-          </div>
-
+        <div className="grid md:grid-cols-2 gap-5 mb-16">
           {/* Pro */}
           <div className="relative bg-accent rounded-2xl p-8 text-white overflow-hidden flex flex-col justify-between shadow-md shadow-accent/20">
             <div className="absolute top-4 right-4 bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full">

@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
+import { db } from "@/lib/db";
 import { getYouTubeVideoTranscript, YouTubeError } from "@/lib/youtube";
 import { checkTranscriptFetchLimit, recordTranscriptFetch, getClientIp } from "@/lib/rate-limiter";
 
@@ -13,6 +14,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         { error: "Please log in to generate quizzes from YouTube videos.", code: "AUTH_REQUIRED" },
         { status: 401 }
+      );
+    }
+
+    // Transcripts cost money per fetch (Supadata), so only Pro users may fetch them.
+    const user = await db.user.findUnique({
+      where: { email: session.user.email },
+      select: { plan: true },
+    });
+    if (user?.plan !== "PRO") {
+      return NextResponse.json(
+        { error: "Generating quizzes requires a Pro plan.", code: "PRO_REQUIRED" },
+        { status: 403 }
       );
     }
 

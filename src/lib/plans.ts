@@ -1,14 +1,6 @@
-import { FREE_LIMIT } from "@/lib/constants";
-
 // Single source of truth for plan names, prices and headline copy.
 // Used by /pricing, the compact plan cards on landing pages, and the generator form.
 export const PLANS = {
-  free: {
-    name: "Free",
-    price: "$0",
-    per: "/month",
-    summary: `${FREE_LIMIT} preview generation per month. Account required.`,
-  },
   pro: {
     name: "Pro",
     price: "$9",

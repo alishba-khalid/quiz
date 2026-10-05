@@ -17,7 +17,7 @@ const breadcrumbSchema = {
 export const metadata: Metadata = {
   title: "AI Worksheet & Quiz Generator Studio | QuizKraft",
   description:
-    "Generate customized educational worksheets and quizzes for any subject, grade level, and question type using AI. Instant answer key generation. Try 1 preview generation free with an account.",
+    "Generate customized educational worksheets and quizzes for any subject, grade level, and question type using AI. Instant answer key generation. Unlimited with Pro for $9/month.",
   alternates: { canonical: "https://www.quizkraft.tech/generator" },
   keywords: [
     "AI worksheet generator",

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { SUPPORT_EMAIL, FREE_LIMIT } from "@/lib/constants";
+import { SUPPORT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service | QuizKraft",
-  description: "QuizKraft terms of service for the AI worksheet and quiz generator. Free plan, Pro subscription, cancellation, and AI content policy.",
+  description: "QuizKraft terms of service for the AI worksheet and quiz generator. Pro subscription, cancellation, and AI content policy.",
   alternates: { canonical: "https://www.quizkraft.tech/terms" },
 };
 
@@ -25,8 +25,8 @@ export default function TermsPage() {
               body: "QuizKraft provides an AI-powered worksheet and quiz generation service. By using QuizKraft, you agree to use it only for lawful purposes and in accordance with these terms.",
             },
             {
-              title: "2. Free and paid plans",
-              body: `An account is required to generate content. The free plan allows ${FREE_LIMIT} preview generation per month. Pro and School plans are billed monthly and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.`,
+              title: "2. Plans and billing",
+              body: `An account and a paid plan are required to generate content. Pro and School plans are billed monthly and may be cancelled at any time. Cancellation takes effect at the end of the current billing period.`,
             },
             {
               title: "3. AI-generated content",

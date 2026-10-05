@@ -6,7 +6,6 @@ import {
   Zap,
   Download,
   RefreshCw,
-  Lock,
   Eye,
   EyeOff,
   Printer,
@@ -22,7 +21,7 @@ import {
 } from "lucide-react";
 import { YoutubeIcon } from "@/components/Icons";
 import PlanCards from "@/components/PlanCards";
-import { FREE_LIMIT, MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
+import { MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
 
 /* -- Types -------------------------------------------------------- */
 type QuestionType = "multiple-choice" | "true-false" | "short-answer" | "fill-in-the-blank";
@@ -156,13 +155,11 @@ function gradeAnswer(userAnswer: string, correctAnswer: string, type: QuestionTy
 export default function QuizGeneratorForm({
   isLoggedIn = false,
   isPro = false,
-  creditsLeft = FREE_LIMIT,
   initialMode = "topic",
   prefillTopic = "",
 }: {
   isLoggedIn?: boolean;
   isPro?: boolean;
-  creditsLeft?: number;
   initialMode?: InputMode;
   prefillTopic?: string;
 }) {
@@ -198,7 +195,20 @@ export default function QuizGeneratorForm({
 
   const outputRef = useRef<HTMLDivElement>(null);
 
-  const canGenerate = isLoggedIn && (isPro || creditsLeft > 0);
+  /* Pricing dialog: generating is Pro-only, so non-Pro users see plans as soon
+     as they start filling in the form, and again whenever they hit generate. */
+  const pricingRef = useRef<HTMLDialogElement>(null);
+  const pricingNudged = useRef(false);
+
+  function openPricing() {
+    if (!pricingRef.current?.open) pricingRef.current?.showModal();
+  }
+
+  function nudgePricing() {
+    if (isPro || pricingNudged.current) return;
+    pricingNudged.current = true;
+    openPricing();
+  }
 
   /* Sync initialMode when prop changes */
   useEffect(() => {
@@ -219,7 +229,11 @@ export default function QuizGeneratorForm({
   /* -- Fetch YouTube Transcript & Info -- */
   async function handleFetchYoutube(urlToFetch?: string) {
     const url = (urlToFetch || youtubeUrl).trim();
-    if (!url || !isLoggedIn) return;
+    if (!url) return;
+    if (!isPro) {
+      openPricing();
+      return;
+    }
 
     setFetchingYoutube(true);
     setYoutubeError("");
@@ -257,7 +271,10 @@ export default function QuizGeneratorForm({
   async function handleGenerate(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    if (!canGenerate) return;
+    if (!isPro) {
+      openPricing();
+      return;
+    }
 
     let effectiveTopic = topic.trim();
     let effectiveSource = "";
@@ -583,6 +600,7 @@ export default function QuizGeneratorForm({
                       onChange={(e) => {
                         setYoutubeUrl(e.target.value);
                         setYoutubeError("");
+                        nudgePricing();
                       }}
                       onBlur={() => {
                         if (youtubeUrl.trim() && !youtubeVideoInfo && !fetchingYoutube) {
@@ -657,7 +675,10 @@ export default function QuizGeneratorForm({
                 <textarea
                   required
                   value={sourceMaterial}
-                  onChange={(e) => setSourceMaterial(e.target.value)}
+                  onChange={(e) => {
+                    setSourceMaterial(e.target.value);
+                    nudgePricing();
+                  }}
                   placeholder="Paste lecture notes, textbook chapters, or study guide text here to generate custom questions..."
                   rows={4}
                   className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all resize-y"
@@ -675,7 +696,10 @@ export default function QuizGeneratorForm({
                   <input
                     type="text"
                     value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
+                    onChange={(e) => {
+                      setSubject(e.target.value);
+                      nudgePricing();
+                    }}
                     placeholder="e.g. Mathematics, Biology, World History"
                     className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all"
                   />
@@ -689,7 +713,10 @@ export default function QuizGeneratorForm({
                     type="text"
                     required
                     value={topic}
-                    onChange={(e) => setTopic(e.target.value)}
+                    onChange={(e) => {
+                    setTopic(e.target.value);
+                    nudgePricing();
+                  }}
                     placeholder="e.g. Photosynthesis, Quadratic Equations, Cold War"
                     className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all"
                   />
@@ -703,7 +730,10 @@ export default function QuizGeneratorForm({
                 <input
                   type="text"
                   value={topic}
-                  onChange={(e) => setTopic(e.target.value)}
+                  onChange={(e) => {
+                    setTopic(e.target.value);
+                    nudgePricing();
+                  }}
                   placeholder={mode === "youtube" ? "Auto-fills from video title" : "e.g. Unit 3 Review"}
                   className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all"
                 />
@@ -806,24 +836,7 @@ export default function QuizGeneratorForm({
               </div>
             )}
 
-            {/* Submit button (guests must log in first) */}
-            {!isLoggedIn ? (
-              <div className="space-y-2">
-                <Link
-                  href="/signup"
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-colors text-sm shadow-sm shadow-accent/20"
-                >
-                  <Lock className="h-4 w-4" />
-                  Create an account to generate
-                </Link>
-                <p className="text-center text-xs text-muted">
-                  Already have one?{" "}
-                  <Link href="/login" className="text-accent font-medium hover:underline">
-                    Log in
-                  </Link>
-                </p>
-              </div>
-            ) : (
+            {/* Submit button (non-Pro users get the pricing dialog) */}
             <button
               type="submit"
               disabled={
@@ -831,8 +844,7 @@ export default function QuizGeneratorForm({
                 fetchingYoutube ||
                 (mode === "topic" && !topic.trim()) ||
                 (mode === "youtube" && !youtubeUrl.trim()) ||
-                (mode === "source" && !sourceMaterial.trim()) ||
-                !canGenerate
+                (mode === "source" && !sourceMaterial.trim())
               }
               className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm shadow-sm shadow-accent/20 cursor-pointer"
             >
@@ -856,25 +868,10 @@ export default function QuizGeneratorForm({
                 </>
               )}
             </button>
-            )}
 
-            {/* Credits and plan options */}
-            {isLoggedIn && (
-              <p className="text-center text-xs text-muted pt-1">
-                {isPro
-                  ? "Unlimited generations (Pro) · ~10 seconds"
-                  : creditsLeft > 0
-                  ? `${creditsLeft} preview generation${creditsLeft === 1 ? "" : "s"} left this month`
-                  : "You've used your free preview this month. Pick a plan to keep generating."}
-              </p>
-            )}
-
-            {!isPro && (
-              <div className="pt-2 border-t border-hairline">
-                <p className="text-xs font-semibold text-ink uppercase tracking-wide mb-2">Plans</p>
-                <PlanCards isLoggedIn={isLoggedIn} compact />
-              </div>
-            )}
+            <p className="text-center text-xs text-muted pt-1">
+              {isPro ? "Unlimited generations (Pro) · ~10 seconds" : "Generating quizzes requires Pro · $9/month"}
+            </p>
           </form>
         </div>
       </aside>
@@ -1374,6 +1371,50 @@ export default function QuizGeneratorForm({
           </div>
         )}
       </div>
+
+      {/* -- Pricing dialog (non-Pro users) ------------------------- */}
+      <dialog
+        ref={pricingRef}
+        aria-labelledby="pricing-dialog-title"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) e.currentTarget.close();
+        }}
+        className="m-auto w-[calc(100%-2rem)] max-w-2xl rounded-2xl border border-hairline bg-canvas p-0 shadow-xl backdrop:bg-ink/50 backdrop:backdrop-blur-sm"
+      >
+        <div className="p-6 sm:p-8">
+          <div className="flex items-start justify-between gap-4 mb-6">
+            <div>
+              <h2
+                id="pricing-dialog-title"
+                className="text-2xl font-medium text-ink tracking-[-0.02em]"
+                style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}
+              >
+                Pick a plan to generate
+              </h2>
+              <p className="text-sm text-muted mt-1">
+                Unlimited quizzes and worksheets from topics, YouTube videos and notes. Cancel any time.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => pricingRef.current?.close()}
+              aria-label="Close"
+              className="p-1.5 rounded-lg text-muted hover:text-ink hover:bg-hairline/40 transition-colors cursor-pointer"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+          <PlanCards isLoggedIn={isLoggedIn} />
+          {!isLoggedIn && (
+            <p className="text-center text-xs text-muted mt-3">
+              Already have an account?{" "}
+              <Link href="/login" className="text-accent font-medium hover:underline">
+                Log in
+              </Link>
+            </p>
+          )}
+        </div>
+      </dialog>
     </div>
   );
 }

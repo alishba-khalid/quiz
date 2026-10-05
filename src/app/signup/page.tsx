@@ -3,11 +3,10 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import SignupForm from "@/components/SignupForm";
-import { FREE_LIMIT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Sign Up | QuizKraft",
-  description: `Create your QuizKraft account. The Free plan includes ${FREE_LIMIT} preview generation per month; Pro unlocks unlimited generations.`,
+  description: "Create your QuizKraft account, then choose Pro ($9/month) for unlimited AI quiz and worksheet generations.",
   alternates: { canonical: "https://www.quizkraft.tech/signup" },
   robots: { index: false, follow: false },
 };
@@ -31,7 +30,7 @@ export default async function SignupPage() {
             </span>
           </Link>
           <h1 className="text-2xl font-semibold text-ink mb-1">Create your account</h1>
-          <p className="text-sm text-muted">The Free plan includes {FREE_LIMIT} preview generation per month. Upgrade to Pro any time for unlimited.</p>
+          <p className="text-sm text-muted">Create an account, then choose Pro ($9/month) to start generating.</p>
         </div>
         <div className="bg-surface rounded-2xl border border-hairline shadow-sm p-8">
           <SignupForm

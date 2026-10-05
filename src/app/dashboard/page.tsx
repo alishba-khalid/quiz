@@ -5,7 +5,6 @@ import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import DashboardClient from "@/components/DashboardClient";
 import BillingPortalButton from "@/components/BillingPortalButton";
-import { FREE_LIMIT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Dashboard | QuizKraft",
@@ -45,7 +44,6 @@ export default async function DashboardPage({
   if (!user) redirect("/login");
 
   const isPro = user.plan === "PRO";
-  const remaining = Math.max(0, FREE_LIMIT - user.usageCount);
   const showSuccess = params.success === "true";
 
   const worksheets = user.worksheets.map((w: (typeof user.worksheets)[number]) => ({
@@ -84,7 +82,7 @@ export default async function DashboardPage({
           </div>
           <div className="bg-surface rounded-xl border border-hairline p-4 text-center">
             <div className="text-2xl font-bold text-accent">
-              {isPro ? "∞" : `${user.usageCount}/${FREE_LIMIT}`}
+              {isPro ? user.usageCount : "—"}
             </div>
             <div className="text-xs text-muted mt-1">This month</div>
           </div>
@@ -95,7 +93,7 @@ export default async function DashboardPage({
                   isPro ? "bg-accent-soft text-accent" : "bg-canvas border border-hairline text-muted"
                 }`}
               >
-                {isPro ? "PRO" : "FREE"}
+                {isPro ? "PRO" : "NO PLAN"}
               </span>
               {isPro && <BillingPortalButton />}
             </div>
@@ -106,18 +104,16 @@ export default async function DashboardPage({
         {!isPro && (
           <div className="mb-6 bg-accent-soft border border-accent/20 rounded-2xl p-4 flex items-center justify-between gap-4 flex-wrap">
             <div>
-              <p className="text-sm font-semibold text-ink">Unlock unlimited worksheets + watermark-free PDF export</p>
+              <p className="text-sm font-semibold text-ink">Choose a plan to start generating</p>
               <p className="text-xs text-muted mt-0.5">
-                {remaining > 0
-                  ? `${remaining} preview generation${remaining === 1 ? "" : "s"} remaining this month.`
-                  : "You've used your free preview generation for this month."}
+                Pro unlocks unlimited worksheets, quizzes and watermark-free PDF exports.
               </p>
             </div>
             <Link
               href="/pricing"
               className="px-5 py-2 bg-accent text-white text-sm font-semibold rounded-xl hover:bg-accent-dark transition-colors flex-shrink-0"
             >
-              Upgrade to Pro — $9/mo
+              Get Pro — $9/mo
             </Link>
           </div>
         )}

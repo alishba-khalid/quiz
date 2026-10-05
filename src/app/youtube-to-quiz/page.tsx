@@ -6,7 +6,6 @@ import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
 import { PricingSection } from "@/components/PlanCards";
-import { FREE_LIMIT } from "@/lib/constants";
 import { PLANS } from "@/lib/plans";
 
 const faqs = [
@@ -20,7 +19,7 @@ const faqs = [
   },
   {
     q: "Is QuizKraft's YouTube to Quiz tool free?",
-    a: `Not fully. You need an account to use it. The Free plan includes ${FREE_LIMIT} preview generation per month, which you can use on a YouTube video, so you can see how it works before paying. For regular use you need Pro (${PLANS.pro.price}/month, unlimited generations and watermark-free PDF exports) or the School / Team plan (${PLANS.school.price} per teacher per month).`,
+    a: `No. You need Pro (${PLANS.pro.price}/month, unlimited generations and watermark-free PDF exports) or the School / Team plan (${PLANS.school.price} per teacher per month).`,
   },
   {
     q: "Can I edit and customize the generated questions?",
@@ -57,7 +56,7 @@ const steps = [
 export const metadata: Metadata = {
   title: "YouTube Video to Quiz — AI Quiz Generator | QuizKraft",
   description:
-    "Turn any YouTube video into an interactive quiz in seconds. Generate practice questions with answer keys from video transcripts. Try 1 preview quiz on the Free plan.",
+    "Turn any YouTube video into an interactive quiz in seconds. Generate practice questions with answer keys from video transcripts. Pro is $9/month for unlimited generations.",
   alternates: { canonical: "https://www.quizkraft.tech/youtube-to-quiz" },
   keywords: [
     "youtube video to quiz",
@@ -368,7 +367,7 @@ export default async function YouTubeToQuizPage() {
           Start turning video lectures into mastery.
         </h2>
         <p className="text-muted mb-6 text-sm max-w-md mx-auto">
-          Start with {FREE_LIMIT} preview generation on the Free plan, then upgrade to Pro for unlimited quizzes.
+          Unlimited YouTube quizzes with Pro for $9/month.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link

@@ -248,7 +248,7 @@ export default async function WorksheetSubjectPage({
           <div className="flex-1">
             <p className="font-semibold text-ink text-sm mb-1">Print-ready layout included</p>
             <p className="text-sm text-muted">
-              Every worksheet is formatted for paper from the start — numbered questions, answer lines, and bubble-style multiple choice options. Print directly from your browser (free) or export a clean PDF (Pro).
+              Every worksheet is formatted for paper from the start — numbered questions, answer lines, and bubble-style multiple choice options. Print directly from your browser or export a clean PDF.
             </p>
           </div>
           <Link

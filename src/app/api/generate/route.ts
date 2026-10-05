@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { GoogleGenAI } from "@google/genai";
-import { FREE_LIMIT, MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
+import { MAX_TRANSCRIPT_CHARS } from "@/lib/constants";
 
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
@@ -50,7 +50,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    const isPro = user.plan === "PRO";
+    if (user.plan !== "PRO") {
+      return NextResponse.json(
+        { error: "Generating quizzes requires a Pro plan.", code: "PRO_REQUIRED" },
+        { status: 403 }
+      );
+    }
 
     // DB-based rate limit: check most recent worksheet creation time
     const now = Date.now();
@@ -74,16 +79,6 @@ export async function POST(req: NextRequest) {
         data: { usageCount: 0, lastResetDate: new Date() },
       });
       user.usageCount = 0;
-    }
-
-    if (!isPro && user.usageCount >= FREE_LIMIT) {
-      return NextResponse.json(
-        {
-          error: "You've used your free preview generation for this month. Upgrade to Pro for unlimited generation.",
-          code: "LIMIT_REACHED",
-        },
-        { status: 403 }
-      );
     }
 
     // Prepare source text (capped at MAX_TRANSCRIPT_CHARS)
@@ -178,7 +173,7 @@ Rules:
       questionsCount: qCount,
       questions: content,
       answerKey,
-      isPro,
+      isPro: true,
       videoInfo: videoInfo || null,
     });
   } catch (error: any) {

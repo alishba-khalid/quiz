@@ -241,7 +241,7 @@ export default async function QuizSubjectPage({
             Generate your {data.name.toLowerCase()} quiz in 10 seconds.
           </h2>
           <p className="text-sm text-muted mb-6">
-            Try 1 preview quiz on the Free plan. Unlimited with Pro.
+            Unlimited quizzes with Pro for $9/month.
           </p>
           <Link
             href="/quiz-generator"
