@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 export const metadata: Metadata = {
   title: "AI Worksheet & Quiz Maker Features | QuizKraft",
   description:
-    "Explore QuizKraft's powerful features: AI quiz creation, printable worksheet formatting, custom text upload, answer key generation, and the adaptive retake study loop.",
+    "QuizKraft features: AI quiz creation, printable worksheets, quizzes from your own text, answer keys, and an adaptive retake study loop.",
   alternates: { canonical: "https://www.quizkraft.tech/features" },
   keywords: [
     "AI worksheet features",

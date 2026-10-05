@@ -25,9 +25,9 @@ const useCases = [
 ];
 
 export const metadata: Metadata = {
-  title: "AI Quiz Maker for Teachers — Test & Worksheet Creator | QuizKraft",
+  title: "AI Quiz Maker for Teachers | QuizKraft",
   description:
-    "Make quizzes, exit tickets, sub plans, and printable worksheets in under 60 seconds with AI. Designed specifically for teachers across all subjects & grade levels. Pro is $9/month for unlimited generations.",
+    "Make quizzes, exit tickets, sub plans and printable worksheets in under 60 seconds with AI, for any subject and grade. Pro: $9/month, unlimited.",
   alternates: { canonical: "https://www.quizkraft.tech/quiz-maker-for-teachers" },
   keywords: [
     "quiz maker for teachers",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "automatic grading quiz maker"
   ],
   openGraph: {
-    title: "AI Quiz Maker for Teachers — Test & Worksheet Creator | QuizKraft",
+    title: "AI Quiz Maker for Teachers | QuizKraft",
     description: "Make quizzes, exit tickets, sub plans, and printable worksheets in under 60 seconds with AI. Answer keys included.",
     type: "website",
     url: "https://www.quizkraft.tech/quiz-maker-for-teachers",

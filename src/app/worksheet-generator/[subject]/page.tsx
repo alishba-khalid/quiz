@@ -18,8 +18,10 @@ export async function generateMetadata({
   const data = getWorksheetSubject(subject);
   if (!data) return { title: "Not Found" };
 
-  const title = `AI ${data.name} Worksheet Generator — ${data.gradeRange} | QuizKraft`;
-  const description = `Generate clean, printable ${data.name.toLowerCase()} worksheets and practice sheets in seconds — multiple question types with instant answer keys. ${data.gradeRange}.`;
+  // Drop the grade range when it would push the title past ~60 chars (Google truncates).
+  const fullTitle = `AI ${data.name} Worksheet Generator — ${data.gradeRange} | QuizKraft`;
+  const title = fullTitle.length > 60 ? `AI ${data.name} Worksheet Generator | QuizKraft` : fullTitle;
+  const description = `Create printable ${data.name.toLowerCase()} worksheets in seconds, with mixed question types and instant answer keys. ${data.gradeRange}.`;
 
   return {
     title,

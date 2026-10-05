@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { blogPosts as posts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
-  title: "AI Education Blog — Teaching Guides & Worksheet Tips | QuizKraft",
+  title: "Teaching Guides & Worksheet Tips | QuizKraft Blog",
   description:
     "Explore teaching guides, classroom AI tools, worksheet creation tips, and active recall strategies for educators. Save time and boost student engagement.",
   alternates: { canonical: "https://www.quizkraft.tech/blog" },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "active recall study tips"
   ],
   openGraph: {
-    title: "AI Education Blog — Teaching Guides & Worksheet Tips | QuizKraft",
+    title: "Teaching Guides & Worksheet Tips | QuizKraft Blog",
     description: "Teaching tips and AI education guides from the QuizKraft team.",
     type: "website",
     url: "https://www.quizkraft.tech/blog",

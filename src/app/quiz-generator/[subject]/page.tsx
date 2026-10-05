@@ -18,8 +18,10 @@ export async function generateMetadata({
   const data = getQuizSubject(subject);
   if (!data) return { title: "Not Found" };
 
-  const title = `AI ${data.name} Quiz Generator — ${data.gradeRange} | QuizKraft`;
-  const description = `Generate clean ${data.name.toLowerCase()} quiz questions and tests in seconds — multiple choice, short answer, true/false, and fill-in-the-blank. ${data.gradeRange}. Instant answer keys included.`;
+  // Drop the grade range when it would push the title past ~60 chars (Google truncates).
+  const fullTitle = `AI ${data.name} Quiz Generator — ${data.gradeRange} | QuizKraft`;
+  const title = fullTitle.length > 60 ? `AI ${data.name} Quiz Generator | QuizKraft` : fullTitle;
+  const description = `Create ${data.name.toLowerCase()} quizzes in seconds: multiple choice, true/false, short answer and fill-in-the-blank, with answer keys. ${data.gradeRange}.`;
 
   return {
     title,

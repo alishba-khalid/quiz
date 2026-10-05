@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return { title: "Post not found | QuizKraft" };
   const ogImage = post.thumbnail ? `https://www.quizkraft.tech${post.thumbnail}` : "https://www.quizkraft.tech/og-image.png";
   return {
-    title: `${post.title} | QuizKraft Blog`,
+    title: `${post.title} | QuizKraft`,
     description: post.excerpt,
     alternates: { canonical: `https://www.quizkraft.tech/blog/${slug}` },
     keywords: [
@@ -142,6 +142,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.quizkraft.tech/blog/${slug}` },
   };
 
+  // Same-category posts first, then the rest starting just after this post (wrapping around),
+  // so the links spread across the whole blog instead of piling onto the first few posts.
+  const idx = blogPosts.findIndex((p) => p.slug === slug);
+  const others = [...blogPosts.slice(idx + 1), ...blogPosts.slice(0, idx)];
+  const relatedPosts = [
+    ...others.filter((p) => p.category === post!.category),
+    ...others.filter((p) => p.category !== post!.category),
+  ].slice(0, 3);
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -205,6 +214,27 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             Generate a worksheet
           </Link>
         </div>
+
+        {relatedPosts.length > 0 && (
+          <nav aria-labelledby="related-heading" className="mt-14 pt-8 border-t border-hairline">
+            <h2 id="related-heading" className="text-lg font-semibold text-ink mb-5">
+              Related articles
+            </h2>
+            <ul className="space-y-3">
+              {relatedPosts.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    href={`/blog/${p.slug}`}
+                    className="block p-4 bg-surface rounded-xl border border-hairline hover:border-accent/40 hover:bg-accent-soft transition-all"
+                  >
+                    <span className="text-xs font-semibold text-accent">{p.category}</span>
+                    <span className="block font-medium text-ink mt-1">{p.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </div>
     </div>
   );

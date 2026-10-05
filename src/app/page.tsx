@@ -9,7 +9,7 @@ import { SUPPORT_EMAIL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "QuizKraft | AI Worksheet Generator & Quiz Maker for Teachers",
   description:
-    "Generate clean, printable worksheets and quizzes for any subject and grade in seconds — complete with instant answer keys, PDF exports, and adaptive retake study loops. Pro is $9/month for unlimited generations.",
+    "Printable worksheets and quizzes for any subject and grade in seconds, with answer keys, PDF export and a retake study loop. Pro: $9/month, unlimited.",
   alternates: { canonical: "https://www.quizkraft.tech/" },
   keywords: [
     "AI worksheet generator",

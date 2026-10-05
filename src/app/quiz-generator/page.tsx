@@ -4,25 +4,11 @@ import { Check, Zap, ArrowRight } from "lucide-react";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
-
-const QUIZ_SUBJECTS = [
-  { slug: "biology", name: "Biology" },
-  { slug: "algebra", name: "Algebra" },
-  { slug: "chemistry", name: "Chemistry" },
-  { slug: "us-history", name: "US History" },
-  { slug: "grammar", name: "Grammar" },
-  { slug: "physics", name: "Physics" },
-  { slug: "geometry", name: "Geometry" },
-  { slug: "spanish", name: "Spanish" },
-  { slug: "world-history", name: "World History" },
-  { slug: "vocabulary", name: "Vocabulary" },
-  { slug: "earth-science", name: "Earth Science" },
-  { slug: "fractions", name: "Fractions" },
-];
+import { quizSubjects } from "@/lib/subjects";
 
 const faqs = [
   { q: "What types of quiz questions can it generate?", a: "QuizKraft generates multiple choice, true/false, short answer, and fill-in-the-blank questions. You can mix all four types in a single quiz or choose just the types you need." },
-  { q: "How many questions can I add to a quiz?", a: "You can generate up to 20 questions per quiz. For longer assessments, run two quick generations and combine them." },
+  { q: "How many questions can I add to a quiz?", a: "You can generate up to 15 questions per quiz. For longer assessments, run two quick generations and combine them." },
   { q: "Can I make a quiz from my own notes or textbook?", a: "Yes — on the Pro plan. Paste in text from your notes, a textbook chapter, or any source material and QuizKraft generates questions directly from that content." },
   { q: "Does the quiz generator include answer keys?", a: "Yes. Every quiz includes a full answer key with explanations for each question, available on all plans." },
   { q: "Can students take the quiz online?", a: "Yes. After generating, switch to Quiz Mode and students can click through questions, get instant scores, and wrong answers cycle back for review until mastered." },
@@ -31,9 +17,9 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
+  title: "AI Quiz Generator — Online Quizzes & Tests | QuizKraft",
   description:
-    "Generate a complete custom quiz in 10 seconds with AI — multiple choice, short answer, true/false, fill-in-the-blank, mixed automatically. Answer keys included. Unlimited with Pro for $9/month.",
+    "A complete quiz in 10 seconds: multiple choice, true/false, short answer and fill-in-the-blank, with answer keys. Unlimited with Pro for $9/month.",
   alternates: { canonical: "https://www.quizkraft.tech/quiz-generator" },
   keywords: [
     "AI quiz generator",
@@ -46,7 +32,7 @@ export const metadata: Metadata = {
     "adaptive study quiz generator"
   ],
   openGraph: {
-    title: "AI Quiz Generator — Create Online Quizzes & Tests | QuizKraft",
+    title: "AI Quiz Generator — Online Quizzes & Tests | QuizKraft",
     description: "Generate a complete quiz in 10 seconds. Any subject, any grade level. Instant answer keys included.",
     type: "website",
     url: "https://www.quizkraft.tech/quiz-generator",
@@ -174,7 +160,7 @@ export default async function QuizGeneratorPage() {
             Subject-specific guides with example questions and grade-level tips.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {QUIZ_SUBJECTS.map((s) => (
+            {quizSubjects.map((s) => (
               <Link
                 key={s.slug}
                 href={`/quiz-generator/${s.slug}`}

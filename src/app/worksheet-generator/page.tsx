@@ -4,21 +4,7 @@ import { Check, Zap, ArrowRight, Printer } from "lucide-react";
 import QuizGeneratorForm from "@/components/QuizGeneratorForm";
 import { JsonLd } from "@/components/JsonLd";
 import { getGeneratorProps } from "@/lib/generator-props";
-
-const WORKSHEET_SUBJECTS = [
-  { slug: "math", name: "Math" },
-  { slug: "reading-comprehension", name: "Reading Comprehension" },
-  { slug: "biology", name: "Biology" },
-  { slug: "algebra", name: "Algebra" },
-  { slug: "spelling", name: "Spelling" },
-  { slug: "chemistry", name: "Chemistry" },
-  { slug: "world-history", name: "World History" },
-  { slug: "grammar", name: "Grammar" },
-  { slug: "physics", name: "Physics" },
-  { slug: "geometry", name: "Geometry" },
-  { slug: "vocabulary", name: "Vocabulary" },
-  { slug: "us-history", name: "US History" },
-];
+import { worksheetSubjects } from "@/lib/subjects";
 
 const faqs = [
   { q: "What subjects can I make worksheets for?", a: "Any subject — math, reading comprehension, science, history, spelling, grammar, foreign languages, and more. If you can type the topic, QuizKraft can build the worksheet." },
@@ -31,9 +17,9 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
+  title: "AI Worksheet Generator for Teachers | QuizKraft",
   description:
-    "Generate custom, printable worksheets for any subject and grade in 10 seconds with AI. Includes multiple question formats, instant answer keys, and PDF download. Unlimited with Pro for $9/month.",
+    "Printable worksheets for any subject and grade in 10 seconds, with mixed question types, answer keys and PDF download. Unlimited with Pro for $9/month.",
   alternates: { canonical: "https://www.quizkraft.tech/worksheet-generator" },
   keywords: [
     "AI worksheet generator",
@@ -46,7 +32,7 @@ export const metadata: Metadata = {
     "printable test generator"
   ],
   openGraph: {
-    title: "AI Worksheet Generator — Printable Worksheets for Teachers | QuizKraft",
+    title: "AI Worksheet Generator for Teachers | QuizKraft",
     description: "Generate clean, printable worksheets in 10 seconds. Any subject, any grade level. Instant answer keys included.",
     type: "website",
     url: "https://www.quizkraft.tech/worksheet-generator",
@@ -174,7 +160,7 @@ export default async function WorksheetGeneratorPage() {
             Subject-specific guides with example questions, grade ranges, and practice tips.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {WORKSHEET_SUBJECTS.map((s) => (
+            {worksheetSubjects.map((s) => (
               <Link
                 key={s.slug}
                 href={`/worksheet-generator/${s.slug}`}

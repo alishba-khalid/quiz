@@ -56,7 +56,7 @@ const steps = [
 export const metadata: Metadata = {
   title: "YouTube Video to Quiz — AI Quiz Generator | QuizKraft",
   description:
-    "Turn any YouTube video into an interactive quiz in seconds. Generate practice questions with answer keys from video transcripts. Pro is $9/month for unlimited generations.",
+    "Turn any YouTube video into an interactive quiz in seconds, with practice questions and answer keys from the transcript. Pro: $9/month, unlimited.",
   alternates: { canonical: "https://www.quizkraft.tech/youtube-to-quiz" },
   keywords: [
     "youtube video to quiz",

@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           {[
             {
               title: "What we collect",
-              body: "We collect your email address and name when you create an account. We store the worksheets you generate so you can access them from your dashboard. We collect basic usage data (number of worksheets generated) to enforce plan limits.",
+              body: "We collect your email address and name when you create an account. We store the worksheets you generate so you can access them from your dashboard. We collect basic usage data (number of worksheets generated).",
             },
             {
               title: "What we don't collect",
@@ -30,7 +30,11 @@ export default function PrivacyPage() {
             },
             {
               title: "How we use your data",
-              body: "Your email is used to log you in and send transactional emails (password resets, receipts). Your generated worksheets are stored so you can retrieve them from your dashboard. We do not use your worksheets to train AI models.",
+              body: "Your email is used to log you in and send transactional emails (password resets, receipts). Your generated worksheets are stored so you can retrieve them from your dashboard. We do not use your worksheets to train our own AI models.",
+            },
+            {
+              title: "Services that process your data",
+              body: "To generate questions, the topic, notes or transcript you submit is sent to Google's Gemini API; Google's handling of that content is governed by the Gemini API terms. When you paste a YouTube link, the URL is sent to Supadata to fetch the video's transcript. Payments are handled by Polar. If you sign in with Google, Google shares your name and email with us. The site and database are hosted by Vercel and Neon.",
             },
             {
               title: "Cookies",

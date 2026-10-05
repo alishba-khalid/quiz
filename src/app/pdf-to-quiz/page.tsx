@@ -25,7 +25,7 @@ const steps = [
 ];
 
 export const metadata: Metadata = {
-  title: "PDF to Quiz Converter — Turn Notes & Text into Quizzes | QuizKraft",
+  title: "PDF to Quiz Converter — Notes to Quizzes | QuizKraft",
   description:
     "Convert PDFs, study notes, textbook chapters, and articles into interactive quizzes with AI in 10 seconds. Automated question creation from custom source text.",
   alternates: { canonical: "https://www.quizkraft.tech/pdf-to-quiz" },
