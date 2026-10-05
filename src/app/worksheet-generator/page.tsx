@@ -27,7 +27,7 @@ const faqs = [
   { q: "What grade levels are supported?", a: "Kindergarten through college. Just select the grade when setting up your worksheet and QuizKraft calibrates difficulty accordingly." },
   { q: "Can I generate a worksheet from my own notes?", a: "Yes, on the Pro plan. Paste in text from your notes, textbook, or any source and QuizKraft generates worksheet questions directly from that material." },
   { q: "How is this different from the quiz generator?", a: "Same underlying tool — the difference is how you use the output. Worksheets are formatted for print with answer lines and bubble choices. Use the same generator output in Quiz Mode for digital practice." },
-  { q: "Is there a free plan?", a: "No. Pro is $9/month for unlimited worksheet generation, with a 30-day money-back guarantee." },
+  { q: "Is there a free plan?", a: "No. Pro is $9/month for unlimited worksheet generation. Cancel any time." },
 ];
 
 export const metadata: Metadata = {

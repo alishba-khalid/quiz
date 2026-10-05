@@ -6,7 +6,7 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     q: "Is there a free plan?",
-    a: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan. Pro has a 30-day money-back guarantee.",
+    a: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan.",
   },
   {
     q: "What subjects and grades does it cover?",

@@ -43,7 +43,7 @@ const homeFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan. Pro has a 30-day money-back guarantee." } },
+    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan." } },
     { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
     { "@type": "Question", name: "Can I use my own material to generate questions?", acceptedAnswer: { "@type": "Answer", text: "Yes, on Pro. Paste in text from your notes, textbook, or any source, and QuizKraft generates questions directly from that material." } },
     { "@type": "Question", name: "Can students take quizzes online?", acceptedAnswer: { "@type": "Answer", text: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right." } },
@@ -85,7 +85,7 @@ export default function FAQPage() {
         <div className="max-w-xl mx-auto space-y-4">
           <h2 className="text-xl font-bold text-ink">Have a billing or subscription question?</h2>
           <p className="text-sm text-muted leading-relaxed">
-            Detailed information about payment methods, cancellations, refund policy, and school licensing plans is available on our dedicated pricing page.
+            Detailed information about payment methods, cancellations, and school licensing plans is available on our dedicated pricing page.
           </p>
           <div className="pt-2">
             <Link href="/pricing" className="text-accent font-semibold hover:underline text-sm">

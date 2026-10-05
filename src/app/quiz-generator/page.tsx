@@ -27,7 +27,7 @@ const faqs = [
   { q: "Does the quiz generator include answer keys?", a: "Yes. Every quiz includes a full answer key with explanations for each question, available on all plans." },
   { q: "Can students take the quiz online?", a: "Yes. After generating, switch to Quiz Mode and students can click through questions, get instant scores, and wrong answers cycle back for review until mastered." },
   { q: "What grade levels does the quiz generator support?", a: "All grade levels from kindergarten through college. Just select the grade when setting up your quiz." },
-  { q: "Is there a free plan?", a: "No. Pro is $9/month for unlimited quiz generation, with a 30-day money-back guarantee." },
+  { q: "Is there a free plan?", a: "No. Pro is $9/month for unlimited quiz generation. Cancel any time." },
 ];
 
 export const metadata: Metadata = {

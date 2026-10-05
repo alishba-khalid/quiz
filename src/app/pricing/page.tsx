@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     q: "Is there a free plan?",
-    a: "No. Generating quizzes and worksheets requires Pro ($9/month) or a School plan. Pro is covered by a 30-day money-back guarantee, so you can try it risk-free.",
+    a: "No. Generating quizzes and worksheets requires Pro ($9/month) or a School plan. You can cancel any time.",
   },
   {
     q: "What payment methods do you accept?",
@@ -204,7 +204,7 @@ export default async function PricingPage() {
         </div>
 
         <p className="text-center text-sm text-muted mb-16">
-          Cancel anytime. No lock-in contracts. 30-day money-back guarantee on Pro.
+          Cancel anytime. No lock-in contracts.
         </p>
 
         {/* FAQ */}

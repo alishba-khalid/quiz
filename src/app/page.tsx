@@ -200,7 +200,7 @@ const homeFaqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan. Pro has a 30-day money-back guarantee." } },
+    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan." } },
     { "@type": "Question", name: "Can I generate quizzes from YouTube videos?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste any YouTube video link into the generator. QuizKraft extracts the transcript and creates targeted questions directly from the video content." } },
     { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
     { "@type": "Question", name: "Can I use my own notes or PDF documents?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste text from your notes, textbook, or study guide into the generator to produce quizzes based on your specific curriculum." } },
