@@ -84,7 +84,7 @@ const featuresAppSchema = {
   "description": "Generate high-quality quizzes and worksheets for any subject, paste source material, customize difficulty, and use the smart retake study loop.",
   "offers": {
     "@type": "Offer",
-    "price": "0.00",
+    "price": "9.00",
     "priceCurrency": "USD"
   },
   "featureList": [

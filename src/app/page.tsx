@@ -183,7 +183,7 @@ const softwareAppSchema = {
   operatingSystem: "Web",
   url: "https://www.quizkraft.tech",
   description: "AI-powered worksheet and quiz generator for teachers, tutors, and students. Generate any subject, any grade in seconds.",
-  offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "19", priceCurrency: "USD", offerCount: 3 },
+  offers: { "@type": "AggregateOffer", lowPrice: "9", highPrice: "19", priceCurrency: "USD", offerCount: 2 },
   featureList: ["AI quiz generation", "YouTube video to quiz", "PDF to quiz", "Worksheet creation", "Multiple question types", "Answer keys", "Quiz mode study loop", "PDF export"],
 };
 

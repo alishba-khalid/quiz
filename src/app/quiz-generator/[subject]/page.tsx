@@ -88,7 +88,7 @@ export default async function QuizSubjectPage({
     operatingSystem: "Web",
     url: canonicalUrl,
     description: `AI-powered ${data.name.toLowerCase()} quiz generator for ${data.gradeRange}. Generates multiple choice, short answer, true/false, and fill-in-the-blank questions with answer keys.`,
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    offers: { "@type": "Offer", price: "9", priceCurrency: "USD" },
   };
 
   const faqSchema = {

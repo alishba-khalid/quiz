@@ -70,7 +70,7 @@ const softwareSchema = {
   url: "https://www.quizkraft.tech/quiz-generator",
   description:
     "AI-powered quiz generator that creates mixed-format quizzes with answer keys for any subject and grade level.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  offers: { "@type": "Offer", price: "9", priceCurrency: "USD" },
 };
 
 const breadcrumbSchema = {

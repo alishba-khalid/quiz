@@ -70,7 +70,7 @@ const softwareSchema = {
   url: "https://www.quizkraft.tech/worksheet-generator",
   description:
     "AI-powered worksheet generator that creates print-ready practice sheets with answer keys for any subject and grade level.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  offers: { "@type": "Offer", price: "9", priceCurrency: "USD" },
 };
 
 const breadcrumbSchema = {

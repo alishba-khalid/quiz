@@ -64,7 +64,7 @@ const softwareSchema = {
   url: "https://www.quizkraft.tech/quiz-maker-for-teachers",
   description:
     "AI quiz maker designed for teachers. Generate exit tickets, chapter tests, sub plans, and homework sheets in seconds.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  offers: { "@type": "Offer", price: "9", priceCurrency: "USD" },
 };
 
 const breadcrumbSchema = {

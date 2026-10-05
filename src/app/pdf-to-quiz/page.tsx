@@ -64,7 +64,7 @@ const softwareSchema = {
   url: "https://www.quizkraft.tech/pdf-to-quiz",
   description:
     "AI quiz generator that creates quizzes from pasted source material — notes, textbook chapters, articles — in about 10 seconds.",
-  offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "19", priceCurrency: "USD", offerCount: 3 },
+  offers: { "@type": "AggregateOffer", lowPrice: "9", highPrice: "19", priceCurrency: "USD", offerCount: 2 },
 };
 
 const howToSchema = {

@@ -88,7 +88,7 @@ export default async function WorksheetSubjectPage({
     operatingSystem: "Web",
     url: canonicalUrl,
     description: `AI-powered ${data.name.toLowerCase()} worksheet generator for ${data.gradeRange}. Generates print-ready practice sheets with answer keys.`,
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    offers: { "@type": "Offer", price: "9", priceCurrency: "USD" },
   };
 
   const faqSchema = {

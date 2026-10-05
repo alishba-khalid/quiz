@@ -94,7 +94,7 @@ const softwareSchema = {
   url: "https://www.quizkraft.tech/youtube-to-quiz",
   description:
     "AI-powered tool that converts YouTube video transcripts into interactive practice quizzes and printable worksheets in seconds.",
-  offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "19", priceCurrency: "USD", offerCount: 3 },
+  offers: { "@type": "AggregateOffer", lowPrice: "9", highPrice: "19", priceCurrency: "USD", offerCount: 2 },
 };
 
 const breadcrumbSchema = {
