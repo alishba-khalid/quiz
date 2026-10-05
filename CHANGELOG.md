@@ -4,6 +4,7 @@ Significant changes and why they were made. Newest first. Add an entry as the la
 
 ## 2026-10-05
 
+- **Blog expanded.** All 25 short posts (~200–450 words) expanded to ~600–700 words, with related-post links. Removed claims about features the product doesn't have (shareable quiz links with grading data, class data summaries, matching questions, diagram/grid generation) and unsourced time-saving numbers.
 - **Free plan removed.** Generating (and YouTube transcript fetches) now requires Pro, enforced server-side in `/api/generate` and `/api/youtube-transcript`. Non-Pro users see a pricing dialog when they leave the topic/notes field and on Generate. All "free plan" copy removed site-wide. (49274ec, a9df140)
 - **Polar webhook fixes.** `order.paid` stored the order id as the subscription id, so cancellations never matched the user; `subscription.canceled` downgraded users before their paid period ended. Downgrade now only on `subscription.revoked`. (7be76a2)
 - **Money-back guarantee claims removed** — the guarantee isn't offered. (8029b39)
