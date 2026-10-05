@@ -1349,758 +1349,414 @@ export const worksheetSubjects: SubjectData[] = [
     ],
     relatedSlugs: ["world-history", "grammar", "vocabulary"],
   },
-{
+  {
     slug: "literature",
     name: "Literature",
     gradeRange: "Grades 6–12",
-    intro: "Literature worksheets and quizzes analyze text structure, themes, characters, and figurative language. Good questions require students to cite evidence and make connections, rather than just recall plot points.",
-    topics: [
-      "Theme and main ideas",
-      "Character analysis and development",
-      "Plot structure and conflict",
-      "Setting and atmosphere",
-      "Figurative language and symbolism",
-      "Point of view and narrator bias"
-    ],
-    guide: "Literature assessment fails when it tests trivia like character names or minor events. The real focus should be on deep reading, analytical reasoning, and evidence extraction. Middle school focuses on plot elements and basic figurative devices. High school shifts toward complex themes, narrator reliability, and historical context. Strong questions use multiple choice for structural elements, short answer for explaining themes or analyzing quotes, and true/false for clearing up common reading misconceptions.",
+    intro:
+      "Literature worksheets give students a structured place to slow down and work with a text — tracking evidence, annotating passages, and building an argument one step at a time. The best ones guide close reading before asking for interpretation, so students practice finding support before they're asked to defend a claim.",
+    topics: ["Theme and main ideas", "Character analysis and development", "Plot structure and conflict", "Setting and atmosphere", "Figurative language and symbolism", "Point of view and narrator bias"],
+    guide:
+      "A literature worksheet is not a quiz with more lines. Its job is to scaffold the reading process itself: notice, gather evidence, then interpret. Worksheets that open with \"What is the theme of the novel?\" skip the steps where students actually learn to read closely, and the answers that come back are vague because students had nothing concrete to build from. A stronger sequence starts with a short passage and asks students to quote two lines that reveal a character's motivation, then explain what each quote shows, and only then asks for a claim about the character. Graphic-organizer-style prompts work well on paper: a three-column evidence chart (quote, page, what it shows) or a plot diagram students fill in chapter by chapter. Literary devices are best practiced in context — \"find one example of foreshadowing in Chapter 3 and explain what it hints at\" teaches far more than a matching list of device definitions. For homework, pair one passage-based section with one short written response, so the worksheet builds the evidence students then use in the paragraph. QuizKraft's literature worksheets follow that order and include an answer key with model responses, which makes them usable as guided reading packets, discussion prep, or sub-day work.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which type of conflict is represented by a character struggling against societal expectations?",
-        answer: "Man vs. Society"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the difference between tone and mood in literary analysis.",
-        answer: "Tone is the author's attitude toward the subject, while mood is the emotional atmosphere created for the reader."
-      },
-      {
-        type: "true-false",
-        question: "Symbolism is when an object represents an idea beyond its literal meaning.",
-        answer: "True"
-      }
+      { type: "short-answer", question: "Quote one line from the passage that shows how the narrator feels about leaving home, then explain in one sentence what the line reveals.", answer: "Answers vary. Strong responses quote a specific line and explain the feeling it shows (e.g. reluctance, relief) rather than summarizing the plot." },
+      { type: "fill-in-the-blank", question: "When an author gives hints about events that will happen later in the story, the technique is called ________.", answer: "Foreshadowing" },
+      { type: "short-answer", question: "Complete the evidence chart: write one claim about the main character's biggest change, and list two pieces of text evidence that support it.", answer: "Answers vary. A complete response states a clear claim and gives two quotes or specific events, each with a page or paragraph reference." },
     ],
-    gradeGuidance: "Middle school: plot elements, character traits, and basic figurative language. High school: complex themes, narrator reliability, and historical context.",
+    gradeGuidance:
+      "Grades 6–8: character traits, plot structure, and finding evidence in short passages. Grades 9–10: theme, figurative language, and evidence-based paragraphs. Grades 11–12: author's purpose, literary criticism lenses, and comparative analysis across texts. Name the book and chapter to anchor the worksheet in the text your class is reading.",
     faq: [
-      {
-        q: "Can I generate questions for a specific book?",
-        a: "Yes. Include the book title and chapter in your prompt, e.g., 'To Kill a Mockingbird Chapter 3, Grade 9.'"
-      },
-      {
-        q: "What's the best question mix for a literature quiz?",
-        a: "MCQ for terminology and structure; short answer for theme analysis and quotes; true/false for factual and conceptual reading checks."
-      },
-      {
-        q: "Does it cover poetic devices and poetry?",
-        a: "Yes. Specify the poem or poetic device in your topic, e.g., 'alliteration, metaphor, and stanza structure in Edgar Allan Poe's poetry.'"
-      }
+      { q: "Can I make a worksheet for a specific novel or short story?", a: "Yes. Name the text and the section: 'To Kill a Mockingbird, Chapters 9–11 — Scout's view of her father' produces evidence and analysis prompts tied to those chapters." },
+      { q: "Can it work as a reading guide students complete while they read?", a: "Yes. Ask for chapter-by-chapter questions, and set the question types to short answer and fill-in-the-blank so students record evidence as they go." },
+      { q: "Does the answer key include model answers for open-ended questions?", a: "Yes. Short-answer items include a model response that shows what a complete answer contains, which helps with consistent grading and peer review." },
+      { q: "Can I use it for a literary devices practice sheet?", a: "Yes. Specify the devices and a text, such as 'metaphor, symbolism and irony in The Giver', so students practice identifying devices in context rather than from definitions alone." },
     ],
-    relatedSlugs: ["grammar", "vocabulary", "reading-comprehension"]
+    relatedSlugs: ["grammar", "vocabulary", "reading-comprehension"],
   },
-{
+  {
     slug: "environmental-science",
     name: "Environmental Science",
     gradeRange: "Grades 9–12",
-    intro: "Environmental Science assessments connect human activity with ecosystems, climate change, and sustainability issues. Strong questions analyze human impacts and solutions, not just recall terminology.",
-    topics: [
-      "Ecosystem structure and energy flow",
-      "Biodiversity and conservation",
-      "Renewable and non-renewable energy",
-      "Water and air pollution",
-      "Climate change and greenhouse effect",
-      "Sustainable resource management"
-    ],
-    guide: "Students often confuse ozone depletion with global warming. Calibrating questions to check this distinction ensures they grasp the chemical and environmental differences. Ecology and resource management questions work best when they push students to think about trade-offs, like the economic vs. environmental impacts of clean energy.",
+    intro:
+      "Environmental science worksheets turn big systems — water cycles, food webs, energy flow — into practice students can work through on paper. The strongest ones combine diagram labeling, data interpretation, and short explanations, so students practice reading real environmental data instead of only memorizing terms.",
+    topics: ["Ecosystem structure and energy flow", "Biodiversity and conservation", "Renewable and non-renewable energy", "Water and air pollution", "Climate change and greenhouse effect", "Sustainable resource management"],
+    guide:
+      "Environmental science is a data-heavy subject, and worksheets are where students should practice handling that data before they're assessed on it. A worksheet that only asks students to define \"biodiversity\" or \"carbon footprint\" misses the skills the course actually depends on: reading a graph of CO₂ levels over time, calculating the energy lost between trophic levels, or comparing two land-use scenarios. Good environmental science worksheets mix three kinds of work. First, labeling and diagram work — the carbon cycle, the nitrogen cycle, an energy pyramid — where students place processes in the right order. Second, short data tasks: a small table of species counts or rainfall totals followed by questions that ask what the data shows and what might explain it. Third, applied reasoning, such as \"a factory begins releasing warm water into a river; predict two effects on the ecosystem.\" The 10% rule for energy transfer is a reliable source of practice problems, because students often know the rule but misapply it across several levels. Worksheets also work well for case studies — a local watershed, a deforestation example — where students can practice cause-and-effect chains. QuizKraft builds environmental science worksheets in this mixed format, with an answer key that shows the reasoning, so they work as homework, lab follow-ups, or review packets.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which of the following is a primary greenhouse gas?",
-        answer: "Carbon dioxide"
-      },
-      {
-        type: "short-answer",
-        question: "Describe the concept of 'tragedy of the commons' with a real-world example.",
-        answer: "The overuse and depletion of shared resources (like overfishing in international waters) because individuals act in self-interest rather than group interest."
-      },
-      {
-        type: "true-false",
-        question: "Bioaccumulation refers to the increasing concentration of a toxin in organisms at higher trophic levels.",
-        answer: "True"
-      }
+      { type: "short-answer", question: "Producers in a food chain store 10,000 kcal of energy. Using the 10% rule, how much energy reaches the secondary consumers? Show your work.", answer: "100 kcal — 10,000 × 0.10 = 1,000 kcal for primary consumers; 1,000 × 0.10 = 100 kcal for secondary consumers." },
+      { type: "fill-in-the-blank", question: "In the carbon cycle, plants remove carbon dioxide from the atmosphere through the process of ________.", answer: "Photosynthesis" },
+      { type: "short-answer", question: "A factory starts releasing warm water into a river. Predict two effects on the river ecosystem and explain each.", answer: "Example: dissolved oxygen drops because warm water holds less oxygen, stressing fish; some temperature-sensitive species decline or move away, changing the food web." },
     ],
-    gradeGuidance: "High school: basic ecology and pollution. AP Environmental: biogeochemical cycles, population dynamics, and environmental legislation.",
+    gradeGuidance:
+      "Grades 9–10: ecosystems, cycles of matter, and human impact basics. Grades 11–12 / APES: energy calculations, population dynamics, pollution data, and policy case studies. Include 'data table' or 'graph' in your topic to weight the worksheet toward data interpretation.",
     faq: [
-      {
-        q: "Is this suitable for AP Environmental Science review?",
-        a: "Yes. Set the grade level to AP / Grade 12 and include specific topics like 'APES Unit 5 — agriculture and land use.'"
-      },
-      {
-        q: "Can it generate questions about specific laws like the Clean Air Act?",
-        a: "Yes. Include the specific legislation in your prompt, e.g., 'Clean Water Act and Safe Drinking Water Act comparison.'"
-      }
+      { q: "Can worksheets include data tables for students to interpret?", a: "Yes. Ask for it directly, e.g. 'water quality data table for a local stream — interpret dissolved oxygen and temperature', and the questions will be built around the data." },
+      { q: "Does it work for AP Environmental Science practice?", a: "Yes. Set difficulty to Hard and name the unit, such as 'APES Unit 3 — population growth and carrying capacity calculations'." },
+      { q: "Can I make a worksheet to follow up a lab or field trip?", a: "Yes. Describe what students did, for example 'leaf litter sampling lab — biodiversity index and observations', and the worksheet will ask students to analyze that activity." },
+      { q: "Can it cover a local environmental issue?", a: "Yes. Name the issue and place, and the worksheet will ask cause-and-effect and trade-off questions about it. Check local facts against your own sources before handing it out." },
     ],
-    relatedSlugs: ["biology", "chemistry", "earth-science"]
+    relatedSlugs: ["biology", "chemistry", "earth-science"],
   },
-{
+  {
     slug: "economics",
     name: "Economics",
     gradeRange: "Grades 10–12",
-    intro: "Economics assessments test micro and macroeconomic principles, market systems, supply and demand, and financial literacy. Revealing questions require applying principles to real-world scenarios rather than matching definitions.",
-    topics: [
-      "Supply and demand",
-      "Market structures (monopoly, competition)",
-      "Inflation and unemployment",
-      "Monetary and fiscal policy",
-      "Global trade and tariffs",
-      "Personal finance and budgeting"
-    ],
-    guide: "Supply and demand shifts are a common source of confusion. Worksheets should test the difference between a change in demand versus a change in quantity demanded. Macroeconomic policies also benefit from scenario questions, like predicting how interest rate changes affect investment and inflation.",
+    intro:
+      "Economics worksheets give students practice with the tools of the subject — supply and demand graphs, cost calculations, and real-world scenarios. Working through problems step by step on paper is how students move from knowing a definition to actually using an economic model.",
+    topics: ["Supply and demand", "Market structures (monopoly, competition)", "Inflation and unemployment", "Monetary and fiscal policy", "Global trade and tariffs", "Personal finance and budgeting"],
+    guide:
+      "Economics is a modeling subject, so worksheets should make students use the models, not just name them. The most common gap is students who can recite \"when price rises, quantity demanded falls\" but cannot shift a curve correctly when a scenario changes. Good economics worksheets give a short scenario — a frost destroys part of the orange crop, a new tax is placed on sugary drinks — and ask students to decide which curve shifts, in which direction, and what happens to equilibrium price and quantity. That sequence (identify the curve, shift it, read the new equilibrium) is the core skill, and repeating it across several scenarios on one page builds fluency. Calculations are the second pillar: opportunity cost, price elasticity, marginal cost, and simple GDP components all produce clean practice problems with checkable answers. A third useful section is real-world application, where students connect a news-style example to a concept such as inflation or comparative advantage. Students frequently confuse a change in demand (a shift of the whole curve) with a change in quantity demanded (a movement along it), so worksheets that include both types of question side by side expose that confusion early. QuizKraft's economics worksheets mix scenario, calculation, and application questions, with an answer key that explains each shift and calculation.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "If supply decreases and demand remains constant, what happens to equilibrium price and quantity?",
-        answer: "Price increases, quantity decreases"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the difference between monetary policy and fiscal policy.",
-        answer: "Monetary policy is controlled by the central bank (adjusting interest rates, money supply), while fiscal policy is controlled by the government (adjusting taxes, spending)."
-      },
-      {
-        type: "true-false",
-        question: "Opportunity cost represents the value of the next best alternative given up when making a choice.",
-        answer: "True"
-      }
+      { type: "short-answer", question: "A frost destroys a large part of this year's orange crop. Which curve shifts, in which direction, and what happens to the equilibrium price of oranges?", answer: "Supply shifts left (decreases), so the equilibrium price rises and the equilibrium quantity falls." },
+      { type: "fill-in-the-blank", question: "The value of the next-best alternative you give up when making a choice is called the ________.", answer: "Opportunity cost" },
+      { type: "short-answer", question: "The price of a concert ticket rises from $40 to $50 and the quantity sold falls from 1,000 to 900. Using simple percentage changes, calculate the price elasticity of demand and state whether demand is elastic or inelastic.", answer: "Quantity falls 10% and price rises 25%, so elasticity = 10% ÷ 25% = 0.4. Demand is inelastic (less than 1)." },
     ],
-    gradeGuidance: "Grades 10–12: basic economics, supply/demand, personal finance. AP Micro/Macro: cost curves, market failure, and aggregate demand models.",
+    gradeGuidance:
+      "Grades 10–11: scarcity, opportunity cost, supply and demand, and market structures. Grade 12 / AP Micro and Macro: elasticity, cost curves, GDP, inflation, and monetary policy. Name the unit, for example 'AP Macro — fiscal policy and the multiplier', for targeted practice.",
     faq: [
-      {
-        q: "Does the economics generator support graph analysis?",
-        a: "Short answer questions can ask students to describe shifts in cost curves or supply and demand diagrams. Pair worksheets with graph paper for best results."
-      },
-      {
-        q: "Can it quiz personal finance topics?",
-        a: "Yes. Specify topics like 'budgeting, interest rates, credit cards, and investments' in your prompt."
-      }
+      { q: "Can worksheets include supply and demand graphing practice?", a: "Yes. Ask for 'supply and demand shift scenarios' and the worksheet will describe events and ask students to identify and explain each shift. Students can sketch the graphs in the space provided." },
+      { q: "Can it generate calculation practice like elasticity or GDP?", a: "Yes. Name the calculation, such as 'price elasticity of demand — 6 practice problems', and the answer key will show each step." },
+      { q: "Does it work for personal finance units?", a: "Yes. Topics like budgeting, interest, credit and taxes work well; include the grade level so the numbers and scenarios fit your students." },
+      { q: "Can I make worksheets for AP Economics review?", a: "Yes. Set difficulty to Hard and name the AP unit for practice that mirrors the free-response style of reasoning." },
     ],
-    relatedSlugs: ["algebra", "civics", "us-history"]
+    relatedSlugs: ["algebra", "civics", "us-history"],
   },
-{
+  {
     slug: "civics",
     name: "Civics",
     gradeRange: "Grades 8–12",
-    intro: "Civics assessments test principles of government, the US Constitution, the three branches of government, civil rights, and citizen participation. Effective questions prompt students to explain systems and rights.",
-    topics: [
-      "Principles of democracy",
-      "The US Constitution and Bill of Rights",
-      "Three branches of government",
-      "Federalism and separation of powers",
-      "Elections and political parties",
-      "Civil rights and liberties"
-    ],
-    guide: "Checks and balances are often memorized as a list. Strong questions challenge students to analyze how one branch can block or check another in specific scenarios. Civil rights historical context also benefits from questions matching Supreme Court rulings to societal developments.",
+    intro:
+      "Civics worksheets help students practice how government actually works — reading founding documents, tracing how a bill becomes law, and applying constitutional principles to real situations. Structured practice on paper turns abstract ideas like federalism and checks and balances into skills students can use.",
+    topics: ["Principles of democracy", "The US Constitution and Bill of Rights", "Three branches of government", "Federalism and separation of powers", "Elections and political parties", "Civil rights and liberties"],
+    guide:
+      "Civics content is full of structures and processes, and worksheets are the natural place to practice them in order. A common weak worksheet is a vocabulary list — define \"veto,\" define \"amendment\" — that students complete without ever understanding how the pieces fit together. Stronger civics worksheets ask students to trace a process: put the steps of how a bill becomes law in order, or follow a case from a lower court to the Supreme Court. Primary-source sections work well on paper; a short excerpt from the Constitution or the Bill of Rights followed by \"which right does this protect, and what is one real situation where it applies?\" builds both reading and reasoning. Scenario questions are the most valuable part: \"the President signs an executive order that a state disagrees with — which branch or process could check it?\" asks students to apply checks and balances rather than recite them. Students often mix up the powers of the federal and state governments, so a sorting task (federal, state, or shared) is a reliable worksheet format. For local relevance, worksheets can also cover how to register to vote or how a local council makes decisions. QuizKraft's civics worksheets mix process, primary-source and scenario questions, with an answer key that cites the relevant article or amendment.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which branch of government has the power to declare laws unconstitutional?",
-        answer: "Judicial branch"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the purpose of the Bill of Rights in the US Constitution.",
-        answer: "To protect individual liberties and limit government power by explicitly stating rights that cannot be infringed upon."
-      },
-      {
-        type: "true-false",
-        question: "Federalism is a system where power is divided between national and state governments.",
-        answer: "True"
-      }
+      { type: "fill-in-the-blank", question: "The power of the President to reject a bill passed by Congress is called a ________, and Congress can override it with a ________ vote in both houses.", answer: "Veto; two-thirds" },
+      { type: "short-answer", question: "Sort each power as federal, state, or shared: printing money, issuing driver's licenses, collecting taxes, declaring war.", answer: "Printing money — federal; issuing driver's licenses — state; collecting taxes — shared; declaring war — federal." },
+      { type: "short-answer", question: "Read the First Amendment. Name two freedoms it protects and describe one real situation where one of them would apply.", answer: "Any two of: religion, speech, press, assembly, petition. Example: students organizing a peaceful protest are exercising freedom of assembly." },
     ],
-    gradeGuidance: "Middle school: basic branches, local government, citizenship. High school: Constitution, federalism, Supreme Court cases.",
+    gradeGuidance:
+      "Grade 8: the Constitution, the three branches, and the Bill of Rights. Grades 9–10: federalism, elections, and civil rights. Grades 11–12 / AP Government: Supreme Court cases, policy-making, and political participation. Name a specific document or case to anchor the worksheet.",
     faq: [
-      {
-        q: "Can I quiz students on specific Supreme Court cases?",
-        a: "Yes. Include the case name in your topic, e.g., 'Marbury v. Madison or Brown v. Board of Education.'"
-      },
-      {
-        q: "Does it support citizenship exam preparation?",
-        a: "Yes. Set the topic to 'US citizenship test study questions' to cover core government structure and history."
-      }
+      { q: "Can worksheets be based on a specific founding document?", a: "Yes. Name the document and section, such as 'Constitution Article I — powers of Congress', and the worksheet will include excerpt-based questions." },
+      { q: "Can it cover landmark Supreme Court cases?", a: "Yes. Name the case, for example 'Marbury v. Madison and judicial review', and students will practice explaining the case and its impact." },
+      { q: "Does it work for state or local government units?", a: "Yes. Include your state or city in the topic. Double-check local details against official sources, as structures vary by place." },
+      { q: "Can I make a worksheet that prepares students for a citizenship-style test?", a: "Yes. Ask for 'civics test review — branches, rights and responsibilities', and set the question types to multiple choice and fill-in-the-blank." },
     ],
-    relatedSlugs: ["us-history", "world-history", "literature"]
+    relatedSlugs: ["us-history", "world-history", "literature"],
   },
-{
+  {
     slug: "art-history",
     name: "Art History",
     gradeRange: "Grades 9–12",
-    intro: "Art History worksheets and quizzes trace artistic movements, analysis of visual media, and historical context. Successful questions connect art to historical developments, rather than just identifying painters.",
-    topics: [
-      "Ancient and classical art",
-      "Renaissance and Baroque art",
-      "Impressionism and Post-Impressionism",
-      "Modern art movements (Cubism, Surrealism)",
-      "Non-Western art traditions",
-      "Visual analysis and terminology"
-    ],
-    guide: "Students often focus only on visual attributes. The best questions ask them to connect art styles to historical events, such as how the Black Death influenced late medieval art, or how industrialization drove Modernism. MCQ works well for stylistic terms, and short answer is ideal for visual analysis.",
+    intro:
+      "Art history worksheets give students a structured way to look closely at artworks — describing, analyzing and placing a work in its period before jumping to interpretation. Guided observation on paper builds the visual analysis skills that a slideshow alone rarely does.",
+    topics: ["Ancient and classical art", "Renaissance and Baroque art", "Impressionism and Post-Impressionism", "Modern art movements (Cubism, Surrealism)", "Non-Western art traditions", "Visual analysis and terminology"],
+    guide:
+      "The core skill in art history is looking carefully, and worksheets are where that looking gets structured. A worksheet that only asks \"which period is this painting from?\" rewards memorizing slides, not understanding art. A stronger approach follows the classic sequence: describe what you see (subject, colors, composition), analyze how the artist made choices (perspective, light, brushwork), and only then interpret meaning and context. Worksheets can build this into a repeatable organizer that students fill in for every artwork in a unit. Comparison tasks are especially effective on paper — placing a Renaissance portrait next to a Baroque one and asking students to name two visual differences teaches period characteristics far better than a list of dates. Vocabulary such as chiaroscuro, contrapposto or impasto sticks when students must find it in a specific work rather than define it. Context sections can connect a work to its time: patronage, religion, politics or new technology. Students often confuse styles from adjacent periods, so side-by-side comparisons expose those mix-ups early. QuizKraft's art history worksheets include observation, comparison and context prompts, with an answer key that models strong visual analysis. Pair the worksheet with the images you show in class, since the worksheet itself does not include artwork images.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which artistic movement is characterized by a focus on light, visible brushstrokes, and ordinary subject matter?",
-        answer: "Impressionism"
-      },
-      {
-        type: "short-answer",
-        question: "Explain how linear perspective changed painting during the Italian Renaissance.",
-        answer: "It introduced a mathematical system for creating the illusion of 3D depth on a flat 2D surface, making scenes appear realistic and spacious."
-      },
-      {
-        type: "true-false",
-        question: "Surrealism was heavily influenced by Sigmund Freud's theories on the subconscious mind.",
-        answer: "True"
-      }
+      { type: "fill-in-the-blank", question: "The technique of using strong contrasts between light and dark to create a sense of volume, used heavily by Caravaggio, is called ________.", answer: "Chiaroscuro" },
+      { type: "short-answer", question: "Compare Leonardo's Mona Lisa with a Baroque portrait of your choice. Name two visual differences in lighting or composition.", answer: "Answers vary. Strong responses note, for example, the soft, even sfumato light of the Mona Lisa versus dramatic directional light in Baroque work, and a calm, balanced pose versus a more dynamic one." },
+      { type: "short-answer", question: "Using the describe–analyze–interpret organizer, write one sentence for each step about the artwork shown in class.", answer: "Answers vary. A complete response describes visible elements, explains one artistic choice, and offers an interpretation supported by those observations." },
     ],
-    gradeGuidance: "High school survey: major movements, visual vocabulary. AP Art History: contextual analysis, formal attributes of the 250 required works.",
+    gradeGuidance:
+      "Grades 9–10: major periods, key artists, and basic visual vocabulary. Grades 11–12 / AP Art History: formal analysis, context and patronage, and cross-cultural comparison. Name the period or specific works you're teaching so the questions match your slides.",
     faq: [
-      {
-        q: "Is this suitable for AP Art History preparation?",
-        a: "Yes. Use Grade 12 / AP level and specify visual analysis topics, e.g., 'AP Art History — comparison of Classical Greek and Roman sculpture.'"
-      },
-      {
-        q: "How can students analyze visual attributes without images on screen?",
-        a: "Questions can describe formal elements (like composition, medium, and color use) or refer to famous works (like Michelangelo's David) that students are studying in class."
-      }
+      { q: "Do the worksheets include images of the artworks?", a: "No. The worksheets contain the questions and prompts; pair them with the images you show in class or in your slides." },
+      { q: "Can I make a worksheet for a specific artwork or artist?", a: "Yes. Name the work, such as 'The School of Athens by Raphael', and the worksheet will include observation and context questions about it." },
+      { q: "Can it support AP Art History practice?", a: "Yes. Name the content area and set difficulty to Hard for questions that ask about form, function, content and context." },
+      { q: "Can it cover non-Western art traditions?", a: "Yes. Specify the tradition and period, for example 'Mughal miniature painting' or 'West African sculpture', for culturally specific prompts." },
     ],
-    relatedSlugs: ["world-history", "us-history", "literature"]
+    relatedSlugs: ["world-history", "us-history", "literature"],
   },
-{
+  {
     slug: "computer-science",
     name: "Computer Science",
     gradeRange: "Grades 8–12",
-    intro: "Computer Science worksheets and quizzes test programming logic, algorithm design, data structures, and computer networks. Coding questions check logical progression and syntax rules.",
-    topics: [
-      "Basic programming logic (loops, conditionals)",
-      "Variables and data types",
-      "Algorithms and sorting",
-      "Object-oriented programming",
-      "Web development basics (HTML/CSS/JS)",
-      "Cybersecurity and digital ethics"
-    ],
-    guide: "Tracing loops is a core skill. Quizzes should ask students to predict the final output of a code block to verify they can run algorithms mentally. For AP level, object-oriented concepts like inheritance and polymorphism are primary focus areas.",
+    intro:
+      "Computer science worksheets let students practice computational thinking away from the keyboard — tracing code by hand, predicting output, and writing short algorithms. Paper practice exposes misunderstandings that running code can hide, because students can't just guess and re-run.",
+    topics: ["Basic programming logic (loops, conditionals)", "Variables and data types", "Algorithms and sorting", "Object-oriented programming", "Web development basics (HTML/CSS/JS)", "Cybersecurity and digital ethics"],
+    guide:
+      "Tracing code by hand is one of the most effective computer science exercises, and worksheets are the natural place for it. When students run code on a computer, they can tweak values until the output looks right without understanding why; on paper they have to follow each line, track each variable, and predict the result. Good computer science worksheets build around three kinds of tasks. First, tracing: a short loop or conditional with a trace table where students record variable values at each step. Second, prediction and debugging: show code with a bug and ask students to find and explain it — off-by-one errors in loops and confusing = with == are reliable choices. Third, writing: pseudocode or a short function that solves a defined problem, such as counting the even numbers in a list. Unplugged topics also work well on paper, including binary conversion, Boolean logic and simple sorting steps. Loops are the most common sticking point, especially how many times a loop runs and what the counter's final value is, so trace tables for loops deserve repeated practice. QuizKraft's computer science worksheets can target a specific language or stay language-neutral with pseudocode, and the answer key walks through each trace step.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which data structure operates on a First-In, First-Out (FIFO) principle?",
-        answer: "Queue"
-      },
-      {
-        type: "short-answer",
-        question: "Describe the difference between a compiler and an interpreter.",
-        answer: "A compiler translates the entire source code into machine code at once before execution, while an interpreter translates and executes code line by line."
-      },
-      {
-        type: "true-false",
-        question: "In programming, a syntax error is caught at runtime, while a logical error is caught during compilation.",
-        answer: "False"
-      }
+      { type: "short-answer", question: "Trace this code and give the final value of total:\ntotal = 0\nfor i in range(1, 5):\n    total = total + i", answer: "10 — i takes the values 1, 2, 3, 4, so total = 1 + 2 + 3 + 4 = 10." },
+      { type: "fill-in-the-blank", question: "The binary number 1011 equals ________ in decimal.", answer: "11 (8 + 0 + 2 + 1)" },
+      { type: "short-answer", question: "Write pseudocode for a function that counts how many even numbers are in a list.", answer: "Example: set count to 0; for each number in the list, if number mod 2 equals 0, add 1 to count; return count." },
     ],
-    gradeGuidance: "Middle school: drag-and-drop programming, basic HTML. High school: Python/Java basics. AP CS A: object-oriented design and recursion.",
+    gradeGuidance:
+      "Grades 8–9: algorithms, binary, Boolean logic, and block-based or simple Python. Grades 10–11: loops, conditionals, functions, and lists. Grade 12 / AP CSA or CSP: object-oriented concepts, recursion, and algorithm efficiency. Name the language (Python, Java, JavaScript) to match your course.",
     faq: [
-      {
-        q: "What languages does it support for syntax questions?",
-        a: "Specify the language in your topic: 'Python loops, Java class structure, or Javascript DOM manipulation.'"
-      },
-      {
-        q: "Can it create questions for AP Computer Science Principles?",
-        a: "Yes. Specify the topic, e.g., 'AP CSP — binary numbers, networks, and routing protocols.'"
-      }
+      { q: "Can worksheets use a specific programming language?", a: "Yes. Name it in the topic, for example 'Java for loops and arrays — AP CSA', and the code samples will use that language." },
+      { q: "Can it make code-tracing worksheets?", a: "Yes. Ask for 'trace table practice' with a topic like nested loops, and students will get code with step-by-step tracing questions." },
+      { q: "Does it work for unplugged computer science lessons?", a: "Yes. Binary, Boolean logic, sorting algorithms and pseudocode all work well as paper-only worksheets." },
+      { q: "Can I make debugging practice worksheets?", a: "Yes. Ask for 'find the bug' practice on a topic, and the worksheet will include faulty code with the error and fix explained in the answer key." },
     ],
-    relatedSlugs: ["algebra", "math", "physics"]
+    relatedSlugs: ["algebra", "math", "physics"],
   },
-{
+  {
     slug: "french",
     name: "French",
     gradeRange: "Grades 6–12",
-    intro: "French assessments cover verb conjugation, reading comprehension, vocabulary, and grammar rules. Practice should require sentence building and contextual reading to measure language acquisition.",
-    topics: [
-      "Present tense conjugation",
-      "Passé composé vs. imparfait",
-      "Vocabulary by theme (family, food, school)",
-      "Adjective agreement and placement",
-      "Direct and indirect object pronouns",
-      "Subjunctive mood"
-    ],
-    guide: "The difference between passé composé and imparfait is the biggest hurdle for students. Worksheets should test whether a past action was completed or ongoing. Fill-in-the-blank conjugation and short-answer translations are the most effective formats for testing grammar and production.",
+    intro:
+      "French worksheets give students the repeated, structured practice that language learning depends on — conjugation drills, vocabulary in context, and short translation and writing tasks. A good worksheet moves from controlled practice to freer use of the language on the same page.",
+    topics: ["Present tense conjugation", "Passé composé vs. imparfait", "Vocabulary by theme (family, food, school)", "Adjective agreement and placement", "Direct and indirect object pronouns", "Subjunctive mood"],
+    guide:
+      "Language learning needs volume, and worksheets supply it in a form students can complete at their own pace. The best French worksheets follow a progression from controlled to open practice. They start with focused drills — conjugating -er, -ir and -re verbs, or matching vocabulary to images or definitions — where there is one right answer. Then come sentence-level tasks, such as completing sentences with the correct verb form or translating short phrases. They finish with a small production task: write three sentences about your weekend using the passé composé. That progression keeps weaker students supported while still pushing everyone toward real use. Grammar points that cause the most errors deserve their own targeted worksheets: gender and article agreement, the choice between avoir and être in the passé composé, and adjective placement. Worksheets also work well for reading practice, using a short paragraph in French followed by comprehension questions. Students often apply English word order directly, so sentence-ordering tasks are a useful check. QuizKraft's French worksheets match the grammar point and vocabulary theme you name, with an answer key for self-checking, which makes them suitable for homework, stations or extra practice.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which auxiliary verb is used to conjugate 'aller' in the passé composé?",
-        answer: "Être"
-      },
-      {
-        type: "short-answer",
-        question: "Translate to French: 'I would like a croissant, please.'",
-        answer: "Je voudrais un croissant, s'il vous plaît."
-      },
-      {
-        type: "true-false",
-        question: "In French, most adjectives are placed after the noun they modify.",
-        answer: "True"
-      }
+      { type: "fill-in-the-blank", question: "Complete with the correct present-tense form of finir: Nous ________ nos devoirs avant le dîner.", answer: "finissons" },
+      { type: "fill-in-the-blank", question: "Passé composé: Hier, elle ________ (aller) au cinéma.", answer: "est allée (aller uses être, and the past participle agrees with the feminine subject)" },
+      { type: "short-answer", question: "Translate into French: 'I have a small black cat.'", answer: "J'ai un petit chat noir." },
     ],
-    gradeGuidance: "French 1: basic vocabulary, present tense. French 2–3: past tenses, pronouns. French 4 / AP: subjunctive, literature, and composition.",
+    gradeGuidance:
+      "Grades 6–8 / French I: greetings, numbers, -er verbs, and basic vocabulary themes. Grades 9–10 / French II–III: passé composé, imparfait, and reflexive verbs. Grades 11–12 / AP French: subjunctive, complex sentences, and reading comprehension. Name the grammar point and vocabulary theme together for the most focused practice.",
     faq: [
-      {
-        q: "Can it generate quizzes completely in French?",
-        a: "Yes. Include 'questions and explanations completely in French' in your prompt for immersion classrooms."
-      },
-      {
-        q: "Does it support accent characters?",
-        a: "Yes, all standard French letters and accents (é, è, ç, à, etc.) are correctly generated and supported."
-      }
+      { q: "Can I make a conjugation drill worksheet?", a: "Yes. Name the tense and verb group, for example 'passé composé with avoir and être — 15 practice sentences'." },
+      { q: "Can worksheets be themed around a vocabulary unit?", a: "Yes. Combine the theme and grammar point, such as 'food and restaurant vocabulary with partitive articles'." },
+      { q: "Does it include reading comprehension in French?", a: "Yes. Ask for a short French passage with comprehension questions, and set the grade so the vocabulary fits your class." },
+      { q: "Can instructions be in English for beginners?", a: "Yes. Mention 'instructions in English' in the topic for French I classes." },
     ],
-    relatedSlugs: ["spanish", "grammar", "vocabulary"]
+    relatedSlugs: ["spanish", "grammar", "vocabulary"],
   },
-{
+  {
     slug: "geography",
     name: "Geography",
     gradeRange: "Grades 6–12",
-    intro: "Geography assessments cover map analysis, physical landforms, human geography, and global systems. Good questions analyze how human activities interact with physical environments.",
-    topics: [
-      "Map reading and map projections",
-      "Physical systems (rivers, mountains, climate zones)",
-      "Human migration and population density",
-      "Cultural geography and globalization",
-      "Natural hazards and disasters",
-      "Geopolitics and border disputes"
-    ],
-    guide: "Students often confuse map projections. The best questions ask them to analyze the distortion of Mercator vs. Peters projections. Physical geography matches well with climate cycles, while human geography shifts toward urban models and resource patterns.",
+    intro:
+      "Geography worksheets give students hands-on practice with maps, coordinates, climate data and the connections between people and places. Working through labeling, data and cause-and-effect tasks on paper builds spatial thinking that reading alone doesn't.",
+    topics: ["Map reading and map projections", "Physical systems (rivers, mountains, climate zones)", "Human migration and population density", "Cultural geography and globalization", "Natural hazards and disasters", "Geopolitics and border disputes"],
+    guide:
+      "Geography is a spatial subject, and worksheets should give students something to locate, read or compare rather than just terms to define. Map skills are the foundation: latitude and longitude, scale, cardinal directions and map types. A worksheet that asks students to find the coordinates of five cities, or to estimate the distance between two points using a scale bar, practices skills students will use for the rest of the course. Climate and data tasks are the second strand — a climograph or a small table of rainfall and temperature, followed by questions about which climate zone it represents and why. The third strand is human geography: population density, migration, and how physical features shape where people live. These work best as cause-and-effect questions, such as \"why do so many major cities sit on rivers or coasts?\" Students commonly confuse latitude with longitude, and weather with climate, so worksheets that put those pairs side by side catch the confusion early. Regional worksheets can combine all three strands for a single country or continent. QuizKraft's geography worksheets include map-skill, data and reasoning questions, with an answer key; pair them with a printed map or atlas for the labeling sections.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which line of latitude splits the Earth into Northern and Southern Hemispheres?",
-        answer: "The Equator"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the difference between weather and climate from a geographic perspective.",
-        answer: "Weather refers to short-term atmospheric conditions, while climate is the long-term average weather pattern of a region over 30+ years."
-      },
-      {
-        type: "true-false",
-        question: "The Ring of Fire is a major area in the basin of the Pacific Ocean where many earthquakes and volcanic eruptions occur.",
-        answer: "True"
-      }
+      { type: "fill-in-the-blank", question: "Lines of ________ run east–west and measure distance north or south of the Equator.", answer: "Latitude" },
+      { type: "short-answer", question: "A city has hot temperatures all year and more than 2,000 mm of rain spread across every month. Which climate zone is it most likely in, and why?", answer: "Tropical rainforest (tropical wet) — consistently high temperatures and heavy rainfall in every month are its defining features." },
+      { type: "short-answer", question: "Give two reasons why many large cities developed along rivers.", answer: "Examples: fresh water for drinking and farming, transport and trade routes, fertile soil from flooding." },
     ],
-    gradeGuidance: "Middle school: continents, countries, capital cities. High school: human geography, resource distribution, environmental impact.",
+    gradeGuidance:
+      "Grades 6–7: map skills, continents and oceans, and landforms. Grades 8–9: climate zones, regions, and population. Grades 10–12 / AP Human Geography: migration, urbanization, and economic geography. Name a region or skill, such as 'latitude and longitude practice', for focused worksheets.",
     faq: [
-      {
-        q: "Does this cover physical and human geography?",
-        a: "Yes. You can specify either: e.g., 'physical geography — tectonic landforms' or 'human geography — population migration patterns.'"
-      },
-      {
-        q: "Is it aligned with AP Human Geography standards?",
-        a: "Yes. Set grade to AP / Grade 12 and prompt for topics like 'Demographic Transition Model or von Thünen model.'"
-      }
+      { q: "Do the worksheets include printed maps?", a: "No. The worksheets contain questions and tasks; pair map-labeling sections with a printed map, atlas page, or online map." },
+      { q: "Can I make a map skills worksheet?", a: "Yes. Ask for 'latitude, longitude and scale practice' at your grade level for coordinate and distance problems." },
+      { q: "Can it focus on one country or region?", a: "Yes. Name it, for example 'physical and human geography of Japan', for region-specific questions." },
+      { q: "Does it support AP Human Geography?", a: "Yes. Name the unit and set difficulty to Hard for model-based questions like the demographic transition model." },
     ],
-    relatedSlugs: ["earth-science", "world-history", "us-history"]
+    relatedSlugs: ["earth-science", "world-history", "us-history"],
   },
-{
+  {
     slug: "astronomy",
     name: "Astronomy",
     gradeRange: "Grades 8–12",
-    intro: "Astronomy assessments explore celestial bodies, stellar lifecycle, cosmology, and observational mechanics. Worksheets test the physics of the universe and gravitational models.",
-    topics: [
-      "Planets and orbital mechanics",
-      "Stellar evolution (main sequence to black holes)",
-      "Galaxies and cosmic structures",
-      "The Big Bang theory and cosmology",
-      "Observational astronomy and telescopes",
-      "Space exploration history"
-    ],
-    guide: "Students often confuse mass with weight. Worksheets should ask students to calculate the difference in weight for a constant mass on other planets. Stellar lifecycles are also key — checking if students understand what triggers red giants vs. supernovas.",
+    intro:
+      "Astronomy worksheets help students practice the models behind the night sky — moon phases, seasons, scale and the life cycle of stars. Diagram tasks and simple calculations on paper make abstract space concepts concrete enough to reason about.",
+    topics: ["Planets and orbital mechanics", "Stellar evolution (main sequence to black holes)", "Galaxies and cosmic structures", "The Big Bang theory and cosmology", "Observational astronomy and telescopes", "Space exploration history"],
+    guide:
+      "Astronomy is full of models that students think they understand until they have to draw or explain them. The classic example is the seasons: many students believe seasons happen because Earth is closer to the Sun in summer, and a worksheet that asks them to draw Earth's tilted axis at two points in its orbit exposes that misconception immediately. Good astronomy worksheets lean on diagrams and sequences. Students can order moon phases, label a diagram of a solar eclipse versus a lunar eclipse, or arrange the stages of a star's life cycle. Scale is another strong worksheet topic, because the distances are so large that students need to work with them: converting astronomical units, or comparing the Sun's diameter to Earth's. Simple calculations, like light travel time from the Sun to Earth (about 8 minutes), turn facts into reasoning. Reading data from tables of planet properties — mass, distance, orbital period — lets students spot patterns such as farther planets taking longer to orbit. Moon phases deserve repeated practice because students often think they are caused by Earth's shadow. QuizKraft's astronomy worksheets combine diagram, sequencing, scale and data tasks, with an answer key that explains the model behind each answer.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "What is the primary source of energy for stars during their main sequence phase?",
-        answer: "Nuclear fusion"
-      },
-      {
-        type: "short-answer",
-        question: "Describe Kepler's first law of planetary motion.",
-        answer: "All planets move in elliptical orbits with the Sun at one of the two focal points."
-      },
-      {
-        type: "true-false",
-        question: "A light-year is a unit of time representing the time it takes light to travel to the nearest star.",
-        answer: "False"
-      }
+      { type: "short-answer", question: "Explain what causes Earth's seasons. Your answer should mention Earth's axis.", answer: "Earth's axis is tilted about 23.5°. As Earth orbits the Sun, each hemisphere is tilted toward the Sun for part of the year, getting more direct sunlight and longer days (summer), and away from it for another part (winter). Distance from the Sun is not the cause." },
+      { type: "fill-in-the-blank", question: "The moon phase that comes right after a new moon, when a small sliver on the right side is lit (as seen from the Northern Hemisphere), is called a waxing ________.", answer: "Crescent" },
+      { type: "short-answer", question: "Put these stages of a Sun-like star's life in order: white dwarf, main sequence, red giant, nebula.", answer: "Nebula → main sequence → red giant → white dwarf" },
     ],
-    gradeGuidance: "Grades 8–9: planets, moon phases, gravity. Grades 10–12: astrophysics, nuclear fusion, stellar evolution, and cosmological theories.",
+    gradeGuidance:
+      "Grades 8–9: the solar system, moon phases, seasons, and eclipses. Grades 10–12: stellar life cycles, the electromagnetic spectrum, and scale of the universe. Name a specific model, such as 'moon phases and tides', for diagram-heavy practice.",
     faq: [
-      {
-        q: "Can it generate calculations based on gravity or light?",
-        a: "Yes. Include math prompts, e.g., 'calculating gravitational force using Newton's law of universal gravitation.'"
-      },
-      {
-        q: "Does it cover moon phases and eclipses?",
-        a: "Yes. Specify 'phases of the moon and solar vs. lunar eclipses' in your topic prompt."
-      }
+      { q: "Can worksheets include diagram tasks?", a: "Yes. Ask for 'label the diagram' style questions on topics like eclipses or the seasons; students sketch or label in the space provided." },
+      { q: "Can it cover moon phases specifically?", a: "Yes. Ask for 'moon phases sequencing and causes' to get ordering, naming and explanation questions." },
+      { q: "Does it include scale and distance calculations?", a: "Yes. Name the skill, for example 'astronomical units and light-year conversions', and the answer key shows each step." },
+      { q: "Is it suitable for an Earth and space science unit?", a: "Yes. Set the grade level to match your class and name the unit topics you're covering." },
     ],
-    relatedSlugs: ["physics", "earth-science", "chemistry"]
+    relatedSlugs: ["physics", "earth-science", "chemistry"],
   },
-{
+  {
     slug: "creative-writing",
     name: "Creative Writing",
     gradeRange: "Grades 6–12",
-    intro: "Creative Writing worksheets and quizzes focus on literary techniques, narrative arcs, stylistic elements, and editing. Practice guides writers to build rich descriptions and dialogue.",
-    topics: [
-      "Show, don't tell writing techniques",
-      "Developing character voice",
-      "Structuring narrative arcs",
-      "Dialogue punctuation and pacing",
-      "Sensory details and imagery",
-      "Poetic devices (meter, rhyme, stanza)"
-    ],
-    guide: "Students write flat narratives. Exercises should require taking a telling sentence ('He was sad') and rewriting it using sensory details and actions. Dialogue punctuation rules are also a primary mechanic tested in ELA classes.",
+    intro:
+      "Creative writing worksheets give students prompts, structure and targeted craft practice — so a blank page becomes a series of manageable steps. Short exercises on dialogue, sensory detail or story structure build the skills students then bring to longer pieces.",
+    topics: ["Show, don't tell writing techniques", "Developing character voice", "Structuring narrative arcs", "Dialogue punctuation and pacing", "Sensory details and imagery", "Poetic devices (meter, rhyme, stanza)"],
+    guide:
+      "The hardest part of creative writing for most students is starting, and worksheets solve that by breaking a story into smaller, focused tasks. Instead of \"write a short story,\" a strong worksheet might ask students to describe a setting using three senses, then write four lines of dialogue that reveal a conflict, then plan a beginning, middle and end on a story map. Each task practices one craft skill, and together they build toward a full piece. Craft-focused exercises are where worksheets add the most value: rewriting a flat sentence with stronger verbs, turning \"telling\" into \"showing\" (\"she was angry\" becomes a description of her actions), or experimenting with point of view by retelling a scene from another character's perspective. Poetry exercises also work well on paper, such as writing an image-based haiku or finding and replacing clichés. Structured planning tools — character profiles, plot mountains, conflict charts — help students who struggle to organize their ideas. Students often over-explain emotions instead of showing them, so show-don't-tell exercises are worth repeating. QuizKraft's creative writing worksheets combine prompts, craft exercises and planning organizers, with an answer key that offers model responses for teachers to share as examples.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which literary device involves a direct comparison of two unlike things without using 'like' or 'as'?",
-        answer: "Metaphor"
-      },
-      {
-        type: "short-answer",
-        question: "Punctuate the following dialogue correctly: 'I don't think we should go in there whispered Sarah.'",
-        answer: "\"I don't think we should go in there,\" whispered Sarah."
-      },
-      {
-        type: "true-false",
-        question: "A protagonist must always be a morally good character in a story.",
-        answer: "False"
-      }
+      { type: "short-answer", question: "Rewrite this sentence to show the emotion instead of telling it: 'Maya was nervous before her speech.'", answer: "Example: Maya's hands shook as she smoothed her notes for the third time, and she couldn't stop tapping her foot." },
+      { type: "short-answer", question: "Describe a busy school cafeteria using at least three different senses.", answer: "Answers vary. Strong responses include specific sounds, smells and sights (and possibly touch or taste) rather than general words like 'loud' or 'nice'." },
+      { type: "fill-in-the-blank", question: "The struggle between opposing forces that drives a story's plot is called the ________.", answer: "Conflict" },
     ],
-    gradeGuidance: "Middle school: story parts, descriptive words. High school: show vs. tell, dialogue, figurative structures, poetry formats.",
+    gradeGuidance:
+      "Grades 6–8: story structure, sensory detail, and dialogue basics. Grades 9–10: point of view, voice, and show-don't-tell revision. Grades 11–12: style, poetic forms, and workshop-style revision. Name the genre or craft skill, such as 'writing suspense', for focused exercises.",
     faq: [
-      {
-        q: "Can it generate creative writing prompts?",
-        a: "Yes. Specify 'writing prompts' in the question count, or ask for exercises that guide story starting."
-      },
-      {
-        q: "Does it teach poetry forms?",
-        a: "Yes. Specify 'haiku structure, sonnets, or free verse elements' in the topic."
-      }
+      { q: "Can I make a worksheet of story prompts?", a: "Yes. Ask for prompts in a genre, such as 'mystery story starters for Grade 7', and set the question type to short answer." },
+      { q: "Can it focus on one craft skill like dialogue?", a: "Yes. Name the skill, for example 'writing realistic dialogue with correct punctuation', for targeted exercises." },
+      { q: "Does it include planning organizers?", a: "Yes. Ask for 'character profile and plot planning' to get structured prompts students can fill in before drafting." },
+      { q: "Can I use it for poetry writing?", a: "Yes. Name the form, such as haiku, free verse or sonnet, for form-specific exercises and examples." },
     ],
-    relatedSlugs: ["literature", "grammar", "vocabulary"]
+    relatedSlugs: ["literature", "grammar", "vocabulary"],
   },
-{
+  {
     slug: "statistics",
     name: "Statistics",
     gradeRange: "Grades 9–12",
-    intro: "Statistics worksheets and quizzes test data representation, probability rules, distribution models, and hypothesis testing. Good questions prompt reasoning behind data conclusions.",
-    topics: [
-      "Measures of central tendency (mean, median, mode)",
-      "Probability rules and Venn diagrams",
-      "Normal distribution and z-scores",
-      "Sampling methods and bias",
-      "Hypothesis testing and p-values",
-      "Correlation vs. causation"
-    ],
-    guide: "Students confuse correlation with causation. Worksheets should present real-world scatter plots and prompt students to critique causative claims. At AP level, z-scores, p-values, and statistical significance are core concepts.",
+    intro:
+      "Statistics worksheets give students the repeated calculation and interpretation practice the subject requires — finding measures of center and spread, reading graphs, and drawing conclusions from data. Each problem should end with an interpretation, not just a number.",
+    topics: ["Measures of central tendency (mean, median, mode)", "Probability rules and Venn diagrams", "Normal distribution and z-scores", "Sampling methods and bias", "Hypothesis testing and p-values", "Correlation vs. causation"],
+    guide:
+      "Statistics students can often compute a mean or a standard deviation correctly and still not know what it tells them, so the best statistics worksheets pair every calculation with an interpretation. A problem that asks for the mean of a data set should also ask what it means in context, and whether the median would be a better measure if there's an outlier. That habit — calculate, then interpret in context — is the core skill of the course. Good worksheets mix several kinds of practice. Descriptive statistics come first: mean, median, mode, range and interquartile range, using small data sets students can handle by hand. Graph reading comes next: box plots, histograms and scatterplots, with questions about shape, center, spread and unusual values. Probability problems, such as two-way tables and simple compound events, give clean practice with checkable answers. For older students, sampling and study design questions ask students to spot bias or identify an experiment versus an observational study. Students frequently confuse correlation with causation, so scenario questions that test that distinction are worth including. QuizKraft's statistics worksheets use realistic data sets and include an answer key with full working and a model interpretation for each problem.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "If a distribution is highly skewed to the right, which measure of central tendency is typically largest?",
-        answer: "The mean"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the difference between a sample and a population in statistics.",
-        answer: "A population is the entire group you want to draw conclusions about, while a sample is the specific group you collect data from."
-      },
-      {
-        type: "true-false",
-        question: "A p-value of 0.03 indicates that there is a 3% probability that the null hypothesis is true.",
-        answer: "False"
-      }
+      { type: "short-answer", question: "Find the mean and median of this data set: 3, 5, 5, 6, 21. Which better describes a typical value, and why?", answer: "Mean = 40 ÷ 5 = 8; median = 5. The median is better because the outlier 21 pulls the mean up." },
+      { type: "short-answer", question: "A study finds that students who eat breakfast have higher test scores. Does this prove breakfast causes higher scores? Explain.", answer: "No. It is an observational association; other factors (such as sleep or family routines) could explain both. Only a randomized experiment could support a causal claim." },
+      { type: "fill-in-the-blank", question: "The range of the middle 50% of a data set, found by subtracting Q1 from Q3, is called the ________.", answer: "Interquartile range (IQR)" },
     ],
-    gradeGuidance: "Grades 9–10: charts, mean/median/mode, simple probability. AP Statistics: hypothesis tests, normal models, sampling distributions, regressions.",
+    gradeGuidance:
+      "Grades 9–10: measures of center and spread, data displays, and basic probability. Grades 11–12 / AP Statistics: sampling and study design, normal distributions, and inference basics. Name the skill, such as 'box plots and IQR', for focused practice.",
     faq: [
-      {
-        q: "Is this aligned with AP Statistics?",
-        a: "Yes. Set grade to Grade 12 / AP and specify: 'AP Statistics — Type I and Type II errors' or 'chi-square goodness of fit test.'"
-      },
-      {
-        q: "Does it cover probability rules?",
-        a: "Yes. Specify 'addition and multiplication rules of probability, or conditional probability.'"
-      }
+      { q: "Do the worksheets include data sets?", a: "Yes. Problems include small data sets students can work with by hand, sized to your grade level." },
+      { q: "Can it focus on interpreting graphs?", a: "Yes. Ask for 'interpreting box plots and histograms' for questions about shape, center, spread and outliers." },
+      { q: "Does it support AP Statistics practice?", a: "Yes. Name the unit, such as 'sampling methods and bias', and set difficulty to Hard for free-response-style reasoning." },
+      { q: "Does the answer key show working?", a: "Yes. Calculation answers include the steps, and interpretation questions include a model answer in context." },
     ],
-    relatedSlugs: ["algebra", "math", "physics"]
+    relatedSlugs: ["algebra", "math", "physics"],
   },
-{
+  {
     slug: "sociology",
     name: "Sociology",
     gradeRange: "Grades 10–12",
-    intro: "Sociology assessments explore social structures, cultural paradigms, inequality, and socialization processes. Revealing questions require analyzing systemic patterns.",
-    topics: [
-      "Social institutions (family, education, religion)",
-      "Culture and norms",
-      "Socialization and identity",
-      "Social stratification and inequality",
-      "Deviance and social control",
-      "Sociological research methods"
-    ],
-    guide: "Students often confuse individual bias with systemic structure. Questions should guide them to analyze how institutions shape group behaviors. Functionalist vs. conflict perspectives are ideal frameworks for comparative questions.",
+    intro:
+      "Sociology worksheets help students practice applying sociological concepts to real social situations — norms, socialization, institutions and inequality. Scenario analysis and short responses on paper build the 'sociological imagination' that definitions alone can't.",
+    topics: ["Social institutions (family, education, religion)", "Culture and norms", "Socialization and identity", "Social stratification and inequality", "Deviance and social control", "Sociological research methods"],
+    guide:
+      "Sociology asks students to see personal experiences as part of larger social patterns, and worksheets are where that perspective gets practiced. A worksheet that only asks students to define \"norm\" or \"socialization\" stays at the vocabulary level. Stronger sociology worksheets present a short scenario and ask students to analyze it with a concept: a new student adjusting to a school's unwritten rules (norms and socialization), a family's changing roles over three generations (institutions and social change), or unequal access to a resource (stratification). Theory application is a second useful strand — asking how a functionalist, a conflict theorist and a symbolic interactionist would each explain the same situation, such as education or sports. Research-methods questions work well on paper too: identifying whether a study is a survey, an experiment or participant observation, and naming one strength and limitation of each. Data interpretation, using a simple table of census-style figures, helps students connect concepts to evidence. Students often apply concepts too personally or anecdotally, so worksheets that ask them to connect an example to a broader pattern are especially valuable. QuizKraft's sociology worksheets combine scenario, theory and methods questions, with an answer key that models strong analytical responses.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which sociological perspective views society as a system of interrelated parts working together to promote stability?",
-        answer: "Structural Functionalism"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the difference between a primary group and a secondary group.",
-        answer: "Primary groups are small, close-knit, and personal (like family); secondary groups are larger, temporary, and goal-oriented (like coworkers)."
-      },
-      {
-        type: "true-false",
-        question: "Ethnocentrism is the practice of judging another culture by the standards of one's own culture.",
-        answer: "True"
-      }
+      { type: "short-answer", question: "A new student notices that everyone at lunch sits in the same groups every day, though no rule says they must. Which sociological concept does this illustrate? Explain.", answer: "Informal norms (unwritten social expectations) — students follow them through socialization, even without formal rules." },
+      { type: "short-answer", question: "How would a conflict theorist explain differences in school funding between neighborhoods?", answer: "A conflict theorist would see it as a result of inequality in power and resources, where wealthier groups secure better resources and reproduce their advantage." },
+      { type: "fill-in-the-blank", question: "The process by which people learn the norms, values and behaviors of their society is called ________.", answer: "Socialization" },
     ],
-    gradeGuidance: "Grades 10–12: basic sociological concepts, socialization, culture, deviance, and social stratification.",
+    gradeGuidance:
+      "Grades 10–11: culture, norms, socialization, and groups. Grade 12 / college intro: stratification, institutions, social change, and research methods. Name a concept or theory, such as 'functionalism vs. conflict theory', for focused practice.",
     faq: [
-      {
-        q: "Does it cover the main sociological theories?",
-        a: "Yes. Specify 'Functionalism, Conflict Theory, and Symbolic Interactionism' for theoretical comparison questions."
-      },
-      {
-        q: "Can it quiz sociological research methods?",
-        a: "Yes. Topic prompts like 'quantitative vs. qualitative methods, surveys, and ethics in research' generate focused questions."
-      }
+      { q: "Can worksheets use real-world scenarios?", a: "Yes. Ask for 'scenario analysis' on a concept like deviance or socialization, and students will apply the concept to short cases." },
+      { q: "Can it compare sociological theories?", a: "Yes. Ask for 'compare functionalist, conflict and symbolic interactionist views of education' for theory-application practice." },
+      { q: "Does it cover research methods?", a: "Yes. Name the methods topic, such as 'surveys vs. participant observation', for questions on strengths and limitations." },
+      { q: "Is it suitable for an intro college course?", a: "Yes. Set the grade level to College and difficulty to Hard." },
     ],
-    relatedSlugs: ["us-history", "world-history", "civics"]
+    relatedSlugs: ["us-history", "world-history", "civics"],
   },
   {
     slug: "pre-algebra",
     name: "Pre-Algebra",
     gradeRange: "Grades 6–8",
-    intro: "Pre-algebra assessments bridge basic arithmetic and algebraic reasoning, focusing on integers, variables, and simple equations.",
-    topics: [
-      "Integers & absolute value",
-      "Order of operations (PEMDAS)",
-      "Solving one-step equations",
-      "Ratios, rates & proportions",
-      "Coordinate plane basics",
-      "Simplifying algebraic expressions"
-    ],
-    guide: "Students frequently struggle with negative numbers and the order of operations. Pre-algebra worksheets should focus on building step-by-step logic, helping students visualize variables as placeholders before they move on to complex algebra.",
+    intro:
+      "Pre-algebra worksheets build the fluency students need before algebra — integers, fractions, order of operations, ratios and one-step equations. The most effective ones give plenty of scaffolded practice, moving from worked examples to independent problems on the same page.",
+    topics: ["Integers & absolute value", "Order of operations (PEMDAS)", "Solving one-step equations", "Ratios, rates & proportions", "Coordinate plane basics", "Simplifying algebraic expressions"],
+    guide:
+      "Pre-algebra is a fluency year, and worksheets are the main tool for building it. The skills — integer operations, fractions and decimals, order of operations, ratios, and simple equations — are each straightforward on their own, but students need enough repetition that they stop making small errors before algebra layers new ideas on top. The best pre-algebra worksheets are carefully sequenced. They open with one or two worked examples, follow with several guided problems of the same type, and end with independent problems and one or two word problems. Mixing problem types too early overwhelms students who are still building confidence; keeping one skill per section, then a short mixed review at the end, works better. Integer rules cause the most persistent errors, especially subtracting negatives, so they deserve focused practice with a quick reference box at the top of the page. Order of operations problems should include cases where left-to-right matters, such as 12 ÷ 3 × 2. Students often skip writing steps, so worksheets that require showing work make it much easier to find where an answer went wrong. QuizKraft's pre-algebra worksheets follow this scaffolded structure, with an answer key that shows each step, which makes them practical for homework, intervention and review.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "What is the value of -5 + 8? A) -13 B) -3 C) 3 D) 13",
-        answer: "C) 3"
-      },
-      {
-        type: "short-answer",
-        question: "Solve for x: x - 7 = -12. Show your work.",
-        answer: "x = -5 (add 7 to both sides)"
-      },
-      {
-        type: "true-false",
-        question: "The absolute value of a number is always positive or zero.",
-        answer: "True"
-      }
+      { type: "fill-in-the-blank", question: "Evaluate: 8 + 12 ÷ 4 × 2 = ______", answer: "14 — division and multiplication left to right: 12 ÷ 4 = 3, 3 × 2 = 6; then 8 + 6 = 14" },
+      { type: "fill-in-the-blank", question: "−7 − (−10) = ______", answer: "3 — subtracting a negative is the same as adding: −7 + 10 = 3" },
+      { type: "short-answer", question: "Solve and check: x + 9 = 4", answer: "x = −5; check: −5 + 9 = 4 ✓" },
     ],
-    gradeGuidance: "Grades 6–7: order of operations, decimals, and negative integers. Grade 8: solving one-step equations and introduction to variables.",
+    gradeGuidance:
+      "Grade 6: ratios, fractions and decimals, and expressions. Grade 7: integers, proportions, and one- and two-step equations. Grade 8: exponents, square roots, and linear relationships. Name one skill, such as 'adding and subtracting integers', for focused fluency practice.",
     faq: [
-      {
-        q: "Does it cover negative numbers?",
-        a: "Yes, integers and operations with negative numbers are standard in Pre-Algebra prompts."
-      },
-      {
-        q: "Can I generate word problems?",
-        a: "Yes. Specify 'pre-algebra word problems' in your topic to generate contextual exercises."
-      }
+      { q: "Can I make a worksheet focused on one skill?", a: "Yes. Name it precisely, for example 'order of operations with exponents — 15 problems', for targeted practice." },
+      { q: "Can worksheets include a mixed review section?", a: "Yes. Ask for 'mixed review of integers, fractions and one-step equations' for a cumulative practice page." },
+      { q: "Can it make intervention worksheets?", a: "Yes. Set difficulty to Easy and narrow the topic, such as 'adding integers with a number line, small numbers only'." },
+      { q: "Does the answer key show steps?", a: "Yes. Every answer includes the steps, so students can check where they went wrong." },
     ],
-    relatedSlugs: ["algebra", "math", "geometry"]
+    relatedSlugs: ["algebra", "math", "geometry"],
   },
   {
     slug: "ancient-history",
     name: "Ancient History",
     gradeRange: "Grades 6–10",
-    intro: "Ancient History assessments cover early human civilizations, Mesopotamia, Ancient Egypt, Greece, Rome, and Mesoamerica. Revealing questions compare systems of governance, culture, and trade.",
-    topics: [
-      "Mesopotamia & early empires",
-      "Ancient Egyptian civilization & pyramids",
-      "Classical Greece & democracy",
-      "The Roman Empire & Republic",
-      "Early civilizations of Mesoamerica",
-      "Ancient silk road & trade networks"
-    ],
-    guide: "Focus on comparing ancient civilizations rather than memorizing individual dynasties or names. Strong questions analyze how geography shaped development, governance styles, and how early legal codes like Hammurabi's Code established social order.",
+    intro:
+      "Ancient history worksheets help students organize civilizations, timelines and primary sources into something they can work with — comparing societies, sequencing events, and reading evidence from the past. Structured practice turns a long list of names and dates into connected understanding.",
+    topics: ["Mesopotamia & early empires", "Ancient Egyptian civilization & pyramids", "Classical Greece & democracy", "The Roman Empire & Republic", "Early civilizations of Mesoamerica", "Ancient silk road & trade networks"],
+    guide:
+      "Ancient history units cover many civilizations quickly, and students often end up with a blur of pharaohs, emperors and city-states. Worksheets are the tool that sorts that blur into structure. Comparison charts are especially effective: a table comparing Egypt, Mesopotamia, Greece and Rome across government, religion, achievements and geography lets students see patterns and differences side by side. Timeline tasks build chronology, which ancient history makes tricky because of BCE dating — students need practice understanding that 500 BCE comes before 200 BCE. Primary and secondary sources work well on paper: a short excerpt from Hammurabi's Code or a description of Athenian democracy, followed by questions about what it reveals and what it leaves out. Cause-and-effect questions connect geography to history, such as why the Nile's flooding made Egyptian agriculture possible. Map tasks show how empires expanded and why trade routes mattered. Students commonly mix up the features of Athenian democracy and the Roman Republic, so a direct comparison is worth including. QuizKraft's ancient history worksheets combine comparison, timeline, source and map-based questions, with an answer key that explains the historical reasoning; pair map sections with a printed map.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which ancient civilization is credited with the development of direct democracy? A) Rome B) Egypt C) Athens D) Sparta",
-        answer: "C) Athens"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the historical significance of the Code of Hammurabi.",
-        answer: "It was one of the earliest and most complete written legal codes, establishing the principle of written laws and lex talionis (an eye for an eye)."
-      },
-      {
-        type: "true-false",
-        question: "The Roman Republic was ruled by an absolute emperor from its very beginning.",
-        answer: "False (it was a republic ruled by a senate before becoming an empire)"
-      }
+      { type: "short-answer", question: "Put these in chronological order: the founding of the Roman Republic (509 BCE), the building of the Great Pyramid of Giza (c. 2560 BCE), the death of Alexander the Great (323 BCE).", answer: "Great Pyramid (c. 2560 BCE) → Roman Republic founded (509 BCE) → death of Alexander the Great (323 BCE). With BCE dates, larger numbers are earlier." },
+      { type: "short-answer", question: "Explain how the yearly flooding of the Nile helped Egyptian civilization develop.", answer: "The floods left fertile silt on the riverbanks, allowing reliable farming and food surpluses, which supported a large population, specialized jobs and a central government." },
+      { type: "fill-in-the-blank", question: "In Athenian democracy, eligible ________ voted directly on laws in the Assembly, while the Roman Republic relied on elected representatives such as senators and consuls.", answer: "Citizens (adult male citizens)" },
     ],
-    gradeGuidance: "Middle school: major achievements, mythology, daily life. High school: comparative governance, trade networks, and primary source analysis.",
+    gradeGuidance:
+      "Grade 6: early humans, Mesopotamia, and Egypt. Grade 7: Greece, Rome, India and China. Grades 8–10: comparative civilizations, primary sources, and legacy of the ancient world. Name the civilization and theme, such as 'Roman Republic government', for focused practice.",
     faq: [
-      {
-        q: "Can I generate quizzes on ancient myths?",
-        a: "Yes, include mythology in your topic: e.g., 'Greek and Roman mythology comparison'."
-      },
-      {
-        q: "Does it cover non-Western ancient history?",
-        a: "Yes. Specify 'Ancient China — Han Dynasty' or 'Ancient Indus Valley Civilization' for focused coverage."
-      }
+      { q: "Can I make a comparison chart worksheet?", a: "Yes. Ask for 'compare Egypt, Mesopotamia and the Indus Valley — government, religion, achievements' to get structured comparison prompts." },
+      { q: "Can worksheets include primary sources?", a: "Yes. Name a source, such as 'Hammurabi's Code excerpt', and students will get source-reading questions. Verify excerpts against your textbook if exact wording matters." },
+      { q: "Does it help with BCE/CE timelines?", a: "Yes. Ask for 'BCE and CE timeline practice' to give students ordering and date-calculation questions." },
+      { q: "Can it cover civilizations outside the Mediterranean?", a: "Yes. Name the civilization, for example 'Han Dynasty China' or 'ancient Maya', for region-specific worksheets." },
     ],
-    relatedSlugs: ["world-history", "us-history", "literature"]
+    relatedSlugs: ["world-history", "us-history", "literature"],
   },
   {
     slug: "calculus",
     name: "Calculus",
     gradeRange: "Grades 11–12 / AP",
-    intro: "Calculus assessments test limits, derivatives, integrals, and their applications. Advanced questions focus on rates of change and accumulation models.",
-    topics: [
-      "Limits & continuity",
-      "Differentiation & derivatives",
-      "Applications of derivatives (optimization, related rates)",
-      "Integration & antiderivatives",
-      "Fundamental Theorem of Calculus",
-      "AP Calculus AB/BC review"
-    ],
-    guide: "Limits and derivative definitions are the core focus of early calculus. Assessments should test conceptual understanding of rates of change alongside mechanical differentiation. Use short-answer questions to track multi-step limits and integration procedures.",
+    intro:
+      "Calculus worksheets give students the volume of practice that limits, derivatives and integrals require — with problems sequenced from basic rule application to multi-step applications. Showing full work on paper is where most calculus learning, and most error-catching, happens.",
+    topics: ["Limits & continuity", "Differentiation & derivatives", "Applications of derivatives (optimization, related rates)", "Integration & antiderivatives", "Fundamental Theorem of Calculus", "AP Calculus AB/BC review"],
+    guide:
+      "Calculus is learned through practice volume, and worksheets supply that volume in a structured way. The most effective calculus worksheets are sequenced: a few direct rule-application problems first (power rule, product rule, basic antiderivatives), then problems that combine rules, then applied problems such as related rates, optimization or area under a curve. Jumping straight to applications before the rules are automatic leads to students getting lost in the algebra rather than the calculus. The chain rule is the most common source of errors — students forget to multiply by the derivative of the inner function — so it deserves dedicated practice with a range of inner functions. In integration, the constant of integration and correct bounds in definite integrals are frequent small errors that a worked answer key helps students catch. Worksheets should also include some conceptual questions, like interpreting the derivative as a rate of change in context, because AP-style questions test meaning as well as computation. Graphical analysis tasks, such as identifying where a function is increasing from its derivative's sign, practice a skill that pure computation drills miss. QuizKraft's calculus worksheets follow this progression and include an answer key with full step-by-step solutions.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "What is the derivative of f(x) = 3x² - 5x + 2? A) 6x B) 6x - 5 C) 3x - 5 D) 6x - 5x",
-        answer: "B) 6x - 5"
-      },
-      {
-        type: "short-answer",
-        question: "Evaluate the limit of (x² - 4)/(x - 2) as x approaches 2.",
-        answer: "Limit is 4 (factor the numerator to (x-2)(x+2), simplify to x+2, and substitute x=2)"
-      },
-      {
-        type: "true-false",
-        question: "If a function is continuous at a point, it must also be differentiable at that point.",
-        answer: "False (e.g., f(x) = |x| is continuous at x=0 but not differentiable)"
-      }
+      { type: "fill-in-the-blank", question: "Differentiate: d/dx [(3x² + 1)⁴] = ______", answer: "24x(3x² + 1)³ — chain rule: 4(3x² + 1)³ × 6x" },
+      { type: "fill-in-the-blank", question: "Evaluate: ∫₀² 3x² dx = ______", answer: "8 — antiderivative x³, evaluated 2³ − 0³ = 8" },
+      { type: "short-answer", question: "The position of a particle is s(t) = t³ − 6t² + 9t. Find when the particle is at rest.", answer: "v(t) = 3t² − 12t + 9 = 3(t − 1)(t − 3) = 0, so t = 1 and t = 3." },
     ],
-    gradeGuidance: "Grade 11: pre-calculus and limits introduction. Grade 12 / AP Calculus AB: derivatives and basic integration. AP Calculus BC: parametric, polar, and infinite series.",
+    gradeGuidance:
+      "Grade 11 / AP Calculus AB: limits, derivatives, basic integrals, and applications. Grade 12 / AP Calculus BC: series, parametric and polar functions, and advanced integration. Name the rule or application, such as 'related rates — ladder and cone problems', for focused practice.",
     faq: [
-      {
-        q: "Is this aligned with AP Calculus?",
-        a: "Yes. Specify 'AP Calculus AB' or 'AP Calculus BC' in your topic prompt for targeted review questions."
-      },
-      {
-        q: "Does it cover optimization word problems?",
-        a: "Yes. Include 'optimization problems' in your topic prompt to get applied word problems."
-      }
+      { q: "Does the answer key include full solutions?", a: "Yes. Each problem includes step-by-step working, so students can find exactly where an error happened." },
+      { q: "Can I make a worksheet on one rule like the chain rule?", a: "Yes. Name it, for example 'chain rule practice — 12 problems with trig and exponential inner functions'." },
+      { q: "Can it generate AP-style free-response practice?", a: "Yes. Set difficulty to Hard and name the topic, such as 'AP Calculus AB — accumulation functions and rate problems'." },
+      { q: "Can worksheets include graphical analysis?", a: "Yes. Ask for 'derivative graph analysis — increasing, decreasing and concavity' for interpretation questions." },
     ],
-    relatedSlugs: ["physics", "algebra", "statistics"]
+    relatedSlugs: ["physics", "algebra", "statistics"],
   },
   {
     slug: "organic-chemistry",
     name: "Organic Chemistry",
     gradeRange: "Grades 11–12 / College",
-    intro: "Organic Chemistry assessments cover carbon compounds, functional groups, nomenclature, isomerism, and basic reaction mechanisms.",
-    topics: [
-      "Nomenclature of hydrocarbons (alkanes, alkenes)",
-      "Functional groups (alcohols, ketones, carboxylic acids)",
-      "Isomerism & stereochemistry",
-      "Nucleophilic substitution & elimination",
-      "Spectroscopy basics (IR, NMR)",
-      "Organic synthesis pathways"
-    ],
-    guide: "Nomenclature rules are procedural. Strong worksheets focus on drawing structures from names and classifying functional groups. Reaction prediction questions help students develop mechanical reasoning for organic synthesis.",
+    intro:
+      "Organic chemistry worksheets give students repeated practice with the core skills of the subject — naming compounds, drawing structures, identifying functional groups and predicting reaction products. Working problems by hand is how students learn to see patterns across reactions.",
+    topics: ["Nomenclature of hydrocarbons (alkanes, alkenes)", "Functional groups (alcohols, ketones, carboxylic acids)", "Isomerism & stereochemistry", "Nucleophilic substitution & elimination", "Spectroscopy basics (IR, NMR)", "Organic synthesis pathways"],
+    guide:
+      "Organic chemistry is a pattern-recognition subject, and worksheets are where students build those patterns through repetition. The foundation is nomenclature and structure: naming compounds from structures and drawing structures from names, using IUPAC rules for chain length, numbering and substituents. Students who aren't fluent here struggle with everything that follows, so early worksheets should give plenty of practice with a mix of alkanes, alkenes, alcohols and other common functional groups. Functional group identification is the next layer — given a molecule, circle and name every functional group present. Reaction worksheets then ask students to predict products or identify reagents, and the most effective ones group reactions by type (substitution, elimination, addition) so students see how conditions change the outcome. Mechanism practice, using curved arrows to show electron movement, is where many students struggle most, because it requires understanding nucleophiles and electrophiles rather than memorizing products. Isomer questions also work well on paper, such as drawing all structural isomers of a small molecule. Students frequently miscount carbons or number the chain from the wrong end, so naming practice should include a reminder of numbering rules. QuizKraft's organic chemistry worksheets cover nomenclature, functional groups, reactions and isomers, with an answer key that explains each name and product; students draw structures in the space provided.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which functional group is characterized by a carbon-oxygen double bond (C=O) bonded to at least one hydrogen atom? A) Alcohol B) Kidone C) Aldehyde D) Carboxylic acid",
-        answer: "C) Aldehyde"
-      },
-      {
-        type: "short-answer",
-        question: "Explain the difference between structural isomers and stereoisomers.",
-        answer: "Structural isomers have the same formula but different atom connectivities; stereoisomers have the same connectivities but different 3D spatial arrangements."
-      },
-      {
-        type: "true-false",
-        question: "Alkenes are unsaturated hydrocarbons containing at least one carbon-carbon triple bond.",
-        answer: "False (alkenes contain a double bond; alkynes contain a triple bond)"
-      }
+      { type: "fill-in-the-blank", question: "Give the IUPAC name for CH₃CH₂CH₂OH.", answer: "Propan-1-ol (1-propanol)" },
+      { type: "short-answer", question: "Name the functional groups present in a molecule that contains a –COOH group and an –NH₂ group.", answer: "Carboxylic acid (–COOH) and amine (–NH₂), as found in amino acids." },
+      { type: "short-answer", question: "Predict the major product when ethene reacts with HBr, and name the reaction type.", answer: "Bromoethane (CH₃CH₂Br); electrophilic addition." },
     ],
-    gradeGuidance: "High school chemistry: basic functional groups. AP Chemistry/Elective: IUPAC naming rules, structural isomers. College intro: full reaction mechanisms.",
+    gradeGuidance:
+      "Grades 11–12: hydrocarbons, functional groups, and basic naming. College organic I: nomenclature, stereochemistry, substitution and elimination. College organic II: carbonyl chemistry, aromatic reactions, and synthesis. Name the reaction type or functional group for focused practice.",
     faq: [
-      {
-        q: "Can it generate IUPAC naming questions?",
-        a: "Yes. Use topics like 'IUPAC nomenclature of branched alkanes' to get targeted naming problems."
-      },
-      {
-        q: "Does it cover reaction mechanisms?",
-        a: "Yes. Include 'reaction mechanisms — SN1 and SN2 pathways' for advanced chemistry worksheets."
-      }
+      { q: "Can students draw structures on the worksheet?", a: "Yes. Structure questions leave space for drawing; the answer key describes the expected structure and name." },
+      { q: "Can I make a nomenclature practice worksheet?", a: "Yes. Ask for 'IUPAC naming — alkanes, alkenes and alcohols, 15 problems' for focused naming practice." },
+      { q: "Does it cover reaction mechanisms?", a: "Yes. Name the mechanism, such as 'SN1 vs SN2 — predict the mechanism and product', for mechanism-focused practice." },
+      { q: "Is it suitable for college organic chemistry?", a: "Yes. Set the grade level to College and difficulty to Hard." },
     ],
-    relatedSlugs: ["chemistry", "biology", "physics"]
+    relatedSlugs: ["chemistry", "biology", "physics"],
   },
   {
     slug: "physical-science",
     name: "Physical Science",
     gradeRange: "Grades 8–10",
-    intro: "Physical Science assessments bridge introductory chemistry and physics, exploring matter, energy, forces, and motion.",
-    topics: [
-      "Properties of matter & phase changes",
-      "Periodic table & chemical bonding",
-      "Newton's laws of motion",
-      "Work, energy & simple machines",
-      "Electricity & magnetism basics",
-      "Waves, light & sound properties"
-    ],
-    guide: "Physical Science serves as a foundational course. Keep questions balanced between conceptual explanations (e.g., how heat transfers) and basic calculation problems (e.g., calculating speed or density). Focus on removing complex calculus or advanced algebra barriers.",
+    intro:
+      "Physical science worksheets give students practice with the foundations of physics and chemistry — motion, forces, energy, matter and simple calculations. Pairing formula problems with real-world explanations helps students connect equations to what actually happens around them.",
+    topics: ["Properties of matter & phase changes", "Periodic table & chemical bonding", "Newton's laws of motion", "Work, energy & simple machines", "Electricity & magnetism basics", "Waves, light & sound properties"],
+    guide:
+      "Physical science introduces students to quantitative science, and worksheets are where they practice turning a word problem into a calculation. The most effective physical science worksheets teach a consistent problem-solving routine: list the known values with units, choose the right formula, substitute, and solve with units. Speed, density, force (F = ma), and work problems are ideal for this, because the formulas are simple and the routine becomes automatic with repetition. Units deserve particular attention — students often drop them or mix grams with kilograms — so worksheets that require units in every answer build good habits early. The chemistry side of the course also benefits from structured practice: reading the periodic table, counting atoms in a formula, classifying physical versus chemical changes, and balancing simple equations. Conceptual questions, such as explaining why a heavy and a light object fall at the same rate without air resistance, check that students understand the ideas behind the numbers. Students frequently confuse mass and weight, and speed and velocity, so side-by-side comparison questions are worth including. QuizKraft's physical science worksheets mix calculation, classification and explanation questions, with an answer key that shows each step and unit, which makes them good for homework, lab follow-ups and test review.",
     exampleQuestions: [
-      {
-        type: "multiple-choice",
-        question: "Which type of heat transfer occurs through direct contact between two objects? A) Convection B) Radiation C) Conduction D) Induction",
-        answer: "C) Conduction"
-      },
-      {
-        type: "short-answer",
-        question: "A block has a mass of 50 grams and a volume of 10 cubic centimeters. Calculate its density.",
-        answer: "Density = Mass ÷ Volume = 50 g ÷ 10 cm³ = 5 g/cm³"
-      },
-      {
-        type: "true-false",
-        question: "Sound waves can travel through a vacuum, such as outer space.",
-        answer: "False (sound waves require a medium like air or water to propagate)"
-      }
+      { type: "short-answer", question: "A cyclist travels 30 km in 1.5 hours. What is the average speed? Include units.", answer: "20 km/h — speed = distance ÷ time = 30 km ÷ 1.5 h" },
+      { type: "fill-in-the-blank", question: "A block has a mass of 60 g and a volume of 20 cm³. Its density is ______.", answer: "3 g/cm³ — density = mass ÷ volume = 60 ÷ 20" },
+      { type: "short-answer", question: "Classify each as a physical or chemical change: ice melting, iron rusting, paper being cut, wood burning.", answer: "Ice melting — physical; iron rusting — chemical; paper being cut — physical; wood burning — chemical." },
     ],
-    gradeGuidance: "Middle school: states of matter, basic forces, waves. High school intro: density, periodic trends, energy formulas.",
+    gradeGuidance:
+      "Grade 8: matter, the periodic table, and motion basics. Grade 9: forces, Newton's laws, energy, and simple machines. Grade 10: waves, electricity, and chemical reactions. Name the formula or concept, such as 'density calculations', for focused practice.",
     faq: [
-      {
-        q: "Does it cover basic density calculations?",
-        a: "Yes. Specify 'density calculation practice problems' to get math-based questions."
-      },
-      {
-        q: "What's the best question mix for Physical Science?",
-        a: "MCQ for conceptual matching, fill-in-blank for vocabulary, and short-answer for simple computations."
-      }
+      { q: "Does the answer key show units and steps?", a: "Yes. Calculation answers include the formula, substitution and units, so students can follow the method." },
+      { q: "Can I make a worksheet on one formula like F = ma?", a: "Yes. Name it, for example 'Newton's second law — 10 force, mass and acceleration problems'." },
+      { q: "Does it cover the chemistry side of physical science?", a: "Yes. Topics like the periodic table, atoms, and physical vs. chemical changes all work well." },
+      { q: "Can I use it as a lab follow-up?", a: "Yes. Describe the lab, such as 'measuring density of irregular objects', and the worksheet will ask students to analyze the results." },
     ],
-    relatedSlugs: ["earth-science", "physics", "chemistry"]
-  }
+    relatedSlugs: ["earth-science", "physics", "chemistry"],
+  },
 ];
 
 export function getQuizSubject(slug: string): SubjectData | undefined {
