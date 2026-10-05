@@ -19,7 +19,9 @@ export async function POST(req: NextRequest) {
     if (eventType === "subscription.active" || eventType === "order.paid") {
       const userId = data.metadata?.userId || data.customer?.externalId;
       const polarCustomerId = data.customerId || data.customer?.id;
-      const polarSubscriptionId = data.id || data.subscriptionId;
+      // On order.paid, data.id is the order id — the subscription id lives in subscriptionId.
+      const polarSubscriptionId =
+        eventType === "order.paid" ? data.subscriptionId : data.id;
 
       if (userId) {
         await db.user.update({
@@ -27,14 +29,16 @@ export async function POST(req: NextRequest) {
           data: { plan: "PRO", polarCustomerId, polarSubscriptionId },
         });
       } else if (data.customer?.email) {
-        await db.user.update({
+        await db.user.updateMany({
           where: { email: data.customer.email },
           data: { plan: "PRO", polarCustomerId, polarSubscriptionId },
         });
       }
     }
 
-    if (eventType === "subscription.revoked" || eventType === "subscription.canceled") {
+    // subscription.canceled only means "won't renew" — the user keeps Pro until the
+    // paid period ends, at which point Polar sends subscription.revoked.
+    if (eventType === "subscription.revoked") {
       const polarSubscriptionId = data.id;
       if (polarSubscriptionId) {
         await db.user.updateMany({
