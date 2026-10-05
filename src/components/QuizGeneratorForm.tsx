@@ -195,8 +195,8 @@ export default function QuizGeneratorForm({
 
   const outputRef = useRef<HTMLDivElement>(null);
 
-  /* Pricing dialog: generating is Pro-only, so non-Pro users see plans as soon
-     as they start filling in the form, and again whenever they hit generate. */
+  /* Pricing dialog: generating is Pro-only, so non-Pro users see plans once they
+     finish typing their topic or notes (on blur), and again whenever they hit generate. */
   const pricingRef = useRef<HTMLDialogElement>(null);
   const pricingNudged = useRef(false);
 
@@ -204,8 +204,8 @@ export default function QuizGeneratorForm({
     if (!pricingRef.current?.open) pricingRef.current?.showModal();
   }
 
-  function nudgePricing() {
-    if (isPro || pricingNudged.current) return;
+  function nudgePricing(value: string) {
+    if (isPro || pricingNudged.current || !value.trim()) return;
     pricingNudged.current = true;
     openPricing();
   }
@@ -600,7 +600,6 @@ export default function QuizGeneratorForm({
                       onChange={(e) => {
                         setYoutubeUrl(e.target.value);
                         setYoutubeError("");
-                        nudgePricing();
                       }}
                       onBlur={() => {
                         if (youtubeUrl.trim() && !youtubeVideoInfo && !fetchingYoutube) {
@@ -675,10 +674,8 @@ export default function QuizGeneratorForm({
                 <textarea
                   required
                   value={sourceMaterial}
-                  onChange={(e) => {
-                    setSourceMaterial(e.target.value);
-                    nudgePricing();
-                  }}
+                  onChange={(e) => setSourceMaterial(e.target.value)}
+                  onBlur={(e) => nudgePricing(e.target.value)}
                   placeholder="Paste lecture notes, textbook chapters, or study guide text here to generate custom questions..."
                   rows={4}
                   className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all resize-y"
@@ -696,10 +693,7 @@ export default function QuizGeneratorForm({
                   <input
                     type="text"
                     value={subject}
-                    onChange={(e) => {
-                      setSubject(e.target.value);
-                      nudgePricing();
-                    }}
+                    onChange={(e) => setSubject(e.target.value)}
                     placeholder="e.g. Mathematics, Biology, World History"
                     className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all"
                   />
@@ -713,10 +707,8 @@ export default function QuizGeneratorForm({
                     type="text"
                     required
                     value={topic}
-                    onChange={(e) => {
-                    setTopic(e.target.value);
-                    nudgePricing();
-                  }}
+                    onChange={(e) => setTopic(e.target.value)}
+                    onBlur={(e) => nudgePricing(e.target.value)}
                     placeholder="e.g. Photosynthesis, Quadratic Equations, Cold War"
                     className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all"
                   />
@@ -730,10 +722,7 @@ export default function QuizGeneratorForm({
                 <input
                   type="text"
                   value={topic}
-                  onChange={(e) => {
-                    setTopic(e.target.value);
-                    nudgePricing();
-                  }}
+                  onChange={(e) => setTopic(e.target.value)}
                   placeholder={mode === "youtube" ? "Auto-fills from video title" : "e.g. Unit 3 Review"}
                   className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all"
                 />
