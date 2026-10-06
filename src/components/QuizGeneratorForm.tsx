@@ -721,6 +721,10 @@ export default function QuizGeneratorForm({
                   rows={4}
                   className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink placeholder-muted bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all resize-y"
                 />
+                <p className="text-[11px] text-muted mt-1">
+                  Don&apos;t include personal info like student names.{" "}
+                  <Link href="/privacy" className="underline hover:text-ink">Why?</Link>
+                </p>
               </div>
             )}
 

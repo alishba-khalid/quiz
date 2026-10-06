@@ -34,7 +34,7 @@ export default function PrivacyPage() {
             },
             {
               title: "Services that process your data",
-              body: "To generate questions, the topic, notes or transcript you submit is sent to Google's Gemini API; Google's handling of that content is governed by the Gemini API terms. When you paste a YouTube link, the URL is sent to Supadata to fetch the video's transcript. Payments are handled by Polar. If you sign in with Google, Google shares your name and email with us. The site and database are hosted by Vercel and Neon.",
+              body: "To generate questions, the topic, notes or transcript you submit is sent to Google's Gemini API. We currently use Gemini's free tier, under which Google may use submitted content to improve its products and human reviewers may read it. Please don't include personal information, such as student names or grades, in topics or notes. When you paste a YouTube link, the URL is sent to Supadata to fetch the video's transcript. Payments are handled by Polar. If you sign in with Google, Google shares your name and email with us. The site and database are hosted by Vercel and Neon.",
             },
             {
               title: "Cookies",

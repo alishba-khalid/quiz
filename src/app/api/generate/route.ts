@@ -201,6 +201,13 @@ Rules:
     });
   } catch (error) {
     console.error("Generate error:", error);
+    // Gemini free tier has low rate limits; tell users it's temporary.
+    if ((error as { status?: number })?.status === 429) {
+      return NextResponse.json(
+        { error: "QuizKraft is busy right now. Please wait a minute and try again." },
+        { status: 503 }
+      );
+    }
     return NextResponse.json(
       {
         // Don't surface internal error text (JSON parse errors, SDK messages) to users.
