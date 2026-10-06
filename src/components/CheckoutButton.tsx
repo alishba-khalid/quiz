@@ -17,7 +17,7 @@ export default function CheckoutButton({
 
   const handleCheckout = async () => {
     if (!isLoggedIn) {
-      router.push("/signup");
+      router.push("/signup?plan=pro");
       return;
     }
     setLoading(true);

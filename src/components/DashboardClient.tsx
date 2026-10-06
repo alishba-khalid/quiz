@@ -5,6 +5,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Trash2, FileText, BookOpen } from "lucide-react";
 
+const TYPE_LABELS: Record<string, string> = {
+  "multiple-choice": "Multiple choice",
+  "true-false": "True / False",
+  "short-answer": "Short answer",
+  "fill-in-the-blank": "Fill in the blank",
+};
+
 interface WorksheetItem {
   id: string;
   title: string;
@@ -89,7 +96,8 @@ export default function DashboardClient({
             <div className="flex-1 min-w-0">
               <p className="font-medium text-ink truncate">{w.title}</p>
               <p className="text-xs text-muted mt-0.5">
-                {w.gradeLevel} · {w.worksheetType} · {w.questionsCount} questions ·{" "}
+                {w.gradeLevel} · {w.worksheetType.split(",").map((t) => TYPE_LABELS[t] ?? t).join(", ")} ·{" "}
+                {w.questionsCount} questions ·{" "}
                 {new Date(w.createdAt).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",

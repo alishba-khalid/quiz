@@ -60,6 +60,9 @@
   border-radius: 4px;
 }
 
+/* Saved worksheet view: answers hidden unless toggled on (see WorksheetActions). */
+[data-show-answers="false"] .ws-answer { display: none; }
+
 @media print {
   nav, footer, .no-print { display: none !important; }
   body { background: white !important; color: #000 !important; font-size: 11pt; line-height: 1.6; }

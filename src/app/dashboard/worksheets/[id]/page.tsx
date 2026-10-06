@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { redirect, notFound } from "next/navigation";
 import { ArrowLeft, Check } from "lucide-react";
+import WorksheetActions from "@/components/WorksheetActions";
 
 interface ContentItem {
   i: number;
@@ -68,19 +69,27 @@ export default async function WorksheetViewPage({
 
   return (
     <div className="flex flex-col flex-1 bg-canvas">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink transition-colors mb-8"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to dashboard
-        </Link>
+      <div id="worksheet-view" data-show-answers="false" className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        <div className="flex items-center justify-between gap-4 mb-8 no-print">
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to dashboard
+          </Link>
+          <WorksheetActions targetId="worksheet-view" />
+        </div>
 
         <div className="mb-8 pb-6 border-b border-hairline">
           <h1 className="text-2xl font-semibold text-ink">{worksheet.title}</h1>
           <p className="text-sm text-muted mt-1">
-            {worksheet.gradeLevel} · {worksheet.worksheetType} · {worksheet.questionsCount} questions
+            {worksheet.gradeLevel} ·{" "}
+            {worksheet.worksheetType
+              .split(",")
+              .map((t) => typeLabel[t] ?? t)
+              .join(", ")}{" "}
+            · {worksheet.questionsCount} questions
           </p>
           <div className="mt-3 flex gap-8 text-sm text-muted">
             <span>
@@ -144,7 +153,7 @@ export default async function WorksheetViewPage({
                 )}
 
                 {answerKey?.[i] && (
-                  <div className="mt-3 flex items-start gap-2 text-sm text-correct bg-correct-soft border border-correct/20 rounded-xl px-3 py-2.5">
+                  <div className="ws-answer mt-3 flex items-start gap-2 text-sm text-correct bg-correct-soft border border-correct/20 rounded-xl px-3 py-2.5">
                     <Check className="h-4 w-4 flex-shrink-0 mt-0.5" />
                     <div>
                       <span className="font-semibold">{answerKey[i].answer}</span>

@@ -6,7 +6,16 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserPlus, Eye, EyeOff } from "lucide-react";
 
-export default function SignupForm({ googleEnabled, githubEnabled }: { googleEnabled?: boolean; githubEnabled?: boolean }) {
+export default function SignupForm({
+  googleEnabled,
+  githubEnabled,
+  goToCheckout = false,
+}: {
+  googleEnabled?: boolean;
+  githubEnabled?: boolean;
+  goToCheckout?: boolean;
+}) {
+  const afterSignup = goToCheckout ? "/pricing" : "/dashboard";
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -43,10 +52,19 @@ export default function SignupForm({ googleEnabled, githubEnabled }: { googleEna
       });
       if (result?.error) {
         router.push("/login");
-      } else {
-        router.push("/dashboard");
-        router.refresh();
+        return;
       }
+      if (goToCheckout) {
+        // Start checkout right away; fall back to the pricing page if it fails.
+        const checkout = await fetch("/api/checkout", { method: "POST" }).catch(() => null);
+        const checkoutData = checkout?.ok ? await checkout.json() : null;
+        if (checkoutData?.url) {
+          window.location.href = checkoutData.url;
+          return;
+        }
+      }
+      router.push(afterSignup);
+      router.refresh();
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -61,7 +79,7 @@ export default function SignupForm({ googleEnabled, githubEnabled }: { googleEna
           <div className="flex flex-col gap-3 mb-6">
             {googleEnabled && (
               <button
-                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+                onClick={() => signIn("google", { callbackUrl: afterSignup })}
                 className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-hairline rounded-xl text-ink font-medium hover:bg-canvas transition-colors cursor-pointer"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24">
@@ -75,7 +93,7 @@ export default function SignupForm({ googleEnabled, githubEnabled }: { googleEna
             )}
             {githubEnabled && (
               <button
-                onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
+                onClick={() => signIn("github", { callbackUrl: afterSignup })}
                 className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-hairline rounded-xl text-ink font-medium hover:bg-canvas transition-colors cursor-pointer"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">

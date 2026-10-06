@@ -11,9 +11,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function SignupPage() {
+export default async function SignupPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ plan?: string }>;
+}) {
+  // ?plan=pro means the visitor clicked "Get Pro": after signing up, send them
+  // straight to checkout instead of the dashboard.
+  const { plan } = await searchParams;
+  const goToCheckout = plan === "pro";
   const session = await auth();
-  if (session) redirect("/dashboard");
+  if (session) redirect(goToCheckout ? "/pricing" : "/dashboard");
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center py-14 px-4 bg-canvas">
@@ -34,6 +42,7 @@ export default async function SignupPage() {
         </div>
         <div className="bg-surface rounded-2xl border border-hairline shadow-sm p-8">
           <SignupForm
+            goToCheckout={goToCheckout}
             googleEnabled={!!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)}
             githubEnabled={!!(process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET)}
           />

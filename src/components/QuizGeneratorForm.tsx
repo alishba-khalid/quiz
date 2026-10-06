@@ -150,6 +150,24 @@ function gradeAnswer(userAnswer: string, correctAnswer: string, type: QuestionTy
   return c === u || c.includes(u) || u.includes(c);
 }
 
+/* -- PDF text helpers ---------------------------------------------- */
+// jsPDF's built-in Helvetica only covers WinAnsi (roughly Latin-1). Math and
+// science text often contains characters outside it (CO₂, x ≤ 3, π, →) which
+// would print as garbage, so convert them to readable ASCII first.
+const PDF_CHAR_MAP: Record<string, string> = {
+  "−": "-", "≤": "<=", "≥": ">=", "≠": "!=", "≈": "~", "√": "sqrt", "∞": "infinity",
+  "π": "pi ", "θ": "theta", "Δ": "delta", "∆": "delta", "δ": "delta", "α": "alpha", "β": "beta",
+  "γ": "gamma", "λ": "lambda", "σ": "sigma", "Σ": "sum", "∑": "sum", "∫": "integral",
+  "μ": "µ", "Ω": "ohm", "ω": "omega", "φ": "phi", "ρ": "rho", "→": "->", "←": "<-",
+  "↔": "<->", "⇌": "<=>", "⇒": "=>", "∠": "angle ", "′": "'", "″": '"', "⋅": "·", "∙": "·",
+  "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
+  "⁰": "^0", "⁴": "^4", "⁵": "^5", "⁶": "^6", "⁷": "^7", "⁸": "^8", "⁹": "^9", "⁻": "^-", "⁺": "^+", "ⁿ": "^n",
+};
+
+function pdfSafe(text: string): string {
+  return Array.from(text, (ch) => PDF_CHAR_MAP[ch] ?? ch).join("");
+}
+
 /* -- Main component ----------------------------------------------- */
 export default function QuizGeneratorForm({
   isLoggedIn = false,
@@ -460,7 +478,7 @@ export default function QuizGeneratorForm({
       doc.setFont("helvetica", bold ? "bold" : "normal");
       const [r, g, b] = [1, 3, 5].map((n) => parseInt(color.slice(n, n + 2), 16));
       doc.setTextColor(r, g, b);
-      const lines = doc.splitTextToSize(text, maxW) as string[];
+      const lines = doc.splitTextToSize(pdfSafe(text), maxW) as string[];
       const lh = size * 0.45;
       if (y + lines.length * lh > 270) {
         doc.addPage();
@@ -505,7 +523,10 @@ export default function QuizGeneratorForm({
       });
     }
 
-    doc.save(`${result.title.replace(/\s+/g, "_")}.pdf`);
+    // Strip characters Windows/macOS don't allow in file names.
+    const fileName =
+      result.title.replace(/[\\/:*?"<>|]+/g, "").trim().replace(/\s+/g, "_").slice(0, 80) || "worksheet";
+    doc.save(`${fileName}.pdf`);
   }
 
   const allAnswered = quiz
