@@ -267,9 +267,13 @@ export default function QuizGeneratorForm({
         body: JSON.stringify({ url }),
       });
 
-      const data = await res.json();
-      if (!res.ok) {
-        setYoutubeError(data.error || "Failed to load video transcript.");
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data) {
+        if (data?.code === "PRO_REQUIRED") {
+          openPricing();
+          return;
+        }
+        setYoutubeError(data?.error || "Failed to load video transcript.");
         return;
       }
 
@@ -376,9 +380,19 @@ export default function QuizGeneratorForm({
         }),
       });
 
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Generation failed. Please try again.");
+      // A platform timeout returns an HTML page, not JSON, so parse defensively.
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data) {
+        if (data?.code === "PRO_REQUIRED") {
+          openPricing();
+          return;
+        }
+        setError(
+          data?.error ||
+            (res.status === 504
+              ? "That took too long. Try fewer questions or a shorter source, then generate again."
+              : "Generation failed. Please try again.")
+        );
         return;
       }
 
