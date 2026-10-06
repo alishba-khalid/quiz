@@ -39,8 +39,8 @@ const featuresList = [
   },
   {
     icon: <Star className="h-6 w-6 text-accent" />,
-    title: "5+ Question Formats",
-    desc: "Mix multiple-choice, true/false, fill-in-the-blank, matching, and short answer questions in a single assessment. Keep students engaged and test multiple levels of understanding.",
+    title: "4 Question Formats",
+    desc: "Mix multiple-choice, true/false, fill-in-the-blank, and short answer questions in a single assessment. Keep students engaged and test multiple levels of understanding.",
   },
   {
     icon: <RefreshCw className="h-6 w-6 text-white" />,
@@ -132,7 +132,7 @@ export default function FeaturesPage() {
             >
               {f.highlight && (
                 <span className="inline-block text-xs font-semibold text-accent bg-accent/10 rounded-full px-2.5 py-0.5 mb-4">
-                  QuizKraft Exclusive
+                  Study mode
                 </span>
               )}
               <div
@@ -163,16 +163,16 @@ export default function FeaturesPage() {
               Teaching a classroom with diverse learning needs? Differentiating worksheets used to mean spending hours rewriting questions. With QuizKraft, you can generate standard, simplified, and advanced versions of the same topic in seconds.
             </p>
             <p className="text-muted leading-relaxed text-sm">
-              Adjust difficulty levels, scaffold steps for complex math problems, or paste a specific reading passage and let the AI generate reading comprehension worksheets optimized for your target grade.
+              Adjust the difficulty level, or paste a specific reading passage and let the AI generate reading comprehension worksheets optimized for your target grade.
             </p>
           </div>
           <div className="bg-canvas border border-hairline rounded-2xl p-6 space-y-4">
             <h3 className="text-sm font-semibold text-ink">Assessment Differentiation Options</h3>
             <div className="space-y-3">
               {[
-                { title: "Standard Level", desc: "Aligned directly with core grade-level curriculum benchmarks." },
-                { title: "Scaffolded (Assisted)", desc: "Includes simplified wording, hints, and structured step-by-step guidance." },
-                { title: "Enriched (Advanced)", desc: "Pushes depth of knowledge with reasoning-based and multi-step questions." },
+                { title: "Easy", desc: "Simpler wording and more direct questions for students who need support." },
+                { title: "Medium", desc: "Grade-level questions that mix recall with application." },
+                { title: "Hard", desc: "Reasoning-based and multi-step questions that push depth of knowledge." },
               ].map((lvl, index) => (
                 <div key={index} className="flex gap-3 items-start border border-hairline rounded-xl p-3 bg-surface">
                   <div className="w-5 h-5 rounded-full bg-accent-soft text-accent text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">

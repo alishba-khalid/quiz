@@ -34,12 +34,12 @@ const pillars = [
   {
     icon: Heart,
     title: "Designed for Teachers",
-    desc: "Teachers spend up to 10+ hours a week grading and creating assignments. QuizKraft was built to give those hours back so teachers can focus on what they do best: teaching.",
+    desc: "Creating worksheets and quizzes eats into evenings and weekends. QuizKraft was built to give that time back so teachers can focus on what they do best: teaching.",
   },
   {
     icon: BookOpen,
     title: "Pedagogical Integrity",
-    desc: "Our generator isn't a generic writer. It's tuned to construct concept-driven questions (MCQ, short answer, matching) that measure real understanding rather than surface-level memorization.",
+    desc: "Our generator isn't a generic writer. It's tuned to construct concept-driven questions (multiple choice, true/false, fill-in-the-blank and short answer) that measure real understanding rather than surface-level memorization.",
   },
   {
     icon: ShieldCheck,
@@ -106,7 +106,7 @@ export default function AboutPage() {
             Generic AI text generators don&apos;t solve this. They produce plain, unformatted blocks of text, write questions that are too easy, and often fabricate incorrect answers. 
           </p>
           <p>
-            QuizKraft was created to change that. By tailoring AI generations directly to educational standards (like Bloom&apos;s Taxonomy) and combining them with professional, printable formatting, QuizKraft enables teachers to build materials worth handing out in seconds.
+            QuizKraft was created to change that. By instructing the AI to write concept-focused questions at the right grade level, and combining them with clean, printable formatting, QuizKraft enables teachers to build materials worth handing out in seconds.
           </p>
         </div>
       </section>

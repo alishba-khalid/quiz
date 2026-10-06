@@ -34,7 +34,7 @@ const steps = [
   {
     num: "01",
     title: "Configure Your Settings",
-    desc: "Specify your topic, target grade level (from early elementary up to university), and choose from over 5 different question types. You can adjust the difficulty level to perfectly match your students' current capabilities.",
+    desc: "Specify your topic, target grade level (from early elementary up to university), and mix up to four question types. You can adjust the difficulty level to perfectly match your students' current capabilities.",
   },
   {
     num: "02",
@@ -44,7 +44,7 @@ const steps = [
   {
     num: "03",
     title: "Deliver & Practice",
-    desc: "Print out the clean, watermark-free PDF worksheet for physical handouts, or send a link to let students practice online. Our built-in retake loop guides students to review wrong answers until they've mastered the concepts.",
+    desc: "Print out the clean, watermark-free PDF worksheet for physical handouts, or open it in quiz mode so students can practice on screen. Our built-in retake loop guides students to review wrong answers until they've mastered the concepts.",
   },
 ];
 
@@ -67,7 +67,7 @@ const howToSchema = {
       "@type": "HowToStep",
       "position": 1,
       "name": "Configure Your Settings",
-      "text": "Specify your topic, target grade level (from early elementary up to university), and choose from over 5 different question types. You can adjust the difficulty level to perfectly match your students' current capabilities."
+      "text": "Specify your topic, target grade level (from early elementary up to university), and mix up to four question types. You can adjust the difficulty level to perfectly match your students' current capabilities."
     },
     {
       "@type": "HowToStep",
@@ -79,7 +79,7 @@ const howToSchema = {
       "@type": "HowToStep",
       "position": 3,
       "name": "Deliver & Practice",
-      "text": "Print out the clean, watermark-free PDF worksheet for physical handouts, or send a link to let students practice online. Our built-in retake loop guides students to review wrong answers until they've mastered the concepts."
+      "text": "Print out the clean, watermark-free PDF worksheet for physical handouts, or open it in quiz mode so students can practice on screen. Our built-in retake loop guides students to review wrong answers until they've mastered the concepts."
     }
   ]
 };
@@ -141,7 +141,7 @@ export default function HowItWorksPage() {
             Why our questions are different.
           </h2>
           <p className="text-muted leading-relaxed text-base max-w-2xl mx-auto">
-            Unlike general-purpose writing assistants, QuizKraft&apos;s generator is explicitly trained on structured educational design principles. It creates highly plausible distractors for multiple-choice questions that target common student misconceptions, rather than offering obviously incorrect choices.
+            Unlike general-purpose writing assistants, QuizKraft&apos;s generator is instructed to write concept-focused, grade-appropriate questions. It aims for plausible distractors for multiple-choice questions that target common student misconceptions, rather than offering obviously incorrect choices.
           </p>
           <div className="grid sm:grid-cols-2 gap-6 text-left max-w-2xl mx-auto pt-6">
             <div className="bg-canvas border border-hairline rounded-2xl p-6">
@@ -157,7 +157,7 @@ export default function HowItWorksPage() {
               <ul className="space-y-2 text-xs text-muted">
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-correct flex-shrink-0" /> Conceptual and application-based questions</li>
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-correct flex-shrink-0" /> Plausible distractors modeled after real classroom misconceptions</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-correct flex-shrink-0" /> Exact grade-specific vocabulary alignment</li>
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-correct flex-shrink-0" /> Vocabulary pitched at the grade you choose</li>
               </ul>
             </div>
           </div>

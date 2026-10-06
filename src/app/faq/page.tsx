@@ -104,7 +104,7 @@ export default function FAQPage() {
           Still have questions?
         </h2>
         <p className="text-muted text-sm max-w-md mx-auto mb-8">
-          If you didn&apos;t find the answers you were looking for, feel free to email us directly. We usually respond within 24 hours.
+          If you didn&apos;t find the answers you were looking for, feel free to email us directly. We aim to reply within one or two working days.
         </p>
         <div>
           <a
