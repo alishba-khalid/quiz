@@ -5,21 +5,29 @@ import { ExternalLink } from "lucide-react";
 
 export default function BillingPortalButton() {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleClick = async () => {
     setLoading(true);
+    setError("");
     try {
       const res = await fetch("/api/billing-portal", { method: "POST" });
       const data = await res.json();
-      if (data.url) window.location.href = data.url;
+      if (data.url) {
+        window.location.href = data.url;
+        return;
+      }
+      setError("Couldn't open billing. Please try again in a moment.");
     } catch {
-      // silent — billing portal is non-critical
+      // Paying users need this to manage or cancel, so never fail silently.
+      setError("Couldn't open billing. Check your connection and try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
+    <>
     <button
       onClick={handleClick}
       disabled={loading}
@@ -32,5 +40,11 @@ export default function BillingPortalButton() {
       )}
       Manage billing
     </button>
+    {error && (
+      <p role="alert" className="text-[11px] text-wrong max-w-[12rem] text-center">
+        {error}
+      </p>
+    )}
+    </>
   );
 }

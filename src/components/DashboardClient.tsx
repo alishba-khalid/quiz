@@ -23,17 +23,28 @@ export default function DashboardClient({
   const router = useRouter();
   const [worksheets, setWorksheets] = useState(initial);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  // Deleting is permanent, so the first click arms the button and the second confirms.
+  const [confirmingId, setConfirmingId] = useState<string | null>(null);
+  const [error, setError] = useState("");
 
-  const handleDelete = async (id: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleDelete = async (id: string) => {
+    if (confirmingId !== id) {
+      setConfirmingId(id);
+      return;
+    }
+    setConfirmingId(null);
     setDeletingId(id);
+    setError("");
     try {
       const res = await fetch(`/api/worksheets/${id}`, { method: "DELETE" });
       if (res.ok) {
         setWorksheets((prev) => prev.filter((w) => w.id !== id));
         router.refresh();
+      } else {
+        setError("Couldn't delete that worksheet. Please try again.");
       }
+    } catch {
+      setError("Couldn't delete that worksheet. Check your connection and try again.");
     } finally {
       setDeletingId(null);
     }
@@ -63,13 +74,15 @@ export default function DashboardClient({
         <h2 className="font-semibold text-ink">Your worksheets</h2>
         <span className="text-xs text-muted">{worksheets.length} total</span>
       </div>
+      {error && (
+        <p role="alert" className="px-6 py-3 text-xs text-wrong bg-wrong-soft border-b border-hairline">
+          {error}
+        </p>
+      )}
       <div className="divide-y divide-hairline">
         {worksheets.map((w) => (
-          <Link
-            key={w.id}
-            href={`/dashboard/worksheets/${w.id}`}
-            className="px-6 py-4 flex items-center gap-4 hover:bg-canvas transition-colors group"
-          >
+          <div key={w.id} className="px-6 py-4 flex items-center gap-4 hover:bg-canvas transition-colors group">
+          <Link href={`/dashboard/worksheets/${w.id}`} className="flex flex-1 min-w-0 items-center gap-4">
             <div className="flex-shrink-0 w-10 h-10 bg-accent-soft rounded-xl flex items-center justify-center">
               <FileText className="h-5 w-5 text-accent" />
             </div>
@@ -84,19 +97,28 @@ export default function DashboardClient({
                 })}
               </p>
             </div>
+          </Link>
             <button
-              onClick={(e) => handleDelete(w.id, e)}
+              type="button"
+              onClick={() => handleDelete(w.id)}
+              onBlur={() => setConfirmingId((c) => (c === w.id ? null : c))}
               disabled={deletingId === w.id}
-              className="opacity-0 group-hover:opacity-100 p-2 text-muted hover:text-wrong hover:bg-wrong-soft rounded-lg transition-all disabled:opacity-50 flex-shrink-0"
-              aria-label="Delete worksheet"
+              className={`p-2 rounded-lg transition-all disabled:opacity-50 flex-shrink-0 cursor-pointer focus:opacity-100 ${
+                confirmingId === w.id
+                  ? "text-wrong bg-wrong-soft text-xs font-semibold px-3"
+                  : "text-muted hover:text-wrong hover:bg-wrong-soft sm:opacity-0 sm:group-hover:opacity-100"
+              }`}
+              aria-label={confirmingId === w.id ? `Confirm delete ${w.title}` : `Delete ${w.title}`}
             >
               {deletingId === w.id ? (
                 <span className="h-4 w-4 border-2 border-muted border-t-transparent rounded-full animate-spin block" />
+              ) : confirmingId === w.id ? (
+                "Delete?"
               ) : (
                 <Trash2 className="h-4 w-4" />
               )}
             </button>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

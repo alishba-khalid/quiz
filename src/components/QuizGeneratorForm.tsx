@@ -533,9 +533,10 @@ export default function QuizGeneratorForm({
           </div>
 
           {/* Mode Switcher */}
-          <div className="p-1 bg-canvas border border-hairline rounded-xl grid grid-cols-3 gap-1">
+          <div role="group" aria-label="Input method" className="p-1 bg-canvas border border-hairline rounded-xl grid grid-cols-3 gap-1">
             <button
               type="button"
+              aria-pressed={mode === "topic"}
               onClick={() => {
                 setMode("topic");
                 setError("");
@@ -551,6 +552,7 @@ export default function QuizGeneratorForm({
             </button>
             <button
               type="button"
+              aria-pressed={mode === "youtube"}
               onClick={() => {
                 setMode("youtube");
                 setError("");
@@ -566,6 +568,7 @@ export default function QuizGeneratorForm({
             </button>
             <button
               type="button"
+              aria-pressed={mode === "source"}
               onClick={() => {
                 setMode("source");
                 setError("");
@@ -587,7 +590,7 @@ export default function QuizGeneratorForm({
             {mode === "youtube" && (
               <div className="space-y-3">
                 <div>
-                  <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5 flex items-center justify-between">
+                  <label htmlFor="qg-youtube-url" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5 flex items-center justify-between">
                     <span>YouTube Video URL</span>
                     <span className="text-[10px] text-muted normal-case font-normal">
                       Up to ~30 mins
@@ -595,6 +598,7 @@ export default function QuizGeneratorForm({
                   </label>
                   <div className="relative">
                     <input
+                      id="qg-youtube-url"
                       type="url"
                       required
                       value={youtubeUrl}
@@ -666,13 +670,14 @@ export default function QuizGeneratorForm({
             {/* Pasted Notes / Source Material Mode */}
             {mode === "source" && (
               <div>
-                <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5 flex items-center justify-between">
+                <label htmlFor="qg-notes" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5 flex items-center justify-between">
                   <span>Paste Notes / Study Text</span>
                   <span className="text-[10px] text-muted normal-case font-normal">
                     Up to {MAX_TRANSCRIPT_CHARS.toLocaleString()} chars
                   </span>
                 </label>
                 <textarea
+                  id="qg-notes"
                   required
                   value={sourceMaterial}
                   onChange={(e) => setSourceMaterial(e.target.value)}
@@ -688,10 +693,11 @@ export default function QuizGeneratorForm({
             {mode === "topic" ? (
               <>
                 <div>
-                  <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
+                  <label htmlFor="qg-subject" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
                     Subject
                   </label>
                   <input
+                    id="qg-subject"
                     type="text"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
@@ -701,10 +707,11 @@ export default function QuizGeneratorForm({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
+                  <label htmlFor="qg-topic" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
                     Topic <span className="text-wrong normal-case font-normal">required</span>
                   </label>
                   <input
+                    id="qg-topic"
                     type="text"
                     required
                     value={topic}
@@ -717,10 +724,11 @@ export default function QuizGeneratorForm({
               </>
             ) : (
               <div>
-                <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
+                <label htmlFor="qg-title" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
                   Quiz Title / Subject <span className="text-muted normal-case font-normal">(optional)</span>
                 </label>
                 <input
+                  id="qg-title"
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
@@ -732,10 +740,11 @@ export default function QuizGeneratorForm({
 
             {/* Grade Level */}
             <div>
-              <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
+              <label htmlFor="qg-grade" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
                 Target Grade Level
               </label>
               <select
+                id="qg-grade"
                 value={grade}
                 onChange={(e) => setGrade(e.target.value)}
                 className="w-full px-3.5 py-2.5 border border-hairline rounded-xl text-sm text-ink bg-canvas focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all"
@@ -750,14 +759,15 @@ export default function QuizGeneratorForm({
 
             {/* Question types */}
             <div>
-              <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-2">
+              <p id="qg-types-label" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-2">
                 Question types
-              </label>
-              <div className="flex flex-wrap gap-1.5">
+              </p>
+              <div role="group" aria-labelledby="qg-types-label" className="flex flex-wrap gap-1.5">
                 {Q_TYPES.map((t) => (
                   <button
                     key={t.value}
                     type="button"
+                    aria-pressed={selectedTypes.includes(t.value)}
                     onClick={() => toggleType(t.value)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
                       selectedTypes.includes(t.value)
@@ -773,14 +783,15 @@ export default function QuizGeneratorForm({
 
             {/* Difficulty */}
             <div>
-              <label className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
+              <p id="qg-difficulty-label" className="block text-xs font-semibold text-ink uppercase tracking-wide mb-1.5">
                 Difficulty
-              </label>
-              <div className="flex border border-hairline rounded-xl overflow-hidden">
+              </p>
+              <div role="group" aria-labelledby="qg-difficulty-label" className="flex border border-hairline rounded-xl overflow-hidden">
                 {DIFFICULTIES.map((d) => (
                   <button
                     key={d}
                     type="button"
+                    aria-pressed={difficulty === d}
                     onClick={() => setDifficulty(d)}
                     className={`flex-1 py-2 text-xs font-semibold transition-colors cursor-pointer ${
                       difficulty === d
@@ -797,7 +808,7 @@ export default function QuizGeneratorForm({
             {/* Question count */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-xs font-semibold text-ink uppercase tracking-wide">
+                <label htmlFor="qg-count" className="text-xs font-semibold text-ink uppercase tracking-wide">
                   Questions
                 </label>
                 <span className="text-xs font-bold text-accent px-2 py-0.5 bg-accent-soft rounded-md">
@@ -805,6 +816,7 @@ export default function QuizGeneratorForm({
                 </span>
               </div>
               <input
+                id="qg-count"
                 type="range"
                 min={3}
                 max={15}

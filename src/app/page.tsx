@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Zap, BookOpen, Download, RefreshCw, Upload, Check, ArrowRight, Sparkles } from "lucide-react";
 import { YoutubeIcon } from "@/components/Icons";
 import FAQAccordion from "@/components/FAQAccordion";
+import { GENERAL_FAQS, faqSchema } from "@/lib/faqs";
 import { JsonLd } from "@/components/JsonLd";
 import { SUPPORT_EMAIL } from "@/lib/constants";
 
@@ -194,18 +195,7 @@ const organizationSchema = {
   description: "AI-powered worksheet and quiz generator for teachers, tutors, and students.",
 };
 
-const homeFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan." } },
-    { "@type": "Question", name: "Can I generate quizzes from YouTube videos?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste any YouTube video link into the generator. QuizKraft extracts the transcript and creates targeted questions directly from the video content." } },
-    { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
-    { "@type": "Question", name: "Can I use my own notes or PDF documents?", acceptedAnswer: { "@type": "Answer", text: "Yes! Paste text from your notes, textbook, or study guide into the generator to produce quizzes based on your specific curriculum." } },
-    { "@type": "Question", name: "Can students take quizzes online?", acceptedAnswer: { "@type": "Answer", text: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right." } },
-    { "@type": "Question", name: "Can I print or export worksheets?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every worksheet has a clean print layout. Pro includes clean PDF export with no watermark." } },
-  ],
-};
+const homeFaqSchema = faqSchema(GENERAL_FAQS);
 
 export default function HomePage() {
   return (

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FAQAccordion from "@/components/FAQAccordion";
+import { GENERAL_FAQS, faqSchema } from "@/lib/faqs";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -39,18 +40,7 @@ const breadcrumbSchema = {
   ],
 };
 
-const homeFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "Is there a free plan?", acceptedAnswer: { "@type": "Answer", text: "No. Generating quizzes requires Pro ($9/month, unlimited generations) or a School plan." } },
-    { "@type": "Question", name: "What subjects and grades does QuizKraft cover?", acceptedAnswer: { "@type": "Answer", text: "Any subject, any grade. Math, science, history, literature, languages — from kindergarten through college. Just type the topic and select the grade." } },
-    { "@type": "Question", name: "Can I use my own material to generate questions?", acceptedAnswer: { "@type": "Answer", text: "Yes, on Pro. Paste in text from your notes, textbook, or any source, and QuizKraft generates questions directly from that material." } },
-    { "@type": "Question", name: "Can students take quizzes online?", acceptedAnswer: { "@type": "Answer", text: "Yes. In quiz mode, students click through questions, get scored instantly, and wrong answers come back for review until they get them right." } },
-    { "@type": "Question", name: "Can I print or export worksheets?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every worksheet has a clean print layout. Pro includes clean PDF export with no watermark." } },
-    { "@type": "Question", name: "Do you offer school or team plans?", acceptedAnswer: { "@type": "Answer", text: "Yes. The School plan is $19 per teacher per month and gives every teacher on your team full Pro access. We set it up with you directly, so email us with how many teachers you have." } },
-  ],
-};
+const homeFaqSchema = faqSchema(GENERAL_FAQS);
 
 export default function FAQPage() {
   return (
