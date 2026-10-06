@@ -46,7 +46,7 @@ const organizationContactSchema = {
   logo: "https://www.quizkraft.tech/apple-icon.png",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "support@quizkraft.tech",
+    email: "alishbakhalid766@gmail.com",
     contactType: "customer support",
     availableLanguage: "English",
   },

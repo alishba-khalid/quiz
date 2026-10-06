@@ -62,7 +62,7 @@ Role: ${role}`;
                 href={`mailto:${SUPPORT_EMAIL}`}
                 className="text-sm font-semibold text-ink hover:text-accent transition-colors block"
               >
-                support@quizkraft.tech
+                alishbakhalid766@gmail.com
               </a>
             </div>
           </div>

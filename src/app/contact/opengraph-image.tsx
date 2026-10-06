@@ -65,7 +65,7 @@ export default function Image() {
             fontWeight: 600,
           }}
         >
-          support@quizkraft.tech
+          alishbakhalid766@gmail.com
         </div>
       </div>
     ),
