@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+﻿import type { NextConfig } from "next";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -9,6 +9,16 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Left unbundled so Cloudflare's bundler can pick Prisma's workerd build.
+  serverExternalPackages: ["@prisma/client", ".prisma/client"],
+  outputFileTracingIncludes: {
+    "/**": [
+      "./node_modules/.prisma/client/edge.js",
+      "./node_modules/.prisma/client/wasm-worker-loader.mjs",
+      "./node_modules/.prisma/client/query_compiler_fast_bg.wasm",
+      "./node_modules/@prisma/client/runtime/wasm-compiler-edge.js",
+    ],
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

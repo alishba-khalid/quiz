@@ -125,4 +125,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: "/login",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  // Vercel is trusted automatically; on Cloudflare the host must be trusted explicitly.
+  trustHost: true,
 });

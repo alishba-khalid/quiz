@@ -1,4 +1,13 @@
-import { auth } from "@/auth";
+import NextAuth from "next-auth";
+
+// A database-free Auth.js instance: the proxy only needs to read the JWT session
+// cookie. Importing "@/auth" here would bundle Prisma into the proxy a second time.
+const { auth } = NextAuth({
+  providers: [],
+  session: { strategy: "jwt" },
+  secret: process.env.NEXTAUTH_SECRET,
+  trustHost: true,
+});
 
 export const proxy = auth((req) => {
   const isLoggedIn = !!req.auth;

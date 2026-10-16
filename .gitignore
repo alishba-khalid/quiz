@@ -51,3 +51,8 @@ firebase.json
 
 .vercel
 .env*
+
+# cloudflare
+.open-next
+.wrangler
+.dev.vars*

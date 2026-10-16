@@ -7,6 +7,9 @@ interface RateLimitRecord {
 }
 
 export function getClientIp(req: NextRequest): string {
+  // Set by Cloudflare to the real visitor IP.
+  const cfIp = req.headers.get("cf-connecting-ip");
+  if (cfIp) return cfIp;
   const forwarded = req.headers.get("x-forwarded-for");
   if (forwarded) {
     return forwarded.split(",")[0].trim();
