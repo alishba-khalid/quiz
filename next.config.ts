@@ -19,6 +19,17 @@ const nextConfig: NextConfig = {
       "./node_modules/@prisma/client/runtime/wasm-compiler-edge.js",
     ],
   },
+  async redirects() {
+    // www is the canonical host; the apex is also routed to this Worker on Cloudflare.
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "quizkraft.tech" }],
+        destination: "https://www.quizkraft.tech/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

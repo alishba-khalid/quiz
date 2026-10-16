@@ -19,5 +19,11 @@
     // Image optimization for next/image (blog images)
     "binding": "IMAGES"
   },
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "www.quizkraft.tech", "custom_domain": true },
+    // The apex only exists to be redirected to www by a Cloudflare Redirect Rule.
+    { "pattern": "quizkraft.tech", "custom_domain": true }
+  ],
   "observability": { "enabled": true }
 }
