@@ -2,6 +2,10 @@
 
 Significant changes and why they were made. Newest first. Add an entry as the last step of any change a future reader would otherwise have to reconstruct from git history.
 
+## 2026-10-16
+
+- **Hosting moved from Vercel to Cloudflare Workers.** Vercel disabled the deployment (over its free limits), taking the site down. It now runs on Cloudflare via OpenNext (`@opennextjs/cloudflare`); Next.js upgraded to 16.4.2, which the adapter requires. Nameservers for quizkraft.tech (registered at get.tech) moved to Cloudflare; the apex→www redirect moved into `next.config.ts`. Production keys are Worker secrets; Cloudflare Workers Builds deploys every push to `master` (`npm run cf:build`, then `npx opennextjs-cloudflare deploy`). Workers forbid compiling WebAssembly at runtime, so `scripts/prisma-workerd-first.mjs` makes the bundler pick Prisma's workerd build; `src/proxy.ts` uses a database-free Auth.js instance so Prisma isn't bundled twice. Privacy policy now names Cloudflare as host. (fbf228a, 3ef2cb0)
+
 ## 2026-10-06
 
 - **Security/correctness.** Signup validates and lowercases emails, rate-limits per IP; login is case-insensitive. Checkout refuses existing Pro users. Generate caps/whitelists prompt inputs, drops malformed AI questions, hides internal errors. Saved-worksheet titles only shown to owners. Security headers added. (1b96b69, 7b06103)
