@@ -13,6 +13,112 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ai-quiz-generator-for-college-self-study",
+    title: "AI quiz generator for college self-study",
+    excerpt:
+      "How college students can turn lecture notes into self-test questions, space their practice before exams, and what to double-check when an AI writes the quiz.",
+    category: "Productivity",
+    readTime: "5 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `Most students study by rereading and highlighting. It feels productive, but it mostly builds familiarity, not the ability to recall an answer under exam conditions. Testing yourself works better, and the obstacle is the work of writing good questions. A quiz generator can remove that obstacle. This guide shows how to use one for college courses, and where to be careful.
+
+## A simple routine
+
+- **After each lecture:** paste your notes for that lecture and generate 8 to 10 questions. Answer them from memory before you look anything up.
+- **Mark and sort:** use the answer key to check, then note which ones you missed.
+- **Retest the misses:** come back to the missed questions after a day or two, then again after about a week.
+- **Before the exam:** generate a larger, harder set from the whole unit and take it under time pressure.
+
+The spacing in that routine is general study advice, not something the tool does for you. QuizKraft doesn't schedule reviews or track your progress, so set your own reminders. For the reasoning behind it, see [active recall vs. passive rereading](/blog/active-recall-vs-passive-rereading).
+
+## Settings that suit college material
+
+- **Grade level:** choose College. The vocabulary and depth are pitched for undergraduate work.
+- **Difficulty:** Medium for regular review, Hard for exam practice.
+- **Question types:** mix them. Multiple choice for terminology and distinctions, fill-in-the-blank for key terms, and short answer for explaining processes or arguments. QuizKraft makes 3 to 15 questions per generation, so run it more than once for a long unit.
+
+## Where the questions come from
+
+- **Your own notes:** paste them in. The limit is about 30,000 characters, roughly a long set of notes. This keeps the questions tied to what your course covered.
+- **Lecture slides or a PDF:** there is no upload. Copy the text and paste it. Split long documents by chapter.
+- **A recorded lecture on YouTube:** paste the link. It works only if the video has captions available.
+- **A topic alone:** useful for a quick check, but the questions may not match your instructor's emphasis.
+
+## Check the questions
+
+AI can state something that sounds right and isn't, and specialist college subjects are where that is most likely. Compare any answer you aren't sure about with your textbook or lecture notes. Studying from a wrong answer key is worse than not studying. Our [seven-point checklist](/blog/check-ai-generated-quiz-for-mistakes) takes about five minutes. Questions can't be edited yet, so regenerate with a narrower topic if one is off.
+
+## Use the study loop
+
+In quiz mode, the retake study loop brings back only the questions you missed until you have answered each one correctly. It is a quick way to drill weak spots the night before a quiz. See [how the retake study loop works](/blog/retake-study-loop-retest-missed-questions). Note that short-answer and fill-in-the-blank answers are checked by simple text matching, so a right answer in different words can be marked wrong. Read your own answer against the key.
+
+## Use it honestly
+
+This is a tool for studying. Don't use generated questions for graded work, and check your course's rules on using AI tools and sharing lecture material. Don't paste anything that includes other people's personal information. Your text is sent to an AI provider to write the questions, as the [privacy policy](/privacy) explains.
+
+## Cost and limits
+
+Generating requires a Pro plan at $9/month, and there is no free plan. See the [pricing page](/pricing). Pro saves your quizzes to a dashboard so you can come back to them. It isn't a flashcard app, a note-taking tool or a progress tracker: it makes practice questions from the text you give it, and it doesn't record how you score over time. For help picking a tool, see [how to choose an AI quiz generator](/blog/how-to-choose-an-ai-quiz-generator).
+
+[Generate your quiz →](/generator)`
+  },
+  {
+    slug: "how-to-build-an-exam-review-sheet",
+    title: "How to build an exam review sheet from a unit",
+    excerpt:
+      "A three-pass exam review sheet that makes students practice, not just reread: key terms, application, then mixed questions. Includes a sample outline.",
+    category: "Lesson Prep",
+    readTime: "5 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `Most review sheets are a list of topics and a note to "study these". Students read the list, feel reassured and learn little. A review sheet that works makes students answer questions, find out what they don't know, and go back to it. This three-pass method gives you a sheet that does that.
+
+## The three passes
+
+**Pass 1: key terms and facts**
+
+Start with recall. These questions check that students know the vocabulary, definitions and basic facts, so they have something to reason with later. Use multiple choice, fill-in-the-blank and true/false, and keep them easy to medium.
+
+**Pass 2: application**
+
+Now ask students to use the ideas: explain why, work a problem, or apply a concept to a new situation. Use short answer and scenario questions at medium to hard difficulty. This is where misconceptions show up.
+
+**Pass 3: mixed**
+
+Finish with questions from the whole unit in a random order. When questions arrive grouped by topic, students know which skill to use before reading. Mixing them forces them to work out what each question is asking, which is what the real exam does.
+
+## A sample outline
+
+For a Grade 7 unit on ecosystems, an exam review sheet might look like this:
+
+- **Pass 1 (8 questions, about 8 minutes):** producer, consumer, decomposer, food chain, habitat, energy flow, and similar terms.
+- **Pass 2 (6 questions, about 15 minutes):** "What happens to the other populations if the number of predators drops?", "Why do decomposers matter to a food web?" and a short scenario on a pond.
+- **Pass 3 (8 mixed questions, about 10 minutes):** a random mix of recall and application questions across the unit.
+
+That is 22 questions and roughly 30 minutes. If you only have a short period, assign one pass at a time. See [how many questions a quiz should have](/blog/how-many-questions-should-a-quiz-have) for timing.
+
+## Make the review self-correcting
+
+- **Give students the key:** they mark their own work and circle every miss.
+- **Retest the misses:** have them redo only those questions a day later.
+- **Collect the pattern:** ask which pass was hardest, and use that to decide what to reteach.
+
+## Building it in QuizKraft
+
+Generate one worksheet per pass. Each generation makes 3 to 15 questions, so the sample above takes three runs.
+
+- **Pass 1:** put the key terms in the topic, choose multiple choice, fill-in-the-blank and true/false, and set the difficulty to Easy or Medium.
+- **Pass 2:** ask for application and scenario questions, choose short answer and multiple choice, and set the difficulty to Medium or Hard.
+- **Pass 3:** use the whole unit as the topic with all four question types at Hard. You can paste your own unit notes (up to about 30,000 characters) so the questions match what you taught.
+
+Hide the answer key and print the student copy, then print the key separately. See [how to make a printable quiz with an answer key](/blog/how-to-make-a-printable-quiz-with-an-answer-key). For whole-class review, project quiz mode and run the [retake study loop](/blog/retake-study-loop-retest-missed-questions) on the questions the class misses most.
+
+Read every question before you use the sheet. Questions can't be edited yet, so regenerate with a narrower topic if one is off, and use our [checklist for AI-generated quizzes](/blog/check-ai-generated-quiz-for-mistakes). Generating requires a Pro plan ($9/month), and there is no free plan. A review worksheet and a quiz do different jobs, as [quiz vs. worksheet](/blog/quiz-vs-worksheet-when-to-use-which) explains.
+
+[Generate your worksheet →](/generator)`
+  },
+  {
     slug: "how-to-choose-an-ai-quiz-generator",
     title: "How to choose an AI quiz generator",
     excerpt:
