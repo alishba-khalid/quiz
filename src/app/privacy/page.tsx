@@ -38,7 +38,7 @@ export default function PrivacyPage() {
             },
             {
               title: "Cookies",
-              body: "We use a session cookie to keep you logged in. We do not use advertising or tracking cookies.",
+              body: "We use a session cookie to keep you logged in. We do not use advertising or tracking cookies. Our host, Cloudflare, may load its Web Analytics script to measure aggregate page views and site performance; Cloudflare states this does not use cookies or track visitors across sites.",
             },
             {
               title: "Data retention",

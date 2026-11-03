@@ -4,6 +4,7 @@ Significant changes and why they were made. Newest first. Add an entry as the la
 
 ## 2026-11-03
 
+- **Privacy policy names Cloudflare Web Analytics.** Crawled pages load `static.cloudflareinsights.com` (injected by Cloudflare, not in this repo), but the Cookies section only mentioned the session cookie. It now says Cloudflare may measure aggregate page views and that Cloudflare states this uses no cookies. Wording should get a qualified legal review.
 - **Subject-page linking and sitemap dates.** A full crawl (103 pages) showed 27 of 30 quiz and worksheet subject pages in each family had one inbound link (the hub), since no subject was in another subject's `relatedSlugs`. `getRelatedSubjects()` in `src/lib/subjects.ts` now adds reverse-related siblings, and each subject page links its quiz/worksheet counterpart. Sitemap `lastModified` was `new Date()`, which stamped every URL as modified on every build; it now uses a fixed content date (2026-10-05) to bump by hand when content changes.
 
 ## 2026-10-16
