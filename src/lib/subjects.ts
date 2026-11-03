@@ -455,7 +455,8 @@ export const quizSubjects: SubjectData[] = [
       "Elections and political parties",
       "Civil rights and liberties"
     ],
-    guide: "Checks and balances are often memorized as a list. Strong questions challenge students to analyze how one branch can block or check another in specific scenarios. Civil rights historical context also benefits from questions matching Supreme Court rulings to societal developments.",
+    guide:
+      "Civics quizzes are strongest when they ask students to reason with the system, not just list its parts. Checks and balances are often memorized as a list, so give a scenario, such as the Senate rejecting a treaty or a court striking down a law, and ask which branch is acting on which. Federalism is the second area where recall alone misleads: students should be able to tell enumerated, reserved and concurrent powers apart, and know that the 10th Amendment reserves powers not given to the federal government to the states or the people. A third common confusion is the difference between a democracy and a republic, or between the popular vote and the Electoral College. Process questions, such as how a bill becomes a law, work well in multiple choice because the steps have a fixed order. Short answer suits explaining why a right matters, and true/false is useful for civil-rights history, including the Supreme Court rulings that changed it.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -471,9 +472,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "Federalism is a system where power is divided between national and state governments.",
         answer: "True"
-      }
+      },
+      { type: "multiple-choice", question: "Which amendment reserves powers not given to the federal government to the states or the people? A) 1st Amendment B) 5th Amendment C) 10th Amendment D) 14th Amendment", answer: "C) 10th Amendment" }
     ],
-    gradeGuidance: "Middle school: basic branches, local government, citizenship. High school: Constitution, federalism, Supreme Court cases.",
+    gradeGuidance: "Middle school: basic branches, local government, citizenship. High school: Constitution, federalism, Supreme Court cases. For AP Government-style units, name the document or case, such as 'Federalist No. 10' or 'McCulloch v. Maryland'.",
     faq: [
       {
         q: "Can I quiz students on specific Supreme Court cases?",
@@ -482,7 +484,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Does it support citizenship exam preparation?",
         a: "Yes. Set the topic to 'US citizenship test study questions' to cover core government structure and history."
-      }
+      },
+      { q: "Can I focus on how a bill becomes a law?", a: "Yes. Use a topic like 'how a bill becomes a law, from committee to presidential signature' for a sequence-focused quiz." },
+      { q: "Does it cover the Electoral College?", a: "Yes. Specify 'the Electoral College and the popular vote' to get questions on how a president is elected." }
     ],
     relatedSlugs: ["us-history", "world-history", "literature"]
   },
@@ -543,7 +547,8 @@ export const quizSubjects: SubjectData[] = [
       "Web development basics (HTML/CSS/JS)",
       "Cybersecurity and digital ethics"
     ],
-    guide: "Tracing loops is a core skill. Quizzes should ask students to predict the final output of a code block to verify they can run algorithms mentally. For AP level, object-oriented concepts like inheritance and polymorphism are primary focus areas.",
+    guide:
+      "Computer science quizzes work best when they ask students to read code, because reading comes before writing. Tracing a loop by hand and predicting the output shows whether a student can run an algorithm in their head. The mistakes to design questions around are predictable: off-by-one errors in loop bounds, using = where == is meant, forgetting that integer division drops the remainder, and misunderstanding variable scope. At the AP level, add inheritance, polymorphism and recursion, where students often know the definition but cannot trace a recursive call. Conceptual items on binary and hexadecimal, Big-O growth, compilers and interpreters, and networks suit multiple choice. Short answer fits explanations such as why a queue differs from a stack. Name the language in your topic so that syntax questions use it. The quiz checks understanding of code, but it does not run or grade code that students write themselves.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -559,9 +564,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "In programming, a syntax error is caught at runtime, while a logical error is caught during compilation.",
         answer: "False"
-      }
+      },
+      { type: "multiple-choice", question: "In Python, what does print(7 // 2) output? A) 3.5 B) 3 C) 4 D) 3.0", answer: "B) 3 (// is floor division)" }
     ],
-    gradeGuidance: "Middle school: drag-and-drop programming, basic HTML. High school: Python/Java basics. AP CS A: object-oriented design and recursion.",
+    gradeGuidance: "Middle school: drag-and-drop programming, basic HTML. High school: Python/Java basics. AP CS A: object-oriented design and recursion. Name the language and level in your topic, such as 'Python loops for beginners' or 'Java recursion for AP CS A'.",
     faq: [
       {
         q: "What languages does it support for syntax questions?",
@@ -570,7 +576,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Can it create questions for AP Computer Science Principles?",
         a: "Yes. Specify the topic, e.g., 'AP CSP — binary numbers, networks, and routing protocols.'"
-      }
+      },
+      { q: "Does it check code that students write?", a: "No. The quiz tests understanding by asking students to read, trace and explain code. It does not run or grade code that students write." },
+      { q: "Can I get code-tracing questions?", a: "Yes. Ask for 'predict the output of this loop' questions in your chosen language. The code appears as text inside the question." }
     ],
     relatedSlugs: ["algebra", "math", "physics"]
   },
@@ -587,7 +595,8 @@ export const quizSubjects: SubjectData[] = [
       "Direct and indirect object pronouns",
       "Subjunctive mood"
     ],
-    guide: "The difference between passé composé and imparfait is the biggest hurdle for students. Worksheets should test whether a past action was completed or ongoing. Fill-in-the-blank conjugation and short-answer translations are the most effective formats for testing grammar and production.",
+    guide:
+      "French quizzes work best when each question isolates one decision a learner has to make. The choice between passé composé and imparfait is the biggest hurdle: students need to ask whether the action was completed or ongoing, which is easy to test with a short scenario and hard to test with a bare verb. The second hurdle is the auxiliary. Most verbs take avoir, but verbs of motion such as aller, venir and partir take être, and the past participle then agrees with the subject, so elle est allée needs its extra e. Adjective agreement and placement, noun gender, and the pronouns le, la, lui and leur add more places to slip. False friends such as actuellement, which means currently and not actually, are worth a few questions at every level. Multiple choice suits auxiliary and tense decisions, while short-answer translation tests production, including accents and spelling.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -603,9 +612,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "In French, most adjectives are placed after the noun they modify.",
         answer: "True"
-      }
+      },
+      { type: "multiple-choice", question: "Which sentence correctly uses the imparfait to describe a habitual action in the past? A) Hier, j'ai mangé une pomme. B) Quand j'étais petit, je jouais au parc tous les samedis. C) Soudain, il a ouvert la porte. D) Nous sommes allés au cinéma.", answer: "B) Quand j'étais petit, je jouais au parc tous les samedis." }
     ],
-    gradeGuidance: "French 1: basic vocabulary, present tense. French 2–3: past tenses, pronouns. French 4 / AP: subjunctive, literature, and composition.",
+    gradeGuidance: "French 1: basic vocabulary, present tense. French 2–3: past tenses, pronouns. French 4 / AP: subjunctive, literature, and composition. Tell the quiz which tense or unit you are on, such as 'passé composé with être verbs', so French 1 students are not given subjunctive questions.",
     faq: [
       {
         q: "Can it generate quizzes completely in French?",
@@ -614,7 +624,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Does it support accent characters?",
         a: "Yes, all standard French letters and accents (é, è, ç, à, etc.) are correctly generated and supported."
-      }
+      },
+      { q: "Can I quiz French vocabulary by theme?", a: "Yes. Name the theme in your topic, such as 'food and restaurant vocabulary' or 'school subjects', and add the grade level to keep the words appropriate." },
+      { q: "Can I include false friends?", a: "Yes. Add 'faux amis such as actuellement, librairie and sensible' to the topic and the quiz will test the difference between the French word and its English look-alike." }
     ],
     relatedSlugs: ["spanish", "grammar", "vocabulary"]
   },
@@ -675,7 +687,8 @@ export const quizSubjects: SubjectData[] = [
       "Observational astronomy and telescopes",
       "Space exploration history"
     ],
-    guide: "Students often confuse mass with weight. Worksheets should ask students to calculate the difference in weight for a constant mass on other planets. Stellar lifecycles are also key — checking if students understand what triggers red giants vs. supernovas.",
+    guide:
+      "Astronomy students arrive with confident misconceptions, so the strongest quiz questions are ones where the wrong answer sounds reasonable. The seasons are the classic example: most students say Earth is closer to the Sun in summer, when the real cause is the tilt of Earth's axis. Moon phases are similar, with many students blaming Earth's shadow when phases come from how much of the lit half we can see. Scale is the third area. A light-year measures distance, not time, and students who miss this struggle with every distance in cosmology. Stellar evolution is best tested by asking what decides a star's fate. The answer is its mass: lower-mass stars end as white dwarfs, while the most massive end in supernovae and leave neutron stars or black holes. Multiple choice is the right format for these misconception checks, short answer suits laws such as Kepler's, and true/false is efficient for scale facts.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -691,9 +704,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "A light-year is a unit of time representing the time it takes light to travel to the nearest star.",
         answer: "False"
-      }
+      },
+      { type: "multiple-choice", question: "What causes the seasons on Earth? A) Earth's changing distance from the Sun B) The tilt of Earth's axis C) Changes in the Sun's brightness D) Earth's shadow falling on the Moon", answer: "B) The tilt of Earth's axis" }
     ],
-    gradeGuidance: "Grades 8–9: planets, moon phases, gravity. Grades 10–12: astrophysics, nuclear fusion, stellar evolution, and cosmological theories.",
+    gradeGuidance: "Grades 8–9: planets, moon phases, gravity. Grades 10–12: astrophysics, nuclear fusion, stellar evolution, and cosmological theories. Grades 8–9 questions stay conceptual. For grades 10–12, ask for 'light-travel time and distance problems' to add calculation.",
     faq: [
       {
         q: "Can it generate calculations based on gravity or light?",
@@ -702,7 +716,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Does it cover moon phases and eclipses?",
         a: "Yes. Specify 'phases of the moon and solar vs. lunar eclipses' in your topic prompt."
-      }
+      },
+      { q: "Can I include calculation questions on distance and light?", a: "Yes. Ask for 'distance, speed and light-travel-time problems' and set a higher grade level for calculation-heavy questions." },
+      { q: "Does it cover the life cycle of stars?", a: "Yes. Specify 'stellar evolution — main sequence, red giants, white dwarfs and supernovae' to get questions on what decides a star's fate." }
     ],
     relatedSlugs: ["physics", "earth-science", "chemistry"]
   },
@@ -719,7 +735,8 @@ export const quizSubjects: SubjectData[] = [
       "Sensory details and imagery",
       "Poetic devices (meter, rhyme, stanza)"
     ],
-    guide: "Students write flat narratives. Exercises should require taking a telling sentence ('He was sad') and rewriting it using sensory details and actions. Dialogue punctuation rules are also a primary mechanic tested in ELA classes.",
+    guide:
+      "A creative writing quiz cannot judge whether a story is good, but it can check that students know the techniques they are being asked to use. The most useful questions target the places young writers lose control. Show-don't-tell is the first: students recognize the rule but still write 'He was sad', so ask them to identify which sentence shows the feeling through action or detail. Point of view and tense consistency come next, because many drafts drift from third person to first or from past to present without the writer noticing. Dialogue punctuation is the most testable mechanic, since the comma goes inside the quotation marks and a new speaker needs a new paragraph. Plot-structure terms such as exposition, rising action, climax and resolution give students a shared vocabulary for peer feedback. Multiple choice covers terminology and point of view, short answer covers punctuating or rewriting a line, and true/false clears up myths such as a protagonist always being likable.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -735,9 +752,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "A protagonist must always be a morally good character in a story.",
         answer: "False"
-      }
+      },
+      { type: "multiple-choice", question: "In a story told from the third-person limited point of view, the narrator knows:", answer: "The thoughts and feelings of only one character" }
     ],
-    gradeGuidance: "Middle school: story parts, descriptive words. High school: show vs. tell, dialogue, figurative structures, poetry formats.",
+    gradeGuidance: "Middle school: story parts, descriptive words. High school: show vs. tell, dialogue, figurative structures, poetry formats. Use a quiz before a writing task to confirm students know the techniques, then give your own feedback on the writing itself.",
     faq: [
       {
         q: "Can it generate creative writing prompts?",
@@ -746,7 +764,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Does it teach poetry forms?",
         a: "Yes. Specify 'haiku structure, sonnets, or free verse elements' in the topic."
-      }
+      },
+      { q: "Can a quiz grade a student's own writing?", a: "No. A quiz checks craft knowledge such as technique, terminology and punctuation. A student's own writing still needs your feedback or a rubric." },
+      { q: "Can it quiz point of view and verb tense?", a: "Yes. Add 'point of view and tense consistency' to the topic to get questions that ask students to spot or fix a drift in either." }
     ],
     relatedSlugs: ["literature", "grammar", "vocabulary"]
   },
@@ -763,7 +783,8 @@ export const quizSubjects: SubjectData[] = [
       "Hypothesis testing and p-values",
       "Correlation vs. causation"
     ],
-    guide: "Students confuse correlation with causation. Worksheets should present real-world scatter plots and prompt students to critique causative claims. At AP level, z-scores, p-values, and statistical significance are core concepts.",
+    guide:
+      "A statistics quiz is most valuable when it tests interpretation, because students can often run a calculation but cannot say what it means. The p-value is the clearest case. Many students read p = 0.03 as a 3% chance that the null hypothesis is true, when it is the probability of results at least this extreme if the null hypothesis were true. Confidence intervals have the same problem: a 95% interval describes the reliability of the method, not a 95% chance that this one interval holds the true value. Correlation and causation, sampling bias, and the difference between a sample and a population are also best tested with a short scenario, such as a survey of students at one lunch table, followed by a question about what conclusion it can support. Multiple choice works well for matching a method to a situation, short answer for explaining a result in context, and true/false for catching the misreadings above.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -779,9 +800,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "A p-value of 0.03 indicates that there is a 3% probability that the null hypothesis is true.",
         answer: "False"
-      }
+      },
+      { type: "multiple-choice", question: "Which sampling method gives every member of the population an equal chance of being selected? A) Convenience sample B) Voluntary response sample C) Simple random sample D) Quota sample", answer: "C) Simple random sample" }
     ],
-    gradeGuidance: "Grades 9–10: charts, mean/median/mode, simple probability. AP Statistics: hypothesis tests, normal models, sampling distributions, regressions.",
+    gradeGuidance: "Grades 9–10: charts, mean/median/mode, simple probability. AP Statistics: hypothesis tests, normal models, sampling distributions, regressions. Questions are text-based, so data is described in words or as short lists of values rather than drawn graphs.",
     faq: [
       {
         q: "Is this aligned with AP Statistics?",
@@ -790,7 +812,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Does it cover probability rules?",
         a: "Yes. Specify 'addition and multiplication rules of probability, or conditional probability.'"
-      }
+      },
+      { q: "Does it cover confidence intervals?", a: "Yes. Specify 'interpreting 95% confidence intervals' in the topic to get questions on what the interval does and does not tell you." },
+      { q: "Can the quiz use small data sets?", a: "Yes. Ask for questions that give a short list of values, such as quiz scores, and ask students for the mean, median or spread." }
     ],
     relatedSlugs: ["algebra", "math", "physics"]
   },
@@ -807,7 +831,8 @@ export const quizSubjects: SubjectData[] = [
       "Deviance and social control",
       "Sociological research methods"
     ],
-    guide: "Students often confuse individual bias with systemic structure. Questions should guide them to analyze how institutions shape group behaviors. Functionalist vs. conflict perspectives are ideal frameworks for comparative questions.",
+    guide:
+      "Sociology quizzes are most useful when they test whether students can apply a theory, not just name it. The common failure is that students describe an individual's choices when the question asks about structure. Asked why graduation rates differ between neighborhoods, they answer with effort and attitude rather than school funding, community resources or social networks. The three major perspectives, structural functionalism, conflict theory and symbolic interactionism, are best tested by giving one scenario, such as school uniforms or a hospital waiting room, and asking how each perspective would read it. Vocabulary pairs cause steady confusion as well: culture and society, norms and values, folkways and mores, ascribed and achieved status. Multiple choice handles the vocabulary, short answer suits the scenario comparison, and true/false is a quick check on ethnocentrism versus cultural relativism. For a research-methods unit, ask students to choose a method, such as a survey or ethnography, for a given research question and justify the choice.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -823,9 +848,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "Ethnocentrism is the practice of judging another culture by the standards of one's own culture.",
         answer: "True"
-      }
+      },
+      { type: "multiple-choice", question: "Which term describes a social status a person is born with, such as age or ethnicity? A) Achieved status B) Ascribed status C) Master status D) Role strain", answer: "B) Ascribed status" }
     ],
-    gradeGuidance: "Grades 10–12: basic sociological concepts, socialization, culture, deviance, and social stratification.",
+    gradeGuidance: "Grades 10–12: basic sociological concepts, socialization, culture, deviance, and social stratification. For AP-style units, name the theorist or concept in your topic, such as Durkheim on social solidarity or Merton's strain theory.",
     faq: [
       {
         q: "Does it cover the main sociological theories?",
@@ -834,7 +860,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Can it quiz sociological research methods?",
         a: "Yes. Topic prompts like 'quantitative vs. qualitative methods, surveys, and ethics in research' generate focused questions."
-      }
+      },
+      { q: "Can I quiz a specific theorist?", a: "Yes. Put the names in the topic, for example 'Durkheim, Weber and Marx on social structure', and the questions will center on those thinkers." },
+      { q: "What question mix works best for sociology?", a: "Multiple choice for vocabulary, short answer for applying a theory to a scenario, and true/false for common misconceptions such as confusing ethnocentrism with cultural relativism." }
     ],
     relatedSlugs: ["us-history", "world-history", "civics"]
   },
@@ -851,7 +879,8 @@ export const quizSubjects: SubjectData[] = [
       "Coordinate plane basics",
       "Simplifying algebraic expressions"
     ],
-    guide: "Students frequently struggle with negative numbers and the order of operations. Pre-algebra worksheets should focus on building step-by-step logic, helping students visualize variables as placeholders before they move on to complex algebra.",
+    guide:
+      "A good pre-algebra quiz finds the habit behind a wrong answer, not just the wrong answer. Sign errors are the most common. A student who correctly answers -5 + 8 will often still write -5 - 8 = 3, because the minus sign is treated as part of the number in one place and as an operation in another. Order of operations is the second trap: many students apply PEMDAS strictly left to right and forget that multiplication and division share a rank, so 3 + 4 × 2 gets answered 14 instead of 11. Variables are the third. A student who sees x as a label rather than an unknown number struggles to see why both sides of an equation must change together. Multiple choice works well here when each wrong option matches a known mistake, short answer lets students show a step such as adding 7 to both sides, and a few true/false items on absolute value catch loose rules of thumb quickly. Because every quiz comes with an answer key, you can see which wrong option a student picked and reteach that specific habit.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -867,9 +896,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "The absolute value of a number is always positive or zero.",
         answer: "True"
-      }
+      },
+      { type: "multiple-choice", question: "What is the value of 3 + 4 × 2? A) 14 B) 11 C) 10 D) 9", answer: "B) 11 (multiply before adding)" }
     ],
-    gradeGuidance: "Grades 6–7: order of operations, decimals, and negative integers. Grade 8: solving one-step equations and introduction to variables.",
+    gradeGuidance: "Grades 6–7: order of operations, decimals, and negative integers. Grade 8: solving one-step equations and introduction to variables. Raise the difficulty setting for students ready for multi-step equations, and keep it lower for a first look at negative numbers.",
     faq: [
       {
         q: "Does it cover negative numbers?",
@@ -878,7 +908,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Can I generate word problems?",
         a: "Yes. Specify 'pre-algebra word problems' in your topic to generate contextual exercises."
-      }
+      },
+      { q: "How many questions suit a pre-algebra quiz?", a: "10–15 questions works for a unit check. A 5-question quiz is enough for a warm-up on a single skill such as adding and subtracting integers." },
+      { q: "Can I focus the quiz on one skill?", a: "Yes. Name one narrow skill, such as 'adding and subtracting negative integers', instead of a broad topic. Narrow prompts produce questions that diagnose a specific habit." }
     ],
     relatedSlugs: ["algebra", "math", "geometry"]
   },
@@ -983,7 +1015,8 @@ export const quizSubjects: SubjectData[] = [
       "Spectroscopy basics (IR, NMR)",
       "Organic synthesis pathways"
     ],
-    guide: "Nomenclature rules are procedural. Strong worksheets focus on drawing structures from names and classifying functional groups. Reaction prediction questions help students develop mechanical reasoning for organic synthesis.",
+    guide:
+      "Organic chemistry quizzes are most effective when they separate the skills that students tend to blur together. Nomenclature is procedural: find the longest chain, number it so substituents get the lowest locants, and name them alphabetically, and a quiz can check each step. Functional-group recognition is the next skill, and the usual errors are confusing aldehyde with ketone, or ester with carboxylic acid, because the C=O carbon looks similar in each. Stereochemistry adds R and S configuration, and students often assume that any change in 3D arrangement changes the name. Mechanism questions should ask why a reaction goes the way it does: an SN2 reaction inverts a chiral center, while SN1 passes through a carbocation and tends to give a racemic mixture. Because questions are text, structures are described by name or condensed formula, such as CH3CH2OH, so use the quiz for naming, classification and mechanism reasoning, and use drawing practice separately.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -999,9 +1032,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "Alkenes are unsaturated hydrocarbons containing at least one carbon-carbon triple bond.",
         answer: "False (alkenes contain a double bond; alkynes contain a triple bond)"
-      }
+      },
+      { type: "multiple-choice", question: "An SN2 reaction at a chiral carbon results in: A) Retention of configuration B) Inversion of configuration C) A racemic mixture D) No change in configuration", answer: "B) Inversion of configuration" }
     ],
-    gradeGuidance: "High school chemistry: basic functional groups. AP Chemistry/Elective: IUPAC naming rules, structural isomers. College intro: full reaction mechanisms.",
+    gradeGuidance: "High school chemistry: basic functional groups. AP Chemistry/Elective: IUPAC naming rules, structural isomers. College intro: full reaction mechanisms. For college intro courses, name the mechanism or reagent in the topic, such as 'E2 elimination with a strong base'.",
     faq: [
       {
         q: "Can it generate IUPAC naming questions?",
@@ -1010,7 +1044,9 @@ export const quizSubjects: SubjectData[] = [
       {
         q: "Does it cover reaction mechanisms?",
         a: "Yes. Include 'reaction mechanisms — SN1 and SN2 pathways' for advanced chemistry worksheets."
-      }
+      },
+      { q: "Can the quiz show drawn structures?", a: "No. Questions are text-based, so molecules are described by name or condensed formula. Pair the quiz with drawing practice for structures and mechanisms." },
+      { q: "Can I focus on functional groups only?", a: "Yes. Use a topic like 'identifying functional groups: alcohols, aldehydes, ketones, esters and carboxylic acids' for a targeted classification quiz." }
     ],
     relatedSlugs: ["chemistry", "biology", "physics"]
   },
@@ -1027,7 +1063,8 @@ export const quizSubjects: SubjectData[] = [
       "Electricity & magnetism basics",
       "Waves, light & sound properties"
     ],
-    guide: "Physical Science serves as a foundational course. Keep questions balanced between conceptual explanations (e.g., how heat transfers) and basic calculation problems (e.g., calculating speed or density). Focus on removing complex calculus or advanced algebra barriers.",
+    guide:
+      "Physical science quizzes should balance conceptual explanation with a few simple calculations, since students are meeting both for the first time. The usual confusions are predictable. Mass and weight are treated as the same thing, heat and temperature are used interchangeably, and speed and velocity are mixed up because everyday speech does not separate them. Physical and chemical change is another common pair, where students count dissolving or melting as chemical because the substance seems to disappear. Calculation items should stay at the level of density, speed and simple force problems, with units written out so students learn that an answer without units is incomplete. Multiple choice suits the conceptual pairs, short answer suits a worked calculation such as density equals mass divided by volume, and true/false is efficient for corrections like sound needing a medium to travel. Because every quiz includes an answer key, you can check units as well as numbers.",
     exampleQuestions: [
       {
         type: "multiple-choice",
@@ -1043,9 +1080,10 @@ export const quizSubjects: SubjectData[] = [
         type: "true-false",
         question: "Sound waves can travel through a vacuum, such as outer space.",
         answer: "False (sound waves require a medium like air or water to propagate)"
-      }
+      },
+      { type: "multiple-choice", question: "A car travels 150 km in 3 hours. What is its average speed? A) 50 km/h B) 450 km/h C) 153 km/h D) 0.02 km/h", answer: "A) 50 km/h (150 ÷ 3)" }
     ],
-    gradeGuidance: "Middle school: states of matter, basic forces, waves. High school intro: density, periodic trends, energy formulas.",
+    gradeGuidance: "Middle school: states of matter, basic forces, waves. High school intro: density, periodic trends, energy formulas. For a first unit on motion or density, ask for 'speed and density calculation problems' so the numbers stay simple.",
     faq: [
       {
         q: "Does it cover basic density calculations?",
@@ -1053,8 +1091,10 @@ export const quizSubjects: SubjectData[] = [
       },
       {
         q: "What's the best question mix for Physical Science?",
-        a: "MCQ for conceptual matching, fill-in-blank for vocabulary, and short-answer for simple computations."
-      }
+        a: "Multiple choice for concept pairs such as mass and weight, short answer for simple calculations, and true/false for common misconceptions."
+      },
+      { q: "Does it cover physical versus chemical changes?", a: "Yes. Ask for 'physical vs. chemical changes with everyday examples' to get questions that separate melting or dissolving from burning or rusting." },
+      { q: "Can I keep the math simple?", a: "Yes. Ask for 'one-step speed and density problems with whole numbers' so students practice the idea without algebra-heavy steps." }
     ],
     relatedSlugs: ["earth-science", "physics", "chemistry"]
   }

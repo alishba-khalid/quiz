@@ -7,6 +7,7 @@ Judgment calls with no obviously-correct answer, with the reasoning, so they don
 **Context:** the full crawl showed quiz subject pages at a median of about 378 words (minimum 285) against about 674 for worksheet pages. Quiz-vs-worksheet 5-gram overlap is 12% median, 15% max, and shared boilerplate is about 11–13%, so duplicate-intent is not the problem.
 **Decision:** fix internal linking and sitemap dates now (cheap, safe). Expanding 30 quiz pages is deferred until Search Console shows which of them get impressions, so effort goes where there is demand.
 **Revisit when:** Search Console is verified and 28 days of data exist.
+**Update 2026-11-03:** owner asked for the fallback, so the 10 shortest quiz pages (by crawled word count) were expanded without demand data. The other 20 quiz pages stay as they are until Search Console shows which get impressions.
 
 ## 2026-10-05 — Differentiate quiz and worksheet subject pages instead of merging them
 
