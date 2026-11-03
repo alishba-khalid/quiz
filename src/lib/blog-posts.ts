@@ -13,6 +13,112 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-to-make-a-printable-quiz-with-an-answer-key",
+    title: "How to make a printable quiz with an answer key",
+    excerpt:
+      "A step-by-step method for a printable quiz and a separate answer key: pick the length, choose question types, check the questions, then print the student copy and key.",
+    category: "How-To",
+    readTime: "5 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `A printable quiz is two documents: a clean student copy and a separate answer key. Most mistakes come from mixing them up, such as printing a class set with the answers showing, or handing out a quiz that is too long for the period. These steps keep both in order. You can follow them by hand, and they also describe how to do it in QuizKraft.
+
+## Step 1: Decide the purpose and the length
+
+Start with what the quiz is for. A five-minute check after a lesson and a unit quiz need different lengths. As a rule of thumb, count about one minute for each multiple-choice, true/false or fill-in-the-blank question, and two to four minutes for each short-answer question. Keep the total under about 80% of the time you have. Our guide to [how many questions a quiz should have](/blog/how-many-questions-should-a-quiz-have) has ranges by purpose.
+
+## Step 2: Choose the topic, grade and difficulty
+
+Be specific. "Adding unlike fractions" gives better questions than "fractions", and "photosynthesis, light-dependent reactions" gives better questions than "biology". In QuizKraft you enter the topic, choose a grade level from Grade 1 to Grade 12, and set the difficulty to Easy, Medium or Hard. You can also paste your own notes or a PDF's text, or use a YouTube link, so the questions come from what you actually taught.
+
+## Step 3: Pick the question types and number
+
+A mix shows more than one type alone. A sample ten-question quiz that takes about 14 minutes:
+
+- **4 multiple choice** for vocabulary and common confusions.
+- **2 true/false** to catch specific misconceptions.
+- **2 fill-in-the-blank** for key terms or a step in a method.
+- **2 short answer** for explaining why.
+
+QuizKraft makes 3 to 15 questions per generation, and you choose the types. Our guide to [the best question types for assessing understanding](/blog/best-question-types-assessing-understanding) explains what each one tells you.
+
+## Step 4: Generate, then read every question
+
+Generating requires a Pro plan ($9/month). There is no free plan. Before you print anything, check the questions. AI can write a wrong answer key or two correct options, and QuizKraft can't edit questions yet, so regenerate with a narrower topic if one is wrong. The [seven-point checklist for AI-generated quizzes](/blog/check-ai-generated-quiz-for-mistakes) takes about five minutes.
+
+## Step 5: Print the student copy first
+
+In the generator, the answer key is hidden until you turn it on with the Answer key button. Print the student copy with the key hidden, using the Print button, which gives a clean layout. Look at the print preview before you print a class set, and confirm that no answers show.
+
+## Step 6: Get the answer key
+
+For the key, turn on Answer key. Each answer comes with a short explanation, which is useful when a student asks why. You can print it, or use the PDF button to download a file. If the key is turned on when you download, the PDF includes an Answer Key page at the end. Pro PDFs have no watermark.
+
+## Step 7: Keep the key separate
+
+Save the key in a different file or folder from the student copy, and name them clearly, such as "Fractions quiz - student" and "Fractions quiz - key". It prevents the most common mistake: sending the wrong file to the printer.
+
+## A note on marking
+
+If students answer on paper, use the key to mark. If you use quiz mode on screen, short-answer and fill-in-the-blank answers are checked by simple text matching, so a correct answer in different words may be marked wrong. Read those answers yourself when it matters.
+
+[Generate your quiz →](/generator)`
+  },
+  {
+    slug: "retake-study-loop-retest-missed-questions",
+    title: "The retake study loop: retest only what you missed",
+    excerpt:
+      "How QuizKraft's quiz mode brings back only the questions a student missed, why that helps learning, and the limits to know about before you use it in class.",
+    category: "Assessment",
+    readTime: "4 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `Most quizzes are one-shot. A student answers, gets a score, and moves on. The questions they got wrong are the ones that most need a second look, and they rarely get one. The retake study loop fixes that by bringing back only the missed questions until every one has been answered correctly.
+
+## What the loop does
+
+In QuizKraft, you generate a quiz and open the tab called Quiz mode (Study loop). The steps are:
+
+- The student answers all the questions.
+- They check their answers and see a score for that round, such as 5 of 8 correct.
+- A Review missed button brings back only the questions they got wrong.
+- They answer those again, and repeat until every question has been answered correctly.
+- When all are mastered, they can use Retake all to start over with the full set.
+
+## A worked example
+
+Take an eight-question quiz on the water cycle.
+
+- **Round 1:** 8 questions, 5 correct. Three come back.
+- **Round 2:** 3 questions, 2 correct. One comes back.
+- **Round 3:** 1 question, correct. All eight are now mastered.
+
+The student has answered 12 questions in total, but spent more of their time on the three that gave them trouble, which is the point.
+
+## Why it helps
+
+The loop turns a quiz into practice. Pulling an answer out of memory strengthens it more than rereading does, and getting feedback on an error right away gives students a chance to fix it while it is fresh. If you want the background, see [active recall vs. passive rereading](/blog/active-recall-vs-passive-rereading) and [retrieval practice strategies for the classroom](/blog/retrieval-practice-classroom-strategies).
+
+## Ways to use it
+
+- **Whole-class review:** project it and have the class answer together, then decide which missed questions to explain.
+- **A tutoring session:** have the student do a quiz at the start, then work through the loop on what they missed.
+- **Independent practice:** a student reviews a unit on a computer in the library or at home.
+- **Before a test:** generate a quiz on the unit and run the loop twice, using Retake all for the second pass.
+
+## What to know before you rely on it
+
+- **It runs where the quiz was made.** There are no shareable student links yet, so quiz mode runs in the browser where you generated the quiz. Use a projector, a shared classroom computer or a tutoring session, not individual student logins.
+- **You don't get a class report.** QuizKraft doesn't record results across students, so the teacher sees only what is on the screen.
+- **Short answers are matched by simple text.** Short-answer and fill-in-the-blank answers are checked by text matching, so a correct answer in different words may be marked wrong. Multiple-choice and true/false are exact.
+- **The same questions come back.** After a few rounds a student may remember the answer rather than the idea. For fresh practice, generate a new set on the same topic.
+- **Questions can't be edited yet.** If a question is wrong, regenerate with a more specific topic. The [checklist for AI-generated quizzes](/blog/check-ai-generated-quiz-for-mistakes) shows what to look for.
+
+Generating a quiz requires a Pro plan ($9/month), and there is no free plan. For printed practice instead, see [how to make a printable quiz with an answer key](/blog/how-to-make-a-printable-quiz-with-an-answer-key).
+
+[Generate your quiz →](/generator)`
+  },
+  {
     slug: "quiz-vs-worksheet-when-to-use-which",
     title: "Quiz vs. worksheet: which to use, and when",
     excerpt:
@@ -59,7 +165,7 @@ A quiz is meant to be scored, so keep it short enough that scoring takes minutes
 QuizKraft makes either one from the same topic. Use the [quiz generator](/quiz-generator) when you want an assessment, and the [worksheet generator](/worksheet-generator) when you want printable practice. A few facts worth knowing before you plan around it:
 
 - Generating requires a Pro plan ($9/month). There is no free plan.
-- Each generation makes 3 to 15 questions in multiple choice, short answer and true/false. Every set comes with an answer key.
+- Each generation makes 3 to 15 questions in multiple choice, true/false, short answer and fill-in-the-blank. Every set comes with an answer key.
 - Worksheets have a clean print layout. In quiz mode, students click through the questions, are scored instantly, and wrong answers come back until they get them right.
 - Questions can't be edited yet. If one is off, regenerate with a more specific topic.
 
@@ -1672,7 +1778,7 @@ There is a twist here: recalling information from memory is one of the most effe
 - Would a student who memorized the textbook but didn't understand it get caught by at least a few questions?
 - Do the wrong answers in your multiple-choice questions reflect mistakes students actually make?
 
-If you want a starting point, a [quiz generator](/quiz-generator) can mix multiple choice, short answer and true/false questions on any topic, and you can then adjust the questions to push toward reasoning.
+If you want a starting point, a [quiz generator](/quiz-generator) can mix multiple choice, true/false, short answer and fill-in-the-blank questions on any topic. Questions can't be edited yet, so if one tests recall when you wanted reasoning, regenerate with a more specific topic.
 
 [Generate your quiz →](/generator)`
   },
