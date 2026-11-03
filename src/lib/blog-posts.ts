@@ -13,6 +13,174 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-to-choose-an-ai-quiz-generator",
+    title: "How to choose an AI quiz generator",
+    excerpt:
+      "Eight questions to ask before you pay for any AI quiz generator, with a plain account of where QuizKraft is strong and where it is limited today.",
+    category: "AI in Education",
+    readTime: "5 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `There are a lot of AI quiz generators, and their feature lists sound alike. What matters is which one fits how you actually teach, and which limits you can live with. This guide gives you eight questions to ask of any tool, then answers them for QuizKraft, including the parts that count against it. Use the same questions on the other tools you are comparing.
+
+## The eight questions
+
+**1. Where do the questions come from?**
+
+Some tools write from a topic only. Others can work from your own material, which matters if you want questions to match what you taught. Ask whether you can paste your own notes or text, or use a video as the source.
+
+**2. Which question types can it make?**
+
+Multiple choice, true/false, short answer and fill-in-the-blank test different things. A tool that makes only one type limits what you can learn about students. See [the best question types for assessing understanding](/blog/best-question-types-assessing-understanding).
+
+**3. Can you check and change the questions?**
+
+AI makes mistakes, so you need to be able to review every question, and ideally edit or replace the weak ones. Ask what the tool does when a question is wrong.
+
+**4. What does the answer key include?**
+
+A bare list of answers is the minimum. Short explanations make the key useful for feedback and for substitutes.
+
+**5. What do you get when you print or export?**
+
+Look at a real printout or PDF. Check the layout, whether the key is separate and whether a watermark appears.
+
+**6. How will students take it?**
+
+On paper, on a screen at the front of the room, on their own devices with a link, or inside a class account? Each needs different features, and some need student accounts.
+
+**7. What does it cost, and what are the limits?**
+
+Check whether there is a free plan, what the paid plan includes and what counts as a limit. A free tier is not always the best deal if it caps what you need.
+
+**8. What happens to the data you enter?**
+
+Find out which AI provider receives your text and whether student information is a risk. Read the privacy policy before you paste anything.
+
+## How QuizKraft answers them
+
+- **Source:** a topic, your own pasted notes (up to about 30,000 characters) or a YouTube link. There is no PDF upload. You paste text copied from a PDF.
+- **Types:** multiple choice, true/false, short answer and fill-in-the-blank, 3 to 15 questions per generation, at Easy, Medium or Hard, for Kindergarten through College.
+- **Checking and editing:** you can read every question, but you can't edit them yet. If one is wrong, regenerate with a narrower topic. Our [seven-point checklist](/blog/check-ai-generated-quiz-for-mistakes) shows what to look for.
+- **Answer key:** every answer comes with a short explanation.
+- **Printing:** a clean print layout and a PDF export. The key can be hidden or shown, and Pro PDFs have no watermark. See [how to make a printable quiz with an answer key](/blog/how-to-make-a-printable-quiz-with-an-answer-key).
+- **Students:** quiz mode runs on screen with a [retake study loop](/blog/retake-study-loop-retest-missed-questions). There are no shareable student links yet, no student accounts and no class reports.
+- **Price:** Pro is $9/month. There is no free plan. The School / Team plan is $19 per teacher per month. See the [pricing page](/pricing).
+- **Data:** your topic or notes are sent to an AI provider to write the questions. The [privacy policy](/privacy) names the services involved. Don't enter student names or personal details.
+- **Marking:** in quiz mode, short-answer and fill-in-the-blank answers are checked by simple text matching, so a correct answer in different words can be marked wrong.
+
+## Try it on a topic you know
+
+The fastest way to judge any generator is to ask it for a quiz on something you teach well. You will see within minutes whether the questions are accurate, whether the wrong answers are believable and whether the output matches your grade level. Try two or three tools on the same topic, and compare them using the eight questions above. If you are a tutor or a homeschool parent, see how this works in practice in our guides to a [quiz maker for tutors](/blog/quiz-maker-for-tutors) and a [worksheet and quiz maker for homeschool](/blog/worksheet-and-quiz-maker-for-homeschool).
+
+[Generate your quiz →](/generator)`
+  },
+  {
+    slug: "worksheet-and-quiz-maker-for-homeschool",
+    title: "Worksheet and quiz maker for homeschool",
+    excerpt:
+      "How homeschool parents can use an AI worksheet and quiz generator: plan a week, cover several ages, keep records, and what it can't do for you.",
+    category: "Lesson Prep",
+    readTime: "5 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `Homeschooling means being the teacher for several ages at once, with nobody to hand the paperwork to. A worksheet and quiz generator can take over one specific job: producing practice and checks that match what you taught. It does not replace a curriculum, and it doesn't keep student records for you. This guide covers how parents can use it, and where to expect limits.
+
+## Cover several ages with one tool
+
+Set the grade level for each child, from Kindergarten through College, and set the difficulty to Easy, Medium or Hard. For example, if you are teaching fractions to a third grader and a sixth grader, generate two quizzes on the same topic with different grade settings. Same lesson, different level.
+
+## Use your own material
+
+If you teach from a textbook chapter or your own notes, paste the text into QuizKraft and the questions are written from that material. The paste limit is about 30,000 characters, roughly a long chapter. Use material you have the right to use, and don't paste anything with your children's names or personal details. If you use a PDF, copy the text out and paste it, because there is no PDF upload.
+
+## A simple weekly rhythm
+
+- **Monday to Thursday:** teach the lesson, then give a [worksheet](/worksheet-generator) to practice. Five to ten questions is enough for most ages.
+- **Friday:** a short quiz of 8 to 10 questions on the week's topics. Use the answer key to mark it.
+- **Next Monday:** a short worksheet on whichever skills the quiz showed were weak.
+
+Our guide to [quiz vs. worksheet](/blog/quiz-vs-worksheet-when-to-use-which) explains why this order works, and [how many questions a quiz should have](/blog/how-many-questions-should-a-quiz-have) helps with timing for younger children.
+
+## Keep records yourself
+
+QuizKraft has no student accounts and doesn't track progress over time, so keep your own records. A simple system works:
+
+- Save each quiz and its answer key as a PDF, named with the child, the topic and the date.
+- Write the score on the quiz and file it.
+- Keep a short list of skills to revisit.
+
+If your state or country requires records, check what they ask for. A folder of dated quizzes and scores is often useful as a portfolio, but you should confirm your own requirements.
+
+## Use the study loop for review
+
+For a child who missed several questions, quiz mode has a retake loop that brings back only the missed ones until each has been answered correctly. It runs on the screen where the quiz was made, so it suits a one-to-one session with your child. See [the retake study loop](/blog/retake-study-loop-retest-missed-questions).
+
+## What it won't do
+
+- **It isn't a curriculum.** It doesn't plan your year or follow a set of standards.
+- **It can make mistakes.** Read every question before you use it. Our [checklist for AI-generated quizzes](/blog/check-ai-generated-quiz-for-mistakes) takes about five minutes.
+- **Questions can't be edited yet.** Regenerate with a more specific topic if one is wrong.
+- **Marking is simple.** On-screen short-answer and fill-in-the-blank answers are matched by plain text, so check those answers yourself.
+
+## Cost
+
+Generating requires a Pro plan at $9/month. There is no free plan. One Pro account can make as many quizzes and worksheets as you need, for as many children as you teach. See the [pricing page](/pricing).
+
+[Generate your quiz →](/generator)`
+  },
+  {
+    slug: "quiz-maker-for-tutors",
+    title: "Quiz maker for tutors: uses and limits",
+    excerpt:
+      "How tutors can use an AI quiz generator for diagnostic checks, homework and retesting between sessions, and what to keep track of yourself.",
+    category: "Teaching",
+    readTime: "5 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `A tutor has one hour and one student, and wastes the first ten minutes finding out what the student can actually do. A quiz generator can shorten that. It can also give you homework and a retest without an evening of writing questions. Here is how tutors can use it, and what to expect.
+
+## Start with a short diagnostic
+
+At the first session, give a quiz of 6 to 10 questions on the topic the student is struggling with. Set the grade to the student's current level and the difficulty to Medium. The missed questions show where to begin. See [formative vs. summative assessment](/blog/formative-vs-summative-assessment-explained) for why a low-stakes check like this is useful.
+
+## Teach, then retest only what was missed
+
+After you teach, use quiz mode's study loop. The student answers the questions, sees a score, and Review missed brings back only the ones they got wrong, until all are correct. It runs on the screen where the quiz was made, which suits one-to-one sessions. Read about [the retake study loop](/blog/retake-study-loop-retest-missed-questions).
+
+## Send practice home
+
+Generate a worksheet on the same topic, hide the key, print the student copy, and keep the key. A short worksheet of 8 to 10 questions is enough for between sessions. See [how to make a printable quiz with an answer key](/blog/how-to-make-a-printable-quiz-with-an-answer-key).
+
+## Use the student's own material
+
+If the student has class notes or a textbook chapter, paste the text in (up to about 30,000 characters) and the questions come from that material. That makes the practice match their class, not a generic version of it. A YouTube link also works as a source. There is no PDF upload, so copy the text from a PDF and paste it.
+
+## A simple session cycle
+
+- **Start (5 minutes):** a quick quiz on last session's topic.
+- **Teach (35 minutes):** work on what was missed.
+- **Check (10 minutes):** a short quiz or study loop on today's topic.
+- **Leave:** a worksheet for the days before the next session.
+
+## What to track yourself
+
+QuizKraft has no student accounts and no progress tracking, and it doesn't produce class or student reports. Keep your own notes after each session: the topic, the quiz score and what to revisit. A shared document or a notebook is enough. Parents often like a short summary, which you can write from those notes.
+
+## Things to be careful about
+
+- **Check every question.** AI can write a wrong answer key. Use the [seven-point checklist](/blog/check-ai-generated-quiz-for-mistakes) before the student sees it.
+- **Don't enter student names or personal details.** Topics and notes are sent to an AI provider. See the [privacy policy](/privacy).
+- **You can't edit questions yet.** Regenerate with a narrower topic if one is wrong.
+- **Marking is simple.** In quiz mode, short-answer and fill-in-the-blank answers are matched by plain text, so read those yourself.
+
+## Cost
+
+Generating requires a Pro plan at $9/month. There is no free plan. A single tutor needs one Pro account. The School / Team plan at $19 per teacher per month is for schools with several teachers. See the [pricing page](/pricing) and our guide to [how to choose an AI quiz generator](/blog/how-to-choose-an-ai-quiz-generator).
+
+[Generate your quiz →](/generator)`
+  },
+  {
     slug: "how-to-make-a-printable-quiz-with-an-answer-key",
     title: "How to make a printable quiz with an answer key",
     excerpt:
