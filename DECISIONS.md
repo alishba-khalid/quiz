@@ -2,6 +2,12 @@
 
 Judgment calls with no obviously-correct answer, with the reasoning, so they don't get re-argued. Newest first.
 
+## 2026-11-03 — Quiz subject pages stay thin for now; fix linking first
+
+**Context:** the full crawl showed quiz subject pages at a median of about 378 words (minimum 285) against about 674 for worksheet pages. Quiz-vs-worksheet 5-gram overlap is 12% median, 15% max, and shared boilerplate is about 11–13%, so duplicate-intent is not the problem.
+**Decision:** fix internal linking and sitemap dates now (cheap, safe). Expanding 30 quiz pages is deferred until Search Console shows which of them get impressions, so effort goes where there is demand.
+**Revisit when:** Search Console is verified and 28 days of data exist.
+
 ## 2026-10-05 — Differentiate quiz and worksheet subject pages instead of merging them
 
 **Context:** 26 subjects have both `/quiz-generator/<subject>` and `/worksheet-generator/<subject>`. 17 pairs had identical copy, a duplicate-intent risk under Google's scaled-content policy.

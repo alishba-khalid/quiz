@@ -1766,3 +1766,28 @@ export function getQuizSubject(slug: string): SubjectData | undefined {
 export function getWorksheetSubject(slug: string): SubjectData | undefined {
   return worksheetSubjects.find((s) => s.slug === slug);
 }
+
+/**
+ * Related subjects for a subject page: the curated relatedSlugs plus any subject
+ * that lists this one as related, so every subject page receives at least one
+ * contextual inbound link from a sibling (not just the hub). Curated order first.
+ */
+export function getRelatedSubjects(
+  list: SubjectData[],
+  data: SubjectData,
+  max = 8
+): SubjectData[] {
+  const curated = data.relatedSlugs;
+  const reverse = list
+    .filter((s) => s.slug !== data.slug && s.relatedSlugs.includes(data.slug))
+    .map((s) => s.slug);
+  const slugs = [...new Set([...curated, ...reverse])].slice(0, max);
+  return slugs
+    .map((slug) => list.find((s) => s.slug === slug))
+    .filter((s): s is SubjectData => Boolean(s));
+}
+
+/** True if the other-format page (quiz <-> worksheet) exists for this slug. */
+export function hasCounterpart(list: SubjectData[], slug: string): boolean {
+  return list.some((s) => s.slug === slug);
+}

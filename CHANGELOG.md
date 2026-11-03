@@ -2,6 +2,10 @@
 
 Significant changes and why they were made. Newest first. Add an entry as the last step of any change a future reader would otherwise have to reconstruct from git history.
 
+## 2026-11-03
+
+- **Subject-page linking and sitemap dates.** A full crawl (103 pages) showed 27 of 30 quiz and worksheet subject pages in each family had one inbound link (the hub), since no subject was in another subject's `relatedSlugs`. `getRelatedSubjects()` in `src/lib/subjects.ts` now adds reverse-related siblings, and each subject page links its quiz/worksheet counterpart. Sitemap `lastModified` was `new Date()`, which stamped every URL as modified on every build; it now uses a fixed content date (2026-10-05) to bump by hand when content changes.
+
 ## 2026-10-16
 
 - **Hosting moved from Vercel to Cloudflare Workers.** Vercel disabled the deployment (over its free limits), taking the site down. It now runs on Cloudflare via OpenNext (`@opennextjs/cloudflare`); Next.js upgraded to 16.4.2, which the adapter requires. Nameservers for quizkraft.tech (registered at get.tech) moved to Cloudflare; the apex→www redirect moved into `next.config.ts`. Production keys are Worker secrets; Cloudflare Workers Builds deploys every push to `master` (`npm run cf:build`, then `npx opennextjs-cloudflare deploy`). Workers forbid compiling WebAssembly at runtime, so `scripts/prisma-workerd-first.mjs` makes the bundler pick Prisma's workerd build; `src/proxy.ts` uses a database-free Auth.js instance so Prisma isn't bundled twice. Privacy policy now names Cloudflare as host. (fbf228a, 3ef2cb0)

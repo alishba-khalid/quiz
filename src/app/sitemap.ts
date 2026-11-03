@@ -5,7 +5,9 @@ import { blogPosts } from "@/lib/blog-posts";
 const BASE = "https://www.quizkraft.tech";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  // Real content-update date, bumped manually when page content changes.
+  // Using new Date() here would stamp every URL as modified on every build.
+  const now = new Date("2026-10-05");
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${BASE}`,          lastModified: now, changeFrequency: "daily",   priority: 1.0 },

@@ -3,7 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Zap, ChevronRight } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
-import { quizSubjects, getQuizSubject } from "@/lib/subjects";
+import {
+  quizSubjects,
+  worksheetSubjects,
+  getQuizSubject,
+  getRelatedSubjects,
+  hasCounterpart,
+} from "@/lib/subjects";
 
 export function generateStaticParams() {
   return quizSubjects.map((s) => ({ subject: s.slug }));
@@ -103,9 +109,8 @@ export default async function QuizSubjectPage({
     })),
   };
 
-  const relatedSubjects = quizSubjects.filter((s) =>
-    data.relatedSlugs.includes(s.slug)
-  );
+  const relatedSubjects = getRelatedSubjects(quizSubjects, data);
+  const counterpart = hasCounterpart(worksheetSubjects, data.slug);
 
   return (
     <div className="flex flex-col flex-1 bg-canvas">
@@ -275,6 +280,15 @@ export default async function QuizSubjectPage({
                   <ArrowRight className="h-3.5 w-3.5 text-muted group-hover:text-accent transition-colors" />
                 </Link>
               ))}
+              {counterpart && (
+                <Link
+                  href={`/worksheet-generator/${data.slug}`}
+                  className="group flex items-center gap-1.5 px-4 py-2.5 bg-surface rounded-xl border border-hairline hover:border-accent/40 hover:bg-accent-soft transition-all text-sm font-medium text-ink"
+                >
+                  Printable {data.name} worksheets
+                  <ArrowRight className="h-3.5 w-3.5 text-muted group-hover:text-accent transition-colors" />
+                </Link>
+              )}
               <Link
                 href="/quiz-generator"
                 className="group flex items-center gap-1.5 px-4 py-2.5 bg-surface rounded-xl border border-hairline hover:border-accent/40 hover:bg-accent-soft transition-all text-sm font-medium text-muted"
