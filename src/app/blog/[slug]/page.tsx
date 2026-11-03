@@ -87,6 +87,15 @@ function parseInline(text: string) {
 
 function renderBody(body: string) {
   return body.split("\n\n").map((para, i) => {
+    // Section heading: a paragraph starting with "## " renders as an h2
+    if (para.startsWith("## ") && !para.includes("\n")) {
+      return (
+        <h2 key={i} className="font-semibold text-ink mt-10 mb-3 text-xl">
+          {para.slice(3)}
+        </h2>
+      );
+    }
+
     // Standalone bold heading: entire paragraph is **...**
     if (para.startsWith("**") && para.endsWith("**") && !para.includes("](")) {
       return (

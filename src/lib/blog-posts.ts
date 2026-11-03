@@ -13,6 +13,164 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "quiz-vs-worksheet-when-to-use-which",
+    title: "Quiz vs. worksheet: which to use, and when",
+    excerpt:
+      "A quiz measures what students can do alone. A worksheet helps them learn by practicing. Here is how to choose, and how to use both in one week.",
+    category: "Assessment",
+    readTime: "4 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `Teachers use the words "quiz" and "worksheet" loosely, and the same ten questions can be either one. What changes is the job the page is doing. A quiz measures what a student can do on their own. A worksheet helps a student learn by practicing, often with support. Choose by the job, and the format follows.
+
+## The difference in one line
+
+A quiz answers "who has got it?" A worksheet answers "how do I get it?"
+
+- **Quiz:** short, usually closed-notes, done alone, checked against an answer key, and used to decide what to teach next.
+- **Worksheet:** longer, with notes or a partner allowed, ordered from easy to hard, and used to practice while the teacher or an answer key gives feedback.
+
+## Choose by what you need
+
+- **Check understanding before moving on:** a quiz. Five to ten questions at the end of a lesson tell you whether to continue or reteach.
+- **Practice a skill students have just met:** a worksheet. Nobody should be scored on something they saw for the first time that morning.
+- **Homework:** a worksheet. Practice at home works best when it is low-stakes and has an answer key students can check.
+- **Review before a test:** both. Start with a worksheet to practice, then give a short quiz to find what is still shaky.
+- **Reteach after a weak result:** a worksheet aimed at the one skill that was missed, not the whole unit again.
+- **Find out what students already know at the start of a unit:** a short, ungraded quiz.
+- **A day when you are out:** a worksheet with an answer key, so a substitute can run it without knowing the subject.
+
+## A simple sequence that uses both
+
+A common pattern is worksheet, then quiz, then a targeted worksheet. For a fractions unit it might look like this:
+
+- **Monday:** a worksheet on adding fractions with unlike denominators, done in pairs.
+- **Wednesday:** an eight-question quiz, done alone, closed-notes.
+- **Thursday:** a short worksheet built only around the question types most students missed on the quiz.
+
+The quiz tells you what to teach, and the worksheet is where students fix it. Giving a quiz without a follow-up leaves the results unused. Giving worksheets without a quiz means you never find out whether the practice worked.
+
+## Think about the grading load
+
+A quiz is meant to be scored, so keep it short enough that scoring takes minutes, not an evening. Worksheets rarely need a grade for every item. Spot-check a few questions, or let students mark their own work against the answer key and ask about the ones they missed. For more ideas, see [time-saving tips for grading](/blog/time-saving-tips-for-grading) and [formative vs. summative assessment](/blog/formative-vs-summative-assessment-explained).
+
+## Making each one in QuizKraft
+
+QuizKraft makes either one from the same topic. Use the [quiz generator](/quiz-generator) when you want an assessment, and the [worksheet generator](/worksheet-generator) when you want printable practice. A few facts worth knowing before you plan around it:
+
+- Generating requires a Pro plan ($9/month). There is no free plan.
+- Each generation makes 3 to 15 questions in multiple choice, short answer and true/false. Every set comes with an answer key.
+- Worksheets have a clean print layout. In quiz mode, students click through the questions, are scored instantly, and wrong answers come back until they get them right.
+- Questions can't be edited yet. If one is off, regenerate with a more specific topic.
+
+Read every question before you use it. Our guide to [checking an AI-generated quiz](/blog/check-ai-generated-quiz-for-mistakes) shows what to look for.
+
+[Generate your quiz or worksheet →](/generator)`
+  },
+  {
+    slug: "check-ai-generated-quiz-for-mistakes",
+    title: "Check an AI-generated quiz before you use it",
+    excerpt:
+      "AI can write a quiz in seconds, but it can also state a wrong fact with confidence. Use this seven-point checklist to catch mistakes in about five minutes.",
+    category: "AI in Education",
+    readTime: "4 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `An AI quiz generator can write ten questions in the time it takes to find a pen. It can also write a question with a wrong answer key, two correct options, or a stem that means something different from what you taught. These mistakes are rare enough to be easy to miss and costly enough to matter, because a student who answers correctly and is marked wrong learns the wrong lesson from you.
+
+QuizKraft filters out questions that come back malformed, but it can't verify that a fact is true, so the read-through is yours. This checklist takes about five minutes for a ten-question quiz.
+
+## Seven checks, in order
+
+**1. Solve it yourself, starting with the answer key**
+
+Cover the key and answer each question as a student would. Then compare. Any disagreement is either your mistake or the quiz's, and both are worth finding. Do the questions that involve numbers, dates or definitions first, because those are where a confident wrong answer hides.
+
+**2. Make sure only one option is correct**
+
+Read each wrong option as a skeptical student would. Ask whether a reasonable reader could defend it. "Which is the best example of a mammal?" fails if two options are mammals.
+
+**3. Check that the question says what you meant**
+
+Look for a stem that can be read two ways, or one that quietly depends on something you haven't taught. If you have to explain the question aloud, rewrite it by regenerating with a narrower topic.
+
+**4. Match the content to what you actually taught**
+
+A generator doesn't know what was in your lesson. Remove or replace any question about material your class hasn't covered, such as a term from a later chapter or a method you didn't use.
+
+**5. Look at the wrong answers**
+
+Good wrong options are mistakes real students make, like multiplying and adding in the wrong order. Weak ones are obviously silly or all alike. Avoid "all of the above" and "none of the above". Our guide to [writing good multiple-choice questions](/blog/how-to-write-good-multiple-choice-questions) explains why.
+
+**6. Check the mix and the clues**
+
+Does the correct answer fall in the same position too often? Is the right option noticeably longer than the others? Is there a mix of recall and reasoning? See [the best question types for assessing understanding](/blog/best-question-types-assessing-understanding).
+
+**7. Check the reading level and tone**
+
+Make sure the vocabulary fits the grade and that no question is awkward, insensitive or confusing for the students in front of you.
+
+## Keep a short log
+
+Write down what you changed or regenerated and why. After a few quizzes you will see the same patterns, such as numerical answers needing a second look, and you can adjust your prompt before the generator makes them.
+
+## What to do when a question is wrong
+
+QuizKraft can't edit questions yet. If a question is off, regenerate with a more specific topic. Name the exact skill, the grade and any terms you want, such as "adding unlike fractions, grade 5". The more specific the topic, the better the questions. You can also leave out the bad question and use the rest.
+
+## Why bother
+
+The checking costs minutes, and it protects the one thing a quiz is for: telling you the truth about what students know. If you want to see the generator, try the [quiz generator](/quiz-generator) with a topic you know well, so you can judge the output easily.
+
+[Generate your quiz →](/generator)`
+  },
+  {
+    slug: "how-many-questions-should-a-quiz-have",
+    title: "How many questions should a quiz have?",
+    excerpt:
+      "The right length depends on purpose and time. Practical ranges for exit tickets, daily checks and unit quizzes, plus how to work out the timing.",
+    category: "Assessment",
+    readTime: "4 min read",
+    date: "November 2026",
+    publishedAt: "2026-11-03T00:00:00Z",
+    body: `There is no single right number of questions. A quiz should be as long as it needs to be to answer one question: "do students understand this?" The purpose decides the length, and the time you have sets the limit. These are rules of thumb from classroom practice, not research findings, so adjust them to your students.
+
+## Start with the purpose
+
+- **Exit ticket:** 3 to 5 questions, about 3 to 5 minutes. You want a quick read of the day's main idea. See [using exit tickets for formative assessment](/blog/using-exit-tickets-for-formative-assessment).
+- **Daily or weekly check:** 5 to 10 questions, about 10 minutes. Enough to see which skills need attention.
+- **Unit quiz:** 10 to 15 questions, about one class period or less. This is long enough to cover each main idea more than once.
+- **Unit test or end-of-term exam:** 20 questions or more, often over more than one session. At that size you are also testing stamina and coverage.
+
+## Work out the time
+
+Estimate how long a student needs for each question, then add them up:
+
+- A multiple-choice or true/false question: about 1 minute.
+- A short-answer question: about 2 to 4 minutes, depending on the grade and the thinking required.
+- A multi-step calculation: more, so test one first yourself.
+
+Add the times, then check that the total is no more than about 80% of the time you have. The rest is for handing out, reading directions and slower students. Ten multiple-choice questions and two short-answer questions come to roughly 14 to 18 minutes, which fits a 25-minute slot but not a 15-minute one.
+
+## Count by what you want to learn
+
+Instead of picking a number, list the ideas you want to check and give each two or three questions. One question tells you very little, because a student can guess or slip. Two or three show a pattern. For a quiz on four ideas, that gives 8 to 12 questions.
+
+More questions make a score more reliable, but each extra question adds less than the one before. Past a point, the quiz just takes longer and tires students. If you can't add anything new about what students know, stop.
+
+## Match the length to the age of the students
+
+Younger students tire sooner and read more slowly, so use shorter quizzes with fewer questions per page. Older students can handle longer ones. Always test the timing on a few questions before you commit.
+
+## Using QuizKraft for this
+
+QuizKraft makes 3 to 15 questions per generation, and the default is 5. That covers exit tickets, daily checks and unit quizzes in one go. For a longer test, generate more than one set and combine the questions yourself. Generating requires a Pro plan ($9/month), and there is no free plan.
+
+Whatever the length, check the questions before you give the quiz. Our guide to [checking an AI-generated quiz](/blog/check-ai-generated-quiz-for-mistakes) takes about five minutes. To choose between a quiz and a worksheet for the same topic, see [quiz vs. worksheet](/blog/quiz-vs-worksheet-when-to-use-which).
+
+[Generate your quiz →](/generator)`
+  },
+  {
     slug: "how-to-write-quiz-questions",
     title: "How to write quiz questions that test understanding, not memory",
     excerpt:
@@ -433,6 +591,8 @@ After a quiz, look at how many students chose each option. A distractor no one p
 
 Writing plausible distractors is the hardest part. A [quiz generator](/quiz-generator) can draft multiple-choice questions with distractors for any topic and grade level in seconds; review them against the rules above and adjust them to match the mistakes you see in your own class. For more on question design in general, see [how to write quiz questions that test understanding](/blog/how-to-write-quiz-questions).
 
+Before you hand any quiz out, whether you wrote it or a tool did, run through [a seven-point check for mistakes](/blog/check-ai-generated-quiz-for-mistakes).
+
 [Generate your quiz →](/generator)`
   },
   {
@@ -578,6 +738,8 @@ The main barrier to frequent formative checks is preparation time. A [quiz gener
 
 Used together, formative assessment guides the learning and summative assessment confirms it — and assessment becomes a tool for growth rather than only a grade.
 
+Choosing between a quiz and a practice sheet follows the same logic. See [quiz vs. worksheet: which to use, and when](/blog/quiz-vs-worksheet-when-to-use-which).
+
 [Generate your quiz →](/generator)`
   },
   {
@@ -699,6 +861,8 @@ For practice tasks, let students check their own or a partner's work while you g
 None of these strategies means caring less about feedback. They mean spending your grading time where it makes the most difference: detailed feedback on key work, quick checks on practice, and feedback students actually use.
 
 For a broader look at designing your grading approach, see [classroom grading systems to recover your weekends](/blog/grading-systems-to-recover-weekends).
+
+Shorter quizzes are faster to grade. Our guide to [how many questions a quiz should have](/blog/how-many-questions-should-a-quiz-have) gives ranges by purpose.
 
 [Generate your quiz →](/generator)`
   },
@@ -1260,6 +1424,8 @@ The value of an exit ticket comes from what happens next:
 Writing a well-targeted question every day takes some thought. A [quiz generator](/quiz-generator) can produce a few short questions on your lesson topic, with an answer key, in seconds — pick the one that best matches your objective. For more ideas on the bigger picture, see [formative vs. summative assessment explained](/blog/formative-vs-summative-assessment-explained).
 
 Used daily, exit tickets make sure you never move on while a group of students is left behind.
+
+Not sure how long an exit ticket or quiz should be? See [how many questions a quiz should have](/blog/how-many-questions-should-a-quiz-have).
 
 [Generate your quiz →](/generator)`
   },
